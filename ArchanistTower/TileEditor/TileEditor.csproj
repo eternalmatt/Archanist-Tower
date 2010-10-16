@@ -65,11 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TileEditorForm.cs">
+    <None Include="Form1">
       <SubType>Form</SubType>
-    </Compile>
+    </None>
     <Compile Include="TileEditorForm.Designer.cs">
-      <DependentUpon>TileEditorForm.cs</DependentUpon>
+      <DependentUpon>Form1</DependentUpon>
     </Compile>
     <Compile Include="GraphicsDeviceControl.cs">
       <SubType>Component</SubType>
@@ -84,7 +84,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="TileEditorForm.resx">
-      <DependentUpon>TileEditorForm.cs</DependentUpon>
+      <DependentUpon>Form1</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewLayerForm.resx">
       <DependentUpon>NewLayerForm.cs</DependentUpon>
