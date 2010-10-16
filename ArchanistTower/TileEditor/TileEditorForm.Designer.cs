@@ -244,6 +244,7 @@
             this.tileDisplay1.Size = new System.Drawing.Size(585, 577);
             this.tileDisplay1.TabIndex = 0;
             this.tileDisplay1.Text = "tileDisplay1";
+            this.tileDisplay1.Click += new System.EventHandler(this.tileDisplay1_Click);
             // 
             // TileEditorForm
             // 
@@ -268,7 +269,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "TileEditorForm";
             this.Text = "Tile Editor";
-            this.Load += new System.EventHandler(this.TileEditorForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.texturePreviewBox)).EndInit();
