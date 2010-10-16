@@ -23,7 +23,30 @@ namespace ArchanistTower
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Camera camers = new Camera();
+        Camera camera = new Camera();
+        TileLayer tileLayer = new TileLayer(new int[,]
+        {
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,0,0,0,0,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,},
+            {0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,},
+            {0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0,},
+            {0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,4,0,0,0,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+            {1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,1,4,1,1,1,1,},
+        });
 
         public ArchanistTower()
         {
@@ -53,7 +76,15 @@ namespace ArchanistTower
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            tileLayer.LoadTileTextures(
+                Content,
+                "Tiles/se_free_dirt_texture",
+                "Tiles/se_free_grass_texture",
+                "Tiles/se_free_ground_texture",
+                "Tiles/se_free_mud_texture",
+                "Tiles/se_free_road_texture",
+                "Tiles/se_free_rock_texture",
+                "Tiles/se_free_wood_texture");
         }
 
         /// <summary>
@@ -76,7 +107,20 @@ namespace ArchanistTower
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            camera.Update();
+
+            if (camera.Position.X < 0)
+                camera.Position.X = 0;
+            if(camera.Position.Y < 0)
+                camera.Position.Y = 0;
+
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+
+            if (camera.Position.X > tileLayer.WidthInPixels - screenWidth)
+                camera.Position.X = tileLayer.WidthInPixels - screenWidth;
+            if (camera.Position.Y > tileLayer.HeightInPixels - screenHeight)
+                camera.Position.Y = tileLayer.HeightInPixels - screenHeight;
 
             base.Update(gameTime);
         }
@@ -89,7 +133,7 @@ namespace ArchanistTower
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            tileLayer.Draw(spriteBatch, camera);
 
             base.Draw(gameTime);
         }

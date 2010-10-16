@@ -1,6 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Tiles\se_free_dirt_texture.jpg</Source>
+      <Name>Tiles\se_free_dirt_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\ArchanistTower\bin\x86\Debug\Content\Tiles\se_free_dirt_texture.xnb</Output>
+      <Time>2010-10-16T05:12:11.0359-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\se_free_grass_texture.jpg</Source>
+      <Name>Tiles\se_free_grass_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\ArchanistTower\bin\x86\Debug\Content\Tiles\se_free_grass_texture.xnb</Output>
+      <Time>2010-10-16T05:12:11.0659-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\se_free_ground_texture.jpg</Source>
+      <Name>Tiles\se_free_ground_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\ArchanistTower\bin\x86\Debug\Content\Tiles\se_free_ground_texture.xnb</Output>
+      <Time>2010-10-16T05:12:11.0899-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\se_free_mud_texture.jpg</Source>
+      <Name>Tiles\se_free_mud_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\ArchanistTower\bin\x86\Debug\Content\Tiles\se_free_mud_texture.xnb</Output>
+      <Time>2010-10-16T05:12:11.1239-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\se_free_road_texture.jpg</Source>
+      <Name>Tiles\se_free_road_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\ArchanistTower\bin\x86\Debug\Content\Tiles\se_free_road_texture.xnb</Output>
+      <Time>2010-10-16T05:12:11.1529-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\se_free_rock_texture.jpg</Source>
+      <Name>Tiles\se_free_rock_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\ArchanistTower\bin\x86\Debug\Content\Tiles\se_free_rock_texture.xnb</Output>
+      <Time>2010-10-16T05:12:11.1679-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\se_free_wood_texture.jpg</Source>
+      <Name>Tiles\se_free_wood_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\ArchanistTower\bin\x86\Debug\Content\Tiles\se_free_wood_texture.xnb</Output>
+      <Time>2010-10-16T05:12:11.1829-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
@@ -12,6 +75,30 @@
       <OutputDirectory>C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\ArchanistTower\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2009-05-28T00:16:14-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2009-05-28T00:16:06-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2009-05-28T00:16:16-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2009-05-28T00:16:26-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2009-05-28T00:16:12-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2009-05-28T00:16:06-04:00</Value>
+      </Assembly>
       <Assembly>
         <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.1.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
         <Value>2010-08-27T20:49:23.1995-04:00</Value>

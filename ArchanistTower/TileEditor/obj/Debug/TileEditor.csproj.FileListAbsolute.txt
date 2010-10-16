@@ -1,0 +1,17 @@
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\TileEditor.exe
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\TileEditor.pdb
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\TileEngine.dll
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\TileEngine.pdb
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\obj\Debug\TileEditor.Form1.resources
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\obj\Debug\TileEditor.Properties.Resources.resources
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\obj\Debug\TileEditor.csproj.GenerateResource.Cache
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\obj\Debug\TileEditor.exe
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\obj\Debug\TileEditor.pdb
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\Content\se_free_dirt_texture.jpg
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\Content\se_free_grass_texture.jpg
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\Content\se_free_ground_texture.jpg
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\Content\se_free_mud_texture.jpg
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\Content\se_free_road_texture.jpg
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\Content\se_free_rock_texture.jpg
+C:\Users\Seth\Desktop\Pants_Down\ArchanistTower\TileEditor\bin\Debug\Content\se_free_wood_texture.jpg

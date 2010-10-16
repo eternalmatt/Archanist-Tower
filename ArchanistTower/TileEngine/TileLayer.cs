@@ -35,7 +35,7 @@ namespace TileEngine
         {
             get
             {
-                return map.GetLength(1) * tileWidth;
+                return Width * tileWidth;
             }
         }
 
@@ -43,8 +43,18 @@ namespace TileEngine
         {
             get
             {
-                return map.GetLength(0) * tileHeight;
+                return Height * tileHeight;
             }
+        }
+
+        public int Width
+        {
+            get { return map.GetLength(1); }
+        }
+
+        public int Height
+        {
+            get { return map.GetLength(0); }
         }
 
         public TileLayer(int width, int height)
@@ -65,6 +75,11 @@ namespace TileEngine
                 texture = content.Load<Texture2D>(textureName);
                 tileTextures.Add(texture);
             }
+        }
+
+        public void AddTexture(Texture2D texture)
+        {
+            tileTextures.Add(texture);
         }
 
         public void Draw(SpriteBatch spriteBatch, Camera camera)
