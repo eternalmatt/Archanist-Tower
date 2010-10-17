@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tileDisplay1 = new TileEditor.TileDisplay();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -51,19 +50,10 @@
             this.addTextureButton = new System.Windows.Forms.Button();
             this.removeTextureButton = new System.Windows.Forms.Button();
             this.texturePreviewBox = new System.Windows.Forms.PictureBox();
+            this.tileDisplay1 = new TileEditor.TileDisplay();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.texturePreviewBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tileDisplay1
-            // 
-            this.tileDisplay1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.tileDisplay1.Location = new System.Drawing.Point(2, 29);
-            this.tileDisplay1.Name = "tileDisplay1";
-            this.tileDisplay1.Size = new System.Drawing.Size(597, 549);
-            this.tileDisplay1.TabIndex = 0;
-            this.tileDisplay1.Text = "tileDisplay1";
             // 
             // hScrollBar1
             // 
@@ -105,26 +95,30 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.openToolStripMenuItem.Text = "New Tile Map";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
             this.openToolStripMenuItem1.Text = "Open ";
+            this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
@@ -178,6 +172,7 @@
             this.layerListBox.Name = "layerListBox";
             this.layerListBox.Size = new System.Drawing.Size(235, 95);
             this.layerListBox.TabIndex = 7;
+            this.layerListBox.SelectedIndexChanged += new System.EventHandler(this.layerListBox_SelectedIndexChanged);
             // 
             // addLayerButton
             // 
@@ -187,6 +182,7 @@
             this.addLayerButton.TabIndex = 8;
             this.addLayerButton.Text = "Add";
             this.addLayerButton.UseVisualStyleBackColor = true;
+            this.addLayerButton.Click += new System.EventHandler(this.addLayerButton_Click);
             // 
             // removeLayerButton
             // 
@@ -196,6 +192,7 @@
             this.removeLayerButton.TabIndex = 8;
             this.removeLayerButton.Text = "Remove";
             this.removeLayerButton.UseVisualStyleBackColor = true;
+            this.removeLayerButton.Click += new System.EventHandler(this.removeLayerButton_Click);
             // 
             // textureListBox
             // 
@@ -204,6 +201,7 @@
             this.textureListBox.Name = "textureListBox";
             this.textureListBox.Size = new System.Drawing.Size(235, 95);
             this.textureListBox.TabIndex = 7;
+            this.textureListBox.SelectedIndexChanged += new System.EventHandler(this.textureListBox_SelectedIndexChanged);
             // 
             // addTextureButton
             // 
@@ -213,6 +211,7 @@
             this.addTextureButton.TabIndex = 8;
             this.addTextureButton.Text = "Add";
             this.addTextureButton.UseVisualStyleBackColor = true;
+            this.addTextureButton.Click += new System.EventHandler(this.addTextureButton_Click);
             // 
             // removeTextureButton
             // 
@@ -222,6 +221,7 @@
             this.removeTextureButton.TabIndex = 8;
             this.removeTextureButton.Text = "Remove";
             this.removeTextureButton.UseVisualStyleBackColor = true;
+            this.removeTextureButton.Click += new System.EventHandler(this.removeTextureButton_Click);
             // 
             // texturePreviewBox
             // 
@@ -232,6 +232,17 @@
             this.texturePreviewBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.texturePreviewBox.TabIndex = 9;
             this.texturePreviewBox.TabStop = false;
+            this.texturePreviewBox.Click += new System.EventHandler(this.texturePreviewBox_Click);
+            // 
+            // tileDisplay1
+            // 
+            this.tileDisplay1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.tileDisplay1.Location = new System.Drawing.Point(2, 29);
+            this.tileDisplay1.Name = "tileDisplay1";
+            this.tileDisplay1.Size = new System.Drawing.Size(597, 549);
+            this.tileDisplay1.TabIndex = 0;
+            this.tileDisplay1.Text = "tileDisplay1";
             // 
             // Form1
             // 

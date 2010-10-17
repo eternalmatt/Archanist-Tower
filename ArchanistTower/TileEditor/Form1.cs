@@ -348,5 +348,21 @@ namespace TileEditor
 
         }
 
+        private void texturePreviewBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textureListBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void layerListBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
