@@ -348,7 +348,5 @@ namespace TileEditor
 
         }
 
-
-
     }
 }

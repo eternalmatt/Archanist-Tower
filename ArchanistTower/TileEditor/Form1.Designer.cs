@@ -146,6 +146,7 @@
             this.browseForContentButton.TabIndex = 5;
             this.browseForContentButton.Text = "...";
             this.browseForContentButton.UseVisualStyleBackColor = true;
+            this.browseForContentButton.Click += new System.EventHandler(this.browseForContentButton_Click);
             // 
             // drawRadioButton
             // 
