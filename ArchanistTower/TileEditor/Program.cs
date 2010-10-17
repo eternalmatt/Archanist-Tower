@@ -15,7 +15,7 @@ namespace TileEditor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TileEditorForm());
+            Application.Run(new Form1());
         }
     }
 }
