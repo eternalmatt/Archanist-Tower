@@ -1,3 +1,11 @@
+Content\Sprites\amg1.xnb
+Content\Sprites\knt4.xnb
+Content\Sprites\man1.xnb
+Content\Sprites\mst3.xnb
+Content\Sprites\nja2.xnb
+Content\Sprites\smr1.xnb
+Content\Sprites\thf4.xnb
+Content\Sprites\wmn3.xnb
 Content\Tiles\se_free_dirt_texture.xnb
 Content\Tiles\se_free_grass_texture.xnb
 Content\Tiles\se_free_ground_texture.xnb
@@ -13,5 +21,4 @@ Content\Tiles\se_free_mud_texture.jpg
 Content\Tiles\se_free_road_texture.jpg
 Content\Tiles\se_free_rock_texture.jpg
 Content\Tiles\se_free_wood_texture.jpg
-Content\Layers\Layer2.layer
 Content\Layers\Layer1.layer

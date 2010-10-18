@@ -11,12 +11,12 @@ namespace TileEngine
 
         public int GetWidthInPixels()
         {
-            return GetWidth() * TileLayer.TileWidth;
+            return GetWidth() * Engine.TileWidth;
         }
 
         public int GetHeightInPixels()
         {
-            return GetHeight() * TileLayer.TileHeight;
+            return GetHeight() * Engine.TileHeight;
         }
 
         public int GetWidth()

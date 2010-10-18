@@ -10,10 +10,6 @@ namespace TileEngine
     public class TileLayer
     {
         #region Variables
-
-        //Drawing size of the tiles.
-        static int tileWidth = 64;
-        static int tileHeight = 64;
     
         //A List of the textures being used in the layer
         List<Texture2D> tileTextures = new List<Texture2D>();
@@ -29,28 +25,6 @@ namespace TileEngine
 
         #region Properties
 
-        //returns/sets tile width
-        public static int TileWidth
-        {
-            get { return tileWidth; }
-            set
-            {
-                //restricts tile width to (20,100)
-                tileWidth = (int)MathHelper.Clamp(value, 20f, 100f);
-            }
-        }
-
-        //returns/sets tile height
-        public static int TileHeight
-        {
-            get { return tileHeight; }
-            set
-            {
-                //restricts tile height to (20,100)
-                tileHeight = (int)MathHelper.Clamp(value, 20f, 100f);
-            }
-        }
-
         //return/sets alpha (Transparency level)
         public float Alpha
         {
@@ -65,13 +39,13 @@ namespace TileEngine
         //returns the width of the map in pixels
         public int WidthInPixels
         {
-            get { return Width * tileWidth; }
+            get { return Width * Engine.TileWidth; }
         }
 
         //returns the height of the map in pixels
         public int HeightInPixels
         {
-            get { return Height * tileHeight; }
+            get { return Height * Engine.TileHeight; }
         }
 
         //returns the width of the map (# of tiles wide)
@@ -331,7 +305,11 @@ namespace TileEngine
         //Draws the TileLayer
         public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-            spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+            spriteBatch.Begin(
+                SpriteBlendMode.AlphaBlend,
+                SpriteSortMode.Texture,
+                SaveStateMode.None,
+                camera.TransformMatrix);
 
             for (int x = 0; x < Width; x++)
             {
@@ -347,10 +325,10 @@ namespace TileEngine
                     spriteBatch.Draw(
                         texture,
                         new Rectangle(
-                            x * tileWidth - (int)camera.Position.X,
-                            y * tileHeight - (int)camera.Position.Y,
-                            tileWidth,
-                            tileHeight),
+                            x * Engine.TileWidth,
+                            y * Engine.TileHeight,
+                            Engine.TileWidth,
+                            Engine.TileHeight),
                         new Color(new Vector4(1f, 1f, 1f, Alpha)));
                 }
             }

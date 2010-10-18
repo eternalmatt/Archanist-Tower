@@ -105,9 +105,8 @@ namespace TileEditor
 
         private void Logic()
         {
-            camera.Position.X = hScrollBar1.Value * TileLayer.TileWidth;
-            camera.Position.Y = vScrollBar1.Value * TileLayer.TileHeight;
-
+            camera.Position.X = hScrollBar1.Value * Engine.TileWidth;
+            camera.Position.Y = vScrollBar1.Value * Engine.TileHeight;
 
             int mx = Mouse.GetState().X;
             int my = Mouse.GetState().Y;
@@ -117,8 +116,8 @@ namespace TileEditor
                 if (mx >= 0 && mx < tileDisplay1.Width &&
                     my >= 0 && my < tileDisplay1.Height)
                 {
-                    cellX = mx / TileLayer.TileWidth;
-                    cellY = my / TileLayer.TileHeight;
+                    cellX = mx / Engine.TileWidth;
+                    cellY = my / Engine.TileHeight;
 
                     cellX += hScrollBar1.Value;
                     cellY += vScrollBar1.Value;
@@ -187,10 +186,10 @@ namespace TileEditor
                             spriteBatch.Draw(
                             tileTexture,
                             new Rectangle(
-                                x * TileLayer.TileWidth - (int)camera.Position.X,
-                                y * TileLayer.TileHeight - (int)camera.Position.Y,
-                                TileLayer.TileWidth,
-                                TileLayer.TileHeight),
+                                x * Engine.TileWidth - (int)camera.Position.X,
+                                y * Engine.TileHeight - (int)camera.Position.Y,
+                                Engine.TileWidth,
+                                Engine.TileHeight),
                             Color.White);
                         }
                     }
@@ -208,10 +207,10 @@ namespace TileEditor
                     spriteBatch.Draw(
                             tileTexture,
                             new Rectangle(
-                                cellX * TileLayer.TileWidth - (int)camera.Position.X,
-                                cellY * TileLayer.TileHeight - (int)camera.Position.Y,
-                                TileLayer.TileWidth,
-                                TileLayer.TileHeight),
+                                cellX * Engine.TileWidth - (int)camera.Position.X,
+                                cellY * Engine.TileHeight - (int)camera.Position.Y,
+                                Engine.TileWidth,
+                                Engine.TileHeight),
                             Color.Red);
                     spriteBatch.End();
                 }
