@@ -1,10 +1,10 @@
 [Textures]
-Tiles\se_free_dirt_texture
-Tiles\se_free_grass_texture
 Tiles\se_free_wood_texture
+Tiles\se_free_road_texture
+Tiles\se_free_grass_texture
 
 [Properties]
-Alpha = 1.0
+Alpha = .5
 
 [Layout]
 1 0 0 0 0 0 0 0 

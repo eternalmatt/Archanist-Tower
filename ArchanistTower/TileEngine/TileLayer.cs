@@ -133,6 +133,11 @@ namespace TileEngine
 
                 writer.WriteLine();
 
+                writer.WriteLine("[Properties]");
+                writer.WriteLine("Alpha = " + Alpha.ToString());
+
+                writer.WriteLine();
+
                 writer.WriteLine("[Layout]");
 
                 for (int y = 0; y < Height; y++)
@@ -155,59 +160,10 @@ namespace TileEngine
         public static TileLayer FromFile(ContentManager content, string filename)
         {
             TileLayer tileLayer;
-            bool readingTextures = false;
-            bool readingLayout = false;
+            
             List<string> textureNames = new List<string>();
-            List<List<int>> tempLayout = new List<List<int>>();
 
-            using (StreamReader reader = new StreamReader(filename))
-            {
-                while (!reader.EndOfStream)
-                {
-                    string line = reader.ReadLine().Trim();
-
-                    if (string.IsNullOrEmpty(line))
-                        continue;
-
-                    if (line.Contains("[Textures]"))
-                    {
-                        readingTextures = true;
-                        readingLayout = false;
-                    }
-                    else if (line.Contains("[Layout]"))
-                    {
-                        readingTextures = false;
-                        readingLayout = true;
-                    }
-                    else if (readingTextures)
-                    {
-                        textureNames.Add(line);
-                    }
-                    else if (readingLayout)
-                    {
-                        List<int> row = new List<int>();
-
-                        string[] cells = line.Split(' ');
-
-                        foreach (string c in cells)
-                        {
-                            if (!string.IsNullOrEmpty(c))
-                                row.Add(int.Parse(c));
-                        }
-
-                        tempLayout.Add(row);
-                    }
-                }
-            }
-
-            int width = tempLayout[0].Count;
-            int height = tempLayout.Count;
-
-            tileLayer = new TileLayer(width, height);
-
-            for(int y = 0; y < height; y++)
-                for(int x = 0; x < width; x++)
-                    tileLayer.SetCellIndex(x, y, tempLayout[y][x]);
+            tileLayer = ProcessFile(filename, textureNames);
 
             tileLayer.LoadTileTextures(content, textureNames.ToArray());
 
@@ -218,13 +174,27 @@ namespace TileEngine
         public static TileLayer FromFile(string filename, out string[] textureNameArray)
         {
             TileLayer tileLayer;
-            bool readingTextures = false;
-            bool readingLayout = false;
+            
             List<string> textureNames = new List<string>();
-            List<List<int>> tempLayout = new List<List<int>>();
 
+            tileLayer = ProcessFile(filename, textureNames);
+
+            textureNameArray = textureNames.ToArray();
+
+            return tileLayer;
+        }
+
+        private static TileLayer ProcessFile(string filename, List<string> textureNames)
+        {
+            TileLayer tileLayer;
+            List<List<int>> tempLayout = new List<List<int>>();
+            Dictionary<string, string> propertiesDict = new Dictionary<string, string>();
             using (StreamReader reader = new StreamReader(filename))
             {
+                bool readingTextures = false;
+                bool readingLayout = false;
+                bool readingProperties = false;
+
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine().Trim();
@@ -236,11 +206,19 @@ namespace TileEngine
                     {
                         readingTextures = true;
                         readingLayout = false;
+                        readingProperties = false;
                     }
                     else if (line.Contains("[Layout]"))
                     {
                         readingTextures = false;
                         readingLayout = true;
+                        readingProperties = false;
+                    }
+                    else if(line.Contains("[Properties]"))
+                    {
+                        readingProperties = true;
+                        readingTextures = false;
+                        readingLayout = false;                        
                     }
                     else if (readingTextures)
                     {
@@ -260,6 +238,14 @@ namespace TileEngine
 
                         tempLayout.Add(row);
                     }
+                    else if (readingProperties)
+                    {
+                        string[] pair = line.Split('=');
+                        string key = pair[0].Trim();
+                        string value = pair[1].Trim();
+
+                        propertiesDict.Add(key, value);
+                    }
                 }
             }
 
@@ -268,12 +254,19 @@ namespace TileEngine
 
             tileLayer = new TileLayer(width, height);
 
+            foreach (KeyValuePair<string, string> property in propertiesDict)
+            {
+                switch (property.Key)
+                {
+                    case "Alpha":
+                        tileLayer.Alpha = float.Parse(property.Value);
+                        break;
+                }
+            }
+
             for (int y = 0; y < height; y++)
                 for (int x = 0; x < width; x++)
                     tileLayer.SetCellIndex(x, y, tempLayout[y][x]);
-
-            textureNameArray = textureNames.ToArray();
-
             return tileLayer;
         }
 
@@ -294,6 +287,12 @@ namespace TileEngine
             tileTextures.Add(texture);
         }
 
+        public void RemoveTexture(Texture2D texture)
+        {
+            RemoveIndex(tileTextures.IndexOf(texture));
+            tileTextures.Remove(texture);
+        }
+
         //Used to add of remove tiles during runtime.
         public void SetCellIndex(int x, int y, int cellIndex) 
         {
@@ -305,18 +304,38 @@ namespace TileEngine
         {
             return map[y, x];
         }
+
+        public void RemoveIndex(int existingIndex)
+        {
+            for (int x = 0; x < Width; x++)
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                    if (map[y, x] == existingIndex)
+                        map[y, x] = -1;
+                    else if (map[y, x] > existingIndex)
+                        map[y, x]--;
+                }
+            }
+        }
+
+        public void ReplaceIndex(int existingIndex, int newIndex)
+        {
+            for (int x = 0; x < Width; x++)
+                for (int y = 0; y < Height; y++)
+                    if (map[y, x] == existingIndex)
+                        map[y, x] = newIndex;
+        }
+
         
         //Draws the TileLayer
         public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
 
-            int tileMapWidth = map.GetLength(1);
-            int tileMapHeight = map.GetLength(0);
-
-            for (int x = 0; x < tileMapWidth; x++)
+            for (int x = 0; x < Width; x++)
             {
-                for (int y = 0; y < tileMapHeight; y++)
+                for (int y = 0; y < Height; y++)
                 {
                     int textureIndex = map[y, x];
 

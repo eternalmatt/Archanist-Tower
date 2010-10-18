@@ -27,8 +27,6 @@ namespace ArchanistTower
 
         Camera camera = new Camera();
 
-        TileLayer tileLayer;
-
         public ArchanistTower()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -38,16 +36,15 @@ namespace ArchanistTower
         protected override void Initialize()
         {
             base.Initialize(); //must happen first to insure that each layer has been added
-
-            tileMap.Layers.Add(tileLayer);            
+           
         }
 
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            tileLayer = TileLayer.FromFile(Content, "Content/Layers/Layer1.layer");
+            tileMap.Layers.Add(TileLayer.FromFile(Content, "Content/Layers/Layer1.layer"));             
+            tileMap.Layers.Add(TileLayer.FromFile(Content, "Content/Layers/Layer2.layer")); 
         }
         protected override void UnloadContent()
         { }
@@ -66,10 +63,10 @@ namespace ArchanistTower
             int screenHeight = GraphicsDevice.Viewport.Height;
 
             //Restrict where the camera can go. (i.e. not off the map)
-            if (camera.Position.X > tileLayer.WidthInPixels - screenWidth)
-                camera.Position.X = tileLayer.WidthInPixels - screenWidth;
-            if (camera.Position.Y > tileLayer.HeightInPixels - screenHeight)
-                camera.Position.Y = tileLayer.HeightInPixels - screenHeight;
+            if (camera.Position.X > tileMap.GetWidthInPixels() - screenWidth)
+                camera.Position.X = tileMap.GetWidthInPixels() - screenWidth;
+            if (camera.Position.Y > tileMap.GetHeightInPixels() - screenHeight)
+                camera.Position.Y = tileMap.GetHeightInPixels() - screenHeight;
             
             if (camera.Position.X < 0)
                 camera.Position.X = 0;

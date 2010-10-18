@@ -89,6 +89,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Layers\Layer2.layer">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Layer2</Name>
+    </None>
     <None Include="Layers\Layer1.layer">
       <Name>Layer1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

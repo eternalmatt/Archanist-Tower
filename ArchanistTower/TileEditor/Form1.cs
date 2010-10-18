@@ -15,6 +15,8 @@ namespace TileEditor
 
     public partial class Form1 : Form
     {
+        const int MaxFillCounter = 1000;
+
         //Array of acceptable file types
         string[] imageExtensions = new string[]
         {
@@ -32,6 +34,8 @@ namespace TileEditor
         int cellX, cellY;
 
         TileMap tileMap = new TileMap();
+
+        int fillCounter = MaxFillCounter;
 
         Dictionary<string, Texture2D> textureDict = new Dictionary<string, Texture2D>();
         Dictionary<string, Image> previewDict = new Dictionary<string, Image>();
@@ -55,6 +59,14 @@ namespace TileEditor
             saveFileDialog1.Filter = "Layer File|*.layer";
 
             Mouse.WindowHandle = tileDisplay1.Handle;
+
+            while (string.IsNullOrEmpty(contentPathTextBox.Text))
+            {
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                    contentPathTextBox.Text = folderBrowserDialog1.SelectedPath;
+                else
+                    MessageBox.Show("Please choose a content directory.");
+            }
         }
 
         void tileDisplay1_OnInitialize(object sender, EventArgs e)
@@ -68,6 +80,27 @@ namespace TileEditor
         {
             Logic();
             Render();
+        }
+
+        public void FillCell(int x, int y, int desiredIndex)
+        {
+            int oldIndex = currentLayer.GetCellIndex(x, y);
+
+            if (desiredIndex == oldIndex  || fillCounter == 0)
+                return;
+
+            fillCounter--;
+
+            currentLayer.SetCellIndex(x, y, desiredIndex);
+
+            if (x > 0 && currentLayer.GetCellIndex(x - 1, y) == oldIndex)
+                FillCell(x - 1, y, desiredIndex);
+            if (x < currentLayer.Width - 1 && currentLayer.GetCellIndex(x + 1, y) == oldIndex)
+                FillCell(x + 1, y, desiredIndex);
+            if (y > 0 && currentLayer.GetCellIndex(x, y - 1) == oldIndex)
+                FillCell(x, y - 1, desiredIndex);
+            if (y < currentLayer.Height -1 && currentLayer.GetCellIndex(x, y + 1) == oldIndex)
+                FillCell(x, y + 1, desiredIndex);            
         }
 
         private void Logic()
@@ -87,6 +120,9 @@ namespace TileEditor
                     cellX = mx / TileLayer.TileWidth;
                     cellY = my / TileLayer.TileHeight;
 
+                    cellX += hScrollBar1.Value;
+                    cellY += vScrollBar1.Value;
+
                     cellX = (int)MathHelper.Clamp(cellX, 0, currentLayer.Width - 1);
                     cellY = (int)MathHelper.Clamp(cellY, 0, currentLayer.Height - 1);
 
@@ -103,12 +139,23 @@ namespace TileEditor
                                 currentLayer.AddTexture(texture);  //add new texture into the layer
                                 index = currentLayer.IsUsingTexture(texture);  //get index that the layer assigned to the texture
                             }
-
-                            currentLayer.SetCellIndex(cellX, cellY, index);  //draw index to the cell
+                            if (fillCheckBox.Checked)
+                            {
+                                fillCounter = MaxFillCounter;
+                                FillCell(cellX, cellY, index);
+                            }
+                            else
+                                currentLayer.SetCellIndex(cellX, cellY, index);  //draw index to the cell
                         }
                         else if (eraseRadioButton.Checked)
                         {
-                            currentLayer.SetCellIndex(cellX, cellY, -1);
+                            if (fillCheckBox.Checked)
+                            {
+                                fillCounter = MaxFillCounter;
+                                FillCell(cellX, cellY, -1);
+                            }
+                            else
+                                currentLayer.SetCellIndex(cellX, cellY, -1);
                         }
                     }
                 }
@@ -149,6 +196,9 @@ namespace TileEditor
                     }
                 }
                 spriteBatch.End();
+
+                if (layer == currentLayer)
+                    break;
             }
             if (currentLayer != null)
             {
@@ -168,14 +218,6 @@ namespace TileEditor
             }
         }
 
-        private void browseForContentButton_Click(object sender, EventArgs e)
-        {
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-            {
-                contentPathTextBox.Text = folderBrowserDialog1.SelectedPath;
-            }
-        }
-
         #region Menu
 
         private void newTileMapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -192,29 +234,19 @@ namespace TileEditor
 
                 string[] textureNames;
                 TileLayer layer = TileLayer.FromFile(filename, out textureNames);
-
-                if (layer.WidthInPixels > tileDisplay1.Width)
-                {
-                    maxWidth = (int)Math.Max(layer.Width, maxWidth);
-                    hScrollBar1.Visible = true;
-                    hScrollBar1.Minimum = 0;
-                    hScrollBar1.Maximum = maxWidth;
-                }
-
-                if (layer.HeightInPixels > tileDisplay1.Height)
-                {
-                    maxHeight = (int)Math.Max(layer.Height, maxHeight);
-                    vScrollBar1.Visible = true;
-                    vScrollBar1.Minimum = 0;
-                    vScrollBar1.Maximum = maxHeight;
-                }
-
+                                
                 layerDict.Add(Path.GetFileName(filename), layer);
                 tileMap.Layers.Add(layer);
                 layerListBox.Items.Add(Path.GetFileName(filename));
 
                 foreach (string textureName in textureNames)
                 {
+                    if (textureDict.ContainsKey(textureName))
+                    {
+                        layer.AddTexture(textureDict[textureName]);
+                        continue;
+                    } 
+                    
                     string fullPath = contentPathTextBox.Text + "/" + textureName;
 
                     foreach (string ext in imageExtensions)
@@ -225,16 +257,45 @@ namespace TileEditor
                             break;
                         }
                     }
+
                     Texture2D tex = Texture2D.FromFile(GraphicsDevice, fullPath);
                     Image image = Image.FromFile(fullPath);
-
                     textureDict.Add(textureName, tex);
                     previewDict.Add(textureName, image);
 
                     textureListBox.Items.Add(textureName);
-
                     layer.AddTexture(tex);
                 }
+                AdjustScrollBars();
+            }
+        }
+
+        private void AdjustScrollBars()
+        {
+            if (tileMap.GetWidthInPixels() > tileDisplay1.Width)
+            {
+                maxWidth = (int)Math.Max(tileMap.GetWidth(), maxWidth);
+                hScrollBar1.Visible = true;
+                hScrollBar1.Minimum = 0;
+                hScrollBar1.Maximum = maxWidth;
+            }
+            else
+            {
+                maxWidth = 0;
+                hScrollBar1.Visible = false;
+            }
+
+            if (tileMap.GetHeightInPixels() > tileDisplay1.Height)
+            {
+                maxHeight = (int)Math.Max(tileMap.GetHeight(), maxHeight);
+                vScrollBar1.Visible = true;
+                vScrollBar1.Minimum = 0;
+                vScrollBar1.Maximum = maxHeight;
+            }
+            else
+            {
+                maxHeight = 0;
+                vScrollBar1.Visible = false;
             }
         }
 
@@ -289,7 +350,10 @@ namespace TileEditor
         private void layerListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (layerListBox.SelectedItem != null)
+            {
                 currentLayer = layerDict[layerListBox.SelectedItem as string];
+                alphaSlider.Value = (int)(currentLayer.Alpha * 100);
+            }
         }
 
         private void addLayerButton_Click(object sender, EventArgs e)
@@ -307,6 +371,8 @@ namespace TileEditor
                 layerDict.Add(form.name.Text, tileLayer);
                 tileMap.Layers.Add(tileLayer);
                 layerListBox.Items.Add(form.name.Text);
+
+                AdjustScrollBars();
             }
         }
 
@@ -319,6 +385,10 @@ namespace TileEditor
                 tileMap.Layers.Remove(currentLayer);
                 layerDict.Remove(filename);
                 layerListBox.Items.Remove(layerListBox.SelectedItem);
+
+                currentLayer = null;
+
+                AdjustScrollBars();
             }
         }
 
@@ -345,24 +415,26 @@ namespace TileEditor
 
         private void removeTextureButton_Click(object sender, EventArgs e)
         {
+            if (textureListBox.SelectedItem != null)
+            {
+                string textureName = textureListBox.SelectedItem as string;
 
+                foreach (TileLayer layer in tileMap.Layers)
+                    if (layer.IsUsingTexture(textureDict[textureName]) != -1)
+                        layer.RemoveTexture(textureDict[textureName]);
+
+                textureDict.Remove(textureName);
+                previewDict.Remove(textureName);
+                textureListBox.Items.Remove(textureListBox.SelectedItem);
+
+                texturePreviewBox.Image = null;
+            }
         }
 
-        private void texturePreviewBox_Click(object sender, EventArgs e)
+        private void trackBar1_Scroll(object sender, EventArgs e)
         {
-
+            if (currentLayer != null)
+                currentLayer.Alpha = (float)alphaSlider.Value / 100f;
         }
-
-        private void textureListBox_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void layerListBox_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

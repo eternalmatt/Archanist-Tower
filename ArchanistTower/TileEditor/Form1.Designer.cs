@@ -39,7 +39,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.contentPathTextBox = new System.Windows.Forms.TextBox();
-            this.browseForContentButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.drawRadioButton = new System.Windows.Forms.RadioButton();
             this.eraseRadioButton = new System.Windows.Forms.RadioButton();
@@ -50,16 +49,19 @@
             this.addTextureButton = new System.Windows.Forms.Button();
             this.removeTextureButton = new System.Windows.Forms.Button();
             this.texturePreviewBox = new System.Windows.Forms.PictureBox();
+            this.fillCheckBox = new System.Windows.Forms.CheckBox();
             this.tileDisplay1 = new TileEditor.TileDisplay();
+            this.alphaSlider = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.texturePreviewBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alphaSlider)).BeginInit();
             this.SuspendLayout();
             // 
             // hScrollBar1
             // 
-            this.hScrollBar1.Location = new System.Drawing.Point(2, 557);
+            this.hScrollBar1.Location = new System.Drawing.Point(0, 584);
             this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(578, 19);
+            this.hScrollBar1.Size = new System.Drawing.Size(580, 19);
             this.hScrollBar1.TabIndex = 1;
             this.hScrollBar1.Visible = false;
             // 
@@ -67,7 +69,7 @@
             // 
             this.vScrollBar1.Location = new System.Drawing.Point(579, 29);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(19, 528);
+            this.vScrollBar1.Size = new System.Drawing.Size(19, 555);
             this.vScrollBar1.TabIndex = 2;
             this.vScrollBar1.Visible = false;
             // 
@@ -77,7 +79,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(836, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(851, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,27 +128,17 @@
             // 
             // contentPathTextBox
             // 
-            this.contentPathTextBox.Location = new System.Drawing.Point(605, 29);
+            this.contentPathTextBox.Location = new System.Drawing.Point(605, 27);
             this.contentPathTextBox.Name = "contentPathTextBox";
             this.contentPathTextBox.ReadOnly = true;
-            this.contentPathTextBox.Size = new System.Drawing.Size(190, 20);
+            this.contentPathTextBox.Size = new System.Drawing.Size(231, 20);
             this.contentPathTextBox.TabIndex = 4;
-            // 
-            // browseForContentButton
-            // 
-            this.browseForContentButton.Location = new System.Drawing.Point(801, 27);
-            this.browseForContentButton.Name = "browseForContentButton";
-            this.browseForContentButton.Size = new System.Drawing.Size(35, 23);
-            this.browseForContentButton.TabIndex = 5;
-            this.browseForContentButton.Text = "...";
-            this.browseForContentButton.UseVisualStyleBackColor = true;
-            this.browseForContentButton.Click += new System.EventHandler(this.browseForContentButton_Click);
             // 
             // drawRadioButton
             // 
             this.drawRadioButton.AutoSize = true;
             this.drawRadioButton.Checked = true;
-            this.drawRadioButton.Location = new System.Drawing.Point(674, 55);
+            this.drawRadioButton.Location = new System.Drawing.Point(632, 53);
             this.drawRadioButton.Name = "drawRadioButton";
             this.drawRadioButton.Size = new System.Drawing.Size(50, 17);
             this.drawRadioButton.TabIndex = 6;
@@ -157,7 +149,7 @@
             // eraseRadioButton
             // 
             this.eraseRadioButton.AutoSize = true;
-            this.eraseRadioButton.Location = new System.Drawing.Point(674, 78);
+            this.eraseRadioButton.Location = new System.Drawing.Point(632, 76);
             this.eraseRadioButton.Name = "eraseRadioButton";
             this.eraseRadioButton.Size = new System.Drawing.Size(52, 17);
             this.eraseRadioButton.TabIndex = 6;
@@ -168,7 +160,7 @@
             // layerListBox
             // 
             this.layerListBox.FormattingEnabled = true;
-            this.layerListBox.Location = new System.Drawing.Point(601, 101);
+            this.layerListBox.Location = new System.Drawing.Point(606, 140);
             this.layerListBox.Name = "layerListBox";
             this.layerListBox.Size = new System.Drawing.Size(235, 95);
             this.layerListBox.TabIndex = 7;
@@ -176,7 +168,7 @@
             // 
             // addLayerButton
             // 
-            this.addLayerButton.Location = new System.Drawing.Point(633, 202);
+            this.addLayerButton.Location = new System.Drawing.Point(638, 240);
             this.addLayerButton.Name = "addLayerButton";
             this.addLayerButton.Size = new System.Drawing.Size(75, 23);
             this.addLayerButton.TabIndex = 8;
@@ -186,7 +178,7 @@
             // 
             // removeLayerButton
             // 
-            this.removeLayerButton.Location = new System.Drawing.Point(728, 202);
+            this.removeLayerButton.Location = new System.Drawing.Point(733, 240);
             this.removeLayerButton.Name = "removeLayerButton";
             this.removeLayerButton.Size = new System.Drawing.Size(75, 23);
             this.removeLayerButton.TabIndex = 8;
@@ -197,7 +189,7 @@
             // textureListBox
             // 
             this.textureListBox.FormattingEnabled = true;
-            this.textureListBox.Location = new System.Drawing.Point(601, 231);
+            this.textureListBox.Location = new System.Drawing.Point(606, 269);
             this.textureListBox.Name = "textureListBox";
             this.textureListBox.Size = new System.Drawing.Size(235, 95);
             this.textureListBox.TabIndex = 7;
@@ -205,7 +197,7 @@
             // 
             // addTextureButton
             // 
-            this.addTextureButton.Location = new System.Drawing.Point(634, 333);
+            this.addTextureButton.Location = new System.Drawing.Point(639, 371);
             this.addTextureButton.Name = "addTextureButton";
             this.addTextureButton.Size = new System.Drawing.Size(75, 23);
             this.addTextureButton.TabIndex = 8;
@@ -215,7 +207,7 @@
             // 
             // removeTextureButton
             // 
-            this.removeTextureButton.Location = new System.Drawing.Point(729, 333);
+            this.removeTextureButton.Location = new System.Drawing.Point(734, 371);
             this.removeTextureButton.Name = "removeTextureButton";
             this.removeTextureButton.Size = new System.Drawing.Size(75, 23);
             this.removeTextureButton.TabIndex = 8;
@@ -226,13 +218,22 @@
             // texturePreviewBox
             // 
             this.texturePreviewBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.texturePreviewBox.Location = new System.Drawing.Point(617, 371);
+            this.texturePreviewBox.Location = new System.Drawing.Point(622, 397);
             this.texturePreviewBox.Name = "texturePreviewBox";
             this.texturePreviewBox.Size = new System.Drawing.Size(200, 200);
             this.texturePreviewBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.texturePreviewBox.TabIndex = 9;
             this.texturePreviewBox.TabStop = false;
-            this.texturePreviewBox.Click += new System.EventHandler(this.texturePreviewBox_Click);
+            // 
+            // fillCheckBox
+            // 
+            this.fillCheckBox.AutoSize = true;
+            this.fillCheckBox.Location = new System.Drawing.Point(736, 63);
+            this.fillCheckBox.Name = "fillCheckBox";
+            this.fillCheckBox.Size = new System.Drawing.Size(38, 17);
+            this.fillCheckBox.TabIndex = 10;
+            this.fillCheckBox.Text = "Fill";
+            this.fillCheckBox.UseVisualStyleBackColor = true;
             // 
             // tileDisplay1
             // 
@@ -240,15 +241,28 @@
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.tileDisplay1.Location = new System.Drawing.Point(2, 29);
             this.tileDisplay1.Name = "tileDisplay1";
-            this.tileDisplay1.Size = new System.Drawing.Size(597, 549);
+            this.tileDisplay1.Size = new System.Drawing.Size(578, 559);
             this.tileDisplay1.TabIndex = 0;
             this.tileDisplay1.Text = "tileDisplay1";
+            // 
+            // alphaSlider
+            // 
+            this.alphaSlider.Location = new System.Drawing.Point(606, 99);
+            this.alphaSlider.Maximum = 100;
+            this.alphaSlider.Name = "alphaSlider";
+            this.alphaSlider.Size = new System.Drawing.Size(230, 42);
+            this.alphaSlider.TabIndex = 11;
+            this.alphaSlider.TickFrequency = 5;
+            this.alphaSlider.Value = 100;
+            this.alphaSlider.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(836, 579);
+            this.ClientSize = new System.Drawing.Size(851, 610);
+            this.Controls.Add(this.alphaSlider);
+            this.Controls.Add(this.fillCheckBox);
             this.Controls.Add(this.texturePreviewBox);
             this.Controls.Add(this.removeTextureButton);
             this.Controls.Add(this.removeLayerButton);
@@ -258,7 +272,6 @@
             this.Controls.Add(this.layerListBox);
             this.Controls.Add(this.eraseRadioButton);
             this.Controls.Add(this.drawRadioButton);
-            this.Controls.Add(this.browseForContentButton);
             this.Controls.Add(this.contentPathTextBox);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.hScrollBar1);
@@ -266,10 +279,11 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Tile Editor";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.texturePreviewBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.alphaSlider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,7 +303,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.TextBox contentPathTextBox;
-        private System.Windows.Forms.Button browseForContentButton;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.RadioButton drawRadioButton;
         private System.Windows.Forms.RadioButton eraseRadioButton;
@@ -300,6 +313,8 @@
         private System.Windows.Forms.Button addTextureButton;
         private System.Windows.Forms.Button removeTextureButton;
         private System.Windows.Forms.PictureBox texturePreviewBox;
+        private System.Windows.Forms.CheckBox fillCheckBox;
+        private System.Windows.Forms.TrackBar alphaSlider;
     }
 }
 
