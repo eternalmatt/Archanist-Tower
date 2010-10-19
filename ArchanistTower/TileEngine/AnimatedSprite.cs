@@ -60,6 +60,18 @@ namespace TileEngine
             this.texture = texture;
         }
 
+        public void ClampToArea(int width, int height)
+        {
+            if (Position.X < 0)
+                Position.X = 0;
+            if (Position.Y < 0)
+                Position.Y = 0;
+            if (Position.X > width - CurrentAnimation.CurrentRect.Width)
+                Position.X = width - CurrentAnimation.CurrentRect.Width;            
+            if (Position.Y > height - CurrentAnimation.CurrentRect.Height)
+                Position.Y = height - CurrentAnimation.CurrentRect.Height;
+        }
+
         public void Update(GameTime gameTime)
         {
 

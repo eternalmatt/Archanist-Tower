@@ -170,22 +170,7 @@ namespace ArchanistTower
                 sprite.IsAnimating = false;
             }
 
-            if (sprite.Position.X < 0)
-                sprite.Position.X = 0;
-            if (sprite.Position.Y < 0)
-                sprite.Position.Y = 0;
-            if (sprite.Position.X > tileMap.GetWidthInPixels() - 
-                sprite.CurrentAnimation.CurrentRect.Width)
-            {
-                sprite.Position.X = tileMap.GetWidthInPixels() - 
-                sprite.CurrentAnimation.CurrentRect.Width;
-            }
-            if (sprite.Position.Y > tileMap.GetHeightInPixels() - 
-                sprite.CurrentAnimation.CurrentRect.Height)
-            {
-                sprite.Position.Y = tileMap.GetHeightInPixels() - 
-                sprite.CurrentAnimation.CurrentRect.Height;
-            }
+            sprite.ClampToArea(tileMap.GetWidthInPixels(), tileMap.GetHeightInPixels());
 
             sprite.Update(gameTime);
             
@@ -193,25 +178,11 @@ namespace ArchanistTower
             int screenWidth = GraphicsDevice.Viewport.Width;
             int screenHeight = GraphicsDevice.Viewport.Height;
 
-            camera.Position.X = 
-                sprite.Position.X + 
-                (sprite.CurrentAnimation.CurrentRect.Width / 2) - 
-                (screenWidth / 2);
-            camera.Position.Y =
-                sprite.Position.Y +
-                (sprite.CurrentAnimation.CurrentRect.Height / 2) -
-                (screenHeight / 2);
+            camera.LockToTarget(sprite, screenWidth, screenHeight);
 
-            //Restrict where the camera can go. (i.e. not off the map)
-            if (camera.Position.X > tileMap.GetWidthInPixels() - screenWidth)
-                camera.Position.X = tileMap.GetWidthInPixels() - screenWidth;
-            if (camera.Position.Y > tileMap.GetHeightInPixels() - screenHeight)
-                camera.Position.Y = tileMap.GetHeightInPixels() - screenHeight;
-            
-            if (camera.Position.X < 0)
-                camera.Position.X = 0;
-            if (camera.Position.Y < 0)
-                camera.Position.Y = 0;
+            camera.ClampToArea(
+                tileMap.GetWidthInPixels() - screenWidth,
+                tileMap.GetHeightInPixels() - screenHeight);
 
             base.Update(gameTime);
         }
