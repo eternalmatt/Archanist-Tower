@@ -25,6 +25,7 @@ namespace ArchanistTower
 
         List<AnimatedSprite> npcs = new List<AnimatedSprite>();
         AnimatedSprite sprite;
+        SpriteFont font;
  
         public ArchanistTower()
         {
@@ -99,6 +100,8 @@ namespace ArchanistTower
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/thf4")));
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/smr1")));
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/nja2")));
+            font = Globals.content.Load<SpriteFont>("Fonts/Arial");
+            HUD.NewHUDItem(font, "Hello, World!", new Vector2(200, 200), Color.White);
         }
         protected override void UnloadContent()
         { }
@@ -193,7 +196,9 @@ namespace ArchanistTower
 
             foreach (AnimatedSprite s in npcs)
                 s.Draw(Globals.spriteBatch);
+            HUD.Draw(Globals.spriteBatch);
             Globals.spriteBatch.End();
+
 
             base.Draw(gameTime);
         }
