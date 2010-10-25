@@ -20,11 +20,11 @@ namespace ArchanistTower.Screens
         Texture2D image;
         Rectangle imageRectangle;
 
-        public GameScreen(Game game, SpriteBatch spriteBatch, Texture2D image)
-            : base(game, spriteBatch)
+        public GameScreen(Game game, Texture2D image)
+            : base(game, Globals.spriteBatch)
         {
             this.image = image;
-            imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
+            imageRectangle = new Rectangle(0, 0, Globals.ScreenWidth, Globals.ScreenHeight);
         }
 
         public override void Initialize()
@@ -44,7 +44,7 @@ namespace ArchanistTower.Screens
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Draw(image, imageRectangle, Color.White);
+            Globals.spriteBatch.Draw(image, imageRectangle, Color.White);
             base.Draw(gameTime);
         }
     }

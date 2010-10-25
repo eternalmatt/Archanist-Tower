@@ -21,7 +21,7 @@ namespace ArchanistTower
     public class ArchanistTower : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        //SpriteBatch spriteBatch;
 
         TileMap tileMap = new TileMap();
         Camera camera = new Camera();
@@ -31,8 +31,9 @@ namespace ArchanistTower
  
         public ArchanistTower()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Globals.Initialize(this);
+            //graphics = new GraphicsDeviceManager(this);
+            //Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
@@ -92,18 +93,19 @@ namespace ArchanistTower
 
         protected override void LoadContent()
         {
+            Globals.LoadContent();
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            tileMap.Layers.Add(TileLayer.FromFile(Content, "Content/Layers/Layer1.layer")); 
+            //spriteBatch = new SpriteBatch(GraphicsDevice);
+            tileMap.Layers.Add(TileLayer.FromFile(Globals.content, "Content/Layers/Layer1.layer"));
 
-            sprite = new AnimatedSprite(Content.Load<Texture2D>("Sprites/thf4"));
+            sprite = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/thf4"));
 
-            npcs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/man1")));
-            npcs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/knt4")));
-            npcs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/mst3")));
-            npcs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/thf4")));
-            npcs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/smr1")));
-            npcs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/nja2")));
+            npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/man1")));
+            npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/knt4")));
+            npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/mst3")));
+            npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/thf4")));
+            npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/smr1")));
+            npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/nja2")));
         }
         protected override void UnloadContent()
         { }
@@ -191,18 +193,18 @@ namespace ArchanistTower
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            tileMap.Draw(spriteBatch, camera);
+            tileMap.Draw(Globals.spriteBatch, camera);
 
-            spriteBatch.Begin(
+            Globals.spriteBatch.Begin(
                 SpriteBlendMode.AlphaBlend,
                 SpriteSortMode.Texture,
                 SaveStateMode.None,
                 camera.TransformMatrix);
-            sprite.Draw(spriteBatch);
+            sprite.Draw(Globals.spriteBatch);
 
             foreach (AnimatedSprite s in npcs)
-                s.Draw(spriteBatch);
-            spriteBatch.End();
+                s.Draw(Globals.spriteBatch);
+            Globals.spriteBatch.End();
 
             base.Draw(gameTime);
         }

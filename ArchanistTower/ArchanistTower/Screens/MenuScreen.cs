@@ -26,14 +26,14 @@ namespace ArchanistTower.Screens
             set { menuComponent.SelectedIndex = value; }
         }
 
-        public MenuScreen(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, Texture2D image)
-            : base(game, spriteBatch)
+        public MenuScreen(Game game, Texture2D image)
+            : base(game, Globals.spriteBatch)
         {
             string[] menuItems = { "Start Game", "End Game" };
-            menuComponent = new MenuComponent(game, spriteBatch, spriteFont, menuItems);
+            menuComponent = new MenuComponent(game, menuItems);
             Components.Add(menuComponent);
             this.image = image;
-            imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
+            imageRectangle = new Rectangle(0, 0, Globals.ScreenWidth, Globals.ScreenHeight);
         }
 
         public override void Update(GameTime gameTime)
@@ -43,7 +43,7 @@ namespace ArchanistTower.Screens
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Draw(image, imageRectangle, Color.White);
+            Globals.spriteBatch.Draw(image, imageRectangle, Color.White);
             base.Draw(gameTime);
         }
     }

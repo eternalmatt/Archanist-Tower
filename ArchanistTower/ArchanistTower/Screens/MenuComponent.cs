@@ -26,9 +26,6 @@ namespace ArchanistTower.Screens
         KeyboardState keyboardState;
         KeyboardState oldKeyboardState;
 
-        SpriteBatch spriteBatch;
-        SpriteFont spriteFont;
-
         Vector2 position;
         float width = 0.0f;
         float height = 0.0f;
@@ -46,11 +43,10 @@ namespace ArchanistTower.Screens
             }
         }
 
-        public MenuComponent(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, string[] menuItems)
+        public MenuComponent(Game game, string[] menuItems)
             : base(game)
         {
-            this.spriteBatch = spriteBatch;
-            this.spriteFont = spriteFont;
+
             this.menuItems = menuItems;
             MeasureMenu();
         }
@@ -61,13 +57,13 @@ namespace ArchanistTower.Screens
             width = 0;
             foreach(string item in menuItems)
             {
-                Vector2 size = spriteFont.MeasureString(item);
+                Vector2 size = Globals.spriteFont.MeasureString(item);
                 if(size.X > width)
                     width = size.X;
-                height += spriteFont.LineSpacing + 5;
+                height += Globals.spriteFont.LineSpacing + 5;
             }
 
-            position = new Vector2((Game.Window.ClientBounds.Width - width) / 2, (Game.Window.ClientBounds.Height - height) / 2);
+            position = new Vector2(Globals.ScreenMiddleX, Globals.ScreenMiddleY);
         }
 
         public override void Initialize()
@@ -113,12 +109,12 @@ namespace ArchanistTower.Screens
                     tint = highLight;
                 else
                     tint = normal;
-                spriteBatch.DrawString(
-                    spriteFont,
+                Globals.spriteBatch.DrawString(
+                    Globals.spriteFont,
                     menuItems[i],
                     location,
                     tint);
-                location.Y += spriteFont.LineSpacing + 5;
+                location.Y += Globals.spriteFont.LineSpacing + 5;
             }
         }
     }
