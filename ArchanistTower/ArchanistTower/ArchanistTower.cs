@@ -20,9 +20,6 @@ namespace ArchanistTower
     /// </summary>
     public class ArchanistTower : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        //SpriteBatch spriteBatch;
-
         TileMap tileMap = new TileMap();
         Camera camera = new Camera();
 
@@ -32,8 +29,6 @@ namespace ArchanistTower
         public ArchanistTower()
         {
             Globals.Initialize(this);
-            //graphics = new GraphicsDeviceManager(this);
-            //Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
@@ -94,8 +89,6 @@ namespace ArchanistTower
         protected override void LoadContent()
         {
             Globals.LoadContent();
-            // Create a new SpriteBatch, which can be used to draw textures.
-            //spriteBatch = new SpriteBatch(GraphicsDevice);
             tileMap.Layers.Add(TileLayer.FromFile(Globals.content, "Content/Layers/Layer1.layer"));
 
             sprite = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/thf4"));
@@ -176,22 +169,18 @@ namespace ArchanistTower
 
             sprite.Update(gameTime);
             
-            //get width and height of viewport
-            int screenWidth = GraphicsDevice.Viewport.Width;
-            int screenHeight = GraphicsDevice.Viewport.Height;
-
-            camera.LockToTarget(sprite, screenWidth, screenHeight);
+            camera.LockToTarget(sprite, Globals.ScreenWidth, Globals.ScreenHeight);
 
             camera.ClampToArea(
-                tileMap.GetWidthInPixels() - screenWidth,
-                tileMap.GetHeightInPixels() - screenHeight);
+                tileMap.GetWidthInPixels() - Globals.ScreenWidth,
+                tileMap.GetHeightInPixels() - Globals.ScreenHeight);
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            Globals.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             tileMap.Draw(Globals.spriteBatch, camera);
 
