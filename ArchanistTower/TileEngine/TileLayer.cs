@@ -279,6 +279,16 @@ namespace TileEngine
             return map[y, x];
         }
 
+        public int GetCellIndex(Point point)
+        {
+            return map[point.Y, point.X];
+        }
+
+        public void SetCellIndes(Point point, int cellIndex)
+        {
+            map[point.Y, point.X] = cellIndex;
+        }
+
         public void RemoveIndex(int existingIndex)
         {
             for (int x = 0; x < Width; x++)
@@ -314,6 +324,45 @@ namespace TileEngine
             for (int x = 0; x < Width; x++)
             {
                 for (int y = 0; y < Height; y++)
+                {
+                    int textureIndex = map[y, x];
+
+                    if (textureIndex == -1)
+                        continue;
+
+                    Texture2D texture = tileTextures[textureIndex];
+
+                    spriteBatch.Draw(
+                        texture,
+                        new Rectangle(
+                            x * Engine.TileWidth,
+                            y * Engine.TileHeight,
+                            Engine.TileWidth,
+                            Engine.TileHeight),
+                        new Color(new Vector4(1f, 1f, 1f, Alpha)));
+                }
+            }
+
+            spriteBatch.End();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Camera camera, Point min, Point max)
+        {
+            spriteBatch.Begin(
+                SpriteBlendMode.AlphaBlend,
+                SpriteSortMode.Texture,
+                SaveStateMode.None,
+                camera.TransformMatrix);
+
+
+            min.X = (int)Math.Max(min.X, 0);
+            min.Y = (int)Math.Max(min.Y, 0);
+            max.X = (int)Math.Min(max.X, Width);
+            max.Y = (int)Math.Min(max.Y, Height);
+
+            for (int x = min.X; x < max.X; x++)
+            {
+                for (int y = min.Y; y < max.Y; y++)
                 {
                     int textureIndex = map[y, x];
 

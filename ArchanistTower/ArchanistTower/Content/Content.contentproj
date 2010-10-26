@@ -102,6 +102,10 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <None Include="Layers\Collision.Layer">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>Collision</Name>
+    </None>
     <None Include="Layers\Layer1.layer">
       <Name>Layer1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

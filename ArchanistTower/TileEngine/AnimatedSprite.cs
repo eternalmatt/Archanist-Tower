@@ -16,7 +16,34 @@ namespace TileEngine
         bool animating = true;
         Texture2D texture;
 
-        public Vector2 Position = Vector2.Zero;        
+        public Vector2 Position = Vector2.Zero;
+        public Vector2 OriginOffset = Vector2.Zero;
+
+        public Vector2 Origin
+        {
+            get { return Position + OriginOffset; }
+        }
+
+        public Vector2 Center
+        {
+            get
+            {
+                return Position + new Vector2(
+                    CurrentAnimation.CurrentRect.Width / 2,
+                    CurrentAnimation.CurrentRect.Height / 2);
+            }
+        }
+
+        public Rectangle Bounds
+        {
+            get
+            {
+                Rectangle rect = CurrentAnimation.CurrentRect;
+                rect.X = (int)Position.X;
+                rect.Y = (int)Position.Y;
+                return rect;
+            }
+        }
 
         private float speed = 2f;
         public float Speed

@@ -8,6 +8,7 @@ namespace TileEngine
     public class TileMap
     {
         public List<TileLayer> Layers = new List<TileLayer>();
+        public CollisionLayer CollisionLayer;
 
         public int GetWidthInPixels()
         {
@@ -41,8 +42,13 @@ namespace TileEngine
 
         public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
+            Point min = Engine.ConvertPositionToCell(camera.Position);
+            Point max = Engine.ConvertPositionToCell(camera.Position +
+                new Vector2(spriteBatch.GraphicsDevice.Viewport.Width + Engine.TileWidth,
+                    spriteBatch.GraphicsDevice.Viewport.Height + Engine.TileHeight));
+
             foreach (TileLayer layer in Layers)
-                layer.Draw(spriteBatch, camera);
+                layer.Draw(spriteBatch, camera, min, max);
         }
     }
 }

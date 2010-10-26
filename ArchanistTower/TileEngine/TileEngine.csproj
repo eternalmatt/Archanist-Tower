@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="CollisionLayer.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="FrameAnimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

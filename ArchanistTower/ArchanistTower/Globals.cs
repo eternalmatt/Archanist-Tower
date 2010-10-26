@@ -32,7 +32,7 @@ namespace ArchanistTower
             content = new ContentManager(game.Services);
             content.RootDirectory = "Content";
 
-            Resolution = new ResolutionManager(ResolutionManager.Res1280x720);
+            Resolution = new ResolutionManager(ResolutionManager.Res800x600);
             SetResolution(Resolution.ObtainResolution(), false);
         }
 
