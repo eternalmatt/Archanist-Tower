@@ -54,7 +54,7 @@ namespace ArchanistTower
 
             Random rand = new Random();
 
-            foreach(AnimatedSprite s in npcs)
+/*            foreach(AnimatedSprite s in npcs)
             {
                 s.Animations.Add("Up", (FrameAnimation)up.Clone());
                 s.Animations.Add("Down", (FrameAnimation)down.Clone());
@@ -83,7 +83,7 @@ namespace ArchanistTower
                     rand.Next(tileMap.GetWidthInPixels() - 32),
                     rand.Next(tileMap.GetHeightInPixels() - 32));
             }
-
+*/
             sprite.CurrentAnimationName = "Down";
         }
 
@@ -95,13 +95,14 @@ namespace ArchanistTower
 
             sprite = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/thf4"));
             sprite.OriginOffset = new Vector2(16, 32);
-
+            /*
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/man1")));
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/knt4")));
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/mst3")));
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/thf4")));
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/smr1")));
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/nja2")));
+            */
             font = Globals.content.Load<SpriteFont>("Fonts/Arial");
             HUD.NewHUDItem(font, "Hello, World!", new Vector2(200, 200), Color.White);
         }
@@ -236,7 +237,7 @@ namespace ArchanistTower
                         right.Value.X * Engine.TileWidth - sprite.Bounds.Width;
                 }
             }
-            if (upLeft != null && tileMap.CollisionLayer.GetCellIndex(upLeft.Value) == 1)
+/*            if (upLeft != null && tileMap.CollisionLayer.GetCellIndex(upLeft.Value) == 1)
             {
                 Rectangle cellRect = Engine.CreateRectForCell(right.Value);
                 Rectangle spriteRect = sprite.Bounds;
@@ -245,7 +246,7 @@ namespace ArchanistTower
                     sprite.Position.X = spriteCell.X * Engine.TileWidth;
                     sprite.Position.Y = spriteCell.Y * Engine.TileHeight;
                 }
-            }
+            }*/
             if (upRight != null && tileMap.CollisionLayer.GetCellIndex(upRight.Value) == 1)
             {
                 Rectangle cellRect = Engine.CreateRectForCell(upRight.Value);
@@ -339,8 +340,8 @@ namespace ArchanistTower
                 camera.TransformMatrix);
             sprite.Draw(Globals.spriteBatch);
 
-            foreach (AnimatedSprite s in npcs)
-                s.Draw(Globals.spriteBatch);
+ //           foreach (AnimatedSprite s in npcs)
+ //               s.Draw(Globals.spriteBatch);
             HUD.Draw(Globals.spriteBatch);
             Globals.spriteBatch.End();
 

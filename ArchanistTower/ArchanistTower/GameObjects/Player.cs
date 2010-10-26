@@ -5,20 +5,25 @@ using System.Text;
 using Microsoft.Xna.Framework;
 
 using TileEngine;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ArchanistTower.GameObjects
 {
     class Player : GameObject
     {
-        //AnimatedSprite sprite;
+        AnimatedSprite sprite;
 
         public Player()
         {
+            
         }
 
         public override void Initialize()
         {
             base.Initialize();
+
+            sprite = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/thf4"));
+
             /*
             FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
             up.FramesPerSecond = 10;
