@@ -39,6 +39,7 @@ namespace ArchanistTower
         public static void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteFont = content.Load<SpriteFont>("Fonts/Arial");
         }
 
         public static void SetResolution(Vector2 res, bool fullScreen)

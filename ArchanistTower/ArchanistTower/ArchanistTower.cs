@@ -26,6 +26,7 @@ namespace ArchanistTower
         List<AnimatedSprite> npcs = new List<AnimatedSprite>();
         AnimatedSprite sprite;
         SpriteFont font;
+        HUD hud = new HUD();
  
         public ArchanistTower()
         {
@@ -90,6 +91,7 @@ namespace ArchanistTower
         protected override void LoadContent()
         {
             Globals.LoadContent();
+            hud.LoadContent();
             tileMap.Layers.Add(TileLayer.FromFile(Globals.content, "Content/Layers/Layer1.layer"));
             tileMap.CollisionLayer = CollisionLayer.FromFile("Content/Layers/Collision.layer");
 
@@ -104,7 +106,6 @@ namespace ArchanistTower
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/nja2")));
             */
             font = Globals.content.Load<SpriteFont>("Fonts/Arial");
-            HUD.NewHUDItem(font, "Hello, World!", new Vector2(200, 200), Color.White);
         }
         protected override void UnloadContent()
         { }
@@ -123,6 +124,9 @@ namespace ArchanistTower
 
             //GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
             //motion = new Vector2(gamePadState.ThumbSticks.Left.X, -gamePadState.ThumbSticks.Left.Y);
+
+            //escape key exits game (for developing)
+            if (keyState.IsKeyDown(Keys.Escape)) this.Exit();
 
             if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
                 motion.Y--;
@@ -342,7 +346,7 @@ namespace ArchanistTower
 
  //           foreach (AnimatedSprite s in npcs)
  //               s.Draw(Globals.spriteBatch);
-            HUD.Draw(Globals.spriteBatch);
+            hud.Draw(gameTime);
             Globals.spriteBatch.End();
 
 

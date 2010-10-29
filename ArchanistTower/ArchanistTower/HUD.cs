@@ -7,32 +7,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ArchanistTower
 {
-    public static class HUD
+    public class HUD
     {
-        struct HUDItem
-        {
-            public SpriteFont font;
-            public String text;
-            public Vector2 position;
-            public Color color;
-        }
-        static List<HUDItem> HUDlist = new List<HUDItem>();
+        Texture2D blackRect;
 
-        public static void NewHUDItem(SpriteFont font, String text, Vector2 position, Color color)
+        public void LoadContent()
         {
-            HUDItem newItem;
-            newItem.font = font;
-            newItem.text = text;
-            newItem.position = position;
-            newItem.color = color;
-            HUDlist.Add(newItem);
+            blackRect = Globals.content.Load<Texture2D>("HUD/rectangle");
         }
 
 
-        public static void Draw(SpriteBatch spriteBatch)
+        public void Draw(GameTime gameTime)
         {
-            foreach (var item in HUDlist)
-                spriteBatch.DrawString(item.font, item.text, item.position, item.color);
+            Globals.spriteBatch.DrawString(Globals.spriteFont, "Hello, HUD!", new Vector2(200, 200), Color.White);
+            Globals.spriteBatch.Draw(blackRect, new Rectangle(0, 0, 100, 20), Color.White);
+            Globals.spriteBatch.Draw(blackRect, new Rectangle(400, 400, 20, 20), Color.White);
+            Globals.spriteBatch.Draw(blackRect, new Rectangle(450, 450, 100, 100), Color.White);
+
         }
+
+
+
     }
 }
