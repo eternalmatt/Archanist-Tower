@@ -165,7 +165,8 @@ namespace ArchanistTower
             camera.ClampToArea(
                 tileMap.GetWidthInPixels() - Globals.ScreenWidth,
                 tileMap.GetHeightInPixels() - Globals.ScreenHeight);
-
+            
+            //hud code
             if (hud.lifeBar.Width < 100)
                 hud.lifeBar.Width++;
             hud.lifeBar.Height = 20;
