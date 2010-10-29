@@ -166,6 +166,9 @@ namespace ArchanistTower
                 tileMap.GetWidthInPixels() - Globals.ScreenWidth,
                 tileMap.GetHeightInPixels() - Globals.ScreenHeight);
 
+            if (hud.lifeBar.Width < 100)
+                hud.lifeBar.Width++;
+            hud.lifeBar.Height = 20;
             base.Update(gameTime);
         }
 
