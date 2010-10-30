@@ -84,13 +84,13 @@ namespace ArchanistTower.Screens
             {
                 selectedIndex++;
                 if(selectedIndex == menuItems.Length)
-                    selectedIndex = 0;
+                    selectedIndex = menuItems.Length - 1;
             }
             if(CheckKey(Keys.Up))
             {
                 selectedIndex--;
                 if(selectedIndex < 0)
-                    selectedIndex = menuItems.Length - 1;
+                    selectedIndex = 0;
             }
             base.Update(gameTime);
 
@@ -103,6 +103,7 @@ namespace ArchanistTower.Screens
             Vector2 location = position;
             Color tint;
 
+            Globals.spriteBatch.Begin();
             for(int i = 0; i < menuItems.Length; i++)
             {
                 if(i == selectedIndex)
@@ -116,6 +117,7 @@ namespace ArchanistTower.Screens
                     tint);
                 location.Y += Globals.spriteFont.LineSpacing + 5;
             }
+            Globals.spriteBatch.End();
         }
     }
 }

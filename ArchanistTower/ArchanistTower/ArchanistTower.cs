@@ -27,7 +27,10 @@ namespace ArchanistTower
         AnimatedSprite sprite;
         SpriteFont font;
         HUD hud = new HUD();
- 
+
+        Screens.MenuScreen menuscreen;
+        Texture2D menubg;
+
         public ArchanistTower()
         {
             Globals.Initialize(this);
@@ -106,70 +109,80 @@ namespace ArchanistTower
             npcs.Add(new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/nja2")));
             */
             font = Globals.content.Load<SpriteFont>("Fonts/Arial");
+
+            menubg = Globals.content.Load<Texture2D>("menu");
+            menuscreen = new Screens.MenuScreen(this, menubg);
         }
         protected override void UnloadContent()
         { }
 
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            foreach (AnimatedSprite s in npcs)
-                s.Update(gameTime);
-
-            KeyboardState keyState = Keyboard.GetState();
-            Vector2 motion = Vector2.Zero;
-
-            //GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
-            //motion = new Vector2(gamePadState.ThumbSticks.Left.X, -gamePadState.ThumbSticks.Left.Y);
-
-            //escape key exits game (for developing)
-            if (keyState.IsKeyDown(Keys.Escape)) this.Exit();
-
-            if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
-                motion.Y--;
-            if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
-                motion.Y++;
-            if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
-                motion.X--;
-            if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
-                motion.X++;
-
-            if (motion != Vector2.Zero)
+            if (menuscreen.IsActive)
             {
-                motion.Normalize();
-
-                motion = CheckCollisionForMotion(motion, sprite);
-
-                sprite.Position += motion * sprite.Speed; //comment out for tile based movement
-                UpdateSpriteAnimation(motion);
-                sprite.IsAnimating = true;
-
-                CheckForUnwalkableTimes(sprite);
-
-                
+                menuscreen.Update(gameTime);
             }
             else
             {
-                sprite.IsAnimating = false;
+                // Allows the game to exit
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                    this.Exit();
+
+                foreach (AnimatedSprite s in npcs)
+                    s.Update(gameTime);
+
+                KeyboardState keyState = Keyboard.GetState();
+                Vector2 motion = Vector2.Zero;
+
+                //GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
+                //motion = new Vector2(gamePadState.ThumbSticks.Left.X, -gamePadState.ThumbSticks.Left.Y);
+
+                //escape key exits game (for developing)
+                if (keyState.IsKeyDown(Keys.Escape)) this.Exit();
+
+                if (keyState.IsKeyDown(Keys.W) || keyState.IsKeyDown(Keys.Up))
+                    motion.Y--;
+                if (keyState.IsKeyDown(Keys.S) || keyState.IsKeyDown(Keys.Down))
+                    motion.Y++;
+                if (keyState.IsKeyDown(Keys.A) || keyState.IsKeyDown(Keys.Left))
+                    motion.X--;
+                if (keyState.IsKeyDown(Keys.D) || keyState.IsKeyDown(Keys.Right))
+                    motion.X++;
+
+                if (motion != Vector2.Zero)
+                {
+                    motion.Normalize();
+
+                    motion = CheckCollisionForMotion(motion, sprite);
+
+                    sprite.Position += motion * sprite.Speed; //comment out for tile based movement
+                    UpdateSpriteAnimation(motion);
+                    sprite.IsAnimating = true;
+
+                    CheckForUnwalkableTimes(sprite);
+
+                    
+                }
+                else
+                {
+                    sprite.IsAnimating = false;
+                }
+
+                sprite.ClampToArea(tileMap.GetWidthInPixels(), tileMap.GetHeightInPixels());
+
+                sprite.Update(gameTime);
+                
+                camera.LockToTarget(sprite, Globals.ScreenWidth, Globals.ScreenHeight);
+
+                camera.ClampToArea(
+                    tileMap.GetWidthInPixels() - Globals.ScreenWidth,
+                    tileMap.GetHeightInPixels() - Globals.ScreenHeight);
+                
+                //hud code
+                if (hud.lifeBar.Width < 100)
+                    hud.lifeBar.Width++;
+                hud.lifeBar.Height = 20;
             }
-
-            sprite.ClampToArea(tileMap.GetWidthInPixels(), tileMap.GetHeightInPixels());
-
-            sprite.Update(gameTime);
-            
-            camera.LockToTarget(sprite, Globals.ScreenWidth, Globals.ScreenHeight);
-
-            camera.ClampToArea(
-                tileMap.GetWidthInPixels() - Globals.ScreenWidth,
-                tileMap.GetHeightInPixels() - Globals.ScreenHeight);
-            
-            //hud code
-            if (hud.lifeBar.Width < 100)
-                hud.lifeBar.Width++;
-            hud.lifeBar.Height = 20;
             base.Update(gameTime);
         }
 
@@ -337,22 +350,28 @@ namespace ArchanistTower
 
         protected override void Draw(GameTime gameTime)
         {
-            Globals.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+            if (menuscreen.IsActive)
+            {
+                menuscreen.Draw(gameTime);
+            }
+            else
+            {
+                Globals.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            tileMap.Draw(Globals.spriteBatch, camera);
+                tileMap.Draw(Globals.spriteBatch, camera);
 
-            Globals.spriteBatch.Begin(
-                SpriteBlendMode.AlphaBlend,
-                SpriteSortMode.Texture,
-                SaveStateMode.None,
-                camera.TransformMatrix);
-            sprite.Draw(Globals.spriteBatch);
+                Globals.spriteBatch.Begin(
+                    SpriteBlendMode.AlphaBlend,
+                    SpriteSortMode.Texture,
+                    SaveStateMode.None,
+                    camera.TransformMatrix);
+                sprite.Draw(Globals.spriteBatch);
 
- //           foreach (AnimatedSprite s in npcs)
- //               s.Draw(Globals.spriteBatch);
-            hud.Draw(gameTime);
-            Globals.spriteBatch.End();
-
+     //           foreach (AnimatedSprite s in npcs)
+     //               s.Draw(Globals.spriteBatch);
+                hud.Draw(gameTime);
+                Globals.spriteBatch.End();
+            }
 
             base.Draw(gameTime);
         }
