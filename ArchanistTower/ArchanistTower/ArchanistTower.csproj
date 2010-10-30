@@ -86,6 +86,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="GameObjects\GameObject.cs" />

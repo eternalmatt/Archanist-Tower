@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 
+using TileEngine;
+
 namespace ArchanistTower
 {
     public static class Globals
@@ -20,6 +22,7 @@ namespace ArchanistTower
         public static ContentManager content;
         public static ResolutionManager Resolution;
         public static SpriteFont spriteFont;
+    
 
         public static GraphicsDevice GraphicsDevice
         {
