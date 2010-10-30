@@ -60,10 +60,10 @@ namespace ArchanistTower.Screens
                 Vector2 size = Globals.spriteFont.MeasureString(item);
                 if(size.X > width)
                     width = size.X;
-                height += Globals.spriteFont.LineSpacing + 5;
+                height += Globals.spriteFont.LineSpacing + 10;
             }
 
-            position = new Vector2(Globals.ScreenMiddleX, Globals.ScreenMiddleY);
+            position = new Vector2(Globals.ScreenMiddleX - width / 2, Globals.ScreenMiddleY);
         }
 
         public override void Initialize()
@@ -111,11 +111,11 @@ namespace ArchanistTower.Screens
                 else
                     tint = normal;
                 Globals.spriteBatch.DrawString(
-                    Globals.spriteFont,
+                    Globals.menuFont,
                     menuItems[i],
                     location,
                     tint);
-                location.Y += Globals.spriteFont.LineSpacing + 5;
+                location.Y += Globals.spriteFont.LineSpacing + 10;
             }
             Globals.spriteBatch.End();
         }

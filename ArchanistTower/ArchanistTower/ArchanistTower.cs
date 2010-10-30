@@ -103,7 +103,7 @@ namespace ArchanistTower
             */
             font = Globals.content.Load<SpriteFont>("Fonts/Arial");
 
-            menubg = Globals.content.Load<Texture2D>("menu");
+            menubg = Globals.content.Load<Texture2D>("Menuscreens/menu");
             menuscreen = new Screens.MenuScreen(this, menubg);
         }
         protected override void UnloadContent()

@@ -110,7 +110,7 @@
       <Name>Layer1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Compile Include="menufont.spritefont">
+    <Compile Include="Fonts\menufont.spritefont">
       <Name>menufont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
@@ -166,7 +166,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="menu.png">
+    <Compile Include="Menuscreens\menu.png">
       <Name>menu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

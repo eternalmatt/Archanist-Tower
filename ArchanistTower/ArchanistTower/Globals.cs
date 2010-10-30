@@ -22,6 +22,7 @@ namespace ArchanistTower
         public static ContentManager content;
         public static ResolutionManager Resolution;
         public static SpriteFont spriteFont;
+        public static SpriteFont menuFont;
     
 
         public static GraphicsDevice GraphicsDevice
@@ -43,6 +44,7 @@ namespace ArchanistTower
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = content.Load<SpriteFont>("Fonts/Arial");
+            menuFont = content.Load<SpriteFont>("Fonts/menufont");
         }
 
         public static void SetResolution(Vector2 res, bool fullScreen)
