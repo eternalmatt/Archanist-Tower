@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -129,9 +130,10 @@ namespace ArchanistTower
                 if (pausescreen.BackToMenu)
                 {
                     menuscreen.IsActive = true;
+                    pausescreen.BackToMenu = false;
                 }
             }
-            else
+            else if (!menuscreen.IsActive && !pausescreen.IsActive)
             {
                 // Allows the game to exit
                 //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
@@ -150,7 +152,6 @@ namespace ArchanistTower
                 if (hud.lifeBar.Width < 100)
                     hud.lifeBar.Width++;
                 hud.lifeBar.Height = 20;
-
             }
             base.Update(gameTime);
         }
@@ -166,7 +167,7 @@ namespace ArchanistTower
             {
                 pausescreen.Draw(gameTime);
             }
-            else
+            else if (!menuscreen.IsActive && !pausescreen.IsActive)
             {
                 Globals.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 
@@ -187,7 +188,6 @@ namespace ArchanistTower
                 hud.Draw(gameTime);                
 
                 Globals.spriteBatch.End();
-
             }
             base.Draw(gameTime);
         }

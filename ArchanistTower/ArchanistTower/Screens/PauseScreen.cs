@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -21,6 +22,7 @@ namespace ArchanistTower.Screens
         Rectangle imageRectangle;
 
         KeyboardState keyboardState;
+        KeyboardState oldKeyboardState;
 
         public int SelectedIndex
         {
@@ -57,22 +59,31 @@ namespace ArchanistTower.Screens
         public override void Update(GameTime gameTime)
         {
             keyboardState = Keyboard.GetState();
-            if (keyboardState.IsKeyDown(Keys.Enter) || keyboardState.IsKeyDown(Keys.Space))
+            if (CheckKey(Keys.Enter) || CheckKey(Keys.Space))
             {
+                this.IsActive = false;
                 if (menuComponent.SelectedIndex == 1)
                 {
                     this.BackToMenu = true;
                 }
-                this.IsActive = false;
+                // sleep for 100ms so that it won't jump straight back to game after exiting
+                // can't think of a better solution right now
+                Thread.Sleep(100);
             }
 
             base.Update(gameTime);
+            oldKeyboardState = keyboardState;
+        }
+
+        private bool CheckKey(Keys key)
+        {
+            return keyboardState.IsKeyDown(key) && oldKeyboardState.IsKeyDown(key);
         }
 
         public override void Draw(GameTime gameTime)
         {
             Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
-            Globals.spriteBatch.Draw(image, imageRectangle, new Color(0,0,0,0.01f));
+            Globals.spriteBatch.Draw(image, imageRectangle, new Color(0, 0, 0, 0.01f));
             Globals.spriteBatch.End();
             base.Draw(gameTime);
         }
