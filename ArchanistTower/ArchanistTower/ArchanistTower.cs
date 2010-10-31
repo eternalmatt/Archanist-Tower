@@ -89,6 +89,7 @@ namespace ArchanistTower
         {
             Globals.LoadContent();
             hud.LoadContent();
+            hud.LoadCamera(camera);
             tileMap.Layers.Add(TileLayer.FromFile(Globals.content, "Content/Layers/Layer1.layer"));
             tileMap.CollisionLayer = CollisionLayer.FromFile("Content/Layers/Collision.layer");
 
@@ -147,11 +148,8 @@ namespace ArchanistTower
                 e1.Update(gameTime);
 
           
-                
                 //hud code
-                if (hud.lifeBar.Width < 100)
-                    hud.lifeBar.Width++;
-                hud.lifeBar.Height = 20;
+                hud.PlayerLifeBar++;
             }
             base.Update(gameTime);
         }
