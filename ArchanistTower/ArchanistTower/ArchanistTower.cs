@@ -34,8 +34,9 @@ namespace ArchanistTower
         HUD hud = new HUD();
 
         Screens.MenuScreen menuscreen;
+        Screens.PauseScreen pausescreen;
         Texture2D menubg;
-
+        Texture2D pausebg;
 
         public ArchanistTower()
         {
@@ -105,28 +106,43 @@ namespace ArchanistTower
 
             menubg = Globals.content.Load<Texture2D>("Menuscreens/menu");
             menuscreen = new Screens.MenuScreen(this, menubg);
+            pausebg = Globals.content.Load<Texture2D>("Menuscreens/pause");
+            pausescreen = new Screens.PauseScreen(this, pausebg);
         }
         protected override void UnloadContent()
         { }
 
         protected override void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                pausescreen.IsActive = true;
+            }
+
             if (menuscreen.IsActive)
             {
                 menuscreen.Update(gameTime);
             }
+            else if (pausescreen.IsActive)
+            {
+                pausescreen.Update(gameTime);
+                if (pausescreen.BackToMenu)
+                {
+                    menuscreen.IsActive = true;
+                }
+            }
             else
             {
                 // Allows the game to exit
-                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                    this.Exit();
+                //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                //    this.Exit();                
 
                 foreach (AnimatedSprite s in npcs)
                     s.Update(gameTime);
 
 
-            p1.Update(gameTime);
-            e1.Update(gameTime);
+                p1.Update(gameTime);
+                e1.Update(gameTime);
 
           
                 
@@ -134,8 +150,9 @@ namespace ArchanistTower
                 if (hud.lifeBar.Width < 100)
                     hud.lifeBar.Width++;
                 hud.lifeBar.Height = 20;
+
+                base.Update(gameTime);
             }
-            base.Update(gameTime);
         }
 
 
@@ -145,6 +162,10 @@ namespace ArchanistTower
             {
                 menuscreen.Draw(gameTime);
             }
+            else if (pausescreen.IsActive)
+            {
+                pausescreen.Draw(gameTime);
+            }
             else
             {
                 Globals.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -152,22 +173,23 @@ namespace ArchanistTower
                 tileMap.Draw(Globals.spriteBatch, camera);
 
 
-            Globals.spriteBatch.Begin(
-                SpriteBlendMode.AlphaBlend,
-                SpriteSortMode.Texture,
-                SaveStateMode.None,
-                ArchanistTower.camera.TransformMatrix);
-            p1.Draw();
-            e1.Draw();
+                Globals.spriteBatch.Begin(
+                    SpriteBlendMode.AlphaBlend,
+                    SpriteSortMode.Texture,
+                    SaveStateMode.None,
+                    ArchanistTower.camera.TransformMatrix);
+                p1.Draw();
+                e1.Draw();
             
 
      //           foreach (AnimatedSprite s in npcs)
      //               s.Draw(Globals.spriteBatch);
-                hud.Draw(gameTime);
-                Globals.spriteBatch.End();
-            }
+                hud.Draw(gameTime);                
 
-            base.Draw(gameTime);
+                Globals.spriteBatch.End();
+                
+                base.Draw(gameTime);
+            }            
         }
     }
 }

@@ -103,7 +103,7 @@ namespace ArchanistTower.Screens
             Vector2 location = position;
             Color tint;
 
-            Globals.spriteBatch.Begin();
+            Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
             for(int i = 0; i < menuItems.Length; i++)
             {
                 if(i == selectedIndex)
