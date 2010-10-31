@@ -151,8 +151,8 @@ namespace ArchanistTower
                     hud.lifeBar.Width++;
                 hud.lifeBar.Height = 20;
 
-                base.Update(gameTime);
             }
+            base.Update(gameTime);
         }
 
 
@@ -187,9 +187,9 @@ namespace ArchanistTower
                 hud.Draw(gameTime);                
 
                 Globals.spriteBatch.End();
-                
-                base.Draw(gameTime);
-            }            
+
+            }
+            base.Draw(gameTime);
         }
     }
 }

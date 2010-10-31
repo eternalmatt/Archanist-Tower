@@ -61,9 +61,9 @@ namespace ArchanistTower.Screens
             {
                 if (menuComponent.SelectedIndex == 1)
                 {
-                    backToMenu = true;
+                    this.BackToMenu = true;
                 }
-                this.isActive = false;
+                this.IsActive = false;
             }
 
             base.Update(gameTime);
