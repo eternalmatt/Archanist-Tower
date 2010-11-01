@@ -36,8 +36,10 @@ namespace ArchanistTower
 
         Screens.MenuScreen menuscreen;
         Screens.PauseScreen pausescreen;
+        Screens.SplashScreen splashscreen;
         Texture2D menubg;
         Texture2D pausebg;
+        Texture2D splashbg;
 
         public ArchanistTower()
         {
@@ -110,18 +112,23 @@ namespace ArchanistTower
             menuscreen = new Screens.MenuScreen(this, menubg);
             pausebg = Globals.content.Load<Texture2D>("Menuscreens/pause");
             pausescreen = new Screens.PauseScreen(this, pausebg);
+            splashbg = Globals.content.Load<Texture2D>("Menuscreens/splash");
+            splashscreen = new Screens.SplashScreen(this, splashbg);
         }
         protected override void UnloadContent()
         { }
 
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (splashscreen.IsActive)
             {
-                pausescreen.IsActive = true;
+                splashscreen.Update(gameTime);
+                if (splashscreen.AdvanceToMenu == true)
+                { 
+                    menuscreen.IsActive = true; 
+                }
             }
-
-            if (menuscreen.IsActive)
+            else if (menuscreen.IsActive)
             {
                 menuscreen.Update(gameTime);
             }
@@ -134,11 +141,16 @@ namespace ArchanistTower
                     pausescreen.BackToMenu = false;
                 }
             }
-            else if (!menuscreen.IsActive && !pausescreen.IsActive)
+            else
             {
                 // Allows the game to exit
                 //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                //    this.Exit();                
+                //    this.Exit();
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                {
+                    pausescreen.IsActive = true;
+                }
 
                 foreach (AnimatedSprite s in npcs)
                     s.Update(gameTime);
@@ -147,7 +159,7 @@ namespace ArchanistTower
                 p1.Update(gameTime);
                 e1.Update(gameTime);
 
-          
+
                 //hud code
                 hud.PlayerLifeBar++;
             }
@@ -157,7 +169,11 @@ namespace ArchanistTower
 
         protected override void Draw(GameTime gameTime)
         {
-            if (menuscreen.IsActive)
+            if (splashscreen.IsActive)
+            {
+                splashscreen.Draw(gameTime);
+            }
+            else if (menuscreen.IsActive)
             {
                 menuscreen.Draw(gameTime);
             }
@@ -165,7 +181,7 @@ namespace ArchanistTower
             {
                 pausescreen.Draw(gameTime);
             }
-            else if (!menuscreen.IsActive && !pausescreen.IsActive)
+            else
             {
                 Globals.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 

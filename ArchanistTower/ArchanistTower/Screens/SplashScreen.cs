@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -14,9 +15,8 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace ArchanistTower.Screens
 {
-    public class MenuScreen : Screen
+    public class SplashScreen : Screen
     {
-        MenuComponent menuComponent;
         Texture2D image;
         Rectangle imageRectangle;
 
@@ -26,26 +26,25 @@ namespace ArchanistTower.Screens
         float FadeValue;
         float FadeSpeed = 60.0f;
 
-        public int SelectedIndex
-        {
-            get { return menuComponent.SelectedIndex; }
-            set { menuComponent.SelectedIndex = value; }
-        }
-
         public bool IsActive
         {
             get { return isActive; }
             set { isActive = value; }
         }
 
-        bool isActive = false;
+        bool isActive = true;
 
-        public MenuScreen(Game game, Texture2D image)
+        public bool AdvanceToMenu
+        {
+            get { return advanceToMenu; }
+            set { advanceToMenu = value; }
+        }
+
+        bool advanceToMenu = false;
+
+        public SplashScreen(Game game, Texture2D image)
             : base(game, Globals.spriteBatch)
         {
-            string[] menuItems = { "Start Game", "Exit" };
-            menuComponent = new MenuComponent(game, menuItems);
-            Components.Add(menuComponent);
             this.image = image;
             imageRectangle = new Rectangle(0, 0, Globals.ScreenWidth, Globals.ScreenHeight);
         }
@@ -65,15 +64,10 @@ namespace ArchanistTower.Screens
             keyboardState = Keyboard.GetState();
             if (CheckKey(Keys.Enter) || CheckKey(Keys.Space))
             {
+                this.IsActive = false;
+                this.AdvanceToMenu = true;
                 FadeValue = 0;
-                if (menuComponent.SelectedIndex == 0)
-                {
-                    this.IsActive = false;
-                }
-                else
-                {
-                    Game.Exit();
-                }
+                //Thread.Sleep(100);
             }
 
             base.Update(gameTime);

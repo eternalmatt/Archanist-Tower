@@ -96,6 +96,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="ArchanistTower.cs" />
     <Compile Include="ResolutionManager.cs" />
+    <Compile Include="Screens\SplashScreen.cs" />
     <Compile Include="Screens\PauseScreen.cs" />
     <Compile Include="Screens\GameScreen.cs" />
     <Compile Include="Screens\MenuComponent.cs" />
