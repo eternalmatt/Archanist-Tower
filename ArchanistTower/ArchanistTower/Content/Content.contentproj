@@ -106,6 +106,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Collision</Name>
     </None>
+    <None Include="Layers\Floor Layer.layer">
+      <Name>Floor Layer</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Layers\FloorLayerCollision.Layer">
+      <Name>FloorLayerCollision</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Layers\GroundLayerCollision.Layer">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>GroundLayerCollision</Name>

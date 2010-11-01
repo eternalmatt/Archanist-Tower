@@ -92,8 +92,8 @@ namespace ArchanistTower
             Globals.LoadContent();
             hud.LoadContent();
             hud.LoadCamera(camera);
-            tileMap.Layers.Add(TileLayer.FromFile(Globals.content, "Content/Layers/Ground Layer.layer"));
-            tileMap.CollisionLayer = CollisionLayer.FromFile("Content/Layers/GroundLayerCollision.layer");
+            tileMap.Layers.Add(TileLayer.FromFile(Globals.content, "Content/Layers/Floor Layer.layer"));
+            tileMap.CollisionLayer = CollisionLayer.FromFile("Content/Layers/FloorLayerCollision.layer");
 
             p1.LoadContent();
             e1.LoadContent();

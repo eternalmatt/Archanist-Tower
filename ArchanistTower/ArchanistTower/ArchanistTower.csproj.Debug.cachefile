@@ -14,10 +14,27 @@ Content\Sprites\nja2.xnb
 Content\Sprites\smr1.xnb
 Content\Sprites\thf4.xnb
 Content\Sprites\wmn3.xnb
-Content\Fonts\Arial.xnb
-Content\menufont.xnb
 Content\HUD\rectangle.xnb
-Content\menu.xnb
+Content\Menuscreens\menu.xnb
+Content\Menuscreens\pause.xnb
+Content\Fonts\Arial.xnb
+Content\Fonts\menufont.xnb
+Content\HUD\fireball_small.xnb
+Content\Menuscreens\splash.xnb
+Content\Tiles\ArchTop.xnb
+Content\Tiles\EastArchSide.xnb
+Content\Tiles\EastArchTop.xnb
+Content\Tiles\EastInnerWallExt.xnb
+Content\Tiles\InnerWallExt.xnb
+Content\Tiles\InnerWalls.xnb
+Content\Tiles\InsideBackWalls.xnb
+Content\Tiles\NewTile.xnb
+Content\Tiles\TopInsideWalls.xnb
+Content\Tiles\Wall.xnb
+Content\Tiles\WestArchSide.xnb
+Content\Tiles\WestArchTop.xnb
+Content\Tiles\WestInnerWallExt.xnb
+Content\Tiles\Window.xnb
 Content\Tiles\se_free_dirt_texture.jpg
 Content\Tiles\se_free_grass_texture.jpg
 Content\Tiles\se_free_ground_texture.jpg
@@ -26,4 +43,9 @@ Content\Tiles\se_free_road_texture.jpg
 Content\Tiles\se_free_rock_texture.jpg
 Content\Tiles\se_free_wood_texture.jpg
 Content\Layers\Collision.Layer
+Content\Layers\Floor Layer.layer
+Content\Layers\FloorLayerCollision.Layer
+Content\Layers\GroundLayerCollision.Layer
+Content\Layers\Ground Layer.layer
 Content\Layers\Layer1.layer
+Content\Layers\Roof.layer
