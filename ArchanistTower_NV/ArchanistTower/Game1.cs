@@ -11,34 +11,36 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using TiledLib;
+using ArchanistTower.Screens;
 
 namespace ArchanistTower
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
         Map map;
+        Level l = new Level();
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Globals.Initialize(this);
+           // l = new Level();
         }
         protected override void Initialize()
         {
-            base.Initialize();
+            base.Initialize();            
         }
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            map = Content.Load<Map>("Maps/TestMap");
+            Globals.LoadContent();
+            map = Globals.content.Load<Map>("Levels/TestMap/TestMap");
+            l.AddMap(map);
+            l.CurrentMap = 2;
         }
 
   
         protected override void UnloadContent()
-        {        }
+        {  }
 
         protected override void Update(GameTime gameTime)
         {
@@ -50,11 +52,9 @@ namespace ArchanistTower
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            Globals.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-            map.Draw(spriteBatch);
-            spriteBatch.End();
+            l.Draw(Globals.spriteBatch);
 
             base.Draw(gameTime);
         }

@@ -42,10 +42,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maps\TestMap.tmx">
+    <None Include="Levels\TestMap\se_free_grass_texture.jpg">
+      <Name>se_free_grass_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Levels\TestMap\TestMap.tmx">
       <Name>TestMap</Name>
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

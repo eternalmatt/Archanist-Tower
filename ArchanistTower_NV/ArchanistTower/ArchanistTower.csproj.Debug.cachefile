@@ -1,2 +1,4 @@
-Content\Maps\TestMap.xnb
-Content\Maps\se_free_grass_texture.xnb
+Content\Levels\TestMap\TestMap.xnb
+Content\Levels\TestMap\se_free_grass_texture.xnb
+Content\Levels\TestMap\TestMap.tmx
+Content\Levels\TestMap\se_free_grass_texture.jpg
