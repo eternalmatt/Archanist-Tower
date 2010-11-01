@@ -24,9 +24,6 @@ namespace ArchanistTower
                     lifeBar.Width = 0;
                   else lifeBar.Width = value; }
         }
-        //allows lifebar to stay same position on screen while camera moves
-        private Rectangle PlayerLifeBarRectangle
-        { get { return new Rectangle(lifeBar.X + (int)camera.Position.X, lifeBar.Y + (int)camera.Position.Y, lifeBar.Width, lifeBar.Height); } }
 
 
         public void LoadContent()
@@ -46,12 +43,18 @@ namespace ArchanistTower
             //get the time and convert to M:SS.mm
             String time = gameTime.TotalGameTime.ToString().Substring(4,7);
 
-            Globals.spriteBatch.DrawString(Globals.spriteFont, time, new Vector2(400, 0) + camera.Position, Color.White);
-            Globals.spriteBatch.Draw(lifeBarTexture, PlayerLifeBarRectangle, Color.White);
-            //Globals.spriteBatch.Draw(fireBallTexture, new Rectangle(400, 400, 64, 64), Color.White);
+            Globals.spriteBatch.DrawString(Globals.spriteFont, time, AdjustForCamera(new Vector2(400, 0)), Color.White);
+            Globals.spriteBatch.Draw(lifeBarTexture, AdjustForCamera(lifeBar), Color.White);
+            Globals.spriteBatch.Draw(fireBallTexture, AdjustForCamera(new Rectangle(400, 400, 64, 64)), Color.White);
         }
 
-
-
+        private Rectangle AdjustForCamera(Rectangle rect)
+        {
+            return new Rectangle(rect.X + (int)camera.Position.X, rect.Y + (int)camera.Position.Y, rect.Width, rect.Height);
+        }
+        private Vector2 AdjustForCamera(Vector2 vect)
+        {
+            return vect+camera.Position;
+        }
     }
 }
