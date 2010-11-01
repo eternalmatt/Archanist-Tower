@@ -45,7 +45,7 @@ namespace ArchanistTower
 
             Globals.spriteBatch.DrawString(Globals.spriteFont, time, AdjustForCamera(new Vector2(400, 0)), Color.White);
             Globals.spriteBatch.Draw(lifeBarTexture, AdjustForCamera(lifeBar), Color.White);
-            Globals.spriteBatch.Draw(fireBallTexture, AdjustForCamera(new Rectangle(400, 400, 64, 64)), Color.White);
+            //Globals.spriteBatch.Draw(fireBallTexture, AdjustForCamera(new Rectangle(400, 400, 64, 64)), Color.White);
         }
 
         private Rectangle AdjustForCamera(Rectangle rect)

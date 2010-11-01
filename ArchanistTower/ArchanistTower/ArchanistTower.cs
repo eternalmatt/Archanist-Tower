@@ -187,19 +187,20 @@ namespace ArchanistTower
 
                 tileMap.Draw(Globals.spriteBatch, camera);
 
-
                 Globals.spriteBatch.Begin(
                     SpriteBlendMode.AlphaBlend,
                     SpriteSortMode.Texture,
                     SaveStateMode.None,
                     ArchanistTower.camera.TransformMatrix);
+
+                hud.Draw(gameTime);
                 p1.Draw();
                 e1.Draw();
             
 
      //           foreach (AnimatedSprite s in npcs)
      //               s.Draw(Globals.spriteBatch);
-                hud.Draw(gameTime);                
+                                
 
                 Globals.spriteBatch.End();
             }
