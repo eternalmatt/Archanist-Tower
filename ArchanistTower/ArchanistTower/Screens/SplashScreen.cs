@@ -24,7 +24,7 @@ namespace ArchanistTower.Screens
         KeyboardState oldKeyboardState;
 
         float FadeValue;
-        float FadeSpeed = 60.0f;
+        float FadeSpeed = 15.0f;
 
         public bool IsActive
         {
@@ -67,7 +67,7 @@ namespace ArchanistTower.Screens
                 this.IsActive = false;
                 this.AdvanceToMenu = true;
                 FadeValue = 0;
-                //Thread.Sleep(100);
+                Thread.Sleep(100);
             }
 
             base.Update(gameTime);

@@ -24,7 +24,7 @@ namespace ArchanistTower.Screens
         KeyboardState oldKeyboardState;
 
         float FadeValue;
-        float FadeSpeed = 60.0f;
+        float FadeSpeed = 15.0f;
 
         public int SelectedIndex
         {
