@@ -24,6 +24,9 @@ namespace ArchanistTower.Screens
         KeyboardState keyboardState;
         KeyboardState oldKeyboardState;
 
+        float FadeValue;
+        float FadeSpeed = 60.0f;
+
         public int SelectedIndex
         {
             get { return menuComponent.SelectedIndex; }
@@ -58,10 +61,21 @@ namespace ArchanistTower.Screens
 
         public override void Update(GameTime gameTime)
         {
+            float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (FadeValue < 16)
+            {
+                FadeValue = FadeValue + (timeDelta * FadeSpeed);
+            }
+            else
+            {
+                FadeValue = 16;
+            }
+
             keyboardState = Keyboard.GetState();
             if (CheckKey(Keys.Enter) || CheckKey(Keys.Space))
             {
                 this.IsActive = false;
+                FadeValue = 0;
                 if (menuComponent.SelectedIndex == 1)
                 {
                     this.BackToMenu = true;
@@ -83,9 +97,16 @@ namespace ArchanistTower.Screens
         public override void Draw(GameTime gameTime)
         {
             Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
-            Globals.spriteBatch.Draw(image, imageRectangle, new Color(0, 0, 0, 0.01f));
+            Globals.spriteBatch.Draw(image, imageRectangle, FadeColor(Color.White, FadeValue));
             Globals.spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        public Color FadeColor(Color baseColor, float FadeValue)
+        {
+            Color tempColor;
+            tempColor = new Color(baseColor.R, baseColor.G, baseColor.B, (byte)FadeValue);
+            return tempColor;
         }
     }
 }
