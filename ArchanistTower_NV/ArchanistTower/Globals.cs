@@ -20,6 +20,7 @@ namespace ArchanistTower
         public static ContentManager content;
         public static ResolutionManager Resolution;
         public static SpriteFont spriteFont;
+        public static SpriteFont menuFont;
 
         public static GraphicsDevice GraphicsDevice
         {

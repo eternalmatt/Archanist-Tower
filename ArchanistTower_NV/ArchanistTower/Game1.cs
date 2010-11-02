@@ -23,7 +23,6 @@ namespace ArchanistTower
         public Game1()
         {
             Globals.Initialize(this);
-           // l = new Level();
         }
         protected override void Initialize()
         {
