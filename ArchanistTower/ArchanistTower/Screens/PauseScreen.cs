@@ -62,13 +62,13 @@ namespace ArchanistTower.Screens
         public override void Update(GameTime gameTime)
         {
             float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (FadeValue < 16)
+            if (FadeValue < 8)
             {
                 FadeValue = FadeValue + (timeDelta * FadeSpeed);
             }
             else
             {
-                FadeValue = 16;
+                FadeValue = 8;
             }
 
             keyboardState = Keyboard.GetState();
