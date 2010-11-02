@@ -91,6 +91,7 @@
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="FrameAnimation.cs" />
+    <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="Globals.cs" />
