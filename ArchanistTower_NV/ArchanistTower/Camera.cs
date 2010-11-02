@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace TileEngine
+namespace ArchanistTower
 {
     public class Camera
     {

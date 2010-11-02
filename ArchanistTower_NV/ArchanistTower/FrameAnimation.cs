@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace TileEngine
+namespace ArchanistTower
 {
     public class FrameAnimation : ICloneable
     {

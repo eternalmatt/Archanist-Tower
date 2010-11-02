@@ -22,6 +22,16 @@ namespace ArchanistTower.Screens
                 currentMap = (int)MathHelper.Clamp(value, 0, mapList.Count - 1);
             }
         }
+
+        public int MapWidthInPixels
+        {
+            get { return mapList[currentMap].Width * mapList[currentMap].TileWidth; }
+        }
+
+        public int MapHeightInPixels
+        {
+            get { return mapList[currentMap].Height * mapList[currentMap].TileHeight; }
+        }
     
         public Level()
         {
@@ -31,13 +41,10 @@ namespace ArchanistTower.Screens
         public void AddMap(Map map)
         {
             mapList.Add(map);
-        }
-
-        
+        }       
 
         public void Update(GameTime gameTime)
         {
-
         }
 
         public void Draw(SpriteBatch spriteBatch)

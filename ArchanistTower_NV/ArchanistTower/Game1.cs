@@ -45,7 +45,7 @@ namespace ArchanistTower
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-
+            l.Update(gameTime);
             base.Update(gameTime);
         }
 

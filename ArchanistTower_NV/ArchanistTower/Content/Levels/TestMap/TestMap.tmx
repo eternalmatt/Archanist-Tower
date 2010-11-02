@@ -3,9 +3,17 @@
  <tileset firstgid="1" name="Grass" tilewidth="32" tileheight="32">
   <image source="se_free_grass_texture.jpg"/>
  </tileset>
- <layer name="Tile Layer 1" width="20" height="20">
+ <tileset firstgid="65" name="Wood" tilewidth="32" tileheight="32">
+  <image source="se_free_wood_texture.jpg"/>
+  <tile id="0">
+   <properties>
+    <property name="Solid" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Ground" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3SN0ICUQAA0V0QJKooEgUkCYIBA0mC3v9UvCvwK4stXjXtxFEUpUhzQYYsl+SIz+x5ChQpUeaKa24CeoVb7qhyT406jYDepEWbBzp06fEY0PsMGDJizBMTpgH9mRlzXnjljXcWAf2DT774ZsmKNZuAvuWHHXsOHPnlL6Cf+1fyX/Jf8t//+e8El5TzdEAGAAA=
+   H4sIAAAAAAAAC+3UuY/BQRyG8XEv69rFuu8l7qwz7lAqlUqlUmmdf7pHovzNiGkpPtWTKb7JmzEJIcywwAob7HDgA6YnuxMufMIND7zwwa/Rv/CNAIII4Qdz/GOPA4444YzLvUcM3kcRQxwJJJHCAhmNnkUOefyigCKWKGn0MiqoooY6GljhT6M30UIbHXTRwxp9jT7AECOMMcEUG8w0umxfW6Hen6zL9rUT6v3Jump/Rvt61N/7e939qf6rZ/cXFur9ybpsX2mh3p9Rv91+BUjDfbNABgAA
   </data>
  </layer>
 </map>

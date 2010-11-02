@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace TileEngine
+namespace ArchanistTower
 {
     public class AnimatedSprite
     {

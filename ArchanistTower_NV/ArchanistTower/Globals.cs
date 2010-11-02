@@ -21,6 +21,7 @@ namespace ArchanistTower
         public static ResolutionManager Resolution;
         public static SpriteFont spriteFont;
         public static SpriteFont menuFont;
+        public static Camera camera;
 
         public static GraphicsDevice GraphicsDevice
         {
