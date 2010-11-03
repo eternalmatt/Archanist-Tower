@@ -84,10 +84,13 @@ namespace ArchanistTower
         }
 
         public void Draw(SpriteBatch spriteBatch)
-        {
-            Globals.spriteBatch.Begin();
+        {            
             mapList[CurrentMap].Draw(spriteBatch);
-            Globals.spriteBatch.End();
         }
+
+        //public Vector2 CollisionCheck(Vector2 position)
+       // {
+            
+       // }
     }
 }

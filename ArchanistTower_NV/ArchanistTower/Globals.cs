@@ -33,6 +33,7 @@ namespace ArchanistTower
             graphics = new GraphicsDeviceManager(game);
             content = new ContentManager(game.Services);
             content.RootDirectory = "Content";
+            camera = new Camera();
 
             Resolution = new ResolutionManager(ResolutionManager.Res800x600);
             SetResolution(Resolution.ObtainResolution(), false);

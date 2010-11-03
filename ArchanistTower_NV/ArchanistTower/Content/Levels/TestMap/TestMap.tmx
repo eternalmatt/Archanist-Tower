@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Grass" tilewidth="32" tileheight="32">
   <image source="se_free_grass_texture.jpg"/>
  </tileset>
@@ -11,9 +11,9 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Ground" width="20" height="20">
+ <layer name="Ground" width="40" height="40">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3UuY/BQRyG8XEv69rFuu8l7qwz7lAqlUqlUmmdf7pHovzNiGkpPtWTKb7JmzEJIcywwAob7HDgA6YnuxMufMIND7zwwa/Rv/CNAIII4Qdz/GOPA4444YzLvUcM3kcRQxwJJJHCAhmNnkUOefyigCKWKGn0MiqoooY6GljhT6M30UIbHXTRwxp9jT7AECOMMcEUG8w0umxfW6Hen6zL9rUT6v3Jump/Rvt61N/7e939qf6rZ/cXFur9ybpsX2mh3p9Rv91+BUjDfbNABgAA
+   H4sIAAAAAAAAC+3WvTvCYRSH8acob0mkV6nkLaSIXqSo0WhsbDQak+JPdw+t/Rqe86SLM3ym73XW+zo+Y4wfK1hFAEGsYR2+X943sIkthLCNMHYQWYJ9F3uIYh8xxNHDB0b4xBgTfOF7uic97hNCewppHCCDQ2TxgrzFnhPaj1DAMU5wijO8omixnwvtF7jEFUq4Rhl93FjsFaH9FlXc4R411DFA02JvCO0PaOERbXTwhDd0LfZnoX1Wf96Nd5/m7a77NzTefZq3L6J/Xn3S/mn//nP/pPrlqn/6/9n1T6pfrvon1S9X/ZPql6v+SfXLVf+k+qX90/5p/7R/2j/tn/ZP+6f90/79pf79AFM78wYAGQAA
   </data>
  </layer>
 </map>

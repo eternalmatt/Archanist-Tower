@@ -34,6 +34,26 @@ namespace ArchanistTower
             }
         }
 
+        public float Bottom
+        {
+            get { return Position.Y; }
+        }
+
+        public float Top
+        {
+            get { return Position.Y + CurrentAnimation.CurrentRect.Height; }
+        }
+
+        public float Left
+        {
+            get { return Position.X; } 
+        }
+
+        public float Right
+        {
+            get { return Position.X + CurrentAnimation.CurrentRect.Width; }
+        }
+
         public Rectangle Bounds
         {
             get
