@@ -6,10 +6,11 @@ using TiledLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using ArchanistTower.GameObjects;
 
-namespace ArchanistTower.Screens
+namespace ArchanistTower
 {
-    class Level
+    public class Level
     {
         List<Map> mapList;
         int currentMap;
@@ -32,10 +33,36 @@ namespace ArchanistTower.Screens
         {
             get { return mapList[currentMap].Height * mapList[currentMap].TileHeight; }
         }
+
+        public int TileWidth
+        {
+            get { return mapList[currentMap].TileWidth; }
+        }
+
+        public int TileHeight
+        {
+            get { return mapList[currentMap].TileHeight; }
+        }
     
         public Level()
         {
             mapList = new List<Map>();
+        }
+
+        public Point ConvertPositionToCell(Vector2 position)
+        {
+            return new Point(
+                (int)(position.X / (float)mapList[CurrentMap].TileWidth),
+                (int)(position.Y / (float)mapList[CurrentMap].TileHeight));
+        }
+
+        public Rectangle ConvertRectForCell(Point cell)
+        {
+            return new Rectangle(
+                cell.X * mapList[CurrentMap].TileWidth,
+                cell.Y * mapList[CurrentMap].TileHeight,
+                mapList[CurrentMap].TileWidth,
+                mapList[CurrentMap].TileHeight);
         }
 
         public void AddMap(Map map)
