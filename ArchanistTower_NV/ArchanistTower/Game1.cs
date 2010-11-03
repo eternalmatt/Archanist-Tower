@@ -17,24 +17,28 @@ namespace ArchanistTower
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        Map map;
-        Level l = new Level();
+       // Map map;
+        //Level l = new Level();
+        Player player;
 
         public Game1()
         {
             Globals.Initialize(this);
+            player = new Player();
         }
         protected override void Initialize()
         {
+            player.Initialize();
             base.Initialize();            
         }
 
         protected override void LoadContent()
         {
             Globals.LoadContent();
-            map = Globals.content.Load<Map>("Levels/TestMap/TestMap");
-            l.AddMap(map);
-            l.CurrentMap = 2;
+            player.LoadContent();
+            //map = Globals.content.Load<Map>("Levels/TestMap/TestMap");
+            //l.AddMap(map);
+            //l.CurrentMap = 2;
         }
 
   
@@ -45,7 +49,8 @@ namespace ArchanistTower
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            l.Update(gameTime);
+            //l.Update(gameTime);
+            player.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -53,7 +58,7 @@ namespace ArchanistTower
         {
             Globals.GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            l.Draw(Globals.spriteBatch);
+            player.Draw();
 
             base.Draw(gameTime);
         }

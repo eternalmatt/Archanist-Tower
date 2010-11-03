@@ -6,14 +6,14 @@ using TiledLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
-using ArchanistTower.GameObjects;
 
 namespace ArchanistTower
 {
     public class Level
     {
         List<Map> mapList;
-        int currentMap;
+        private int currentMap;
+        private int startMap;
 
         public int CurrentMap
         {
@@ -21,6 +21,15 @@ namespace ArchanistTower
             set
             {
                 currentMap = (int)MathHelper.Clamp(value, 0, mapList.Count - 1);
+            }
+        }
+
+        public int StartMap
+        {
+            get { return startMap; }
+            set
+            {
+                startMap = value;
             }
         }
 
