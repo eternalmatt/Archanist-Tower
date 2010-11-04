@@ -14,7 +14,6 @@ namespace ArchanistTower
         List<Map> mapList;
         private int currentMap;
         private int startMap;
-        int[,] tileType;
 
         public int CurrentMap
         {
@@ -66,7 +65,7 @@ namespace ArchanistTower
                 (int)(position.Y / (float)mapList[CurrentMap].TileHeight));
         }
 
-        public Rectangle ConvertRectForCell(Point cell)
+        public Rectangle CreateRectForCell(Point cell)
         {
             return new Rectangle(
                 cell.X * mapList[CurrentMap].TileWidth,
@@ -89,9 +88,10 @@ namespace ArchanistTower
             mapList[CurrentMap].Draw(spriteBatch);
         }
 
-        public Vector2 CollisionCheck(Vector2 position)
+        public AnimatedSprite CollisionCheck(AnimatedSprite inSprite)
         {
-            Point spriteCell = ConvertPositionToCell(position);
+            Vector2 p = inSprite.Position;
+            Point spriteCell = ConvertPositionToCell(p);
 
             Point? upLeft = null, up = null, upRight = null,
                 left = null, right = null, downLeft = null,
@@ -123,20 +123,97 @@ namespace ArchanistTower
                 downRight = new Point(spriteCell.X + 1, spriteCell.Y + 1);
 
             TileLayer l = mapList[currentMap].GetLayer("Collision") as TileLayer;
-            bool solid = bool.Parse((string)l.Tiles[0,0].Properties["Solid"]);
+            int z = int.Parse((string)l.Tiles[down.Value.X, down.Value.Y].Properties["Solid"]);
 
-            bool solid = bool.Parse((string)mapList[currentMap].GetLayer("Collision").
-
-            if (!solid)
-                return position;
-            else
+            if (up != null && int.Parse((string)l.Tiles[up.Value.X, up.Value.Y].Properties["Solid"]) == 1)
             {
-
+                Rectangle cellRect = CreateRectForCell(up.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if (cellRect.Intersects(spriteRect))
+                {
+                    inSprite.Position.Y = spriteCell.Y * TileHeight;
+                }
+            }
+            if (down != null)
+            {
+                int i = int.Parse((string)l.Tiles[down.Value.X, down.Value.Y].Properties["Solid"]);
+                if(i == 1)
+                {
+                    Rectangle cellRect = CreateRectForCell(down.Value);
+                    Rectangle spriteRect = inSprite.Bounds;
+                    if (cellRect.Intersects(spriteRect))
+                    {
+                        inSprite.Position.Y =
+                            down.Value.Y * TileHeight - inSprite.Bounds.Height;
+                    }
+                }
+            }
+            if (left != null && bool.Parse((string)l.Tiles[left.Value.X, left.Value.Y].Properties["Solid"]))
+            {
+                Rectangle cellRect = CreateRectForCell(left.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if (cellRect.Intersects(spriteRect))
+                {
+                    inSprite.Position.X = spriteCell.X * TileWidth;
+                }
+            }
+            if (right != null && bool.Parse((string)l.Tiles[right.Value.X, right.Value.Y].Properties["Solid"]))
+            {
+                Rectangle cellRect = CreateRectForCell(right.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if (cellRect.Intersects(spriteRect))
+                {
+                    inSprite.Position.X =
+                        right.Value.X * TileWidth - inSprite.Bounds.Width;
+                }
+            }
+          /*if (upLeft != null && tileMap.CollisionLayer.GetCellIndex(upLeft.Value) == 1)
+            {
+                Rectangle cellRect = CreateRectForCell(right.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if(cellRect.Intersects(spriteRect))
+                {
+                    inSprite.Position.X = spriteCell.X * TileWidth;
+                    inSprite.Position.Y = spriteCell.Y * TileHeight;
+                }
+             }*/
+            if (upRight != null && bool.Parse((string)l.Tiles[upRight.Value.X, upRight.Value.Y].Properties["Solid"]))
+            {
+                Rectangle cellRect = CreateRectForCell(upRight.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if (cellRect.Intersects(spriteRect))
+                {
+                    inSprite.Position.X =
+                        right.Value.X * TileWidth - inSprite.Bounds.Width;
+                    inSprite.Position.Y = spriteCell.Y * TileHeight;
+                }
+            }
+            if (downLeft != null && bool.Parse((string)l.Tiles[downLeft.Value.X, downLeft.Value.Y].Properties["Solid"]))
+            {
+                Rectangle cellRect = CreateRectForCell(downLeft.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if (cellRect.Intersects(spriteRect))
+                {
+                    inSprite.Position.X = spriteCell.X * TileWidth;
+                    inSprite.Position.Y =
+                        down.Value.Y * TileHeight - inSprite.Bounds.Height;
+                }
+            }
+            if (downRight != null && bool.Parse((string)l.Tiles[downRight.Value.X, downRight.Value.Y].Properties["Solid"]))
+            {
+                Rectangle cellRect = CreateRectForCell(downRight.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if (cellRect.Intersects(spriteRect))
+                {
+                    inSprite.Position.X =
+                        right.Value.X * TileWidth - inSprite.Bounds.Width;
+                    inSprite.Position.Y =
+                        down.Value.Y * TileHeight - inSprite.Bounds.Height;
+                }
             }
 
-            
+            return inSprite;
         }
-
 
     }
 }

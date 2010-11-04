@@ -77,6 +77,8 @@ namespace ArchanistTower
                 playerSprite.Position += motion * playerSprite.Speed;
                 UpdateSpriteAnimation(motion);
                 playerSprite.IsAnimating = true;
+
+                playerSprite = levelList[currentLevel].CollisionCheck(playerSprite);
             }
             else
                 playerSprite.IsAnimating = false;

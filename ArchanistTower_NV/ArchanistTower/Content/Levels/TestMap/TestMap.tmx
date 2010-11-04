@@ -16,9 +16,22 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Ground" width="40" height="40">
+ <tileset firstgid="3" name="Solid Area" tilewidth="32" tileheight="32">
+  <image source="solid.jpg" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Solid" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Ground Layer" width="40" height="40">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3UIQ4AMAgEQej/H13fNCgSECNGnFt1GRFJu/Mx3fT2VXuaPn366r7N/wIAAAAAG1wXkBZ0ABkAAA==
+   H4sIAAAAAAAAC+3OsQ0AMAgDsND/j2blA4rkwbsrScHH3rB98fMDAAAAAG5o7pEKQQAZAAA=
+  </data>
+ </layer>
+ <layer name="Collision" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OMQoAAAjEMMH//9nVXYQbEujeKsjWq0T+bvwBAAAAAB8GWwjEIwAZAAA=
   </data>
  </layer>
 </map>
