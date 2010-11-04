@@ -2,18 +2,23 @@
 <map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Grass" tilewidth="32" tileheight="32">
   <image source="se_free_grass_texture.jpg"/>
+  <tile id="0">
+   <properties>
+    <property name="TileType" value="0"/>
+   </properties>
+  </tile>
  </tileset>
- <tileset firstgid="65" name="Wood" tilewidth="32" tileheight="32">
+ <tileset firstgid="2" name="Wood" tilewidth="32" tileheight="32">
   <image source="se_free_wood_texture.jpg"/>
   <tile id="0">
    <properties>
-    <property name="Solid" value="True"/>
+    <property name="TileType" value="1"/>
    </properties>
   </tile>
  </tileset>
  <layer name="Ground" width="40" height="40">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3WvTvCYRSH8acob0mkV6nkLaSIXqSo0WhsbDQak+JPdw+t/Rqe86SLM3ym73XW+zo+Y4wfK1hFAEGsYR2+X943sIkthLCNMHYQWYJ9F3uIYh8xxNHDB0b4xBgTfOF7uic97hNCewppHCCDQ2TxgrzFnhPaj1DAMU5wijO8omixnwvtF7jEFUq4Rhl93FjsFaH9FlXc4R411DFA02JvCO0PaOERbXTwhDd0LfZnoX1Wf96Nd5/m7a77NzTefZq3L6J/Xn3S/mn//nP/pPrlqn/6/9n1T6pfrvon1S9X/ZPql6v+SfXLVf+k+qX90/5p/7R/2j/tn/ZP+6f90/79pf79AFM78wYAGQAA
+   H4sIAAAAAAAAC+3UIQ4AMAgEQej/H13fNCgSECNGnFt1GRFJu/Mx3fT2VXuaPn366r7N/wIAAAAAG1wXkBZ0ABkAAA==
   </data>
  </layer>
 </map>

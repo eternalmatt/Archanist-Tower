@@ -116,10 +116,10 @@ namespace ArchanistTower
             levelList[0].StartMap = 0;
         }
 
-       // private Vector2 CheckCollision()
-       // {
+        //private Vector2 CheckCollision()
+        //{
 
-      //  }
+        //}
     
         private void UpdateSpriteAnimation(Vector2 motion)
         {
