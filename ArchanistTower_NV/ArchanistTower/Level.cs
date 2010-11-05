@@ -90,7 +90,7 @@ namespace ArchanistTower
 
         public AnimatedSprite CollisionCheck(AnimatedSprite inSprite)
         {
-            Vector2 p = inSprite.Position;
+            Vector2 p = inSprite.Center;
             Point spriteCell = ConvertPositionToCell(p);
 
             Point? upLeft = null, up = null, upRight = null,
@@ -122,10 +122,9 @@ namespace ArchanistTower
                 spriteCell.Y < mapList[currentMap].Height - 1)
                 downRight = new Point(spriteCell.X + 1, spriteCell.Y + 1);
 
-            TileLayer l = mapList[currentMap].GetLayer("Collision") as TileLayer;
-            int z = int.Parse((string)l.Tiles[down.Value.X, down.Value.Y].Properties["Solid"]);
+            TileLayer l = mapList[currentMap].GetLayer("Layer 1") as TileLayer;
 
-            if (up != null && int.Parse((string)l.Tiles[up.Value.X, up.Value.Y].Properties["Solid"]) == 1)
+            if (up != null && (string)l.Tiles[up.Value.X, up.Value.Y].Properties["TileType"] == "1")
             {
                 Rectangle cellRect = CreateRectForCell(up.Value);
                 Rectangle spriteRect = inSprite.Bounds;
@@ -134,21 +133,16 @@ namespace ArchanistTower
                     inSprite.Position.Y = spriteCell.Y * TileHeight;
                 }
             }
-            if (down != null)
+            if (down != null && (string)l.Tiles[down.Value.X, down.Value.Y].Properties["TileType"] == "1")
             {
-                int i = int.Parse((string)l.Tiles[down.Value.X, down.Value.Y].Properties["Solid"]);
-                if(i == 1)
+                Rectangle cellRect = CreateRectForCell(down.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if (cellRect.Intersects(spriteRect))
                 {
-                    Rectangle cellRect = CreateRectForCell(down.Value);
-                    Rectangle spriteRect = inSprite.Bounds;
-                    if (cellRect.Intersects(spriteRect))
-                    {
-                        inSprite.Position.Y =
-                            down.Value.Y * TileHeight - inSprite.Bounds.Height;
-                    }
+                    inSprite.Position.Y = down.Value.Y * TileHeight - inSprite.Bounds.Height;
                 }
             }
-            if (left != null && bool.Parse((string)l.Tiles[left.Value.X, left.Value.Y].Properties["Solid"]))
+            if (left != null && (string)l.Tiles[left.Value.X, left.Value.Y].Properties["TileType"] == "1")
             {
                 Rectangle cellRect = CreateRectForCell(left.Value);
                 Rectangle spriteRect = inSprite.Bounds;
@@ -157,58 +151,53 @@ namespace ArchanistTower
                     inSprite.Position.X = spriteCell.X * TileWidth;
                 }
             }
-            if (right != null && bool.Parse((string)l.Tiles[right.Value.X, right.Value.Y].Properties["Solid"]))
+            if (right != null && (string)l.Tiles[right.Value.X, right.Value.Y].Properties["TileType"] == "1")
             {
                 Rectangle cellRect = CreateRectForCell(right.Value);
                 Rectangle spriteRect = inSprite.Bounds;
                 if (cellRect.Intersects(spriteRect))
                 {
-                    inSprite.Position.X =
-                        right.Value.X * TileWidth - inSprite.Bounds.Width;
+                    inSprite.Position.X = right.Value.X * TileWidth - inSprite.Bounds.Width;
                 }
             }
-          /*if (upLeft != null && tileMap.CollisionLayer.GetCellIndex(upLeft.Value) == 1)
-            {
-                Rectangle cellRect = CreateRectForCell(right.Value);
-                Rectangle spriteRect = inSprite.Bounds;
-                if(cellRect.Intersects(spriteRect))
-                {
-                    inSprite.Position.X = spriteCell.X * TileWidth;
-                    inSprite.Position.Y = spriteCell.Y * TileHeight;
-                }
-             }*/
-            if (upRight != null && bool.Parse((string)l.Tiles[upRight.Value.X, upRight.Value.Y].Properties["Solid"]))
+            /*if (upLeft != null && (string)l.Tiles[upLeft.Value.X, upLeft.Value.Y].Properties["TileType"] == "1")
+              {
+                  Rectangle cellRect = CreateRectForCell(right.Value);
+                  Rectangle spriteRect = inSprite.Bounds;
+                  if(cellRect.Intersects(spriteRect))
+                  {
+                      inSprite.Position.X = spriteCell.X * TileWidth;
+                      inSprite.Position.Y = spriteCell.Y * TileHeight;
+                  }
+               }*/
+            if (upRight != null && (string)l.Tiles[upRight.Value.X, upRight.Value.Y].Properties["TileType"] == "1")
             {
                 Rectangle cellRect = CreateRectForCell(upRight.Value);
                 Rectangle spriteRect = inSprite.Bounds;
                 if (cellRect.Intersects(spriteRect))
                 {
-                    inSprite.Position.X =
-                        right.Value.X * TileWidth - inSprite.Bounds.Width;
+                    inSprite.Position.X = right.Value.X * TileWidth - inSprite.Bounds.Width;
                     inSprite.Position.Y = spriteCell.Y * TileHeight;
                 }
             }
-            if (downLeft != null && bool.Parse((string)l.Tiles[downLeft.Value.X, downLeft.Value.Y].Properties["Solid"]))
+            if (downLeft != null && (string)l.Tiles[downLeft.Value.X, downLeft.Value.Y].Properties["TileType"] == "1")
             {
                 Rectangle cellRect = CreateRectForCell(downLeft.Value);
                 Rectangle spriteRect = inSprite.Bounds;
                 if (cellRect.Intersects(spriteRect))
                 {
                     inSprite.Position.X = spriteCell.X * TileWidth;
-                    inSprite.Position.Y =
-                        down.Value.Y * TileHeight - inSprite.Bounds.Height;
+                    inSprite.Position.Y = down.Value.Y * TileHeight - inSprite.Bounds.Height;
                 }
             }
-            if (downRight != null && bool.Parse((string)l.Tiles[downRight.Value.X, downRight.Value.Y].Properties["Solid"]))
+            if (downRight != null && (string)l.Tiles[downRight.Value.X, downRight.Value.Y].Properties["TileType"] == "1")
             {
                 Rectangle cellRect = CreateRectForCell(downRight.Value);
                 Rectangle spriteRect = inSprite.Bounds;
                 if (cellRect.Intersects(spriteRect))
                 {
-                    inSprite.Position.X =
-                        right.Value.X * TileWidth - inSprite.Bounds.Width;
-                    inSprite.Position.Y =
-                        down.Value.Y * TileHeight - inSprite.Bounds.Height;
+                    inSprite.Position.X = right.Value.X * TileWidth - inSprite.Bounds.Width;
+                    inSprite.Position.Y = down.Value.Y * TileHeight - inSprite.Bounds.Height;
                 }
             }
 
