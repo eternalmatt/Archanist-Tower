@@ -15,13 +15,14 @@ using ArchanistTower.Screens;
 
 namespace ArchanistTower
 {
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class ArchanistTower : Microsoft.Xna.Framework.Game
     {
        // Map map;
         //Level l = new Level();
         Player player;
+        HUD hud = new HUD();
 
-        public Game1()
+        public ArchanistTower()
         {
             Globals.Initialize(this);
             player = new Player();
@@ -36,6 +37,8 @@ namespace ArchanistTower
         {
             Globals.LoadContent();
             player.LoadContent();
+            hud.LoadContent(); 
+            hud.LoadCamera(Globals.camera);
             //map = Globals.content.Load<Map>("Levels/TestMap/TestMap");
             //l.AddMap(map);
             //l.CurrentMap = 2;
@@ -50,15 +53,20 @@ namespace ArchanistTower
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
             //l.Update(gameTime);
+            hud.PlayerLifeBar++;
             player.Update(gameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            Globals.GraphicsDevice.Clear(Color.CornflowerBlue);
+            //Globals.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             player.Draw();
+
+            Globals.spriteBatch.Begin();
+            hud.Draw(gameTime);
+            Globals.spriteBatch.End();
 
             base.Draw(gameTime);
         }

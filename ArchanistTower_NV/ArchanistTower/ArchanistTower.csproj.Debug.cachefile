@@ -2,5 +2,8 @@ Content\Levels\TestMap\TestMap.xnb
 Content\Sprites\Player\man1.xnb
 Content\Levels\TestMap\se_free_grass_texture.xnb
 Content\Levels\TestMap\se_free_wood_texture.xnb
+Content\HUD\rectangle.xnb
+Content\Fonts\Arial.xnb
+Content\Fonts\menufont.xnb
 Content\Levels\TestMap\TestMap.tmx
 Content\Levels\TestMap\se_free_grass_texture.jpg
