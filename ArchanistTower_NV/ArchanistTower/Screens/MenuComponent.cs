@@ -55,12 +55,12 @@ namespace ArchanistTower.Screens
         {
             height = 0;
             width = 0;
-            foreach(string item in menuItems)
+            foreach (string item in menuItems)
             {
-                Vector2 size = Globals.spriteFont.MeasureString(item);
-                if(size.X > width)
+                Vector2 size = Globals.menuFont.MeasureString(item);
+                if (size.X > width)
                     width = size.X;
-                height += Globals.spriteFont.LineSpacing + 10;
+                height += Globals.menuFont.LineSpacing + 10;
             }
 
             position = new Vector2(Globals.ScreenMiddleX - width / 2, Globals.ScreenMiddleY);
