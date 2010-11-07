@@ -11,9 +11,8 @@ namespace ArchanistTower
     {
         const int MAX_LIFEBARSIZE = 100;
         SpriteFont hudFont;
-        Texture2D lifeBarTexture, fireBallTexture;
+        Texture2D lifeBarTexture;//, fireBallTexture;
         Rectangle lifeBar = new Rectangle(200, 0, 0, 20);
-        static Camera camera;
 
         public int PlayerLifeBar
         {   //encapsulated lifeBar to reduce errors
@@ -36,22 +35,20 @@ namespace ArchanistTower
             //fireBallTexture = Globals.content.Load<Texture2D>("HUD/fireball_small");
         }
 
-        public void LoadCamera(Camera cam)
-        {
-            camera = cam;
-        }
-
 
         public void Draw(GameTime gameTime)
         {
             //get the time and convert to M:SS.mm
             String time = gameTime.TotalGameTime.ToString().Substring(4, 7);
 
-            Globals.spriteBatch.DrawString(hudFont, time, AdjustForCamera(new Vector2(400, 0)), Color.White);
-            Globals.spriteBatch.Draw(lifeBarTexture, AdjustForCamera(lifeBar), Color.White);
+            Globals.spriteBatch.DrawString(hudFont, time, new Vector2(400, 0), Color.White);
+            Globals.spriteBatch.Draw(lifeBarTexture, lifeBar, Color.White);
             //Globals.spriteBatch.Draw(fireBallTexture, AdjustForCamera(new Rectangle(400, 400, 64, 64)), Color.White);
         }
 
+
+        
+        /*     //not needed after Camera was updated
         private Rectangle AdjustForCamera(Rectangle rect)
         {
             return new Rectangle(rect.X + (int)camera.Position.X, rect.Y + (int)camera.Position.Y, rect.Width, rect.Height);
@@ -60,5 +57,6 @@ namespace ArchanistTower
         {
             return vect + camera.Position;
         }
+        */
     }
 }

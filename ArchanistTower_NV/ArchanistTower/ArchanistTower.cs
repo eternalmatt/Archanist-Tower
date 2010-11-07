@@ -45,7 +45,6 @@ namespace ArchanistTower
             Globals.LoadContent();
             player.LoadContent();
             hud.LoadContent(); 
-            hud.LoadCamera(Globals.camera);
             //map = Globals.content.Load<Map>("Levels/TestMap/TestMap");
             //l.AddMap(map);
             //l.CurrentMap = 2;
