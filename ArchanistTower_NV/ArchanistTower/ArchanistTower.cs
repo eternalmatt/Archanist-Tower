@@ -123,9 +123,9 @@ namespace ArchanistTower
             else
             {
                 //Globals.GraphicsDevice.Clear(Color.CornflowerBlue);
-
+                shader.DrawSetup();
                 player.Draw();
-                //shader.Draw();
+                shader.Draw();
                 Globals.spriteBatch.Begin();
                 hud.Draw(gameTime);
                 Globals.spriteBatch.End();

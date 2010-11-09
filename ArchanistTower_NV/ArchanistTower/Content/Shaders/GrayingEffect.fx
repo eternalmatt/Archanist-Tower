@@ -1,4 +1,6 @@
 
+float2 blendTexturePosition;
+float2 blendTexturePosition2;
 
 // Global variables
 // This will use the texture bound to the object( like from the sprite batch ).
@@ -8,7 +10,10 @@ sampler ColorMapSampler : register(s0);
 float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
 {
 	float4 Color = tex2D(ColorMapSampler, Tex);	
-	
+	float4 color2 = tex2D(ColorMapSampler, Tex + blendTexturePosition); 
+    float4 color3 = tex2D(ColorMapSampler, Tex + blendTexturePosition2); 
+    
+    
 	//Color.rgb = (Color.r + Color.g + Color.b)/3;
 	Color.rgb = dot(Color.rgb, float3(0.3, 0.59, 0.11));
 

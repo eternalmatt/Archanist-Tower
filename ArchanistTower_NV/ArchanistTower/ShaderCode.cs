@@ -20,16 +20,14 @@ namespace ArchanistTower
     public class ShaderCode : Microsoft.Xna.Framework.Game
     {
         float width, height;
-        float x = 0, y = 0;
-        float zHeight = 15.0f;
-        float moveObject = 0;
-        float m_Timer = 0;
+
+        EffectParameter blendTexturePosition, blendTexturePosition2;
+
+        Vector2 blendTexturePos = new Vector2(0);
+        Vector2 blendTexturePos2 = new Vector2(0);
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        // 3D Object
-        Model m_Model;
 
         // Our effect object, this is where our shader will be loaded and compiled
         Effect effect;
@@ -40,8 +38,8 @@ namespace ArchanistTower
 
 
         // Matrices
-        Matrix renderMatrix, objectMatrix, worldMatrix, viewMatrix, projMatrix;
-        Matrix[] bones;
+        Matrix  worldMatrix, projMatrix;
+
         public ShaderCode()
         {
             // TODO: Construct any child components here
@@ -70,7 +68,8 @@ namespace ArchanistTower
             
             effect = Globals.content.Load<Effect>("Shaders/BaseShader");
             effectPost = Globals.content.Load<Effect>("Shaders/GrayingEffect");
-            
+            blendTexturePosition = effectPost.Parameters["blendTexturePosition"];
+            blendTexturePosition2 = effectPost.Parameters["blendTexturePosition2"];
         }
         public void LoadContent()
         {
@@ -84,15 +83,39 @@ namespace ArchanistTower
         /// Allows the game component to update itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-
+        public void DrawSetup() { graphics.GraphicsDevice.SetRenderTarget(0, renderTarget); }
         public void Draw()
         {
-            graphics.GraphicsDevice.SetRenderTarget(0, renderTarget);
+           /* if (blendTexturePos.X > 1.0)
+                blendTexturePos.X = 0.0f;
+
+            if (blendTexturePos.Y > 1.0)
+                blendTexturePos.Y = 0.0f;
+
+            blendTexturePos.X += .01f;
+            blendTexturePos.Y += .01f;
+
+            // Blend the textures
+            blendTexturePosition.SetValue(blendTexturePos);
+
+            // Shader texture two - start one the other side
+            if (blendTexturePos2.X > 1.0)
+                blendTexturePos2.X = 0.0f;
+
+            if (blendTexturePos2.Y > 1.0)
+                blendTexturePos2.Y = 0.0f;
+
+            // Blend the textures
+            blendTexturePos2.X -= .01f;
+            blendTexturePos2.Y += .01f;
+
+            // Blend the texturess together
+            blendTexturePosition2.SetValue(blendTexturePos2);*/
             graphics.GraphicsDevice.SetRenderTarget(0, null);
             SceneTexture = renderTarget.GetTexture();
 
             // Render the scene with Edge Detection, using the render target from last frame.
-            //graphics.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
+            graphics.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
 
             spriteBatch.Begin(SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.SaveState);
             {
