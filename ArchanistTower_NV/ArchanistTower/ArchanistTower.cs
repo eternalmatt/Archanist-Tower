@@ -100,7 +100,7 @@ namespace ArchanistTower
                 //l.Update(gameTime);
                 hud.PlayerLifeBar++;
                 player.Update(gameTime);
-                shader.Update(gameTime);
+                //shader.Update(gameTime);
 
             }
             base.Update(gameTime);
@@ -125,7 +125,7 @@ namespace ArchanistTower
                 //Globals.GraphicsDevice.Clear(Color.CornflowerBlue);
 
                 player.Draw();
-                //shader.Draw();
+                shader.Draw();
                 Globals.spriteBatch.Begin();
                 hud.Draw(gameTime);
                 Globals.spriteBatch.End();

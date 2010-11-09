@@ -17,6 +17,8 @@ Content\Sprites\wmn3.xnb
 Content\HUD\rectangle.xnb
 Content\Menuscreens\menu.xnb
 Content\Menuscreens\pause.xnb
+Content\Fonts\Arial.xnb
+Content\Fonts\menufont.xnb
 Content\HUD\fireball_small.xnb
 Content\Menuscreens\splash.xnb
 Content\Tiles\ArchTop.xnb
@@ -33,8 +35,6 @@ Content\Tiles\WestArchSide.xnb
 Content\Tiles\WestArchTop.xnb
 Content\Tiles\WestInnerWallExt.xnb
 Content\Tiles\Window.xnb
-Content\Fonts\Arial.xnb
-Content\Fonts\menufont.xnb
 Content\Tiles\se_free_dirt_texture.jpg
 Content\Tiles\se_free_grass_texture.jpg
 Content\Tiles\se_free_ground_texture.jpg
