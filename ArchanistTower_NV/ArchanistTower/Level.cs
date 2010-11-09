@@ -161,15 +161,15 @@ namespace ArchanistTower
                 }
             }
             /*if (upLeft != null && (string)l.Tiles[upLeft.Value.X, upLeft.Value.Y].Properties["TileType"] == "1")
-              {
-                  Rectangle cellRect = CreateRectForCell(right.Value);
-                  Rectangle spriteRect = inSprite.Bounds;
-                  if(cellRect.Intersects(spriteRect))
-                  {
-                      inSprite.Position.X = spriteCell.X * TileWidth;
-                      inSprite.Position.Y = spriteCell.Y * TileHeight;
-                  }
-               }*/
+            {
+                Rectangle cellRect = CreateRectForCell(right.Value);
+                Rectangle spriteRect = inSprite.Bounds;
+                if (cellRect.Intersects(spriteRect))
+                {
+                    inSprite.Position.X = spriteCell.X * TileWidth;
+                    inSprite.Position.Y = spriteCell.Y * TileHeight;
+                }
+            }*/
             if (upRight != null && (string)l.Tiles[upRight.Value.X, upRight.Value.Y].Properties["TileType"] == "1")
             {
                 Rectangle cellRect = CreateRectForCell(upRight.Value);
@@ -201,6 +201,16 @@ namespace ArchanistTower
                 }
             }
 
+            return inSprite;
+        }
+
+        public AnimatedSprite MapStartPosition(AnimatedSprite inSprite)
+        {
+            MapObject startPoint;
+            MapObjectLayer obj = mapList[currentMap].GetLayer("Object Layer 1") as MapObjectLayer;
+            startPoint = obj.GetObject("Start");
+            inSprite.Position.X = startPoint.Bounds.X;
+            inSprite.Position.Y = startPoint.Bounds.Y;
             return inSprite;
         }
 

@@ -21,4 +21,7 @@
    H4sIAAAAAAAAC+3OsQ0AMAgDsND/j2blA4rkwbsrScHH3rB98fMDAAAAAG5o7pEKQQAZAAA=
   </data>
  </layer>
+ <objectgroup name="Object Layer 1" width="40" height="40">
+  <object name="Start" x="317" y="316" width="36" height="40"/>
+ </objectgroup>
 </map>

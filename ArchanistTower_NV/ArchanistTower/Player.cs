@@ -43,6 +43,7 @@ namespace ArchanistTower
             playerSprite.Animations.Add("Right", right);
 
             playerSprite.CurrentAnimationName = "Down";
+            
         }        
 
         public void LoadContent()
@@ -50,7 +51,7 @@ namespace ArchanistTower
             AddMapsToLevel();
 
             //Load Player Sprites
-
+            levelList[currentLevel].MapStartPosition(playerSprite);
             playerSprite.OriginOffset = new Vector2(16, 32);
         }
 
