@@ -28,15 +28,18 @@ namespace ArchanistTower
         Texture2D menubg;
         Texture2D pausebg;
         Texture2D splashbg;
+        ShaderCode shader;
 
         public ArchanistTower()
         {
             Globals.Initialize(this);
             player = new Player();
+            shader = new ShaderCode();
         }
         protected override void Initialize()
         {
             player.Initialize();
+            shader.Initialize();
             base.Initialize();            
         }
 
@@ -44,6 +47,7 @@ namespace ArchanistTower
         {
             Globals.LoadContent();
             player.LoadContent();
+            shader.LoadContent();
             hud.LoadContent(); 
             //map = Globals.content.Load<Map>("Levels/TestMap/TestMap");
             //l.AddMap(map);
@@ -96,6 +100,8 @@ namespace ArchanistTower
                 //l.Update(gameTime);
                 hud.PlayerLifeBar++;
                 player.Update(gameTime);
+                shader.Update(gameTime);
+
             }
             base.Update(gameTime);
         }
@@ -119,10 +125,11 @@ namespace ArchanistTower
                 //Globals.GraphicsDevice.Clear(Color.CornflowerBlue);
 
                 player.Draw();
-
+                //shader.Draw();
                 Globals.spriteBatch.Begin();
                 hud.Draw(gameTime);
                 Globals.spriteBatch.End();
+
             }
             base.Draw(gameTime);
         }

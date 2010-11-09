@@ -107,6 +107,7 @@ namespace ArchanistTower
                     Globals.camera.TransformMatrix);
 
             levelList[currentLevel].Draw(Globals.spriteBatch);
+            //Globals.shader.Draw();
             playerSprite.Draw(Globals.spriteBatch);
 
             Globals.spriteBatch.End();

@@ -106,6 +106,7 @@
     <Compile Include="Screens\PauseScreen.cs" />
     <Compile Include="Screens\Screen.cs" />
     <Compile Include="Screens\SplashScreen.cs" />
+    <Compile Include="ShaderCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

@@ -22,6 +22,9 @@ namespace ArchanistTower
         public static SpriteFont spriteFont;
         public static SpriteFont menuFont;
         public static Camera camera;
+       /* public static ShaderCode shader;
+        public static Effect effect; 
+        public static Effect effectPost;*/
 
         public static GraphicsDevice GraphicsDevice
         {
@@ -35,8 +38,12 @@ namespace ArchanistTower
             content.RootDirectory = "Content";
             camera = new Camera();
 
+
             Resolution = new ResolutionManager(ResolutionManager.Res800x600);
             SetResolution(Resolution.ObtainResolution(), false);
+            //shader = new ShaderCode();
+            //effect = Globals.content.Load<Effect>("Shaders/BaseShader");
+            //effectPost = Globals.content.Load<Effect>("Shaders/GrayingEffect");
         }
 
         public static void LoadContent()
@@ -44,6 +51,7 @@ namespace ArchanistTower
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = content.Load<SpriteFont>("Fonts/Arial");
             menuFont = content.Load<SpriteFont>("Fonts/menufont");
+            //shader.LoadContent();
         }
 
         public static void SetResolution(Vector2 res, bool fullScreen)
