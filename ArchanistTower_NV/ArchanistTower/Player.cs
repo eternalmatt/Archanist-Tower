@@ -16,6 +16,8 @@ namespace ArchanistTower
 
         public static AnimatedSprite playerSprite;
 
+        Spell spell = new Spell();
+
         public Player()
         { }
 
@@ -43,6 +45,8 @@ namespace ArchanistTower
             playerSprite.Animations.Add("Right", right);
 
             playerSprite.CurrentAnimationName = "Down";
+
+            spell.Initialize();
         }        
 
         public void LoadContent()
@@ -52,6 +56,8 @@ namespace ArchanistTower
             //Load Player Sprites
             levelList[currentLevel].MapStartPosition(playerSprite);
             playerSprite.OriginOffset = new Vector2(16, 32);
+
+            spell.LoadContent();
         }
 
         public void Update(GameTime gameTime)
@@ -95,6 +101,8 @@ namespace ArchanistTower
                 levelList[currentLevel].MapWidthInPixels - Globals.ScreenWidth,
                 levelList[currentLevel].MapHeightInPixels - Globals.ScreenHeight);
 
+
+            spell.Update(gameTime, new Vector2(playerSprite.Position.X + 32, playerSprite.Position.Y + 16));
         }
 
         public void Draw()
@@ -110,6 +118,8 @@ namespace ArchanistTower
             playerSprite.Draw(Globals.spriteBatch);
 
             Globals.spriteBatch.End();
+
+            spell.Draw();
         }
 
 

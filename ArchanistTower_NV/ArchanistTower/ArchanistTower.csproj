@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Spell.cs" />
     <Compile Include="FrameAnimation.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="HUD.cs" />
