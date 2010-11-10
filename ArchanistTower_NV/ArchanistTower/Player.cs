@@ -43,7 +43,6 @@ namespace ArchanistTower
             playerSprite.Animations.Add("Right", right);
 
             playerSprite.CurrentAnimationName = "Down";
-            
         }        
 
         public void LoadContent()
@@ -102,7 +101,7 @@ namespace ArchanistTower
         {
             Globals.spriteBatch.Begin(
                     SpriteBlendMode.AlphaBlend,
-                    SpriteSortMode.Texture,
+                    SpriteSortMode.Immediate,
                     SaveStateMode.None,
                     Globals.camera.TransformMatrix);
 
