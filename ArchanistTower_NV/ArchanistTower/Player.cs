@@ -103,12 +103,21 @@ namespace ArchanistTower
 
             Vector2 spellOffset = Vector2.Zero;
             if (playerSprite.CurrentAnimationName == "Up")
+            {
                 spellOffset = new Vector2(8, -16);
+            }
             else if (playerSprite.CurrentAnimationName == "Down")
+            {
                 spellOffset = new Vector2(8, 32);
+            }
             else if (playerSprite.CurrentAnimationName == "Left")
+            {
                 spellOffset = new Vector2(-8, 16);
-            else spellOffset = new Vector2(24, 16);
+            }
+            else
+            {
+                spellOffset = new Vector2(24, 16);
+            }
             spell.Update(gameTime, playerSprite.Position + spellOffset);
         }
 
