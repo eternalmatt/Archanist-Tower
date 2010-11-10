@@ -14,7 +14,7 @@ namespace ArchanistTower.GameWorld
         protected Keys MoveRight;
         protected Keys MoveUp;
         protected Keys MoveDown;
-        protected Keys CastSpell;
+        protected Keys SpellCast;
 
         protected bool red;
         protected bool blue;
@@ -71,7 +71,7 @@ namespace ArchanistTower.GameWorld
             MoveRight = right;
             MoveUp = up;
             MoveDown = down;
-            CastSpell = cast;
+            SpellCast = cast;
         }
     }
 

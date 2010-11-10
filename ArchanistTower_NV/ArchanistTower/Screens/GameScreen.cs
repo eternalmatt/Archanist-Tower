@@ -9,7 +9,7 @@ using ArchanistTower.GameWorld;
 namespace ArchanistTower.Screens
 {
     public class GameScreen : Screen
-    {
+    { 
         public static GameWorld gameWorld;
         int currentLevel;
         public static List<Level> levels = new List<Level>();

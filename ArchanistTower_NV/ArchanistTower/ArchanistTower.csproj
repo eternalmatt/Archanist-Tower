@@ -90,6 +90,9 @@
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="GameWorld\GameObject.cs" />
+    <Compile Include="GameWorld\GameWorld.cs" />
+    <Compile Include="GameWorld\Player.cs" />
     <Compile Include="Spell.cs" />
     <Compile Include="FrameAnimation.cs" />
     <Compile Include="Globals.cs" />
