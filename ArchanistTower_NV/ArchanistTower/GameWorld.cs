@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using ArchanistTower.GameObjects;
 
-namespace ArchanistTower.GameWorld
+namespace ArchanistTower
 {
-    class GameWorld
+    public class GameWorld
     {
 
         public List<GameObject> gameObjects;

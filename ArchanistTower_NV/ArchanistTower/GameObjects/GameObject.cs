@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace ArchanistTower.GameWorld
+namespace ArchanistTower.GameObjects
 {
     public class GameObject
     {
@@ -53,7 +53,7 @@ namespace ArchanistTower.GameWorld
             set { collidable = value; }
         }
 
-        public int AnimatedSprite
+        public AnimatedSprite SpriteAnimation
         {
             get { return animatedSprite; }
         }
