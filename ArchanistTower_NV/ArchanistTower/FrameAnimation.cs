@@ -22,7 +22,7 @@ namespace ArchanistTower
             get { return frames[currentFrame]; }
         }
 
-        public int CurrnetFrame
+        public int CurrentFrame
         {
             get { return currentFrame; }
             set { currentFrame = (int)MathHelper.Clamp(value, 0, frames.Length - 1); }
