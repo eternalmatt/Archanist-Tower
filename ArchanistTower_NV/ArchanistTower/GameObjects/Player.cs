@@ -31,11 +31,13 @@ namespace ArchanistTower.GameObjects
         SelectedSpell selectedSpell;
 
         public Player()
-        { }
+        {
+            Initialize();
+        }
 
         public override void Initialize()
         {
-            //SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Player/man1"));
+            SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Player/man1"));
 
             FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
             up.FramesPerSecond = 10;
@@ -58,42 +60,59 @@ namespace ArchanistTower.GameObjects
 
             SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space);
             
-            base.Initialize();
         }
 
         public override void Update(GameTime gameTime)
         {
-            
+            InputCheck();
 
-            base.Update(gameTime);
+            SpriteAnimation.ClampToArea(
+                GameScreen.gameWorld.CurrentLevel.MapWidthInPixels,
+                GameScreen.gameWorld.CurrentLevel.MapHeightInPixels);
+            SpriteAnimation.Update(gameTime);
+
+            Globals.camera.LockToTarget(SpriteAnimation, Globals.ScreenWidth, Globals.ScreenHeight);
+
+            Globals.camera.ClampToArea(
+                GameScreen.gameWorld.CurrentLevel.MapWidthInPixels - Globals.ScreenWidth,
+                GameScreen.gameWorld.CurrentLevel.MapHeightInPixels - Globals.ScreenHeight);
+
+
+        }
+
+        public override void Draw()
+        {
+            Globals.spriteBatch.Begin();
+            SpriteAnimation.Draw(Globals.spriteBatch);
+            Globals.spriteBatch.End();
         }
 
         private void InputCheck()
         {
             Vector2 motion = Vector2.Zero;
 
-            if(Globals.input.KeyJustPressed(MoveRight))
+            if(Globals.input.KeyPressed(MoveRight))
             {
                 motion.X++;
                 direction = FacingDirection.Right;
             }
-            if (Globals.input.KeyJustPressed(MoveLeft))
+            if (Globals.input.KeyPressed(Keys.Left))
             {
                 motion.X--;
                 direction = FacingDirection.Left;
             }
-            if (Globals.input.KeyJustPressed(MoveUp))
+            if (Globals.input.KeyPressed(Keys.Up))
             {
                 motion.Y--;
                 direction = FacingDirection.Up;
             }
-            if (Globals.input.KeyJustPressed(MoveDown))
+            if (Globals.input.KeyPressed(Keys.Down))
             {
                 motion.Y++;
                 direction = FacingDirection.Down;
             }
 
-            if (Velocity != Vector2.Zero)
+            if (motion != Vector2.Zero)
             {
                 Velocity.Normalize();
                 SpriteAnimation.Position += motion * SpriteAnimation.Speed;
@@ -102,6 +121,9 @@ namespace ArchanistTower.GameObjects
 
                 GameScreen.gameWorld.CurrentLevel.CollisionCheck(SpriteAnimation);
             }
+
+            else
+                SpriteAnimation.IsAnimating = false;
         }
 
         private void UpdateSpriteAnimation(Vector2 motion)

@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ArchanistTower.GameObjects;
+using Microsoft.Xna.Framework.Input;
 
 namespace ArchanistTower.Screens
 {
@@ -15,10 +16,13 @@ namespace ArchanistTower.Screens
         public GameScreen() 
         {
             gameWorld = new GameWorld();
+            Initialize();
         }
 
         protected override void Initialize()
         {
+            Name = "GameScreen";
+
             gameWorld.AddObject(new Player());
             gameWorld.AddFirstLevel();
         }
@@ -28,7 +32,12 @@ namespace ArchanistTower.Screens
 
         protected override void Update(GameTime gameTime)
         {
-            
+            if (Globals.input.KeyJustPressed(Keys.Escape))
+            {
+                this.Disable();
+                Globals.screenManager.AddScreen(new PauseScreen());
+            }
+
             gameWorld.Update(gameTime);
         }
 

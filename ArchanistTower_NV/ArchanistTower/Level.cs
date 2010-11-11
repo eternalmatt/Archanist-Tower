@@ -78,6 +78,7 @@ namespace ArchanistTower
         public void AddMap(Map m)
         {
             mapList.Add(m);
+            currentMap = m;
         }
 
         public void Update(GameTime gameTime)
@@ -85,8 +86,10 @@ namespace ArchanistTower
         }
 
         public void Draw(SpriteBatch spriteBatch)
-        {            
+        {
+            spriteBatch.Begin();
             CurrentMap.Draw(spriteBatch);
+            spriteBatch.End();
         }
 
         public AnimatedSprite CollisionCheck(AnimatedSprite inSprite)

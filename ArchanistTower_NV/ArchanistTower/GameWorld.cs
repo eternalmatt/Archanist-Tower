@@ -54,14 +54,19 @@ namespace ArchanistTower
 
         public void Draw()
         {
+            CurrentLevel.Draw(Globals.spriteBatch);
+
             for (int i = 0; i < gameObjects.Count; i++)
                 gameObjects[i].Draw();
-            CurrentLevel.Draw(Globals.spriteBatch);
+            
         }
 
         public void AddFirstLevel()
         {
             Map m = Globals.content.Load<Map>("Levels\\TestMap\\TestMap");
+            Level l = new Level();
+            l.AddMap(m);
+            Levels.Add(l);
         }
     }
 }
