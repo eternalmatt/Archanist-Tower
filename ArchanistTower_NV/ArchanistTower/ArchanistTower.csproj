@@ -94,7 +94,6 @@
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="InputManager.cs" />
-    <Compile Include="MapData.cs" />
     <Compile Include="Screens\ScreenManager.cs" />
     <Compile Include="Spell.cs" />
     <Compile Include="FrameAnimation.cs" />

@@ -11,7 +11,7 @@ namespace ArchanistTower
 {
     public class Level
     {
-        List<MapData> mapList;
+        List<Map> mapList;
 
         protected Map currentMap;
         private int startMap;
@@ -56,7 +56,7 @@ namespace ArchanistTower
     
         public Level()
         {
-            mapList = new List<MapData>();            
+            mapList = new List<Map>();
         }
 
         private Point ConvertPositionToCell(Vector2 position)
@@ -75,11 +75,10 @@ namespace ArchanistTower
                 TileHeight);
         }
 
-        public void AddMap(MapData mapData)
+        public void AddMap(Map m)
         {
-            mapList.Add(mapData);
-            CurrentMap = mapList[0].getMap();
-        }       
+            mapList.Add(m);
+        }
 
         public void Update(GameTime gameTime)
         {

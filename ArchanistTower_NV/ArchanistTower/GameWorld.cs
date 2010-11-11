@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using ArchanistTower.GameObjects;
+using TiledLib;
 
 namespace ArchanistTower
 {
@@ -21,14 +22,8 @@ namespace ArchanistTower
 
         public GameWorld()
         {
-        }
-
-        public void Initialize()
-        {
             Levels = new List<Level>();
             gameObjects = new List<GameObject>();
-            Player player = new Player();
-            AddObject(player);
         }
 
         public void AddObject(GameObject obj)
@@ -62,6 +57,11 @@ namespace ArchanistTower
             for (int i = 0; i < gameObjects.Count; i++)
                 gameObjects[i].Draw();
             CurrentLevel.Draw(Globals.spriteBatch);
+        }
+
+        public void AddFirstLevel()
+        {
+            Map m = Globals.content.Load<Map>("Levels\\TestMap\\TestMap");
         }
     }
 }
