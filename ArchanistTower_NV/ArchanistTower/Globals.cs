@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using ArchanistTower.Screens;
 
 namespace ArchanistTower
 {
@@ -22,6 +23,8 @@ namespace ArchanistTower
         public static SpriteFont spriteFont;
         public static SpriteFont menuFont;
         public static Camera camera;
+        public static InputManager input;
+        public static ScreenManager screenManager;
        /* public static ShaderCode shader;
         public static Effect effect; 
         public static Effect effectPost;*/
@@ -36,11 +39,14 @@ namespace ArchanistTower
             graphics = new GraphicsDeviceManager(game);
             content = new ContentManager(game.Services);
             content.RootDirectory = "Content";
-            camera = new Camera();
-
+            camera = new Camera();            
+            screenManager = new ScreenManager(game);
 
             Resolution = new ResolutionManager(ResolutionManager.Res800x600);
             SetResolution(Resolution.ObtainResolution(), false);
+
+            input = new InputManager();
+
             //shader = new ShaderCode();
             //effect = Globals.content.Load<Effect>("Shaders/BaseShader");
             //effectPost = Globals.content.Load<Effect>("Shaders/GrayingEffect");

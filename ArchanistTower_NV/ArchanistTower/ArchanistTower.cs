@@ -17,48 +17,27 @@ namespace ArchanistTower
 {
     public class ArchanistTower : Microsoft.Xna.Framework.Game
     {
-       // Map map;
-        //Level l = new Level();
-        Player player;
-        HUD hud = new HUD();
-
-        Screens.MenuScreen menuscreen;
-        Screens.PauseScreen pausescreen;
-        Screens.SplashScreen splashscreen;
-        Texture2D menubg;
-        Texture2D pausebg;
-        Texture2D splashbg;
-        ShaderCode shader;
+        static bool Quit;
 
         public ArchanistTower()
         {
             Globals.Initialize(this);
-            player = new Player();
-            shader = new ShaderCode();
+            Components.Add(Globals.screenManager);
+            //shader = new ShaderCode();
         }
         protected override void Initialize()
         {
-            player.Initialize();
-            shader.Initialize();
+            Quit = false;
+            //shader.Initialize();
             base.Initialize();            
         }
 
         protected override void LoadContent()
         {
             Globals.LoadContent();
-            player.LoadContent();
-            shader.LoadContent();
-            hud.LoadContent(); 
-            //map = Globals.content.Load<Map>("Levels/TestMap/TestMap");
-            //l.AddMap(map);
-            //l.CurrentMap = 2;
+            //shader.LoadContent();
 
-            menubg = Globals.content.Load<Texture2D>("Menuscreens/menu");
-            menuscreen = new Screens.MenuScreen(this, menubg);
-            pausebg = Globals.content.Load<Texture2D>("Menuscreens/pause");
-            pausescreen = new Screens.PauseScreen(this, pausebg);
-            splashbg = Globals.content.Load<Texture2D>("Menuscreens/splash");
-            splashscreen = new Screens.SplashScreen(this, splashbg);
+            Globals.screenManager.AddScreen(new SplashScreen());
         }
 
   
@@ -67,71 +46,22 @@ namespace ArchanistTower
 
         protected override void Update(GameTime gameTime)
         {
-            if (splashscreen.IsActive)
-            {
-                splashscreen.Update(gameTime);
-                if (splashscreen.AdvanceToMenu == true)
-                { 
-                    menuscreen.IsActive = true; 
-                }
-            }
-            else if (menuscreen.IsActive)
-            {
-                menuscreen.Update(gameTime);
-            }
-            else if (pausescreen.IsActive)
-            {
-                pausescreen.Update(gameTime);
-                if (pausescreen.BackToMenu)
-                {
-                    menuscreen.IsActive = true;
-                    pausescreen.BackToMenu = false;
-                }
-            }
-            else
-            {
-                if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                {
-                    pausescreen.IsActive = true;
-                }
-
-                //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                //    this.Exit();
-                //l.Update(gameTime);
-                hud.PlayerLifeBar++;
-                player.Update(gameTime);
-                //shader.Update(gameTime);
-
-            }
-            base.Update(gameTime);
+            if (Quit)
+                this.Exit();
+            Globals.input.Update();
+            Globals.screenManager.Update(gameTime);            
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            if (splashscreen.IsActive)
-            {
-                splashscreen.Draw(gameTime);
-            }
-            else if (menuscreen.IsActive)
-            {
-                menuscreen.Draw(gameTime);
-            }
-            else if (pausescreen.IsActive)
-            {
-                pausescreen.Draw(gameTime);
-            }
-            else
-            {
-                //Globals.GraphicsDevice.Clear(Color.CornflowerBlue);
-                shader.DrawSetup();
-                player.Draw();
-                shader.Draw();
-                Globals.spriteBatch.Begin();
-                hud.Draw(gameTime);
-                Globals.spriteBatch.End();
+            //shader.DrawSetup();
+            GraphicsDevice.Clear(Color.Black);
+            Globals.screenManager.Draw(gameTime);       
+        }
 
-            }
-            base.Draw(gameTime);
+        public static void ExitGame()
+        {
+            Quit = true;
         }
     }
 }

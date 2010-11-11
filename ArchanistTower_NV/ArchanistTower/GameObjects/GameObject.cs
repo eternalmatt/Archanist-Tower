@@ -17,6 +17,14 @@ namespace ArchanistTower.GameObjects
         protected bool dead;
         protected bool collidable;
 
+        public enum FacingDirection
+        {
+            Up,
+            Down,
+            Left,
+            Right
+        }
+
         public Vector2 Position
         {
             get { return position; }
@@ -56,6 +64,7 @@ namespace ArchanistTower.GameObjects
         public AnimatedSprite SpriteAnimation
         {
             get { return animatedSprite; }
+            set { animatedSprite = value; }
         }
 
         public GameObject() { }

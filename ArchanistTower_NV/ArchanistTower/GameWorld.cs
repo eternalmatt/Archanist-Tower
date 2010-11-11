@@ -11,18 +11,34 @@ namespace ArchanistTower
     {
 
         public List<GameObject> gameObjects;
+        public List<Level> Levels;
+        protected int currentLevel;
+
+        public Level CurrentLevel
+        {
+            get { return Levels[currentLevel]; }
+        }
 
         public GameWorld()
-        { }
+        {
+        }
 
         public void Initialize()
         {
+            Levels = new List<Level>();
             gameObjects = new List<GameObject>();
+            Player player = new Player();
+            AddObject(player);
         }
 
         public void AddObject(GameObject obj)
         {
             gameObjects.Add(obj);
+        }
+
+        public void AddLevel(Level l)
+        {
+            Levels.Add(l);
         }
 
         public void Update(GameTime gameTime)
@@ -38,12 +54,14 @@ namespace ArchanistTower
                 if (gameObjects[i].Dead)
                     gameObjects.RemoveAt(i);
             }
+
         }
 
         public void Draw()
         {
             for (int i = 0; i < gameObjects.Count; i++)
                 gameObjects[i].Draw();
+            CurrentLevel.Draw(Globals.spriteBatch);
         }
     }
 }

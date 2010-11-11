@@ -73,7 +73,7 @@ namespace ArchanistTower
         public void LoadContent()
         {
 
-            AddMapsToLevel();
+            //AddMapsToLevel();
 
             //Load Player Sprites
             levelList[currentLevel].MapStartPosition(sprite);
@@ -100,16 +100,16 @@ namespace ArchanistTower
                 enemyAttack += enemyHysteresis / 2;
             }
 
-            float distanceFromPlayer = Vector2.Distance(sprite.Position, Player.playerSprite.Position);
-            if (distanceFromPlayer > enemyChase)
+            //float distanceFromPlayer = Vector2.Distance(sprite.Position, Player.playerSprite.Position);
+            //if (distanceFromPlayer > enemyChase)
             {
                 enemyState = EnemySpriteState.Wander;
             }
-            else if (distanceFromPlayer > enemyAttack)
+            //else if (distanceFromPlayer > enemyAttack)
             {
                 enemyState = EnemySpriteState.Chase;
             }
-            else
+            //else
             {
                 enemyState = EnemySpriteState.Attack;
             }
@@ -117,7 +117,7 @@ namespace ArchanistTower
             float currentSpeed;
             if (enemyState == EnemySpriteState.Chase)
             {
-                enemyOrientation = TurnToFace(sprite.Position, Player.playerSprite.Position, enemyOrientation, enemyTurnSpeed);
+                //enemyOrientation = TurnToFace(sprite.Position, Player.playerSprite.Position, enemyOrientation, enemyTurnSpeed);
                 currentSpeed = enemySpeed;
             }
             else if (enemyState == EnemySpriteState.Wander)
@@ -278,8 +278,8 @@ namespace ArchanistTower
 
         private void AddMapsToLevel()
         {
-            levelList[0].AddMap(Globals.content.Load<Map>("Levels/TestMap/TestMap"));
-            levelList[0].StartMap = 0;
+            //levelList[0].AddMap(Globals.content.Load<Map>("Levels/TestMap/TestMap"));
+            //levelList[0].StartMap = 0;
         }
     }
 }

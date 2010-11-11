@@ -17,29 +17,14 @@ namespace ArchanistTower.Screens
 {
     public class PauseScreen : Screen
     {
-        MenuComponent menuComponent;
+        SpriteFont Font;
         Texture2D image;
         Rectangle imageRectangle;
-
-        KeyboardState keyboardState;
-        KeyboardState oldKeyboardState;
 
         float FadeValue;
         float FadeSpeed = 60.0f;
 
-        public int SelectedIndex
-        {
-            get { return menuComponent.SelectedIndex; }
-            set { menuComponent.SelectedIndex = value; }
-        }
-
-        public bool IsActive
-        {
-            get { return isActive; }
-            set { isActive = value; }
-        }
-
-        bool isActive = false;
+        int Selection;
 
         public bool BackToMenu
         {
@@ -49,18 +34,56 @@ namespace ArchanistTower.Screens
 
         bool backToMenu = false;
 
-        public PauseScreen(Game game, Texture2D image)
-            : base(game, Globals.spriteBatch)
+        public PauseScreen()
         {
-            string[] menuItems = { "Resume Game", "Exit To Main Menu" };
-            menuComponent = new MenuComponent(game, menuItems);
-            Components.Add(menuComponent);
-            this.image = image;
+            image = Globals.content.Load<Texture2D>("MenuScreens\\pause");
             imageRectangle = new Rectangle(0, 0, Globals.ScreenWidth, Globals.ScreenHeight);
+            Initialize();
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void Initialize()
         {
+            Font = Globals.content.Load<SpriteFont>("Fonts\\Arial");
+            Selection = 0;
+        }
+
+        protected override void Unload()
+        { }
+
+        protected override void Update(GameTime gameTime)
+        {
+            if (Globals.input.KeyJustPressed(Keys.Up)) 
+                Selection--;
+            if (Globals.input.KeyJustPressed(Keys.Down))
+                Selection++;
+
+            if (Selection < 0)
+                Selection = 1;
+            if (Selection > 1)
+                Selection = 0;
+
+            if (Globals.input.KeyJustPressed(Keys.Enter))
+            {
+                switch(Selection)
+                {
+                    case 0:
+                        this.Destroy();
+                        Globals.screenManager.FindScreen("GameScreen").Activate();
+                        // sleep for 100ms so that it won't jump straight back to game after exiting
+                        // can't think of a better solution right now
+                        Thread.Sleep(100);
+                        break;
+                    case 1:
+                        this.Destroy();
+                        Globals.screenManager.FindScreen("GameScreen").Destroy();
+                        Globals.screenManager.AddScreen(new MenuScreen());
+                        // sleep for 100ms so that it won't jump straight back to game after exiting
+                        // can't think of a better solution right now
+                        Thread.Sleep(100);
+                        break;
+                }
+            }
+
             float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (FadeValue < 16)
             {
@@ -69,37 +92,25 @@ namespace ArchanistTower.Screens
             else
             {
                 FadeValue = 16;
-            }
-
-            keyboardState = Keyboard.GetState();
-            if (CheckKey(Keys.Enter) || CheckKey(Keys.Space))
-            {
-                this.IsActive = false;
-                FadeValue = 0;
-                if (menuComponent.SelectedIndex == 1)
-                {
-                    this.BackToMenu = true;
-                }
-                // sleep for 100ms so that it won't jump straight back to game after exiting
-                // can't think of a better solution right now
-                Thread.Sleep(100);
-            }
-
-            base.Update(gameTime);
-            oldKeyboardState = keyboardState;
+            }            
         }
 
-        private bool CheckKey(Keys key)
-        {
-            return keyboardState.IsKeyDown(key) && oldKeyboardState.IsKeyDown(key);
-        }
-
-        public override void Draw(GameTime gameTime)
+        protected override void Draw()
         {
             Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
             Globals.spriteBatch.Draw(image, imageRectangle, FadeColor(Color.White, FadeValue));
+            if (Selection == 0)
+            {
+                Globals.spriteBatch.DrawString(Font, "RETURN TO GAME", new Vector2(540, 300), Color.Yellow);
+                Globals.spriteBatch.DrawString(Font, "EXIT TO MENU", new Vector2(540, 375), Color.White);
+            }
+            else if (Selection == 1)
+            {
+                Globals.spriteBatch.DrawString(Font, "RETURN TO GAME", new Vector2(540, 300), Color.White);
+                Globals.spriteBatch.DrawString(Font, "EXIT TO MENU", new Vector2(540, 375), Color.Yellow);
+            }
+
             Globals.spriteBatch.End();
-            base.Draw(gameTime);
         }
 
         public Color FadeColor(Color baseColor, float FadeValue)

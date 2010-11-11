@@ -9,6 +9,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ArchanistTower.GameObjects
 {
+    public enum SelectedSpell
+    {
+        fire,
+        wind,
+        water
+    }
+
     class Player : GameObject
     {
         protected Keys MoveLeft;
@@ -20,18 +27,11 @@ namespace ArchanistTower.GameObjects
         protected bool red;
         protected bool blue;
         protected bool green;
+        protected FacingDirection direction;
+        SelectedSpell selectedSpell;
 
-        enum SelectedSpell
-        {
-            fire,
-            wind,
-            water
-        }
-        
         public Player()
-        {
-
-        }
+        { }
 
         public override void Initialize()
         {
@@ -54,10 +54,84 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Animations.Add("Right", right);
 
             SpriteAnimation.CurrentAnimationName = "Down";
+            direction = FacingDirection.Down;
 
             SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space);
             
             base.Initialize();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            
+
+            base.Update(gameTime);
+        }
+
+        private void InputCheck()
+        {
+            Vector2 motion = Vector2.Zero;
+
+            if(Globals.input.KeyJustPressed(MoveRight))
+            {
+                motion.X++;
+                direction = FacingDirection.Right;
+            }
+            if (Globals.input.KeyJustPressed(MoveLeft))
+            {
+                motion.X--;
+                direction = FacingDirection.Left;
+            }
+            if (Globals.input.KeyJustPressed(MoveUp))
+            {
+                motion.Y--;
+                direction = FacingDirection.Up;
+            }
+            if (Globals.input.KeyJustPressed(MoveDown))
+            {
+                motion.Y++;
+                direction = FacingDirection.Down;
+            }
+
+            if (Velocity != Vector2.Zero)
+            {
+                Velocity.Normalize();
+                SpriteAnimation.Position += motion * SpriteAnimation.Speed;
+                UpdateSpriteAnimation(motion);
+                SpriteAnimation.IsAnimating = true;
+
+                GameScreen.gameWorld.CurrentLevel.CollisionCheck(SpriteAnimation);
+            }
+        }
+
+        private void UpdateSpriteAnimation(Vector2 motion)
+        {
+            float motionAngle = (float)Math.Atan2(motion.Y, motion.X);
+
+            if (motionAngle >= -MathHelper.PiOver4 &&
+                motionAngle <= MathHelper.PiOver4)
+            {
+                SpriteAnimation.CurrentAnimationName = "Right";
+                //motion = new Vector2(1f, 0f);  //These lines restrict diagonal movement
+            }
+            else if (motionAngle >= MathHelper.PiOver4 &&
+                motionAngle <= 3f * MathHelper.PiOver4)
+            {
+                SpriteAnimation.CurrentAnimationName = "Down";
+                //motion = new Vector2(0f, 1f);
+            }
+            else if (motionAngle <= -MathHelper.PiOver4 &&
+                motionAngle >= -3f * MathHelper.PiOver4)
+            {
+                SpriteAnimation.CurrentAnimationName = "Up";
+                //motion = new Vector2(0f, -1f);
+            }
+            else
+            {
+                SpriteAnimation.CurrentAnimationName = "Left";
+                //motion = new Vector2(-1f, 0f);
+            }
+            //sprite.Position += motion * sprite.Speed; //must be after for tile based movement
         }
 
         private void CastSpell()

@@ -11,16 +11,17 @@ namespace ArchanistTower
 {
     public class Level
     {
-        List<Map> mapList;
-        private int currentMap;
+        List<MapData> mapList;
+
+        protected Map currentMap;
         private int startMap;
 
-        public int CurrentMap
+        public Map CurrentMap
         {
             get { return currentMap; }
             set
             {
-                currentMap = (int)MathHelper.Clamp(value, 0, mapList.Count - 1);
+                currentMap = value;
             }
         }
 
@@ -35,48 +36,49 @@ namespace ArchanistTower
 
         public int MapWidthInPixels
         {
-            get { return mapList[currentMap].Width * mapList[currentMap].TileWidth; }
+            get { return CurrentMap.Width * TileWidth; }
         }
 
         public int MapHeightInPixels
         {
-            get { return mapList[currentMap].Height * mapList[currentMap].TileHeight; }
+            get { return CurrentMap.Height * TileHeight; }
         }
 
         public int TileWidth
         {
-            get { return mapList[currentMap].TileWidth; }
+            get { return CurrentMap.TileWidth; }
         }
 
         public int TileHeight
         {
-            get { return mapList[currentMap].TileHeight; }
+            get { return CurrentMap.TileHeight; }
         }
     
         public Level()
         {
-            mapList = new List<Map>();
+            mapList = new List<MapData>();            
         }
 
         private Point ConvertPositionToCell(Vector2 position)
         {
             return new Point(
-                (int)(position.X / (float)mapList[CurrentMap].TileWidth),
-                (int)(position.Y / (float)mapList[CurrentMap].TileHeight));
+                (int)(position.X / TileWidth),
+                (int)(position.Y / TileHeight));
         }
 
         public Rectangle CreateRectForCell(Point cell)
         {
             return new Rectangle(
-                cell.X * mapList[CurrentMap].TileWidth,
-                cell.Y * mapList[CurrentMap].TileHeight,
-                mapList[CurrentMap].TileWidth,
-                mapList[CurrentMap].TileHeight);
+                cell.X * TileWidth,
+                cell.Y * TileHeight,
+                TileWidth,
+                TileHeight);
         }
 
-        public void AddMap(Map map)
+        public void AddMap(MapData mapData)
         {
-            mapList.Add(map);
+            mapList.Add(mapData);
+            CurrentMap = mapList[0].getMap();
         }       
 
         public void Update(GameTime gameTime)
@@ -85,7 +87,7 @@ namespace ArchanistTower
 
         public void Draw(SpriteBatch spriteBatch)
         {            
-            mapList[CurrentMap].Draw(spriteBatch);
+            CurrentMap.Draw(spriteBatch);
         }
 
         public AnimatedSprite CollisionCheck(AnimatedSprite inSprite)
@@ -100,29 +102,29 @@ namespace ArchanistTower
             if (spriteCell.Y > 0)
                 up = new Point(spriteCell.X, spriteCell.Y - 1);
 
-            if (spriteCell.Y < mapList[currentMap].Height - 1)
+            if (spriteCell.Y < CurrentMap.Height - 1)
                 down = new Point(spriteCell.X, spriteCell.Y + 1);
 
             if (spriteCell.X > 0)
                 left = new Point(spriteCell.X - 1, spriteCell.Y);
 
-            if (spriteCell.X < mapList[currentMap].Width - 1)
+            if (spriteCell.X < CurrentMap.Width - 1)
                 right = new Point(spriteCell.X + 1, spriteCell.Y);
 
             if (spriteCell.X > 0 && spriteCell.Y > 0)
                 upLeft = new Point(spriteCell.X - 1, spriteCell.Y - 1);
 
-            if (spriteCell.X < mapList[currentMap].Width - 1 && spriteCell.Y > 0)
+            if (spriteCell.X < CurrentMap.Width - 1 && spriteCell.Y > 0)
                 upRight = new Point(spriteCell.X + 1, spriteCell.Y - 1);
 
-            if (spriteCell.X > 0 && spriteCell.Y < mapList[currentMap].Height - 1)
+            if (spriteCell.X > 0 && spriteCell.Y < CurrentMap.Height - 1)
                 downLeft = new Point(spriteCell.X - 1, spriteCell.Y + 1);
 
-            if (spriteCell.X < mapList[currentMap].Width - 1 &&
-                spriteCell.Y < mapList[currentMap].Height - 1)
+            if (spriteCell.X < CurrentMap.Width - 1 &&
+                spriteCell.Y < CurrentMap.Height - 1)
                 downRight = new Point(spriteCell.X + 1, spriteCell.Y + 1);
 
-            TileLayer l = mapList[currentMap].GetLayer("Layer 1") as TileLayer;
+            TileLayer l = CurrentMap.GetLayer("Layer 1") as TileLayer;
 
             if (up != null && (string)l.Tiles[up.Value.X, up.Value.Y].Properties["TileType"] == "1")
             {
@@ -207,7 +209,7 @@ namespace ArchanistTower
         public AnimatedSprite MapStartPosition(AnimatedSprite inSprite)
         {
             MapObject startPoint;
-            MapObjectLayer obj = mapList[currentMap].GetLayer("Object Layer 1") as MapObjectLayer;
+            MapObjectLayer obj = CurrentMap.GetLayer("Object Layer 1") as MapObjectLayer;
             startPoint = obj.GetObject("Start");
             inSprite.Position.X = startPoint.Bounds.X;
             inSprite.Position.Y = startPoint.Bounds.Y;

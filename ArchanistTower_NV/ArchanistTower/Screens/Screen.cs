@@ -14,68 +14,50 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace ArchanistTower.Screens
 {
-    public abstract class Screen : Microsoft.Xna.Framework.DrawableGameComponent
+    public enum ScreenState
     {
-        List<GameComponent> components = new List<GameComponent>();
-        protected Game game;
-        protected SpriteBatch spriteBatch;
+        Active,
+        Disabled,
+        Destroy,
+        Hidden
+    }
 
-        public List<GameComponent> Components
+    public abstract class Screen
+    {
+        protected ScreenState State;
+        protected string Name;
+
+        public void UpdateScreen(GameTime gameTime)
         {
-            get { return components; }
+            if (State == ScreenState.Active || State == ScreenState.Hidden)
+                Update(gameTime);
         }
 
-        public Screen(Game game, SpriteBatch spriteBatch)
-            : base(game)
+        public void DrawScreen()
         {
-            this.game = game;
-            this.spriteBatch = spriteBatch;
+            if (State == ScreenState.Active || State == ScreenState.Disabled)
+                Draw();
         }
 
-        public override void Initialize()
+        public void DestroyScreen()
         {
-            base.Initialize();
+            if (State == ScreenState.Destroy)
+                Unload();
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-            foreach (GameComponent component in components)
-                if (component.Enabled == true)
-                    component.Update(gameTime);
-        }
+        public virtual void OnAdd() { }
+        protected abstract void Initialize();
+        protected abstract void Unload();
+        protected abstract void Update(GameTime gameTime);
+        protected abstract void Draw();
 
-        public override void Draw(GameTime gameTime)
-        {
-            base.Draw(gameTime);
-            foreach (GameComponent component in components)
-                if (component is DrawableGameComponent && ((DrawableGameComponent)component).Visible)
-                    ((DrawableGameComponent)component).Draw(gameTime);
-        }
+        public ScreenState GetScreenState() { return State; }
+        public string GetScreenName() { return Name; }
 
-        public virtual void Show()
-        {
-            this.Visible = true;
-            this.Enabled = true;
-            foreach (GameComponent component in components)
-            {
-                component.Enabled = true;
-                if (component is DrawableGameComponent)
-                    ((DrawableGameComponent)component).Visible = true;
-            }
-        }
-
-        public virtual void Hide()
-        {
-            this.Visible = false;
-            this.Enabled = false;
-            foreach (GameComponent component in components)
-            {
-                component.Enabled = false;
-                if (component is DrawableGameComponent)
-                    ((DrawableGameComponent)component).Visible = false;
-            }
-        }
+        public virtual void Activate() { State = ScreenState.Active; }
+        public virtual void Disable() { State = ScreenState.Disabled; }
+        public virtual void Hide() { State = ScreenState.Hidden; }
+        public virtual void Destroy() { State = ScreenState.Destroy; }
 
     }
 }

@@ -148,7 +148,8 @@ namespace ArchanistTower
 
         private void AddMapsToLevel()
         {
-            levelList[0].AddMap(Globals.content.Load<Map>("Levels/TestMap/TestMap"));
+            MapData startMap = new MapData("Levels/TestMap/TestMap");
+            levelList[0].AddMap(startMap);
             levelList[0].StartMap = 0;
         }
 

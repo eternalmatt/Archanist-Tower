@@ -20,37 +20,24 @@ namespace ArchanistTower.Screens
         Texture2D image;
         Rectangle imageRectangle;
 
-        KeyboardState keyboardState;
-        KeyboardState oldKeyboardState;
-
         float FadeValue;
         float FadeSpeed = 15.0f;
 
-        public bool IsActive
+        public SplashScreen()
         {
-            get { return isActive; }
-            set { isActive = value; }
-        }
-
-        bool isActive = true;
-
-        public bool AdvanceToMenu
-        {
-            get { return advanceToMenu; }
-            set { advanceToMenu = value; }
-        }
-
-        bool advanceToMenu = false;
-
-        public SplashScreen(Game game, Texture2D image)
-            : base(game, Globals.spriteBatch)
-        {
-            this.image = image;
+            image = Globals.content.Load<Texture2D>("Menuscreens\\splash");
             imageRectangle = new Rectangle(0, 0, Globals.ScreenWidth, Globals.ScreenHeight);
+            Initialize();
         }
 
-        public override void Update(GameTime gameTime)
-        {
+        protected override void Initialize()
+        { }
+
+        protected override void Unload()
+        { }
+
+        protected override void Update(GameTime gameTime)
+        {            
             float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (FadeValue < 255)
             {
@@ -60,31 +47,18 @@ namespace ArchanistTower.Screens
             {
                 FadeValue = 255;
             }
-
-            keyboardState = Keyboard.GetState();
-            if (CheckKey(Keys.Enter) || CheckKey(Keys.Space))
+            if (Globals.input.KeyJustPressed(Keys.Enter))
             {
-                this.IsActive = false;
-                this.AdvanceToMenu = true;
-                FadeValue = 0;
-                Thread.Sleep(100);
+                this.Destroy();
+                Globals.screenManager.AddScreen(new MenuScreen());
             }
-
-            base.Update(gameTime);
-            oldKeyboardState = keyboardState;
         }
 
-        private bool CheckKey(Keys key)
-        {
-            return keyboardState.IsKeyDown(key) && oldKeyboardState.IsKeyDown(key);
-        }
-
-        public override void Draw(GameTime gameTime)
+        protected override void Draw()
         {
             Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
             Globals.spriteBatch.Draw(image, imageRectangle, FadeColor(Color.White, FadeValue));
             Globals.spriteBatch.End();
-            base.Draw(gameTime);
         }
 
         public Color FadeColor(Color baseColor, float FadeValue)

@@ -10,26 +10,29 @@ namespace ArchanistTower.Screens
     public class GameScreen : Screen
     { 
         public static GameWorld gameWorld;
-        int currentLevel;
-        public static List<Level> levels = new List<Level>();
-
-
-        public int CurrentLevel
+         
+        public GameScreen() 
         {
-            get { return currentLevel; }
-            set
-            {
-                currentLevel = (int)MathHelper.Clamp(value, 0, levels.Count - 1);
-            }
+            gameWorld = new GameWorld();
         }
 
-        public GameScreen(Game game) :
-            base(game, Globals.spriteBatch)
-        {   }
-
-        public override void Initialize()
+        protected override void Initialize()
         {
-            base.Initialize();
+            gameWorld.Initialize();
+        }
+
+        protected override void Unload()
+        { }
+
+        protected override void Update(GameTime gameTime)
+        {
+            
+            gameWorld.Update(gameTime);
+        }
+
+        protected override void Draw()
+        {
+            gameWorld.Draw();
         }
 
     }
