@@ -6,15 +6,15 @@ using TiledLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using ArchanistTower.GameObjects;
+using ArchanistTower.Screens;
 
 namespace ArchanistTower
 {
     public class Level
     {
-        List<Map> mapList;
-
         protected Map currentMap;
-        private int startMap;
+        protected string mapFile;
 
         public Map CurrentMap
         {
@@ -24,14 +24,21 @@ namespace ArchanistTower
                 currentMap = value;
             }
         }
-
-        public int StartMap
+        
+        public int TileWidth
         {
-            get { return startMap; }
-            set
-            {
-                startMap = value;
-            }
+            get { return CurrentMap.TileWidth; }
+        }
+
+        public int TileHeight
+        {
+            get { return CurrentMap.TileHeight; }
+        }
+
+        public string MapFile
+        {
+            get { return mapFile; }
+            set { mapFile = value; }
         }
 
         public int MapWidthInPixels
@@ -43,20 +50,26 @@ namespace ArchanistTower
         {
             get { return CurrentMap.Height * TileHeight; }
         }
-
-        public int TileWidth
-        {
-            get { return CurrentMap.TileWidth; }
-        }
-
-        public int TileHeight
-        {
-            get { return CurrentMap.TileHeight; }
-        }
     
-        public Level()
+        public Level(string file)
         {
-            mapList = new List<Map>();
+            MapFile = file;
+
+        }
+
+        private void LoadMap(sting file)
+        {
+
+        }
+
+        public void LoadMap(string file, int startPoint, Player p)
+        {
+            MapFile = file;
+            CurrentMap = Globals.content.Load<Map>(MapFile);
+
+            GameScreen.gameWorld.gameObjects.Clear();
+
+            GameScreen.gameWorld.gameObjects.Add(p);
         }
 
         private Point ConvertPositionToCell(Vector2 position)
@@ -73,12 +86,6 @@ namespace ArchanistTower
                 cell.Y * TileHeight,
                 TileWidth,
                 TileHeight);
-        }
-
-        public void AddMap(Map m)
-        {
-            mapList.Add(m);
-            currentMap = m;
         }
 
         public void Update(GameTime gameTime)
