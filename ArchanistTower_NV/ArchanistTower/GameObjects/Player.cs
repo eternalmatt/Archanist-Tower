@@ -35,7 +35,7 @@ namespace ArchanistTower.GameObjects
 
         public override void Initialize()
         {
-            SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Player/man1"));
+            //SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Player/man1"));
 
             FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
             up.FramesPerSecond = 10;

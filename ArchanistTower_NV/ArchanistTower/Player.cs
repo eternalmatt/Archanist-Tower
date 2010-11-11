@@ -101,6 +101,7 @@ namespace ArchanistTower
                 levelList[currentLevel].MapWidthInPixels - Globals.ScreenWidth,
                 levelList[currentLevel].MapHeightInPixels - Globals.ScreenHeight);
 
+            // calclate where the spell animation should be drawn
             Vector2 spellOffset = Vector2.Zero;
             if (playerSprite.CurrentAnimationName == "Up")
             {
@@ -118,6 +119,12 @@ namespace ArchanistTower
             {
                 spellOffset = new Vector2(24, 16);
             }
+
+            // press 1 for fire attack, 3 for wind attack
+            if (keyState.IsKeyDown(Keys.D1))
+                spell.selectedSpell = Spell.SpellType.Fire;
+            if (keyState.IsKeyDown(Keys.D3))
+                spell.selectedSpell = Spell.SpellType.Wind;
             spell.Update(gameTime, playerSprite.Position + spellOffset);
         }
 

@@ -14,29 +14,33 @@ namespace ArchanistTower
     {
         AnimatedSprite sprite;
 
-        const float velocity = 1.5f;
-
-        enum SpellType
+        public enum SpellType
         {
-            Fire,
-            Water,
-            Wind
+            Fire = 1,
+            Wind,
+            Water
         }
+
+        public SpellType selectedSpell;
 
         public Spell()
-        {
-
-        }
+        { }
 
         public void Initialize()
         {
-            sprite = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Spells/fireball"));
+            sprite = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Spells/spellsprites"));
 
-            FrameAnimation animateFireball = new FrameAnimation(4, 16, 16, 0, 0);
-            animateFireball.FramesPerSecond = 10;
-            sprite.Animations.Add("AnimateFireball", animateFireball);
+            FrameAnimation fire = new FrameAnimation(4, 16, 16, 0, 0);
+            fire.FramesPerSecond = 10;
+            sprite.Animations.Add("Fire", fire);
 
-            sprite.CurrentAnimationName = "AnimateFireball";
+            FrameAnimation wind = new FrameAnimation(4, 16, 16, 64, 0);
+            wind.FramesPerSecond = 10;
+            sprite.Animations.Add("Wind", wind);
+
+            sprite.CurrentAnimationName = "Fire";
+            selectedSpell = SpellType.Fire;
+
             sprite.IsAnimating = true;
         }
 
@@ -47,6 +51,10 @@ namespace ArchanistTower
 
         public void Update(GameTime gameTime, Vector2 position)
         {
+            if ((int)selectedSpell == 1)
+                sprite.CurrentAnimationName = "Fire";
+            if ((int)selectedSpell == 2)
+                sprite.CurrentAnimationName = "Wind";
             sprite.Position = position;
             sprite.Update(gameTime);            
         }
