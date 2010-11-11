@@ -14,6 +14,7 @@ namespace ArchanistTower
         public List<GameObject> gameObjects;
         public List<Level> Levels;
         protected int currentLevel;
+        ShaderCode shader = new ShaderCode();
 
         public Level CurrentLevel
         {
@@ -24,6 +25,8 @@ namespace ArchanistTower
         {
             Levels = new List<Level>();
             gameObjects = new List<GameObject>();
+            shader.Initialize();
+            shader.LoadContent();
         }
 
         public void AddObject(GameObject obj)
@@ -49,16 +52,17 @@ namespace ArchanistTower
                 if (gameObjects[i].Dead)
                     gameObjects.RemoveAt(i);
             }
-
+            
         }
 
         public void Draw()
         {
+            shader.DrawSetup();
             CurrentLevel.Draw(Globals.spriteBatch);
 
             for (int i = 0; i < gameObjects.Count; i++)
                 gameObjects[i].Draw();
-            
+            shader.Draw();
         }
 
         public void AddFirstLevel()

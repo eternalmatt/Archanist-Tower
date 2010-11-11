@@ -25,9 +25,9 @@ namespace ArchanistTower
         public static Camera camera;
         public static InputManager input;
         public static ScreenManager screenManager;
-       /* public static ShaderCode shader;
-        public static Effect effect; 
-        public static Effect effectPost;*/
+        //public static ShaderCode shader;
+        //public static Effect effect; 
+        //public static Effect effectPost;
 
         public static GraphicsDevice GraphicsDevice
         {
@@ -47,7 +47,7 @@ namespace ArchanistTower
 
             input = new InputManager();
 
-            //shader = new ShaderCode();
+          //  shader = new ShaderCode();
             //effect = Globals.content.Load<Effect>("Shaders/BaseShader");
             //effectPost = Globals.content.Load<Effect>("Shaders/GrayingEffect");
         }

@@ -57,12 +57,6 @@ namespace ArchanistTower
             width = graphics.GraphicsDevice.Viewport.Width;
             height = graphics.GraphicsDevice.Viewport.Height;
 
-            // Set worldMatrix to Identity
-            worldMatrix = Matrix.Identity;
-
-            float aspectRatio = (float)width / (float)height;
-            float FieldOfView = (float)Math.PI / 2, NearPlane = 1.0f, FarPlane = 1000.0f;
-            projMatrix = Matrix.CreatePerspectiveFieldOfView(FieldOfView, aspectRatio, NearPlane, FarPlane);
 
             // Load and compile our Shader into our Effect instance.
             
@@ -83,7 +77,10 @@ namespace ArchanistTower
         /// Allows the game component to update itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public void DrawSetup() { graphics.GraphicsDevice.SetRenderTarget(0, renderTarget); }
+        public void DrawSetup() 
+        { 
+            graphics.GraphicsDevice.SetRenderTarget(0, renderTarget); 
+        }
         public void Draw()
         {
            /* if (blendTexturePos.X > 1.0)
