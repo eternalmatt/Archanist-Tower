@@ -71,6 +71,8 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -90,6 +92,7 @@
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameWorld.cs" />
