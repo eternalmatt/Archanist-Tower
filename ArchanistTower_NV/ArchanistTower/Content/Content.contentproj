@@ -38,7 +38,7 @@
     </Reference>
     <Reference Include="TiledPipelineExtensions, Version=1.5.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\ContentPipeline\TiledPipelineExtensions.dll</HintPath>
+      <HintPath>..\TiledLib\ContentPipeline\TiledPipelineExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +54,6 @@
       <Name>TestMap</Name>
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>

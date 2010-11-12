@@ -5,6 +5,8 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -16,20 +18,28 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="3" name="clip" tilewidth="32" tileheight="32">
+  <image source="solid.jpg" trans="ff00ff"/>
+ </tileset>
  <layer name="Layer 1" width="40" height="40">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3OsQ0AMAgDsND/j2blA4rkwbsrScHH3rB98fMDAAAAAG5o7pEKQQAZAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="40" height="40">
-  <object name="Start" x="317" y="316" width="36" height="40"/>
- </objectgroup>
- <objectgroup name="DoorLayer" width="40" height="40">
-  <object name="1" type="Door" x="321" y="66" width="32" height="30">
+ <objectgroup name="Objects" width="40" height="40">
+  <object name="PlayerStart" x="317" y="316" width="36" height="40"/>
+  <object name="Portal" x="321" y="65" width="32" height="31">
    <properties>
-    <property name="LinkedMap" value="testDoor"/>
-    <property name="LinkedMapPoint" value="1"/>
+    <property name="DestinationMap" value="Levels\TestMap\Test"/>
+    <property name="DestinationX" value="7"/>
+    <property name="DestinationY" value="4"/>
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="Enemies" width="40" height="40"/>
+ <layer name="Clip" width="40" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3SIQoAMAwDwEL//+fZUupmIu4gxEakCrL1SKJenca+P+n/AwAAAABuDyjZCBcAGQAA
+  </data>
+ </layer>
 </map>

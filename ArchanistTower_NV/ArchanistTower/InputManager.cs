@@ -60,7 +60,7 @@ namespace ArchanistTower
             NewKeyState = new KeyboardState();
             OldKeyState = new KeyboardState();
 
-            mouse_locked = true;
+            mouse_locked = false;
 
             Mouse.SetPosition(Globals.ScreenMiddleX, Globals.ScreenMiddleY);
             OldMouseState = Mouse.GetState();

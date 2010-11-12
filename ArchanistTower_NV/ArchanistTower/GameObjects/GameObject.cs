@@ -8,15 +8,13 @@ namespace ArchanistTower.GameObjects
 {
     public class GameObject
     {
-        protected Vector2 position;
-        protected Vector2 velocity;
-        protected int health;
-        protected AnimatedSprite animatedSprite;
-        protected Vector2 origin;
-
-        protected bool dead;
-        protected bool collidable;
-
+        public float Speed { get; set; }
+        public bool Dead { get; set; }
+        public bool Collidable {get; set;}
+        public AnimatedSprite SpriteAnimation { get; set; }
+        public int Health { get; set; }
+        public Vector2 LastMovement { get; set; }
+        
         public enum FacingDirection
         {
             Up,
@@ -24,53 +22,16 @@ namespace ArchanistTower.GameObjects
             Left,
             Right
         }
-
-        public Vector2 Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
-
-        public Vector2 Velocity
-        {
-            get { return velocity; }
-            set { velocity = value; }
-        }
-
-        public Vector2 Origin
-        {
-            get { return origin; }
-            set { origin = value; }
-        }
-
-        public int Health
-        {
-            get { return health; }
-            set { health = value; }
-        }
-
-        public bool Dead
-        {
-            get { return dead; }
-            set { dead = value; }
-        }
-
-        public bool Colldable
-        {
-            get { return collidable; }
-            set { collidable = value; }
-        }
-
-        public AnimatedSprite SpriteAnimation
-        {
-            get { return animatedSprite; }
-            set { animatedSprite = value; }
-        }
-
+                
         public GameObject() { }
         public virtual void Collision(GameObject o) { }
         public virtual void Initialize() { }
         public virtual void Update(GameTime gameTime) { }
         public virtual void Draw() { }
+
+        public void Collision()
+        {
+            SpriteAnimation.Position -= LastMovement;
+        }
     }
 }

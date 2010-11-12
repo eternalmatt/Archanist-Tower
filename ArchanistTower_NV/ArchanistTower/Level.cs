@@ -11,8 +11,19 @@ using ArchanistTower.Screens;
 
 namespace ArchanistTower
 {
-    public class Level
+    public static class Level
     {
+        public static Player Player { get; set; }
+
+        public static Dictionary<Vector2, Rectangle> ClipMap { get; set; }
+        public static List<Portal> Portals { get; set; }
+        public static List<Enemy> Enemies { get; set; } 
+        
+
+
+
+        /*
+        public static Dictionary<string, Map> mapDict;
         protected Map currentMap;
         protected MapObjectLayer doorLayer;
         protected string mapFile;
@@ -57,13 +68,14 @@ namespace ArchanistTower
     
         public Level(string file, Player p)
         {
+            InitDictionary();
             MapFile = file;
             LoadMap(MapFile, p);
         }
 
         private void LoadMap(string file, Player p)
         {
-            CurrentMap = Globals.content.Load<Map>(file);
+            CurrentMap = mapDict["file"];
             DoorLayer = CurrentMap.GetLayer("DoorLayer") as MapObjectLayer;
             GameScreen.gameWorld.gameObjects.Clear();
             p.SpriteAnimation = MapStartPosition(p.SpriteAnimation);
@@ -73,11 +85,12 @@ namespace ArchanistTower
         public void LoadMap(string file, string startPoint, Player p)
         {
             //MapFile = (string)("Levels\\" + file + "\\" + file);
-            string fn = "Levels/TestMap/TestMap";
-            CurrentMap = Globals.content.Load<Map>(fn);
+            //string fn = "Levels/TestMap/Test";
+            MapFile = file;
+            CurrentMap = mapDict[MapFile];
             DoorLayer = CurrentMap.GetLayer("DoorLayer") as MapObjectLayer;
             GameScreen.gameWorld.gameObjects.Clear();
-            MapObject sp = DoorLayer.GetObject("startPoint");
+            MapObject sp = DoorLayer.GetObject(startPoint);
             p.SpriteAnimation.Position.X = sp.Bounds.X;
             p.SpriteAnimation.Position.Y = sp.Bounds.Y;
             GameScreen.gameWorld.gameObjects.Add(p);
@@ -189,7 +202,7 @@ namespace ArchanistTower
                     inSprite.Position.X = spriteCell.X * TileWidth;
                     inSprite.Position.Y = spriteCell.Y * TileHeight;
                 }
-            }*/
+            }
             if (upRight != null && (string)l.Tiles[upRight.Value.X, upRight.Value.Y].Properties["TileType"] == "1")
             {
                 Rectangle cellRect = CreateRectForCell(upRight.Value);
@@ -245,5 +258,12 @@ namespace ArchanistTower
                 }
         }
 
+        public void InitDictionary()
+        {
+            mapDict = new Dictionary<string, Map>();
+            mapDict.Add("TestMap", Globals.content.Load<Map>("Levels//TestMap//TestMap"));
+            mapDict.Add("Test", Globals.content.Load<Map>("Levels//TestMap//Test"));
+        }
+        */
     }
 }

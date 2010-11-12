@@ -5,19 +5,32 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
    </properties>
   </tile>
+ </tileset>
+ <tileset firstgid="2" name="clip" tilewidth="32" tileheight="32">
+  <image source="solid.jpg" trans="ff00ff"/>
  </tileset>
  <layer name="Tile Layer 1" width="25" height="25">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3DAQkAAAwEofv+pZdjoOCqqar66gEA314jxAkAAA==
   </data>
  </layer>
- <objectgroup name="DoorLayer" width="25" height="25">
-  <object name="1" type="Door" x="289" y="64" width="33" height="33">
+ <objectgroup name="Objects" width="25" height="25">
+  <object name="Portal" x="224" y="97" width="33" height="32">
    <properties>
-    <property name="" value=""/>
+    <property name="DestinationMap" value="Levels\TestMap\TestMap"/>
+    <property name="DestinationX" value="1"/>
+    <property name="DestinationY" value="1"/>
    </properties>
   </object>
  </objectgroup>
+ <layer name="Clip" width="25" height="25">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglFAKmDCgkftGLVjFIwCegIAsNIZnsQJAAA=
+  </data>
+ </layer>
 </map>

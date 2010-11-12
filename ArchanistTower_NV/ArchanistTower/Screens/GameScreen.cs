@@ -6,13 +6,15 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ArchanistTower.GameObjects;
 using Microsoft.Xna.Framework.Input;
+using TiledLib;
 
 namespace ArchanistTower.Screens
 {
     public class GameScreen : Screen
     { 
         public static GameWorld gameWorld;
-        public static Level gameMap;
+        //public static Level gameMap;
+        
          
         public GameScreen() 
         {
@@ -23,7 +25,7 @@ namespace ArchanistTower.Screens
         protected override void Initialize()
         {
             Name = "GameScreen";
-            gameMap = new Level("Levels//TestMap//TestMap", new Player());
+            gameWorld.Initialize();
         }
 
         protected override void Unload()
@@ -43,10 +45,11 @@ namespace ArchanistTower.Screens
         protected override void Draw()
         {
             Globals.spriteBatch.Begin();
-            gameMap.Draw();
+            //gameMap.Draw();
             gameWorld.Draw();
-            //Globals.spriteBatch.End();
+            Globals.spriteBatch.End();
         }
 
+        
     }
 }

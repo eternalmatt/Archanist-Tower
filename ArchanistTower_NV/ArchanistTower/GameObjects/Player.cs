@@ -31,9 +31,10 @@ namespace ArchanistTower.GameObjects
         protected FacingDirection direction;
         SelectedSpell selectedSpell;
 
-        public Player()
+        public Player(Vector2 startPosition)
         {
             Initialize();
+            SpriteAnimation.Position = startPosition;
         }
 
         public override void Initialize()
@@ -68,62 +69,46 @@ namespace ArchanistTower.GameObjects
             InputCheck();
 
             SpriteAnimation.ClampToArea(
-                GameScreen.gameMap.MapWidthInPixels,
-                GameScreen.gameMap.MapHeightInPixels);
+                GameScreen.gameWorld.MapWidthInPixels,
+                GameScreen.gameWorld.MapHeightInPixels);
             SpriteAnimation.Update(gameTime);
 
             Globals.camera.LockToTarget(SpriteAnimation, Globals.ScreenWidth, Globals.ScreenHeight);
 
             Globals.camera.ClampToArea(
-                GameScreen.gameMap.MapWidthInPixels - Globals.ScreenWidth,
-                GameScreen.gameMap.MapHeightInPixels - Globals.ScreenHeight);
-
-            GameScreen.gameMap.CheckDoors((Player)this);
+                GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth,
+                GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);
         }
 
         public override void Draw()
         {
             SpriteAnimation.Draw(Globals.spriteBatch);
-            Globals.spriteBatch.End();
         }
 
         private void InputCheck()
         {
-            Vector2 motion = Vector2.Zero;
+            Vector2 movement = Vector2.Zero;
 
-            if(Globals.input.KeyPressed(MoveRight))
-            {
-                motion.X++;
-                direction = FacingDirection.Right;
-            }
-            if (Globals.input.KeyPressed(Keys.Left))
-            {
-                motion.X--;
-                direction = FacingDirection.Left;
-            }
-            if (Globals.input.KeyPressed(Keys.Up))
-            {
-                motion.Y--;
-                direction = FacingDirection.Up;
-            }
-            if (Globals.input.KeyPressed(Keys.Down))
-            {
-                motion.Y++;
-                direction = FacingDirection.Down;
-            }
+            if (Globals.input.KeyPressed(MoveRight))
+                movement.X = 1;
+            else if (Globals.input.KeyPressed(MoveLeft))
+                movement.X = -1;
+            if (Globals.input.KeyPressed(MoveUp))
+                movement.Y = -1;
+            else if (Globals.input.KeyPressed(MoveDown))
+                movement.Y = 1;
 
-            if (motion != Vector2.Zero)
+            if (movement != Vector2.Zero)
             {
-                Velocity.Normalize();
-                SpriteAnimation.Position += motion * SpriteAnimation.Speed;
-                UpdateSpriteAnimation(motion);
+                movement.Normalize();
+                UpdateSpriteAnimation(movement);
                 SpriteAnimation.IsAnimating = true;
-
-                GameScreen.gameMap.CollisionCheck(SpriteAnimation);
             }
-
             else
                 SpriteAnimation.IsAnimating = false;
+
+            SpriteAnimation.Position += SpriteAnimation.Speed * movement;
+            LastMovement = SpriteAnimation.Speed * movement;            
         }
 
         private void UpdateSpriteAnimation(Vector2 motion)

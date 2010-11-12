@@ -84,7 +84,7 @@
     </Reference>
     <Reference Include="TiledLib, Version=1.5.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\Windows\TiledLib.dll</HintPath>
+      <HintPath>TiledLib\Windows\TiledLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +94,7 @@
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="InputManager.cs" />
+    <Compile Include="Portal.cs" />
     <Compile Include="Screens\ScreenManager.cs" />
     <Compile Include="Spell.cs" />
     <Compile Include="FrameAnimation.cs" />
