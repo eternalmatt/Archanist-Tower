@@ -24,10 +24,10 @@
  <objectgroup name="Object Layer 1" width="40" height="40">
   <object name="Start" x="317" y="316" width="36" height="40"/>
  </objectgroup>
- <objectgroup name="DoorObjs" width="40" height="40">
+ <objectgroup name="DoorLayer" width="40" height="40">
   <object name="1" type="Door" x="321" y="66" width="32" height="30">
    <properties>
-    <property name="LinkedMap" value="Levels\\TestDoor\\TestDoor"/>
+    <property name="LinkedMap" value="testDoor"/>
     <property name="LinkedMapPoint" value="1"/>
    </properties>
   </object>

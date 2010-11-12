@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="25" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Grass" tilewidth="32" tileheight="32">
+  <image source="se_free_grass_texture.jpg"/>
+  <tile id="0">
+   <properties>
+    <property name="TileType" value="0"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="25" height="25">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DAQkAAAwEofv+pZdjoOCqqar66gEA314jxAkAAA==
+  </data>
+ </layer>
+ <objectgroup name="DoorLayer" width="25" height="25">
+  <object name="1" type="Door" x="289" y="64" width="33" height="33">
+   <properties>
+    <property name="" value=""/>
+   </properties>
+  </object>
+  <object name="startPoint" x="231" y="159"/>
+ </objectgroup>
+</map>
