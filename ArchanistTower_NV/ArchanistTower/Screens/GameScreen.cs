@@ -23,7 +23,7 @@ namespace ArchanistTower.Screens
         protected override void Initialize()
         {
             Name = "GameScreen";
-            gameMap = new Level("Levels\\TestMap\\TestMap", new Player());
+            gameMap = new Level("Levels//TestMap//TestMap", new Player());
         }
 
         protected override void Unload()
