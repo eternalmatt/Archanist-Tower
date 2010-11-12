@@ -14,15 +14,19 @@ namespace ArchanistTower
     public class Level
     {
         protected Map currentMap;
+        protected MapObjectLayer doorLayer;
         protected string mapFile;
 
         public Map CurrentMap
         {
             get { return currentMap; }
-            set
-            {
-                currentMap = value;
-            }
+            set { currentMap = value; }
+        }
+
+        public MapObjectLayer DoorLayer
+        {
+            get { return doorLayer; }
+            set { doorLayer = value; }
         }
         
         public int TileWidth
@@ -60,16 +64,22 @@ namespace ArchanistTower
         private void LoadMap(string file, Player p)
         {
             CurrentMap = Globals.content.Load<Map>(file);
+            DoorLayer = CurrentMap.GetLayer("DoorLayer") as MapObjectLayer;
             GameScreen.gameWorld.gameObjects.Clear();
             p.SpriteAnimation = MapStartPosition(p.SpriteAnimation);
             GameScreen.gameWorld.gameObjects.Add(p);
         }
 
-        public void LoadMap(string file, int startPoint, Player p)
+        public void LoadMap(string file, string startPoint, Player p)
         {
-            MapFile = file;
-            CurrentMap = Globals.content.Load<Map>(MapFile);
+            //MapFile = (string)("Levels\\" + file + "\\" + file);
+            string fn = "Levels/TestMap/TestMap";
+            CurrentMap = Globals.content.Load<Map>(fn);
+            DoorLayer = CurrentMap.GetLayer("DoorLayer") as MapObjectLayer;
             GameScreen.gameWorld.gameObjects.Clear();
+            MapObject sp = DoorLayer.GetObject("startPoint");
+            p.SpriteAnimation.Position.X = sp.Bounds.X;
+            p.SpriteAnimation.Position.Y = sp.Bounds.Y;
             GameScreen.gameWorld.gameObjects.Add(p);
         }
 
@@ -222,6 +232,17 @@ namespace ArchanistTower
             inSprite.Position.X = startPoint.Bounds.X;
             inSprite.Position.Y = startPoint.Bounds.Y;
             return inSprite;
+        }
+
+        public void CheckDoors(Player p)
+        {
+            for(int i = 0; i < DoorLayer.Objects.Count; i++)
+                if(p.SpriteAnimation.Bounds.Intersects(DoorLayer.Objects[i].Bounds))
+                {
+                    string linkedMap = (string)DoorLayer.Objects[i].Properties["LinkedMap"].RawValue;
+                    string linkedMapPoint = (string)DoorLayer.Objects[i].Properties["LinkedMapPoint"].RawValue;
+                    LoadMap(linkedMap, linkedMapPoint, p);
+                }
         }
 
     }
