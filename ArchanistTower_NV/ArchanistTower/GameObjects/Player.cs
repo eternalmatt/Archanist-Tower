@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using ArchanistTower.Screens;
 using Microsoft.Xna.Framework.Graphics;
+using TiledLib;
 
 namespace ArchanistTower.GameObjects
 {
@@ -77,7 +78,7 @@ namespace ArchanistTower.GameObjects
                 GameScreen.gameMap.MapWidthInPixels - Globals.ScreenWidth,
                 GameScreen.gameMap.MapHeightInPixels - Globals.ScreenHeight);
 
-
+            GameScreen.gameMap.CheckDoors((Player)this);
         }
 
         public override void Draw()
@@ -160,7 +161,6 @@ namespace ArchanistTower.GameObjects
             //GameScreen.gameWorld
         }
 
-
         public void SetKeys(Keys left, Keys right, Keys up, Keys down, Keys cast)
         {
             MoveLeft = left;
@@ -169,6 +169,8 @@ namespace ArchanistTower.GameObjects
             MoveDown = down;
             SpellCast = cast;
         }
+
+        
     }
 
 }
