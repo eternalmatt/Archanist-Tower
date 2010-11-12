@@ -75,6 +75,11 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="Levels\TestMap\Test.tmx">
+      <Name>Test</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
     <None Include="Levels\TestMap\se_free_wood_texture.jpg">
       <Name>se_free_wood_texture</Name>
       <Importer>TextureImporter</Importer>
