@@ -51,24 +51,25 @@ namespace ArchanistTower
             get { return CurrentMap.Height * TileHeight; }
         }
     
-        public Level(string file)
+        public Level(string file, Player p)
         {
             MapFile = file;
-
+            LoadMap(MapFile, p);
         }
 
-        private void LoadMap(sting file)
+        private void LoadMap(string file, Player p)
         {
-
+            CurrentMap = Globals.content.Load<Map>(file);
+            GameScreen.gameWorld.gameObjects.Clear();
+            p.SpriteAnimation = MapStartPosition(p.SpriteAnimation);
+            GameScreen.gameWorld.gameObjects.Add(p);
         }
 
         public void LoadMap(string file, int startPoint, Player p)
         {
             MapFile = file;
             CurrentMap = Globals.content.Load<Map>(MapFile);
-
             GameScreen.gameWorld.gameObjects.Clear();
-
             GameScreen.gameWorld.gameObjects.Add(p);
         }
 
@@ -92,11 +93,9 @@ namespace ArchanistTower
         {
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            spriteBatch.Begin();
-            CurrentMap.Draw(spriteBatch);
-            spriteBatch.End();
+            CurrentMap.Draw(Globals.spriteBatch);
         }
 
         public AnimatedSprite CollisionCheck(AnimatedSprite inSprite)

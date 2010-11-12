@@ -16,7 +16,7 @@ namespace ArchanistTower.GameObjects
         water
     }
 
-    class Player : GameObject
+    public class Player : GameObject
     {
         protected Keys MoveLeft;
         protected Keys MoveRight;
@@ -67,24 +67,22 @@ namespace ArchanistTower.GameObjects
             InputCheck();
 
             SpriteAnimation.ClampToArea(
-                GameScreen.gameWorld.CurrentLevel.MapWidthInPixels,
-                GameScreen.gameWorld.CurrentLevel.MapHeightInPixels);
+                GameScreen.gameMap.MapWidthInPixels,
+                GameScreen.gameMap.MapHeightInPixels);
             SpriteAnimation.Update(gameTime);
 
             Globals.camera.LockToTarget(SpriteAnimation, Globals.ScreenWidth, Globals.ScreenHeight);
 
             Globals.camera.ClampToArea(
-                GameScreen.gameWorld.CurrentLevel.MapWidthInPixels - Globals.ScreenWidth,
-                GameScreen.gameWorld.CurrentLevel.MapHeightInPixels - Globals.ScreenHeight);
+                GameScreen.gameMap.MapWidthInPixels - Globals.ScreenWidth,
+                GameScreen.gameMap.MapHeightInPixels - Globals.ScreenHeight);
 
 
         }
 
         public override void Draw()
         {
-            Globals.spriteBatch.Begin();
             SpriteAnimation.Draw(Globals.spriteBatch);
-            Globals.spriteBatch.End();
         }
 
         private void InputCheck()
@@ -119,7 +117,7 @@ namespace ArchanistTower.GameObjects
                 UpdateSpriteAnimation(motion);
                 SpriteAnimation.IsAnimating = true;
 
-                GameScreen.gameWorld.CurrentLevel.CollisionCheck(SpriteAnimation);
+                GameScreen.gameMap.CollisionCheck(SpriteAnimation);
             }
 
             else

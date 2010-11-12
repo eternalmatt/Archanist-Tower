@@ -12,6 +12,7 @@ namespace ArchanistTower.Screens
     public class GameScreen : Screen
     { 
         public static GameWorld gameWorld;
+        public static Level gameMap;
          
         public GameScreen() 
         {
@@ -22,9 +23,7 @@ namespace ArchanistTower.Screens
         protected override void Initialize()
         {
             Name = "GameScreen";
-
-            gameWorld.AddObject(new Player());
-            gameWorld.AddFirstLevel();
+            gameMap = new Level("Levels\\TestMap\\TestMap", new Player());
         }
 
         protected override void Unload()
@@ -43,7 +42,10 @@ namespace ArchanistTower.Screens
 
         protected override void Draw()
         {
+            Globals.spriteBatch.Begin();
+            gameMap.Draw();
             gameWorld.Draw();
+            Globals.spriteBatch.End();
         }
 
     }

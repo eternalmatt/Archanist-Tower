@@ -13,7 +13,7 @@ namespace ArchanistTower
     public class Enemy 
     {
         AnimatedSprite sprite;
-        List<Level> levelList = new List<Level>();
+        //List<Level> levelList = new List<Level>();
         int currentLevel = 0;
 
         
@@ -45,8 +45,8 @@ namespace ArchanistTower
 
         public void Initialize()
         {
-            Level testLevel = new Level();
-            levelList.Add(testLevel);
+            //Level testLevel = new Level();
+            //levelList.Add(testLevel);
 
             sprite = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Player/man1"));
 
@@ -76,7 +76,7 @@ namespace ArchanistTower
             //AddMapsToLevel();
 
             //Load Player Sprites
-            levelList[currentLevel].MapStartPosition(sprite);
+            //levelList[currentLevel].MapStartPosition(sprite);
             sprite.OriginOffset = new Vector2(16, 32);
         }
 
@@ -139,7 +139,7 @@ namespace ArchanistTower
             UpdateSpriteAnimation(direction);
             sprite.IsAnimating = true;
             
-            sprite = levelList[currentLevel].CollisionCheck(sprite);
+            //sprite = levelList[currentLevel].CollisionCheck(sprite);
 
             if (currentSpeed == 0.0f)
             {
@@ -267,7 +267,7 @@ namespace ArchanistTower
                    SaveStateMode.None,
                    Globals.camera.TransformMatrix);
 
-            levelList[currentLevel].Draw(Globals.spriteBatch);
+            //levelList[currentLevel].Draw(Globals.spriteBatch);
             //Globals.shader.Draw();
             sprite.Draw(Globals.spriteBatch);
 

@@ -12,18 +12,11 @@ namespace ArchanistTower
     {
 
         public List<GameObject> gameObjects;
-        public List<Level> Levels;
         protected int currentLevel;
         ShaderCode shader = new ShaderCode();
 
-        public Level CurrentLevel
-        {
-            get { return Levels[currentLevel]; }
-        }
-
         public GameWorld()
         {
-            Levels = new List<Level>();
             gameObjects = new List<GameObject>();
             shader.Initialize();
             shader.LoadContent();
@@ -32,11 +25,6 @@ namespace ArchanistTower
         public void AddObject(GameObject obj)
         {
             gameObjects.Add(obj);
-        }
-
-        public void AddLevel(Level l)
-        {
-            Levels.Add(l);
         }
 
         public void Update(GameTime gameTime)
@@ -57,20 +45,11 @@ namespace ArchanistTower
 
         public void Draw()
         {
-            shader.DrawSetup();
-            CurrentLevel.Draw(Globals.spriteBatch);
-
+            //shader.DrawSetup();
             for (int i = 0; i < gameObjects.Count; i++)
                 gameObjects[i].Draw();
-            shader.Draw();
+           // shader.Draw();
         }
 
-        public void AddFirstLevel()
-        {
-            Map m = Globals.content.Load<Map>("Levels\\TestMap\\TestMap");
-            Level l = new Level();
-            l.AddMap(m);
-            Levels.Add(l);
-        }
     }
 }
