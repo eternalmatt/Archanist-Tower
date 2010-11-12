@@ -45,10 +45,10 @@ namespace ArchanistTower
 
         public void Draw()
         {
-            //shader.DrawSetup();
+            shader.DrawSetup();
             for (int i = 0; i < gameObjects.Count; i++)
                 gameObjects[i].Draw();
-           // shader.Draw();
+            shader.Draw();
         }
 
     }

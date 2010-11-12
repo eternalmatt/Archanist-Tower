@@ -83,6 +83,7 @@ namespace ArchanistTower.GameObjects
         public override void Draw()
         {
             SpriteAnimation.Draw(Globals.spriteBatch);
+            Globals.spriteBatch.End();
         }
 
         private void InputCheck()

@@ -36,10 +36,6 @@ namespace ArchanistTower
         RenderTarget2D renderTarget;
         Texture2D SceneTexture;
 
-
-        // Matrices
-        Matrix  worldMatrix, projMatrix;
-
         public ShaderCode()
         {
             // TODO: Construct any child components here
@@ -62,8 +58,6 @@ namespace ArchanistTower
             
             effect = Globals.content.Load<Effect>("Shaders/BaseShader");
             effectPost = Globals.content.Load<Effect>("Shaders/GrayingEffect");
-            blendTexturePosition = effectPost.Parameters["blendTexturePosition"];
-            blendTexturePosition2 = effectPost.Parameters["blendTexturePosition2"];
         }
         public void LoadContent()
         {
@@ -83,37 +77,12 @@ namespace ArchanistTower
         }
         public void Draw()
         {
-           /* if (blendTexturePos.X > 1.0)
-                blendTexturePos.X = 0.0f;
-
-            if (blendTexturePos.Y > 1.0)
-                blendTexturePos.Y = 0.0f;
-
-            blendTexturePos.X += .01f;
-            blendTexturePos.Y += .01f;
-
-            // Blend the textures
-            blendTexturePosition.SetValue(blendTexturePos);
-
-            // Shader texture two - start one the other side
-            if (blendTexturePos2.X > 1.0)
-                blendTexturePos2.X = 0.0f;
-
-            if (blendTexturePos2.Y > 1.0)
-                blendTexturePos2.Y = 0.0f;
-
-            // Blend the textures
-            blendTexturePos2.X -= .01f;
-            blendTexturePos2.Y += .01f;
-
-            // Blend the texturess together
-            blendTexturePosition2.SetValue(blendTexturePos2);*/
             graphics.GraphicsDevice.SetRenderTarget(0, null);
             SceneTexture = renderTarget.GetTexture();
 
             // Render the scene with Edge Detection, using the render target from last frame.
             graphics.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
-
+            //spriteBatch.End();
             spriteBatch.Begin(SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.SaveState);
             {
                 // Apply the post process shader

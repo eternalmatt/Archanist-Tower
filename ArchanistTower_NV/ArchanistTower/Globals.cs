@@ -25,9 +25,7 @@ namespace ArchanistTower
         public static Camera camera;
         public static InputManager input;
         public static ScreenManager screenManager;
-        //public static ShaderCode shader;
-        //public static Effect effect; 
-        //public static Effect effectPost;
+
 
         public static GraphicsDevice GraphicsDevice
         {
@@ -47,9 +45,7 @@ namespace ArchanistTower
 
             input = new InputManager();
 
-          //  shader = new ShaderCode();
-            //effect = Globals.content.Load<Effect>("Shaders/BaseShader");
-            //effectPost = Globals.content.Load<Effect>("Shaders/GrayingEffect");
+
         }
 
         public static void LoadContent()
@@ -57,7 +53,7 @@ namespace ArchanistTower
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = content.Load<SpriteFont>("Fonts/Arial");
             menuFont = content.Load<SpriteFont>("Fonts/menufont");
-            //shader.LoadContent();
+
         }
 
         public static void SetResolution(Vector2 res, bool fullScreen)

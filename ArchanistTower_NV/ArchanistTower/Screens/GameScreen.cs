@@ -45,7 +45,7 @@ namespace ArchanistTower.Screens
             Globals.spriteBatch.Begin();
             gameMap.Draw();
             gameWorld.Draw();
-            Globals.spriteBatch.End();
+            //Globals.spriteBatch.End();
         }
 
     }
