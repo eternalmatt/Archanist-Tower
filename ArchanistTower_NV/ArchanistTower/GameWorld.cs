@@ -91,11 +91,11 @@ namespace ArchanistTower
 
         public void Draw()
         {
-            shader.DrawSetup();
+            //shader.DrawSetup();
             map.Draw(Globals.spriteBatch);
             for (int i = 0; i < gameObjects.Count; i++)
                 gameObjects[i].Draw();            
-            shader.Draw();
+            //shader.Draw();
         }
 
         #region Load

@@ -22,7 +22,7 @@ namespace ArchanistTower.Screens
         Rectangle imageRectangle;
 
         float FadeValue;
-        float FadeSpeed = 60.0f;
+        float FadeSpeed = 120.0f;
 
         int Selection;
 
@@ -71,7 +71,7 @@ namespace ArchanistTower.Screens
                         Globals.screenManager.FindScreen("GameScreen").Activate();
                         // sleep for 100ms so that it won't jump straight back to game after exiting
                         // can't think of a better solution right now
-                        Thread.Sleep(100);
+                        //Thread.Sleep(100);
                         break;
                     case 1:
                         this.Destroy();
@@ -79,19 +79,19 @@ namespace ArchanistTower.Screens
                         Globals.screenManager.AddScreen(new MenuScreen());
                         // sleep for 100ms so that it won't jump straight back to game after exiting
                         // can't think of a better solution right now
-                        Thread.Sleep(100);
+                        //Thread.Sleep(100);
                         break;
                 }
             }
 
             float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (FadeValue < 16)
+            if (FadeValue < 125)
             {
                 FadeValue = FadeValue + (timeDelta * FadeSpeed);
             }
             else
             {
-                FadeValue = 16;
+                FadeValue = 125;
             }            
         }
 

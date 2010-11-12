@@ -21,7 +21,7 @@ namespace ArchanistTower.Screens
         Rectangle imageRectangle;
 
         float FadeValue;
-        float FadeSpeed = 15.0f;
+        float FadeSpeed = 120.0f;
 
         public SplashScreen()
         {
