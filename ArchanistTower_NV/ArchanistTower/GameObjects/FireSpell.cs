@@ -51,6 +51,15 @@ namespace ArchanistTower.GameObjects
 
         }
 
+
+        public override void Collision(GameObject o)
+        {
+            if (o is Enemy)
+            {
+                o.Health -= 50;
+                Dead = true;
+            }
+        }
         
     }
 }

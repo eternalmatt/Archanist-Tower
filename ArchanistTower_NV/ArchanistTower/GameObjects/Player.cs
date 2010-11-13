@@ -33,6 +33,7 @@ namespace ArchanistTower.GameObjects
 
         public Player(Vector2 startPosition)
         {
+            Health = 100;
             Initialize();
             SpriteAnimation.Position = startPosition;
         }
@@ -80,8 +81,8 @@ namespace ArchanistTower.GameObjects
             Globals.camera.ClampToArea(
                 GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth,
                 GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);
-
         }
+
 
         private void InputCheck()
         {
@@ -190,13 +191,16 @@ namespace ArchanistTower.GameObjects
                 }
             }
             //Not sure that spell will be handled here...maybe in the spell class.
-            if (o.GetType() == typeof(Spell))
+            else if (o.GetType() == typeof(Spell))
             {
                 if (o.GetType() == typeof(FireSpell))
                 {
 
                 }
             }
+
+            if (Health <= 0)           
+                GameScreen.GameOver();           
         }
 
 
@@ -207,7 +211,15 @@ namespace ArchanistTower.GameObjects
                 case FacingDirection.Left:
                     SpriteAnimation.Position.X += 20;
                     break;
-
+                case FacingDirection.Right:
+                    SpriteAnimation.Position.X -= 20;
+                    break;
+                case FacingDirection.Up:
+                    SpriteAnimation.Position.Y += 20;
+                    break;
+                case FacingDirection.Down:
+                    SpriteAnimation.Position.Y -= 20;
+                    break;
             }
         }
     }

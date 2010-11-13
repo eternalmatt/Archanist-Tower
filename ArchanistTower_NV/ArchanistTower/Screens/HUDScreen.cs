@@ -31,7 +31,7 @@ namespace ArchanistTower.Screens
 
         protected override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            PlayerHealth = 3;
+            PlayerHealth = GameScreen.gameWorld.GameObjects[0].Health;
 
         }
 

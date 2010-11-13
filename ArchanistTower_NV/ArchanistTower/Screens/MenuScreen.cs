@@ -44,9 +44,13 @@ namespace ArchanistTower.Screens
 
         protected override void Update(GameTime gameTime)
         {
-            if (Globals.input.KeyJustPressed(Keys.Up))
+            if (Globals.input.KeyJustPressed(Keys.Up) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickUp) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadUp))
                 Selection--;
-            if (Globals.input.KeyJustPressed(Keys.Down))
+            if (Globals.input.KeyJustPressed(Keys.Down) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickDown) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadDown))
                 Selection++;
 
             if (Selection < 0)
@@ -54,7 +58,8 @@ namespace ArchanistTower.Screens
             if (Selection > 1)
                 Selection = 0;
 
-            if (Globals.input.KeyJustPressed(Keys.Enter))
+            if (Globals.input.KeyJustPressed(Keys.Enter)||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
             {
                 switch (Selection)
                 {

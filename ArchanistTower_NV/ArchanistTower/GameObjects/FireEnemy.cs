@@ -12,6 +12,7 @@ namespace ArchanistTower.GameObjects
     {
         public FireEnemy(Vector2 startPosition)
         {
+            Health = 100;
             Initialize();
             SpriteAnimation.Position = startPosition;
         }

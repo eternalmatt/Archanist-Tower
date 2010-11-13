@@ -23,6 +23,13 @@ namespace ArchanistTower.Screens
             ScreenToAdd.Enqueue(newScreen);
         }
 
+        public void RemoveScreen(string name)
+        {
+            Screen w = FindScreen(name);
+            if (w != null)
+                ScreenList.Remove(w);
+        }
+
         public Screen FindScreen(string name)
         {
             for(int i = 0; i < ScreenList.Count; i++)

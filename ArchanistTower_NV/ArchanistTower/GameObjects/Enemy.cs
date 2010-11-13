@@ -31,19 +31,24 @@ namespace ArchanistTower.GameObjects
 
         public override void Update(GameTime gameTime)
         {
-            float currentSpeed = 0.0f;
-            if (enemyState == EnemySpriteState.Wander)
+            if (Health <= 0)
+                Dead = true;
+            else
             {
-                Wander(SpriteAnimation.Position, ref spriteWanderDirection, ref enemyOrientation, enemyTurnSpeed);
-                currentSpeed = .25f * enemySpeed;
+                float currentSpeed = 0.0f;
+                if (enemyState == EnemySpriteState.Wander)
+                {
+                    Wander(SpriteAnimation.Position, ref spriteWanderDirection, ref enemyOrientation, enemyTurnSpeed);
+                    currentSpeed = .25f * enemySpeed;
+                }
+
+                Vector2 direction = new Vector2((float)Math.Cos(enemyOrientation), (float)Math.Sin(enemyOrientation));
+                SpriteAnimation.Position += direction * currentSpeed;
+
+
+                UpdateSpriteAnimation(direction);
+                SpriteAnimation.IsAnimating = (currentSpeed != 0.0f) ? true : false;
             }
-
-            Vector2 direction = new Vector2((float)Math.Cos(enemyOrientation), (float)Math.Sin(enemyOrientation));
-            SpriteAnimation.Position += direction * currentSpeed;
-
-
-            UpdateSpriteAnimation(direction);
-            SpriteAnimation.IsAnimating = (currentSpeed != 0.0f) ? true : false;
         }
 
         private void Wander(Vector2 position, ref Vector2 wDirection, ref float orient, float turnSpeed)

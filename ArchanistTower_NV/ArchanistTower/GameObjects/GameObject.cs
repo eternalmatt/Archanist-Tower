@@ -34,7 +34,7 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Draw(Globals.spriteBatch);
         }
 
-        public void WorldCollision()
+        public virtual void WorldCollision()
         {
             SpriteAnimation.Position -= LastMovement;
         }

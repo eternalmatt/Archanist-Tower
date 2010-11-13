@@ -59,6 +59,11 @@ namespace ArchanistTower.Screens
         {
             Globals.screenManager.AddScreen(HUD);
         }
+
+        public static void GameOver()
+        {
+            Globals.screenManager.AddScreen(new GameOverScreen());
+        }
         
     }
 }

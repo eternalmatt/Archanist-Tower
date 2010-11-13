@@ -21,6 +21,11 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Draw(Globals.spriteBatch);
         }
 
+        public override void WorldCollision()
+        {
+            Dead = true;    
+        }
+
        
     }
 }
