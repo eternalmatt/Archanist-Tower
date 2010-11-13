@@ -129,6 +129,8 @@ namespace ArchanistTower.GameObjects
             {
                 if(selectedSpell == SelectedSpell.fire)
                     GameScreen.gameWorld.AddObject(new FireSpell(direction, SpriteAnimation.Position));
+                if(selectedSpell == SelectedSpell.wind)
+                    GameScreen.gameWorld.AddObject(new WindSpell(direction, SpriteAnimation.Position));
             }
         }
 
