@@ -27,7 +27,10 @@ namespace ArchanistTower.GameObjects
         public virtual void Collision(GameObject o) { }
         public virtual void Initialize() { }
         public virtual void Update(GameTime gameTime) { }
-        public virtual void Draw() { }
+        public virtual void Draw() 
+        {
+            SpriteAnimation.Draw(Globals.spriteBatch);
+        }
 
         public void Collision()
         {

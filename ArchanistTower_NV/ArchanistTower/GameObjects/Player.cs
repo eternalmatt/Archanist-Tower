@@ -100,14 +100,6 @@ namespace ArchanistTower.GameObjects
             }
         }
 
-        public override void Draw()
-        {
-            SpriteAnimation.Draw(Globals.spriteBatch);
-
-            foreach (Spell spell in spells)
-                spell.Draw();
-        }
-
         private void InputCheck()
         {
             Vector2 movement = Vector2.Zero;
@@ -140,9 +132,9 @@ namespace ArchanistTower.GameObjects
 
             if (Globals.input.KeyJustPressed(SpellCast))
             {
-                Spell spell = new Spell((int)selectedSpell);
-                spell.Cast(SpriteAnimation.CurrentAnimationName, SpriteAnimation.Position);
-                spells.Add(spell);
+                //Spell spell = new Spell((int)selectedSpell);
+                //spell.Cast(SpriteAnimation.CurrentAnimationName, SpriteAnimation.Position);
+                //spells.Add(spell);
             }
         }
 

@@ -46,15 +46,6 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.IsAnimating = (currentSpeed != 0.0f) ? true : false;
         }
 
-        public override void Draw()
-        {
-            SpriteAnimation.Draw(Globals.spriteBatch);
-        }
-
-
-
-
-
         private void Wander(Vector2 position, ref Vector2 wDirection, ref float orient, float turnSpeed)
         {
             wDirection.X += MathHelper.Lerp(-.25f, .25f, (float)random.NextDouble());

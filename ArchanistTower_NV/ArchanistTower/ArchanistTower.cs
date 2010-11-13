@@ -48,7 +48,7 @@ namespace ArchanistTower
         {
             if (Quit)
                 this.Exit();
-            Globals.input.Update();
+            Globals.input.Update();            
             Globals.screenManager.Update(gameTime);            
         }
 

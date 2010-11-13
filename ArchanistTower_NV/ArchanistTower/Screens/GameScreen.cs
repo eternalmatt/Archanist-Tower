@@ -42,7 +42,11 @@ namespace ArchanistTower.Screens
 
         protected override void Draw()
         {
-            Globals.spriteBatch.Begin();
+            Globals.spriteBatch.Begin(
+                SpriteBlendMode.AlphaBlend,
+                SpriteSortMode.Deferred,
+                SaveStateMode.None,
+                Globals.camera.TransformMatrix);
             gameWorld.Draw();
             Globals.spriteBatch.End();
         }

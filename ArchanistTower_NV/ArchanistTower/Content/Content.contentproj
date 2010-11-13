@@ -139,11 +139,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sprites\MapIcons\FireEnemyIcon.png">
+    <None Include="Levels\TestMap\FireEnemyIcon.png">
       <Name>FireEnemyIcon</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
