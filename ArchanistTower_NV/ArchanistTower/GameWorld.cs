@@ -82,14 +82,53 @@ namespace ArchanistTower
                             if (Math.Abs(GameObjects[i].SpriteAnimation.Position.X - GameObjects[j].SpriteAnimation.Position.X) <= GameObjects[i].CollisionRadius &&
                                Math.Abs(GameObjects[i].SpriteAnimation.Position.Y - GameObjects[j].SpriteAnimation.Position.Y) <= GameObjects[i].CollisionRadius)
                                 if (GameObjects[i].SpriteAnimation.Bounds.Intersects(GameObjects[j].SpriteAnimation.Bounds))
-                                    GameObjects[i].Collision(GameObjects[j]);
-                
+                                    if (PerPixelCollision(GameObjects[i].Bounds, GameObjects[i].SpriteTexture, GameObjects[j].Bounds, GameObjects[j].SpriteTexture))
+                                        GameObjects[i].Collision(GameObjects[j]);
                 
                 if (GameObjects[i].Dead)
                     GameObjects.RemoveAt(i);
             }
-            
+
         }
+
+        #region PerPixelCollision
+        private bool PerPixelCollision(Rectangle rectangleA, Texture2D textureA, Rectangle rectangleB, Texture2D textureB)
+        {
+            int areaA = textureA.Width * textureA.Height;
+            int areaB = textureB.Width * textureB.Height;
+            Color[] dataA = new Color[areaA];
+            Color[] dataB = new Color[areaB];
+            textureA.GetData(0, null, dataA, 0, areaA);
+            textureB.GetData(0, null, dataB, 0, areaB);
+
+            // Find the bounds of the rectangle intersection
+            int top = Math.Max(rectangleA.Top, rectangleB.Top);
+            int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
+            int left = Math.Max(rectangleA.Left, rectangleB.Left);
+            int right = Math.Min(rectangleA.Right, rectangleB.Right);
+
+            // Check every point within the intersection bounds
+            for (int y = top; y < bottom; y++)
+                for (int x = left; x < right; x++)
+                    if (dataA[(x - rectangleA.Left) + (y - rectangleA.Top) * rectangleA.Width].A != 0 &&
+                        dataB[(x - rectangleB.Left) + (y - rectangleB.Top) * rectangleB.Width].A != 0)
+                        return true;
+            /* I modified this section to sacrifice readability for better CPU by avoiding 
+             * the repeated copying of large arrays of objects.
+            // Get the color of both pixels at this point
+            Color colorA = dataA[(x - rectangleA.Left) + (y - rectangleA.Top) * rectangleA.Width];
+            Color colorB = dataB[(x - rectangleB.Left) + (y - rectangleB.Top) * rectangleB.Width];
+                    
+            // If both pixels are not completely transparent,
+            if (colorA.A != 0 && colorB.A != 0)
+            {
+                return true;// then an intersection has been found
+            }
+            */
+            return false;// No intersection found
+        }
+        #endregion
+
 
         public void Draw()
         {
