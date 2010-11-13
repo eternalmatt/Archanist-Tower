@@ -14,32 +14,31 @@ namespace ArchanistTower.GameObjects
     {
         public FacingDirection Direction { get; set; }
         public Vector2 SpellOrigin { get; set; }
-        public Vector2 Motion { get; set; }
-        
+        public Vector2 Motion { get; set; }        
 
         public override void Draw()
         {
             SpriteAnimation.Draw(Globals.spriteBatch);
         }
 
-        public void Cast(string s, Vector2 p)
+        public void Cast()
         {
             Vector2 offset;
-            switch (s)
+            switch (Direction)
             {
-                case "Up":
+                case FacingDirection.Up:
                     Motion = new Vector2(0, -1);
                     offset = new Vector2(8, -16);
                     break;
-                case "Down":
+                case FacingDirection.Down:
                     Motion = new Vector2(0, 1);
                     offset = new Vector2(8, 24);
                     break;
-                case "Left":
+                case FacingDirection.Left:
                     Motion = new Vector2(-1, 0);
                     offset = new Vector2(0, 16);
                     break;
-                case "Right":
+                case FacingDirection.Right:
                     Motion = new Vector2(1, 0);
                     offset = new Vector2(24, 16);
                     break;
@@ -48,7 +47,7 @@ namespace ArchanistTower.GameObjects
                     offset = Vector2.Zero;
                     break;
             }
-            SpriteAnimation.Position = p + offset;
+            SpriteAnimation.Position = SpellOrigin + offset;
         }
     }
 }
