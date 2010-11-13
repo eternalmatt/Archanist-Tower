@@ -14,7 +14,7 @@ namespace ArchanistTower.GameObjects
     {
         public enum SpellType
         {
-            Fire = 0,
+            Fire,
             Wind,
             Water
         }
@@ -28,7 +28,6 @@ namespace ArchanistTower.GameObjects
         public Spell(int i)
         {
             selectedSpell = (SpellType)i;
-            Speed = 1.5f;
 
             SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Spells/spellsprites"));
 
@@ -40,30 +39,24 @@ namespace ArchanistTower.GameObjects
             wind.FramesPerSecond = 10;
             SpriteAnimation.Animations.Add("Wind", wind);
 
-            if ((int)selectedSpell == 1)
+            if ((int)selectedSpell == 0)
                 SpriteAnimation.CurrentAnimationName = "Fire";
-            if ((int)selectedSpell == 2)
+            if ((int)selectedSpell == 1)
                 SpriteAnimation.CurrentAnimationName = "Wind";
 
             SpriteAnimation.IsAnimating = true;
         }
 
         public override void Initialize()
-        {
-            
-        }
+        { }
 
         public void LoadContent()
-        {
-
-        }
+        { }
 
         public override void Update(GameTime gameTime)
         {
-            float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
             SpriteAnimation.Position += motion * SpriteAnimation.Speed;
-
-            SpriteAnimation.Update(gameTime);            
+            SpriteAnimation.Update(gameTime);         
         }
 
         public override void Draw()

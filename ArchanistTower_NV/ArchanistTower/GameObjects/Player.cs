@@ -32,6 +32,7 @@ namespace ArchanistTower.GameObjects
         SelectedSpell selectedSpell;
 
         List<Spell> spells;
+        List<Spell> spellsToRemove;
 
         public Player(Vector2 startPosition)
         {
@@ -65,15 +66,11 @@ namespace ArchanistTower.GameObjects
             SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space);
             
             spells = new List<Spell>();
+            spellsToRemove = new List<Spell>();
         }
 
         public override void Update(GameTime gameTime)
         {
-            foreach (Spell spell in spells)
-            {
-                spell.Update(gameTime);
-            }
-
             InputCheck();
 
             SpriteAnimation.ClampToArea(
@@ -85,7 +82,22 @@ namespace ArchanistTower.GameObjects
 
             Globals.camera.ClampToArea(
                 GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth,
-                GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);            
+                GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);
+
+            foreach (Spell spell in spells)
+            {
+                spell.Update(gameTime);
+                if (spell.SpriteAnimation.Position.X > Globals.ScreenWidth ||
+                    spell.SpriteAnimation.Position.X < 0 ||
+                    spell.SpriteAnimation.Position.Y > Globals.ScreenHeight ||
+                    spell.SpriteAnimation.Position.Y < 0)
+                    spellsToRemove.Add(spell);
+            }
+
+            foreach (Spell spell in spellsToRemove)
+            {
+                spells.Remove(spell);
+            }
         }
 
         public override void Draw()
