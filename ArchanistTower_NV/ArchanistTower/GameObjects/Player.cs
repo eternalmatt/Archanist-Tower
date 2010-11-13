@@ -31,6 +31,8 @@ namespace ArchanistTower.GameObjects
         protected FacingDirection direction;
         SelectedSpell selectedSpell;
 
+        List<Spell> spells;
+
         public Player(Vector2 startPosition)
         {
             Initialize();
@@ -62,6 +64,7 @@ namespace ArchanistTower.GameObjects
 
             SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space);
             
+            spells = new List<Spell>();
         }
 
         public override void Update(GameTime gameTime)
@@ -78,11 +81,19 @@ namespace ArchanistTower.GameObjects
             Globals.camera.ClampToArea(
                 GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth,
                 GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);
+
+            foreach (Spell spell in spells)
+            {
+                spell.Update(gameTime);
+            }
         }
 
         public override void Draw()
         {
             SpriteAnimation.Draw(Globals.spriteBatch);
+
+            foreach (Spell spell in spells)
+                spell.Draw();
         }
 
         private void InputCheck()
@@ -108,7 +119,19 @@ namespace ArchanistTower.GameObjects
                 SpriteAnimation.IsAnimating = false;
 
             SpriteAnimation.Position += SpriteAnimation.Speed * movement;
-            LastMovement = SpriteAnimation.Speed * movement;            
+            LastMovement = SpriteAnimation.Speed * movement;
+
+            if (Globals.input.KeyPressed(Keys.D1))
+                selectedSpell = SelectedSpell.fire;
+            if (Globals.input.KeyPressed(Keys.D2))
+                selectedSpell = SelectedSpell.wind;
+
+            if (Globals.input.KeyJustPressed(SpellCast))
+            {
+                Spell spell = new Spell((int)selectedSpell);
+                spell.Cast(SpriteAnimation.CurrentAnimationName, SpriteAnimation.Position);
+                spells.Add(spell);
+            }
         }
 
         private void UpdateSpriteAnimation(Vector2 motion)
