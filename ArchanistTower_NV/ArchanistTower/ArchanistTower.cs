@@ -19,6 +19,9 @@ namespace ArchanistTower
     {
         static bool Quit;
 
+        private float _FPS = 0f, _TotalTime = 0f, _DisplayFPS = 0f;
+        SpriteFont Font;
+
         public ArchanistTower()
         {
             Globals.Initialize(this);
@@ -35,6 +38,7 @@ namespace ArchanistTower
         protected override void LoadContent()
         {
             Globals.LoadContent();
+            Font = Globals.content.Load<SpriteFont>("Fonts\\Arial");
             //shader.LoadContent();
 
             Globals.screenManager.AddScreen(new SplashScreen());
@@ -54,9 +58,28 @@ namespace ArchanistTower
 
         protected override void Draw(GameTime gameTime)
         {
+            // Calculate the Frames Per Second
+            float ElapsedTime = (float)gameTime.ElapsedRealTime.TotalSeconds;
+            _TotalTime += ElapsedTime;
+
+            if (_TotalTime >= 1)
+            {
+                _DisplayFPS = _FPS;
+                _FPS = 0;
+                _TotalTime = 0;
+            }
+            _FPS += 1;
+
+            // Format the string appropriately
+            string FpsText = _DisplayFPS.ToString() + " FPS";
+            Vector2 FPSPos = new Vector2((Globals.GraphicsDevice.Viewport.Width - Font.MeasureString(FpsText).X) - 15, 10);
+
             //shader.DrawSetup();
             GraphicsDevice.Clear(Color.Black);
-            Globals.screenManager.Draw(gameTime);       
+            Globals.screenManager.Draw(gameTime);
+            Globals.spriteBatch.Begin();
+            Globals.spriteBatch.DrawString(Font, FpsText, FPSPos, Color.White);
+            Globals.spriteBatch.End();
         }
 
         public static void ExitGame()

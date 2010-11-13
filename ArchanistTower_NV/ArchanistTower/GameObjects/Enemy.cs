@@ -34,8 +34,8 @@ namespace ArchanistTower.GameObjects
             float currentSpeed = 0.0f;
             if (enemyState == EnemySpriteState.Wander)
             {
-                //Wander(SpriteAnimation.Position, ref spriteWanderDirection, ref enemyOrientation, enemyTurnSpeed);
-                //currentSpeed = .25f * enemySpeed;
+                Wander(SpriteAnimation.Position, ref spriteWanderDirection, ref enemyOrientation, enemyTurnSpeed);
+                currentSpeed = .25f * enemySpeed;
             }
 
             Vector2 direction = new Vector2((float)Math.Cos(enemyOrientation), (float)Math.Sin(enemyOrientation));
