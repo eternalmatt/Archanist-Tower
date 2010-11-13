@@ -32,16 +32,13 @@ namespace ArchanistTower.Screens
         protected override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             PlayerHealth = 3;
+
         }
 
         protected override void Draw()
         {
-            Globals.spriteBatch.Begin(
-                SpriteBlendMode.AlphaBlend,
-                SpriteSortMode.Deferred,
-                SaveStateMode.None,
-                Globals.camera.TransformMatrix);
-            Globals.spriteBatch.DrawString(Font, "Health:  " + PlayerHealth.ToString(), new Vector2(5, 25), Color.AntiqueWhite);
+            Globals.spriteBatch.Begin();
+            Globals.spriteBatch.DrawString(Font, "Health:  " + PlayerHealth.ToString(), new Vector2(5, 5), Color.AntiqueWhite);
             Globals.spriteBatch.End(); 
         }
     }
