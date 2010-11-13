@@ -79,9 +79,9 @@ namespace ArchanistTower
                 if (GameObjects[i].Collidable)
                     for (int j = 0; j < GameObjects.Count; j++)
                         if (i != j && GameObjects[j].Collidable)
-                            if (Math.Abs(GameObjects[i].SpriteAnimation.Position.X - GameObjects[j].SpriteAnimation.Position.X) <= GameObjects[i].CollisionRadius ||
+                            if (Math.Abs(GameObjects[i].SpriteAnimation.Position.X - GameObjects[j].SpriteAnimation.Position.X) <= GameObjects[i].CollisionRadius &&
                                Math.Abs(GameObjects[i].SpriteAnimation.Position.Y - GameObjects[j].SpriteAnimation.Position.Y) <= GameObjects[i].CollisionRadius)
-                                if (GameObjects[i].SpriteAnimation.CurrentAnimation.CurrentRect.Intersects(GameObjects[j].SpriteAnimation.CurrentAnimation.CurrentRect))
+                                if (GameObjects[i].SpriteAnimation.Bounds.Intersects(GameObjects[j].SpriteAnimation.Bounds))
                                     GameObjects[i].Collision(GameObjects[j]);
                 
                 

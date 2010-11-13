@@ -28,7 +28,7 @@ namespace ArchanistTower.GameObjects
         protected bool red;
         protected bool blue;
         protected bool green;
-        protected FacingDirection direction;
+        private FacingDirection direction;
         SelectedSpell selectedSpell;
 
         public Player(Vector2 startPosition)
@@ -62,6 +62,7 @@ namespace ArchanistTower.GameObjects
 
             SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space);
 
+            Collidable = true;
             CollisionRadius = 64;
         }
 
@@ -87,13 +88,25 @@ namespace ArchanistTower.GameObjects
             Vector2 movement = Vector2.Zero;
 
             if (Globals.input.KeyPressed(MoveRight))
+            {
                 movement.X = 1;
+                direction = FacingDirection.Right;
+            }
             else if (Globals.input.KeyPressed(MoveLeft))
+            {
                 movement.X = -1;
+                direction = FacingDirection.Left;
+            }
             if (Globals.input.KeyPressed(MoveUp))
+            {
                 movement.Y = -1;
+                direction = FacingDirection.Up;
+            }
             else if (Globals.input.KeyPressed(MoveDown))
+            {
                 movement.Y = 1;
+                direction = FacingDirection.Down;
+            }
 
             if (movement != Vector2.Zero)
             {
@@ -165,11 +178,11 @@ namespace ArchanistTower.GameObjects
 
         public override void Collision(GameObject o)
         {
-            if (o.GetType() == typeof(Enemy))
+            if (o is Enemy)
             {
-                if (o.GetType() == typeof(FireEnemy))
+                if (o is FireEnemy)
                 {
-                    WorldCollision();
+                    EnemyCollision();
                     Health -= 15;
                 }
             }
@@ -180,6 +193,17 @@ namespace ArchanistTower.GameObjects
                 {
 
                 }
+            }
+        }
+
+        private void EnemyCollision()
+        {
+            switch (direction)
+            {
+                case FacingDirection.Left:
+                    SpriteAnimation.Position.X += 20;
+                    break;
+
             }
         }
     }

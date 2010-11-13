@@ -15,6 +15,7 @@ namespace ArchanistTower.GameObjects
         public int Health { get; set; }
         public Vector2 LastMovement { get; set; }
         public int CollisionRadius { get; set; }
+
         
         public enum FacingDirection
         {

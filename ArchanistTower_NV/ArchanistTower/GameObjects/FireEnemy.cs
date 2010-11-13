@@ -38,6 +38,9 @@ namespace ArchanistTower.GameObjects
 
             SpriteAnimation.CurrentAnimationName = "Down";
             Direction = FacingDirection.Down;
+
+            Collidable = true;
+            CollisionRadius = 64;
         }
 
         public override void Update(GameTime gameTime)
