@@ -61,8 +61,8 @@ namespace ArchanistTower.GameObjects
             direction = FacingDirection.Down;
 
             SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space);
-            
 
+            CollisionRadius = 64;
         }
 
         public override void Update(GameTime gameTime)
@@ -162,7 +162,26 @@ namespace ArchanistTower.GameObjects
             SpellCast = cast;
         }
 
-        
+
+        public override void Collision(GameObject o)
+        {
+            if (o.GetType() == typeof(Enemy))
+            {
+                if (o.GetType() == typeof(FireEnemy))
+                {
+                    WorldCollision();
+                    Health -= 15;
+                }
+            }
+            //Not sure that spell will be handled here...maybe in the spell class.
+            if(o.GetType() == typeof(Spell))
+            {
+                if(o.GetType() == typeof(FireSpell))
+                {
+
+                }
+            }
+        }
     }
 
 }

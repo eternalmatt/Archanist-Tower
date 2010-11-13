@@ -11,7 +11,7 @@ namespace ArchanistTower
     public class GameWorld
     {
         Map map;
-        public List<GameObject> gameObjects;
+        public List<GameObject> GameObjects;
         ShaderCode shader = new ShaderCode();
 
         public int TileWidth
@@ -36,7 +36,7 @@ namespace ArchanistTower
 
         public GameWorld()
         {
-            gameObjects = new List<GameObject>();
+            GameObjects = new List<GameObject>();
             shader.Initialize();
             shader.LoadContent();
         }
@@ -50,41 +50,43 @@ namespace ArchanistTower
 
         public void AddObject(GameObject obj)
         {
-            gameObjects.Add(obj);
+            GameObjects.Add(obj);
         }
 
         public void Update(GameTime gameTime)
         {
-            for (int i = 0; i < gameObjects.Count; i++)
+            for (int i = 0; i < GameObjects.Count; i++)
             {
-                gameObjects[i].Update(gameTime);
-                if (gameObjects[i] is Player)
-                {
-                    foreach (Rectangle clip in Level.ClipMap.Values)
-                        if (gameObjects[i].SpriteAnimation.Bounds.Intersects(clip))
-                        {
-                            gameObjects[i].Collision();
-                            break;
-                        }
-                    foreach (Portal portal in Level.Portals)
+                GameObjects[i].Update(gameTime);
+                foreach (Rectangle clip in Level.ClipMap.Values)
+                    if (GameObjects[i].SpriteAnimation.Bounds.Intersects(clip))
                     {
-                        if (gameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
+                        GameObjects[i].WorldCollision();
+                        break;
+                    }
+                if (GameObjects[i].GetType() == typeof(Player)) 
+                    foreach (Portal portal in Level.Portals)
+                    {                  
+                        if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
                         {
                             LoadMap(portal.DestinationMap);
-                            gameObjects[i].SpriteAnimation.Position = new Vector2(
+                            GameObjects[i].SpriteAnimation.Position = new Vector2(
                                 (portal.DestinationTileLocation.X * map.TileWidth) + (map.TileWidth / 2),
                                 (portal.DestinationTileLocation.X * map.TileHeight) + (map.TileHeight / 2));
                         }
-                    }
                 }
-                       
-                //if (gameObjects[i].Colldable)
-                 //   for (int j = 0; j < gameObjects.Count; j++)
-                 //       if (i != j)
-                 //           gameObjects[i].Collision(gameObjects[j]);
+                //Makes as many inexpensive checks before checking intersection
+                if (GameObjects[i].Collidable)
+                    for (int j = 0; j < GameObjects.Count; j++)
+                        if (i != j && GameObjects[j].Collidable)
+                            if (Math.Abs(GameObjects[i].SpriteAnimation.Position.X - GameObjects[j].SpriteAnimation.Position.X) <= GameObjects[i].CollisionRadius ||
+                               Math.Abs(GameObjects[i].SpriteAnimation.Position.Y - GameObjects[j].SpriteAnimation.Position.Y) <= GameObjects[i].CollisionRadius)
+                                if (GameObjects[i].SpriteAnimation.CurrentAnimation.CurrentRect.Intersects(GameObjects[j].SpriteAnimation.CurrentAnimation.CurrentRect))
+                                    GameObjects[i].Collision(GameObjects[j]);
                 
-                if (gameObjects[i].Dead)
-                    gameObjects.RemoveAt(i);
+                
+                if (GameObjects[i].Dead)
+                    GameObjects.RemoveAt(i);
             }
             
         }
@@ -93,8 +95,8 @@ namespace ArchanistTower
         {
             //shader.DrawSetup();
             map.Draw(Globals.spriteBatch);
-            for (int i = 0; i < gameObjects.Count; i++)
-                gameObjects[i].Draw();            
+            for (int i = 0; i < GameObjects.Count; i++)
+                GameObjects[i].Draw();            
             //shader.Draw();
         }
 
@@ -118,7 +120,7 @@ namespace ArchanistTower
                         if (Level.Player == null)
                         {
                             Level.Player = new Player(new Vector2(obj.Bounds.X, obj.Bounds.Y));
-                            gameObjects.Add((Player)Level.Player);
+                            GameObjects.Add((Player)Level.Player);
                             //gameObjects.Add(new FireEnemy(new Vector2(obj.Bounds.X, obj.Bounds.Y)));
                         }
                         break;
@@ -169,7 +171,7 @@ namespace ArchanistTower
                         int enemyX = x * map.TileWidth;
                         int enemyY = y * map.TileHeight;
                         if (enemyType == "Fire")
-                            gameObjects.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
+                            GameObjects.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
                     }
                 }
             

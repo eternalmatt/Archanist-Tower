@@ -14,6 +14,7 @@ namespace ArchanistTower.GameObjects
         public AnimatedSprite SpriteAnimation { get; set; }
         public int Health { get; set; }
         public Vector2 LastMovement { get; set; }
+        public int CollisionRadius { get; set; }
         
         public enum FacingDirection
         {
@@ -32,7 +33,7 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Draw(Globals.spriteBatch);
         }
 
-        public void Collision()
+        public void WorldCollision()
         {
             SpriteAnimation.Position -= LastMovement;
         }
