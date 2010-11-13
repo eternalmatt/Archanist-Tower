@@ -69,6 +69,11 @@ namespace ArchanistTower.GameObjects
 
         public override void Update(GameTime gameTime)
         {
+            foreach (Spell spell in spells)
+            {
+                spell.Update(gameTime);
+            }
+
             InputCheck();
 
             SpriteAnimation.ClampToArea(
@@ -80,12 +85,7 @@ namespace ArchanistTower.GameObjects
 
             Globals.camera.ClampToArea(
                 GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth,
-                GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);
-
-            foreach (Spell spell in spells)
-            {
-                spell.Update(gameTime);
-            }
+                GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);            
         }
 
         public override void Draw()

@@ -73,25 +73,31 @@ namespace ArchanistTower.GameObjects
 
         public void Cast(string s, Vector2 p)
         {
+            Vector2 offset;
             switch (s)
             {
                 case "Up":
                     motion = new Vector2(0, -1);
+                    offset = new Vector2(8, -16);
                     break;
                 case "Down":
                     motion = new Vector2(0, 1);
+                    offset = new Vector2(8, 24);
                     break;
                 case "Left":
                     motion = new Vector2(-1, 0);
+                    offset = new Vector2(0, 16);
                     break;
                 case "Right":
                     motion = new Vector2(1, 0);
+                    offset = new Vector2(24, 16);
                     break;
                 default:
                     motion = Vector2.Zero;
+                    offset = Vector2.Zero;
                     break;
             }
-            SpriteAnimation.Position = p;
+            SpriteAnimation.Position = p + offset;
         }
     }
 }
