@@ -119,6 +119,7 @@ namespace ArchanistTower
                         {
                             Level.Player = new Player(new Vector2(obj.Bounds.X, obj.Bounds.Y));
                             gameObjects.Add((Player)Level.Player);
+                            gameObjects.Add(new FireEnemy(new Vector2(obj.Bounds.X, obj.Bounds.Y)));
                         }
                         break;
 

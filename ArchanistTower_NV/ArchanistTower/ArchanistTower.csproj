@@ -93,6 +93,7 @@
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="GameObjects\Enemy.cs" />
+    <Compile Include="GameObjects\FireEnemy.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameWorld.cs" />
@@ -109,7 +110,6 @@
     <Compile Include="ArchanistTower.cs" />
     <Compile Include="ResolutionManager.cs">
     </Compile>
-    <Compile Include="Enemy.cs" />
     <Compile Include="Screens\GameScreen.cs" />
     <Compile Include="Screens\MenuComponent.cs" />
     <Compile Include="Screens\MenuScreen.cs" />

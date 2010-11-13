@@ -8,11 +8,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ArchanistTower.GameObjects
 {
-    class Enemy : GameObject
+    public class Enemy : GameObject
     {
 
         /*This isnt the place to place the code for a specific enemy.  This needs to be the 
          * general methods and properties that all enemies will have.
          */
+
+        public FacingDirection Direction { get; set; }
+
+
     }
 }

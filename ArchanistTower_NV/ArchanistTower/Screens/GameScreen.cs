@@ -12,9 +12,7 @@ namespace ArchanistTower.Screens
 {
     public class GameScreen : Screen
     { 
-        public static GameWorld gameWorld;
-        //public static Level gameMap;
-        
+        public static GameWorld gameWorld;        
          
         public GameScreen() 
         {
@@ -45,7 +43,6 @@ namespace ArchanistTower.Screens
         protected override void Draw()
         {
             Globals.spriteBatch.Begin();
-            //gameMap.Draw();
             gameWorld.Draw();
             Globals.spriteBatch.End();
         }
