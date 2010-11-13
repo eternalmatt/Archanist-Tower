@@ -12,9 +12,10 @@ namespace ArchanistTower.GameObjects
 {
     public class Spell : GameObject
     {
-        public FacingDirection direction;
-
-        Vector2 motion = Vector2.Zero;
+        public FacingDirection Direction { get; set; }
+        public Vector2 SpellOrigin { get; set; }
+        public Vector2 Motion { get; set; }
+        
 
         public override void Draw()
         {
@@ -27,23 +28,23 @@ namespace ArchanistTower.GameObjects
             switch (s)
             {
                 case "Up":
-                    motion = new Vector2(0, -1);
+                    Motion = new Vector2(0, -1);
                     offset = new Vector2(8, -16);
                     break;
                 case "Down":
-                    motion = new Vector2(0, 1);
+                    Motion = new Vector2(0, 1);
                     offset = new Vector2(8, 24);
                     break;
                 case "Left":
-                    motion = new Vector2(-1, 0);
+                    Motion = new Vector2(-1, 0);
                     offset = new Vector2(0, 16);
                     break;
                 case "Right":
-                    motion = new Vector2(1, 0);
+                    Motion = new Vector2(1, 0);
                     offset = new Vector2(24, 16);
                     break;
                 default:
-                    motion = Vector2.Zero;
+                    Motion = Vector2.Zero;
                     offset = Vector2.Zero;
                     break;
             }
