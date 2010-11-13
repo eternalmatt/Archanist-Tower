@@ -15,6 +15,7 @@ namespace ArchanistTower
         string currentAnimation = null;
         bool animating = true;
         Texture2D texture;
+        public Texture2D SpriteTexture { get { return texture; } }
 
         public Vector2 Position = Vector2.Zero;
         public Vector2 OriginOffset = Vector2.Zero;

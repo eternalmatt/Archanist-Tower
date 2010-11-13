@@ -26,6 +26,8 @@ namespace ArchanistTower
         public static InputManager input;
         public static ScreenManager screenManager;
 
+        public static Vector2 PlayerPosition;
+
 
         public static GraphicsDevice GraphicsDevice
         {
@@ -53,7 +55,6 @@ namespace ArchanistTower
             spriteBatch = new SpriteBatch(GraphicsDevice);
             spriteFont = content.Load<SpriteFont>("Fonts/Arial");
             menuFont = content.Load<SpriteFont>("Fonts/menufont");
-
         }
 
         public static void SetResolution(Vector2 res, bool fullScreen)
