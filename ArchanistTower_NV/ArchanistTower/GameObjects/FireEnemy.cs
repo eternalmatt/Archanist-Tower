@@ -10,12 +10,10 @@ namespace ArchanistTower.GameObjects
 {
     class FireEnemy : Enemy
     {
-        Vector2 startPosition;
-
         public FireEnemy(Vector2 startPosition)
         {
             Initialize();
-            this.startPosition = startPosition;
+            SpriteAnimation.Position = startPosition;
         }
 
         public override void Initialize()

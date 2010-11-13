@@ -19,6 +19,14 @@
  <tileset firstgid="3" name="clip" tilewidth="32" tileheight="32">
   <image source="solid.jpg" trans="ff00ff"/>
  </tileset>
+ <tileset firstgid="4" name="FireEnemy" tilewidth="32" tileheight="32">
+  <image source="FireEnemyIcon.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Layer 1" width="40" height="40">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3OsQ0AMAgDsND/j2blA4rkwbsrScHH3rB98fMDAAAAAG5o7pEKQQAZAAA=
@@ -41,7 +49,7 @@
  </layer>
  <layer name="Enemy" width="40" height="40">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+   H4sIAAAAAAAAC+3VoQ0AAAzDsIL9f/MuGBupZB8QmoQPU9oGgGb+CwAAAFwWplNGpwAZAAA=
   </data>
  </layer>
 </map>

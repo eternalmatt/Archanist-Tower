@@ -119,7 +119,7 @@ namespace ArchanistTower
                         {
                             Level.Player = new Player(new Vector2(obj.Bounds.X, obj.Bounds.Y));
                             gameObjects.Add((Player)Level.Player);
-                            gameObjects.Add(new FireEnemy(new Vector2(obj.Bounds.X, obj.Bounds.Y)));
+                            //gameObjects.Add(new FireEnemy(new Vector2(obj.Bounds.X, obj.Bounds.Y)));
                         }
                         break;
 
@@ -157,27 +157,22 @@ namespace ArchanistTower
 
         private void LoadEnemies()
         {
-            /*
             Level.Enemies = new List<Enemy>();
-            TileLayer enemyLayer = map.GetLayer("Enemies") as TileLayer;
+            TileLayer enemyLayer = map.GetLayer("Enemy") as TileLayer;
             for (int y = 0; y < enemyLayer.Width; y++)
                 for (int x = 0; x < enemyLayer.Height; x++)
                 {
                     Tile tile = enemyLayer.Tiles[x, y];
                     if (tile != null)
                     {
-                        /*
-                        Monster monster = new Monster(new Vector2((x * map.TileWidth) + (map.TileWidth / 2), y * map.TileHeight), new Vector2(138f, 192f), 6);
-                        monster.AssetName = GetMonsterAssetName(tile.GetTileIndex());
-                        monster.Type = GetMonsterType(tile.GetTileIndex());
-                        monster.LoadContent(ScreenManager.Game.Content, monster.AssetName);
-                        monster.UpdateBounds(map.TileWidth, map.TileHeight);
-                        monster.Map = map;
-                        World.Monsters.Add(monster);
-                        
+                        string enemyType = tile.Properties["Type"].RawValue;
+                        int enemyX = x * map.TileWidth;
+                        int enemyY = y * map.TileHeight;
+                        if (enemyType == "Fire")
+                            gameObjects.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
                     }
                 }
-            */
+            
         }
 
         #endregion //Load
