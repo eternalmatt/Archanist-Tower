@@ -103,6 +103,7 @@
     <Compile Include="GameWorld.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="Portal.cs" />
+    <Compile Include="Screens\HUDScreen.cs" />
     <Compile Include="Screens\ScreenManager.cs" />
     <Compile Include="FrameAnimation.cs" />
     <Compile Include="Globals.cs" />
@@ -114,7 +115,6 @@
     <Compile Include="ResolutionManager.cs">
     </Compile>
     <Compile Include="Screens\GameScreen.cs" />
-    <Compile Include="Screens\MenuComponent.cs" />
     <Compile Include="Screens\MenuScreen.cs" />
     <Compile Include="Screens\PauseScreen.cs" />
     <Compile Include="Screens\Screen.cs" />

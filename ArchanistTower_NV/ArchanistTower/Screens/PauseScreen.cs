@@ -69,9 +69,7 @@ namespace ArchanistTower.Screens
                     case 0:
                         this.Destroy();
                         Globals.screenManager.FindScreen("GameScreen").Activate();
-                        // sleep for 100ms so that it won't jump straight back to game after exiting
-                        // can't think of a better solution right now
-                        //Thread.Sleep(100);
+                        Globals.screenManager.FindScreen("HUDScreen").Activate();
                         break;
                     case 1:
                         this.Destroy();

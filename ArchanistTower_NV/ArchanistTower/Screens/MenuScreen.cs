@@ -17,7 +17,6 @@ namespace ArchanistTower.Screens
     public class MenuScreen : Screen
     {
         SpriteFont Font;
-        MenuComponent menuComponent;
         Texture2D image;
         Rectangle imageRectangle;
 

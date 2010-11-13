@@ -12,7 +12,9 @@ namespace ArchanistTower.Screens
 {
     public class GameScreen : Screen
     { 
-        public static GameWorld gameWorld;        
+        public static GameWorld gameWorld;
+
+        HUDScreen HUD;
          
         public GameScreen() 
         {
@@ -23,6 +25,7 @@ namespace ArchanistTower.Screens
         protected override void Initialize()
         {
             Name = "GameScreen";
+            HUD = new HUDScreen();
             gameWorld.Initialize();
         }
 
@@ -51,6 +54,11 @@ namespace ArchanistTower.Screens
             Globals.spriteBatch.End();
         }
 
+
+        public override void OnAdd()
+        {
+            Globals.screenManager.AddScreen(HUD);
+        }
         
     }
 }
