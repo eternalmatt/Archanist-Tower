@@ -23,9 +23,34 @@ namespace ArchanistTower.GameObjects
 
             FrameAnimation cast = new FrameAnimation(4, 16, 16, 0, 0);
             cast.FramesPerSecond = 10;
-            SpriteAnimation.Animations.Add("cast", cast);
+            SpriteAnimation.Animations.Add("Cast", cast);
+            SpriteAnimation.CurrentAnimationName = "Cast";
+            SpriteAnimation.Speed = 5;
+
+            motion = Vector2.Zero;
+
+            if(Direction == FacingDirection.Down)
+                motion.Y = 1;
+            else if(Direction == FacingDirection.Up)
+                motion.Y = -1;
+            else if(Direction == FacingDirection.Left)
+                motion.X = -1;
+            else if(Direction == FacingDirection.Right)
+                motion.X = 1;
+            motion.Normalize();
+            SpriteAnimation.Position = SpellOrigin;
+            Collidable = true;
+            CollisionRadius = 32;
+
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            if (!Dead)
+                SpriteAnimation.Position += SpriteAnimation.Speed * motion;
 
+        }
+
+        
     }
 }

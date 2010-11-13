@@ -120,14 +120,15 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Position += SpriteAnimation.Speed * movement;
             LastMovement = SpriteAnimation.Speed * movement;
 
-            if (Globals.input.KeyPressed(Keys.D1))
+            if (Globals.input.KeyPressed(Keys.F1))
                 selectedSpell = SelectedSpell.fire;
-            if (Globals.input.KeyPressed(Keys.D2))
+            if (Globals.input.KeyPressed(Keys.F2))
                 selectedSpell = SelectedSpell.wind;
 
             if (Globals.input.KeyJustPressed(SpellCast))
             {
-
+                if(selectedSpell == SelectedSpell.fire)
+                    GameScreen.gameWorld.AddObject(new FireSpell(direction, SpriteAnimation.Position));
             }
         }
 
