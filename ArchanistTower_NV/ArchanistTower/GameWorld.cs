@@ -147,7 +147,12 @@ namespace ArchanistTower
             Level.Portals = new List<Portal>();
             Level.ClipMap = new Dictionary<Vector2, Rectangle>();
             Level.Enemies = new List<Enemy>();
-
+            if (Level.Player != null)
+            {
+                Level.Player = (Player)GameObjects[0];
+                GameObjects.Clear();
+                GameObjects.Add(Level.Player);
+            }
             map = Globals.content.Load<Map>(fileName);
 
             MapObjectLayer objects = map.GetLayer("Objects") as MapObjectLayer;
