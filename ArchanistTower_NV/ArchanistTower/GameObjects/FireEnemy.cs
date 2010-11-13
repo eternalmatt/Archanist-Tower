@@ -45,12 +45,8 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.ClampToArea(
                    GameScreen.gameWorld.MapWidthInPixels,
                    GameScreen.gameWorld.MapHeightInPixels);
-            SpriteAnimation.Update(gameTime);   
-        }
-
-        public override void Draw()
-        {
-            SpriteAnimation.Draw(Globals.spriteBatch);
+            SpriteAnimation.Update(gameTime);
+            base.Update(gameTime);
         }
     }
 }
