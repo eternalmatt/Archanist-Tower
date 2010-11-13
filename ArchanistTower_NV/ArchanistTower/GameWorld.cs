@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using ArchanistTower.GameObjects;
 using TiledLib;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ArchanistTower
 {
@@ -82,7 +83,7 @@ namespace ArchanistTower
                             if (Math.Abs(GameObjects[i].SpriteAnimation.Position.X - GameObjects[j].SpriteAnimation.Position.X) <= GameObjects[i].CollisionRadius &&
                                Math.Abs(GameObjects[i].SpriteAnimation.Position.Y - GameObjects[j].SpriteAnimation.Position.Y) <= GameObjects[i].CollisionRadius)
                                 if (GameObjects[i].SpriteAnimation.Bounds.Intersects(GameObjects[j].SpriteAnimation.Bounds))
-                                    if (PerPixelCollision(GameObjects[i].Bounds, GameObjects[i].SpriteTexture, GameObjects[j].Bounds, GameObjects[j].SpriteTexture))
+                                    if (PerPixelCollision(GameObjects[i].SpriteAnimation.Bounds, GameObjects[i].SpriteAnimation.SpriteTexture, GameObjects[j].SpriteAnimation.Bounds, GameObjects[j].SpriteAnimation.SpriteTexture))
                                         GameObjects[i].Collision(GameObjects[j]);
                 
                 if (GameObjects[i].Dead)
