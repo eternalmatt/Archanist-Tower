@@ -10,6 +10,10 @@ namespace ArchanistTower.GameObjects
 {
     class Enemy : GameObject
     {
+
+        /*This isnt the place to place the code for a specific enemy.  This needs to be the 
+         * general methods and properties that all enemies will have.
+         */
         EnemySpriteState enemyState = EnemySpriteState.Wander;
         float enemyOrientation;
         Vector2 spriteWanderDirection;
