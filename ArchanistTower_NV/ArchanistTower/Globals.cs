@@ -25,8 +25,7 @@ namespace ArchanistTower
         public static Camera camera;
         public static InputManager input;
         public static ScreenManager screenManager;
-
-        public static Vector2 PlayerPosition;
+        public static Random random;
 
 
         public static GraphicsDevice GraphicsDevice
@@ -46,6 +45,7 @@ namespace ArchanistTower
             SetResolution(Resolution.ObtainResolution(), false);
 
             input = new InputManager();
+            random = new Random();
 
 
         }

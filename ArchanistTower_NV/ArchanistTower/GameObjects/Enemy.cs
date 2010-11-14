@@ -8,16 +8,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ArchanistTower.GameObjects
 {
-    public abstract class Enemy : GameObject
+    public class Enemy : GameObject
     {
         private float enemyOrientation;
         private Vector2 spriteWanderDirection;
-        private Random random = new Random();
         private float enemySpeed = 1.5f;
         private float enemyTurnSpeed = 0.12f;
         private float enemyChaseDistance = 270.0f;
         private float enemyAttackDistance = 30.0f;
         private const float enemyHysteresis = 15.0f;
+        private readonly Vector2 enemyAttackVelocity = new Vector2(0.5f, 0.5f);
+        private const int enemyAttackRadius = 150;
 
         public FacingDirection Direction { get; set; }
         
@@ -35,6 +36,14 @@ namespace ArchanistTower.GameObjects
             if (Health <= 0) Dead = true;
             else
             {
+                if (Math.Abs(SpriteAnimation.Position.X - PlayerPosition.X) < enemyAttackRadius &&
+                        Math.Abs(SpriteAnimation.Position.Y - PlayerPosition.Y) < enemyAttackRadius)
+                    enemyState = EnemySpriteState.Chase;
+                else
+                    enemyState = EnemySpriteState.Wander;
+
+
+
                 float currentSpeed = 0.0f;
                 if (enemyState == EnemySpriteState.Wander)
                 {
@@ -57,16 +66,23 @@ namespace ArchanistTower.GameObjects
         private Vector2 Chase(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
-            position.X += (float)Math.Cos(orient + enemySpeed);
-            position.Y += (float)Math.Sin(orient + enemySpeed);
+            
+            if (position.X < playerPosition.X)
+                position.X += enemyAttackVelocity.X;
+            else position.X -= enemyAttackVelocity.X;
+
+            if (position.Y < playerPosition.Y)
+                position.Y += enemyAttackVelocity.Y;
+            else position.Y -= enemyAttackVelocity.Y;
+
             return position;
         }
 
 
         private void Wander(Vector2 position, ref Vector2 wDirection, ref float orient, float turnSpeed)
         {
-            wDirection.X += MathHelper.Lerp(-.25f, .25f, (float)random.NextDouble());
-            wDirection.Y += MathHelper.Lerp(-.25f, .25f, (float)random.NextDouble());
+            wDirection.X += MathHelper.Lerp(-.25f, .25f, (float)Globals.random.NextDouble());
+            wDirection.Y += MathHelper.Lerp(-.25f, .25f, (float)Globals.random.NextDouble());
 
             if (wDirection != Vector2.Zero)
             {
