@@ -10,12 +10,18 @@ namespace ArchanistTower.GameObjects
 {
     class FireEnemy : Enemy
     {
+
+        private const int enemyAttackRadius = 70;
+        private readonly Vector2 enemyAttackVelocity = new Vector2(1.2f, 1.2f);
+        private const int enemyChaseRadius = 150;
+
         public FireEnemy(Vector2 startPosition)
         {
             Health = 100;
             Initialize();
             SpriteAnimation.Position = startPosition;
         }
+
 
         public override void Initialize()
         {
@@ -46,11 +52,50 @@ namespace ArchanistTower.GameObjects
 
         public override void Update(GameTime gameTime)
         {
-            SpriteAnimation.ClampToArea(
-                   GameScreen.gameWorld.MapWidthInPixels,
-                   GameScreen.gameWorld.MapHeightInPixels);
-            SpriteAnimation.Update(gameTime);
-            base.Update(gameTime);
+            if (Health <= 0) Dead = true;
+            else
+            {
+                SpriteAnimation.ClampToArea(
+                       GameScreen.gameWorld.MapWidthInPixels,
+                       GameScreen.gameWorld.MapHeightInPixels);
+                SpriteAnimation.Update(gameTime);
+
+                CheckEnemyState();
+
+
+                if (enemyState == EnemySpriteState.Attack)
+                
+                    SpriteAnimation.Position = Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
+                
+
+                base.Update(gameTime);
+            }
+        }
+
+        private void CheckEnemyState()
+        {
+            int distance = (int)Vector2.Distance(SpriteAnimation.Position, PlayerPosition);
+            if (distance < enemyAttackRadius)
+                enemyState = EnemySpriteState.Attack;
+            else if (distance < enemyChaseRadius)
+                enemyState = EnemySpriteState.Chase;
+            else
+                enemyState = EnemySpriteState.Wander;
+        }
+
+        private Vector2 Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed) 
+        {
+            orient = TurnToFace(position, playerPosition, orient, turnSpeed);
+
+            if (position.X < playerPosition.X)
+                position.X += enemyAttackVelocity.X;
+            else position.X -= enemyAttackVelocity.X;
+
+            if (position.Y < playerPosition.Y)
+                position.Y += enemyAttackVelocity.Y;
+            else position.Y -= enemyAttackVelocity.Y;
+
+            return position;
         }
     }
 }
