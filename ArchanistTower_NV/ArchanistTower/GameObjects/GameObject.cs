@@ -16,6 +16,17 @@ namespace ArchanistTower.GameObjects
         public Vector2 LastMovement { get; set; }
         public int CollisionRadius { get; set; }
 
+
+        /// <summary>
+        /// Only enemy classes need this information.
+        /// </summary>
+        public Vector2 PlayerPosition
+        {
+            get;
+            set;
+        }
+
+
         
         public enum FacingDirection
         {

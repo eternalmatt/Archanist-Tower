@@ -66,6 +66,10 @@ namespace ArchanistTower
                         break;
                     }
                 if (GameObjects[i].GetType() == typeof(Player))
+                {
+                    for (int j = 0; j < GameObjects.Count; j++)
+                        if (GameObjects[j].GetType() == typeof(FireEnemy))
+                            GameObjects[j].PlayerPosition = GameObjects[i].SpriteAnimation.Position;
                     foreach (Portal portal in Level.Portals)
                     {
                         if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
@@ -76,6 +80,7 @@ namespace ArchanistTower
                                 (portal.DestinationTileLocation.X * map.TileHeight) + (map.TileHeight / 2));
                         }
                     }
+                }
                 //Makes as many inexpensive checks before checking intersection
                 if (GameObjects[i].Collidable)
                     for (int j = 0; j < GameObjects.Count; j++)
