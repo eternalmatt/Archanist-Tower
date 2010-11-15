@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using ArchanistTower.Screens;
 using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
 
 namespace ArchanistTower.GameObjects
 {
@@ -13,6 +14,7 @@ namespace ArchanistTower.GameObjects
 
         private const int enemyAttackRadius = 70;
         private const int enemyChaseRadius = 150;
+        private Stopwatch stopwatch;
 
         private float enemyAttackVelocity { get { return 1.2f; } }
 
@@ -49,11 +51,17 @@ namespace ArchanistTower.GameObjects
 
             Collidable = true;
             CollisionRadius = 64;
+            stopwatch = new Stopwatch(); 
+            base.Initialize();
         }
 
         public override void Update(GameTime gameTime)
         {
+            if (stopwatch.IsRunning && stopwatch.Elapsed.Seconds >= 3) 
+                stopwatch.Stop();
+
             if (Health <= 0) Dead = true;
+            else if (stopwatch.IsRunning) SpriteAnimation.IsAnimating = false;
             else
             {
                 SpriteAnimation.ClampToArea(
@@ -68,9 +76,25 @@ namespace ArchanistTower.GameObjects
                 {
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
                     SpriteAnimation.Speed = enemyAttackVelocity;
-                }                
+                }
 
                 base.Update(gameTime);
+            }
+        }
+
+
+
+
+        public override void Collision(GameObject obj)
+        {
+            if (obj is Player)
+            {
+                if (!stopwatch.IsRunning)
+                    stopwatch.Start();
+            }
+            else if (obj.GetType() == typeof(Enemy))
+            {
+                WorldCollision();
             }
         }
 
