@@ -11,17 +11,13 @@ namespace ArchanistTower.GameObjects
     public class Enemy : GameObject
     {
         private Vector2 spriteWanderDirection;
-        public float enemySpeed = 1.5f;
-        private float enemyChaseDistance = 270.0f;
-        private float enemyAttackDistance = 30.0f;
         private const float enemyHysteresis = 15.0f;
-        private readonly Vector2 enemyChaseVelocity = new Vector2(0.5f, 0.5f);
-        
+        private float enemyChaseVelocity { get { return 0.5f; } }
+        private float enemyWanderVelocity { get { return 0.75f; } }
 
         public FacingDirection Direction { get; set; }
         public float enemyOrientation;
         public float enemyTurnSpeed = 0.12f;
-
         public EnemySpriteState enemyState = EnemySpriteState.Chase;
         public enum EnemySpriteState
         {
@@ -32,34 +28,31 @@ namespace ArchanistTower.GameObjects
 
         public override void Update(GameTime gameTime)
         {
-            //float currentSpeed = 0.0f;
             if (enemyState == EnemySpriteState.Wander)
             {
                 Wander(SpriteAnimation.Position, ref spriteWanderDirection, ref enemyOrientation, enemyTurnSpeed);
-                SpriteAnimation.Speed = .25f * enemySpeed;
+                SpriteAnimation.Speed = enemyWanderVelocity;
             }
             else if (enemyState == EnemySpriteState.Chase)
             {
                 Chase(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
-                SpriteAnimation.Speed = .25f * enemySpeed;
+                SpriteAnimation.Speed = enemyChaseVelocity;
             }
 
-            //currentSpeed = .25f * enemySpeed;
+
             Vector2 direction = new Vector2((float)Math.Cos(enemyOrientation), (float)Math.Sin(enemyOrientation));
             UpdateSpriteAnimation(direction);
-
-            SpriteAnimation.Position += direction * SpriteAnimation.Speed;
-            LastMovement = direction * SpriteAnimation.Speed;
-
             SpriteAnimation.IsAnimating = (SpriteAnimation.Speed != 0.0f) ? true : false;
-        }
 
+            LastMovement = SpriteAnimation.Speed * direction;
+            SpriteAnimation.Position += LastMovement;
+        }
         
 
-        private void Chase(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
+        public virtual void Chase(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
-            
+            /*
             if (position.X < playerPosition.X)
                 position.X += enemyChaseVelocity.X;
             else position.X -= enemyChaseVelocity.X;
@@ -67,12 +60,12 @@ namespace ArchanistTower.GameObjects
             if (position.Y < playerPosition.Y)
                 position.Y += enemyChaseVelocity.Y;
             else position.Y -= enemyChaseVelocity.Y;
-
+            */
             //return position;
         }
 
 
-        private void Wander(Vector2 position, ref Vector2 wDirection, ref float orient, float turnSpeed)
+        public virtual void Wander(Vector2 position, ref Vector2 wDirection, ref float orient, float turnSpeed)
         {
             wDirection.X += MathHelper.Lerp(-.25f, .25f, (float)Globals.random.NextDouble());
             wDirection.Y += MathHelper.Lerp(-.25f, .25f, (float)Globals.random.NextDouble());

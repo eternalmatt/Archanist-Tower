@@ -12,8 +12,9 @@ namespace ArchanistTower.GameObjects
     {
 
         private const int enemyAttackRadius = 70;
-        private readonly Vector2 enemyAttackVelocity = new Vector2(1.2f, 1.2f);
         private const int enemyChaseRadius = 150;
+
+        private float enemyAttackVelocity { get { return 1.2f; } }
 
         public FireEnemy(Vector2 startPosition)
         {
@@ -64,9 +65,10 @@ namespace ArchanistTower.GameObjects
 
 
                 if (enemyState == EnemySpriteState.Attack)
+                {
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
-                SpriteAnimation.Speed = .25f * enemySpeed;
-                
+                    SpriteAnimation.Speed = enemyAttackVelocity;
+                }                
 
                 base.Update(gameTime);
             }
@@ -86,7 +88,7 @@ namespace ArchanistTower.GameObjects
         private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed) 
         {
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
-
+            /*
             if (position.X < playerPosition.X)
                 position.X += enemyAttackVelocity.X;
             else position.X -= enemyAttackVelocity.X;
@@ -94,6 +96,7 @@ namespace ArchanistTower.GameObjects
             if (position.Y < playerPosition.Y)
                 position.Y += enemyAttackVelocity.Y;
             else position.Y -= enemyAttackVelocity.Y;
+             */
 
             //return position;
         }
