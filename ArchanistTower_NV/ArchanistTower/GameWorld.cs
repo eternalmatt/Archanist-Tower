@@ -46,7 +46,8 @@ namespace ArchanistTower
         {
             shader.Initialize();
             shader.LoadContent();
-            LoadMap("Levels//TestMap//TestMap");
+            //LoadMap("Levels//TestMap//TestMap");
+            LoadMap("Levels//TestFireMap//TestFireMap");
         }
 
         public void AddObject(GameObject obj)
@@ -224,7 +225,7 @@ namespace ArchanistTower
                             GameObjects.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
                     }
                 }
-            
+            map.GetLayer("Enemy").Visible = false; 
         }
 
         #endregion //Load

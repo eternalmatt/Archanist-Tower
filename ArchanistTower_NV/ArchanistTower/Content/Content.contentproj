@@ -139,6 +139,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Levels\TestFireMap\TestFireMap.tmx">
+      <Name>TestFireMap</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
     <None Include="Levels\TestMap\FireEnemyIcon.png">
       <Name>FireEnemyIcon</Name>
       <Importer>TextureImporter</Importer>
@@ -151,6 +156,23 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Levels\TestFireMap\FireEnemyIcon.png">
+      <Name>FireEnemyIcon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </None>
+    <None Include="Levels\TestFireMap\lava.png">
+      <Name>lava</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </None>
+    <None Include="Levels\TestFireMap\rock.png">
+      <Name>rock</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
