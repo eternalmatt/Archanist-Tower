@@ -63,6 +63,7 @@ namespace ArchanistTower.Screens
         public static void GameOver()
         {
             Globals.screenManager.AddScreen(new GameOverScreen());
+            Globals.screenManager.FindScreen("GameScreen").Disable();
         }
         
     }

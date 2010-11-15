@@ -199,8 +199,10 @@ namespace ArchanistTower.GameObjects
                 }
             }
 
-            if (Health <= 0)           
-                GameScreen.GameOver();           
+            if (Health <= 0)
+            {
+                GameScreen.GameOver();
+            }
         }
 
 

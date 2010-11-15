@@ -37,6 +37,7 @@ namespace ArchanistTower.Screens
         {
             Font = Globals.content.Load<SpriteFont>("Fonts\\menufont");
             Selection = 0;
+            Name = "MenuScreen";
         }
 
         protected override void Unload()

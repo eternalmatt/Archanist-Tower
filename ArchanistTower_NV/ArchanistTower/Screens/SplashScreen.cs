@@ -31,7 +31,9 @@ namespace ArchanistTower.Screens
         }
 
         protected override void Initialize()
-        { }
+        {
+            Name = "SplashScreen";
+        }
 
         protected override void Unload()
         { }

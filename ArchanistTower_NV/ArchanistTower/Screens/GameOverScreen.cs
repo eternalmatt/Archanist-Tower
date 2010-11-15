@@ -14,6 +14,9 @@ namespace ArchanistTower.Screens
         Texture2D image;
         Rectangle imageRectangle;
 
+        float FadeValue;
+        float FadeSpeed = 60.0f;
+
         public GameOverScreen()
         {
             image = Globals.content.Load<Texture2D>("Menuscreens\\gameover");
@@ -24,6 +27,7 @@ namespace ArchanistTower.Screens
         protected override void Initialize()
         { 
             Font = Globals.content.Load<SpriteFont>("Fonts\\Arial");
+            Name = "GameOverScreen";
         }
 
         protected override void Unload()
@@ -39,13 +43,31 @@ namespace ArchanistTower.Screens
                 Globals.screenManager.RemoveScreen("HUDScreen");
                 this.Destroy();
             }
+
+            float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (FadeValue < 255)
+            {
+                FadeValue = FadeValue + (timeDelta * FadeSpeed);
+            }
+            else
+            {
+                FadeValue = 255;
+            }     
         }
 
         protected override void Draw()
         {
-            Globals.spriteBatch.Begin();
-            Globals.spriteBatch.Draw(image, imageRectangle, Color.Gray);
+            Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+            //Globals.spriteBatch.Draw(image, imageRectangle, Color.Gray);
+            Globals.spriteBatch.Draw(image, imageRectangle, FadeColor(Color.White, FadeValue));
             Globals.spriteBatch.End();
+        }
+
+        public Color FadeColor(Color baseColor, float FadeValue)
+        {
+            Color tempColor;
+            tempColor = new Color(baseColor.R, baseColor.G, baseColor.B, (byte)FadeValue);
+            return tempColor;
         }
     }
 }
