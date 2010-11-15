@@ -64,8 +64,8 @@ namespace ArchanistTower.GameObjects
 
 
                 if (enemyState == EnemySpriteState.Attack)
-                
-                    SpriteAnimation.Position = Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
+                    Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
+                SpriteAnimation.Speed = .25f * enemySpeed;
                 
 
                 base.Update(gameTime);
@@ -83,7 +83,7 @@ namespace ArchanistTower.GameObjects
                 enemyState = EnemySpriteState.Wander;
         }
 
-        private Vector2 Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed) 
+        private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed) 
         {
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
 
@@ -95,7 +95,7 @@ namespace ArchanistTower.GameObjects
                 position.Y += enemyAttackVelocity.Y;
             else position.Y -= enemyAttackVelocity.Y;
 
-            return position;
+            //return position;
         }
     }
 }
