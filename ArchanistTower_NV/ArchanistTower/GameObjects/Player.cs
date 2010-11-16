@@ -29,7 +29,7 @@ namespace ArchanistTower.GameObjects
         protected bool blue;
         protected bool green;
         private FacingDirection direction;
-        SelectedSpell selectedSpell;
+        public static SelectedSpell selectedSpell;
 
         public Player(Vector2 startPosition)
         {

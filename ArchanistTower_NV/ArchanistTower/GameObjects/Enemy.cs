@@ -15,7 +15,6 @@ namespace ArchanistTower.GameObjects
         private const float enemyHysteresis = 15.0f;
         private float enemyWanderVelocity { get { return 0.75f; } }
         private float enemyChaseVelocity { get { return 0.57f; } }
-       
 
 
         public float enemyOrientation;
