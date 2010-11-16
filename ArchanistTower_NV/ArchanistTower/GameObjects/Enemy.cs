@@ -17,7 +17,7 @@ namespace ArchanistTower.GameObjects
         private float enemyChaseVelocity { get { return 0.57f; } }
        
 
-        public FacingDirection Direction { get; set; }
+
         public float enemyOrientation;
         public float enemyTurnSpeed = 0.12f;
         public EnemySpriteState enemyState = EnemySpriteState.Chase;
@@ -123,15 +123,27 @@ namespace ArchanistTower.GameObjects
         private void UpdateSpriteAnimation(Vector2 motion)
         {
             float motionAngle = (float)Math.Atan2(motion.Y, motion.X);
-            
+
             if (motionAngle >= -MathHelper.PiOver4 && motionAngle <= MathHelper.PiOver4)
+            {
                 SpriteAnimation.CurrentAnimationName = "Right";
+                Direction = FacingDirection.Right;
+            }
             else if (motionAngle >= MathHelper.PiOver4 && motionAngle <= 3f * MathHelper.PiOver4)
+            {
                 SpriteAnimation.CurrentAnimationName = "Down";
+                Direction = FacingDirection.Down;
+            }
             else if (motionAngle <= -MathHelper.PiOver4 && motionAngle >= -3f * MathHelper.PiOver4)
+            {
                 SpriteAnimation.CurrentAnimationName = "Up";
+                Direction = FacingDirection.Up;
+            }
             else
+            {
                 SpriteAnimation.CurrentAnimationName = "Left";
+                Direction = FacingDirection.Down;
+            }
         }
     }
 }

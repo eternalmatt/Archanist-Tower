@@ -57,8 +57,8 @@ namespace ArchanistTower.GameObjects
 
         public override void Update(GameTime gameTime)
         {
-            if (stopwatch.IsRunning && stopwatch.Elapsed.Seconds >= 3) 
-                stopwatch.Stop();
+            if (stopwatch.IsRunning && stopwatch.Elapsed.Seconds >= 3)
+                stopwatch.Reset();
 
             if (Health <= 0) Dead = true;
             else if (stopwatch.IsRunning) SpriteAnimation.IsAnimating = false;
@@ -92,7 +92,7 @@ namespace ArchanistTower.GameObjects
                 if (!stopwatch.IsRunning)
                     stopwatch.Start();
             }
-            else if (obj.GetType() == typeof(Enemy))
+            else if (obj.GetType() == typeof(FireEnemy))
             {
                 WorldCollision();
             }

@@ -186,7 +186,7 @@ namespace ArchanistTower.GameObjects
             {
                 if (o is FireEnemy)
                 {
-                    EnemyCollision();
+                    EnemyCollision(o.Direction);
                     Health -= 15;
                 }
             }
@@ -206,21 +206,21 @@ namespace ArchanistTower.GameObjects
         }
 
 
-        private void EnemyCollision()
+        private void EnemyCollision(FacingDirection direction)
         {
             switch (direction)
             {
                 case FacingDirection.Left:
-                    SpriteAnimation.Position.X += 20;
-                    break;
-                case FacingDirection.Right:
                     SpriteAnimation.Position.X -= 20;
                     break;
+                case FacingDirection.Right:
+                    SpriteAnimation.Position.X += 20;
+                    break;
                 case FacingDirection.Up:
-                    SpriteAnimation.Position.Y += 20;
+                    SpriteAnimation.Position.Y -= 20;
                     break;
                 case FacingDirection.Down:
-                    SpriteAnimation.Position.Y -= 20;
+                    SpriteAnimation.Position.Y += 20;
                     break;
             }
         }
