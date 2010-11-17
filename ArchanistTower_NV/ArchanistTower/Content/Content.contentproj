@@ -158,6 +158,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Levels\TestFireMap\BasicForm.tmx">
+      <Name>BasicForm</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\BossRoom.tmx">
+      <Name>BossRoom</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
     <None Include="Levels\TestFireMap\FireEnemyIcon.png">
       <Name>FireEnemyIcon</Name>
       <Importer>TextureImporter</Importer>
@@ -168,6 +178,46 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </None>
+    <Compile Include="Levels\TestFireMap\Mountain1.tmx">
+      <Name>Mountain1</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Mountain2.tmx">
+      <Name>Mountain2</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Mountain3.tmx">
+      <Name>Mountain3</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Mountain4.tmx">
+      <Name>Mountain4</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Mountain5.tmx">
+      <Name>Mountain5</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Mountain6.tmx">
+      <Name>Mountain6</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Mountain7.tmx">
+      <Name>Mountain7</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\MountainEntrance.tmx">
+      <Name>MountainEntrance</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
     <None Include="Levels\TestFireMap\rock.png">
       <Name>rock</Name>
       <Importer>TextureImporter</Importer>
@@ -188,6 +238,28 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Levels\TestFireMap\ConnectionLavat.png">
+      <Name>ConnectionLavat</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </None>
+    <None Include="Levels\TestFireMap\LavaGround.png">
+      <Name>LavaGround</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </None>
+    <None Include="Levels\TestFireMap\MountainPieces.png">
+      <Name>MountainPieces</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </None>
+    <None Include="Levels\TestFireMap\Overflow.png">
+      <Name>Overflow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
