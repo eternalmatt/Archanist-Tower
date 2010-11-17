@@ -27,6 +27,7 @@ namespace ArchanistTower.Screens
             Name = "GameScreen";
             HUD = new HUDScreen();
             gameWorld.Initialize();
+            Level.Player = null;
         }
 
         protected override void Unload()
