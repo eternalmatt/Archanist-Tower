@@ -32,7 +32,6 @@ namespace ArchanistTower.GameObjects
         protected bool red;
         protected bool blue;
         protected bool green;
-        private FacingDirection direction;
         public static SelectedSpell selectedSpell;
 
         public Player(Vector2 startPosition)
@@ -63,7 +62,7 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Animations.Add("Right", right);
 
             SpriteAnimation.CurrentAnimationName = "Down";
-            direction = FacingDirection.Down;
+            Direction = FacingDirection.Down;
 
             SetKeys(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.Left, Keys.Right, Keys.Up, Keys.Down);
 
@@ -95,22 +94,22 @@ namespace ArchanistTower.GameObjects
             if (Globals.input.KeyPressed(MoveRight))
             {
                 movement.X = 1;
-                direction = FacingDirection.Right;
+                Direction = FacingDirection.Right;
             }
             else if (Globals.input.KeyPressed(MoveLeft))
             {
                 movement.X = -1;
-                direction = FacingDirection.Left;
+                Direction = FacingDirection.Left;
             }
             if (Globals.input.KeyPressed(MoveUp))
             {
                 movement.Y = -1;
-                direction = FacingDirection.Up;
+                Direction = FacingDirection.Up;
             }
             else if (Globals.input.KeyPressed(MoveDown))
             {
                 movement.Y = 1;
-                direction = FacingDirection.Down;
+                Direction = FacingDirection.Down;
             }
 
             if (movement != Vector2.Zero)
@@ -133,17 +132,17 @@ namespace ArchanistTower.GameObjects
             if (Globals.input.KeyJustPressed(SpellCast))
             {
                 if (Globals.input.KeyPressed(CastLeft))
-                    direction = FacingDirection.Left;
+                    Direction = FacingDirection.Left;
                 if (Globals.input.KeyPressed(CastRight))
-                    direction = FacingDirection.Right;
+                    Direction = FacingDirection.Right;
                 if (Globals.input.KeyPressed(CastUp))
-                    direction = FacingDirection.Up;
+                    Direction = FacingDirection.Up;
                 if (Globals.input.KeyPressed(CastDown))
-                    direction = FacingDirection.Down;
+                    Direction = FacingDirection.Down;
                 if(selectedSpell == SelectedSpell.fire)
-                    GameScreen.gameWorld.AddObject(new FireSpell(direction, SpriteAnimation.Position));
+                    GameScreen.gameWorld.AddObject(new FireSpell(Direction, SpriteAnimation.Position));
                 if(selectedSpell == SelectedSpell.wind)
-                    GameScreen.gameWorld.AddObject(new WindSpell(direction, SpriteAnimation.Position));
+                    GameScreen.gameWorld.AddObject(new WindSpell(Direction, SpriteAnimation.Position));
             }
         }
 
@@ -222,9 +221,9 @@ namespace ArchanistTower.GameObjects
         }
 
 
-        private void EnemyCollision(FacingDirection direction)
+        private void EnemyCollision(FacingDirection Direction)
         {
-            switch (direction)
+            switch (Direction)
             {
                 case FacingDirection.Left:
                     SpriteAnimation.Position.X -= 20;

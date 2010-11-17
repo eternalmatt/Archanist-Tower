@@ -21,8 +21,6 @@ namespace ArchanistTower
     {
         float width, height;
 
-        EffectParameter blendTexturePosition, blendTexturePosition2;
-
         Vector2 blendTexturePos = new Vector2(0);
         Vector2 blendTexturePos2 = new Vector2(0);
 
@@ -55,30 +53,36 @@ namespace ArchanistTower
 
 
             // Load and compile our Shader into our Effect instance.
-            
-            effect = Globals.content.Load<Effect>("Shaders/BaseShader");
+
+            effect = Globals.content.Load<Effect>("Shaders/WaterTest");
             effectPost = Globals.content.Load<Effect>("Shaders/GrayingEffect");
         }
         public void LoadContent()
         {
             spriteBatch = Globals.spriteBatch;
             PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
-            renderTarget = new RenderTarget2D(graphics.GraphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, 1, graphics.GraphicsDevice.DisplayMode.Format);
-            
-
+            renderTarget = new RenderTarget2D(graphics.GraphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, 1,
+            graphics.GraphicsDevice.DisplayMode.Format);
+            //blendTexturePosition = Globals.content.;
+            effectPost.Parameters["powerGained"].SetValue(Globals.shading);
         }
         /// <summary>
         /// Allows the game component to update itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public void DrawSetup() 
-        { 
-            graphics.GraphicsDevice.SetRenderTarget(0, renderTarget); 
+        public void Update()
+        {
+            effectPost.Parameters["powerGained"].SetValue(Globals.shading);
+        }
+        public void DrawSetup()
+        {
+            graphics.GraphicsDevice.SetRenderTarget(0, renderTarget);
         }
         public void Draw()
         {
             graphics.GraphicsDevice.SetRenderTarget(0, null);
             SceneTexture = renderTarget.GetTexture();
+
 
             // Render the scene with Edge Detection, using the render target from last frame.
             graphics.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
@@ -95,6 +99,7 @@ namespace ArchanistTower
                     }
                 }
                 effectPost.End();
+
             }
             spriteBatch.End();
         }

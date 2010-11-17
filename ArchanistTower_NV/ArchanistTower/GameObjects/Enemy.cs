@@ -15,7 +15,7 @@ namespace ArchanistTower.GameObjects
         private const float enemyHysteresis = 15.0f;
         private float enemyWanderVelocity { get { return 0.75f; } }
         private float enemyChaseVelocity { get { return 0.57f; } }
-
+        private FacingDirection Direction;
 
         public float enemyOrientation;
         public float enemyTurnSpeed = 0.12f;
@@ -41,11 +41,11 @@ namespace ArchanistTower.GameObjects
             }
 
 
-            Vector2 direction = new Vector2((float)Math.Cos(enemyOrientation), (float)Math.Sin(enemyOrientation));
-            UpdateSpriteAnimation(direction);
+            Vector2 Direction = new Vector2((float)Math.Cos(enemyOrientation), (float)Math.Sin(enemyOrientation));
+            UpdateSpriteAnimation(Direction);
             SpriteAnimation.IsAnimating = (SpriteAnimation.Speed != 0.0f) ? true : false;
 
-            LastMovement = SpriteAnimation.Speed * direction;
+            LastMovement = SpriteAnimation.Speed * Direction;
             SpriteAnimation.Position += LastMovement;
         }
         

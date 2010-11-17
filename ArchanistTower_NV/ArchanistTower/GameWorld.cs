@@ -13,7 +13,7 @@ namespace ArchanistTower
     {
         Map map;
         public List<GameObject> GameObjects;
-        ShaderCode shader = new ShaderCode();
+
 
         public int TileWidth
         {
@@ -38,16 +38,16 @@ namespace ArchanistTower
         public GameWorld()
         {
             GameObjects = new List<GameObject>();
-            shader.Initialize();
-            shader.LoadContent();
+            //shader.LoadContent();
         }
 
         public void Initialize()
         {
-            shader.Initialize();
-            shader.LoadContent();
+            //shader.Initialize();
             //LoadMap("Levels//TestMap//TestMap");
-            LoadMap("Levels//TestFireMap//TestFireMap");
+            //LoadMap("Levels//TestFireMap//Mountain1");
+            LoadMap("Levels//TestFireMap//MountainEntrance");
+
         }
 
         public void AddObject(GameObject obj)
@@ -73,14 +73,25 @@ namespace ArchanistTower
                             GameObjects[j].PlayerPosition = GameObjects[i].SpriteAnimation.Position;
                     foreach (Portal portal in Level.Portals)
                     {
-                        if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
+                        if (portal.DestinationMap != "crys")
                         {
-                            LoadMap(portal.DestinationMap);
-                            GameObjects[i].SpriteAnimation.Position = new Vector2(
-                                (portal.DestinationTileLocation.X * map.TileWidth) + (map.TileWidth / 2),
-                                (portal.DestinationTileLocation.X * map.TileHeight) + (map.TileHeight / 2));
+                            if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
+                            {
+                                LoadMap(portal.DestinationMap);
+                                GameObjects[i].SpriteAnimation.Position = new Vector2(
+                                    (portal.DestinationTileLocation.X * map.TileWidth) + (map.TileWidth / 2),
+                                    (portal.DestinationTileLocation.Y * map.TileHeight) + (map.TileHeight / 2));
+                            }
+                        }
+                        else
+                        {
+                            if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
+                            {
+                                Globals.shading = portal.DestinationTileLocation.X;
+                            }
                         }
                     }
+                    
                 }
                 //Makes as many inexpensive checks before checking intersection
                 if (GameObjects[i].Collidable)
@@ -139,11 +150,11 @@ namespace ArchanistTower
 
         public void Draw()
         {
-            //shader.DrawSetup();
+;
             map.Draw(Globals.spriteBatch);
             for (int i = 0; i < GameObjects.Count; i++)
                 GameObjects[i].Draw();            
-            //shader.Draw();
+
         }
 
         #region Load
@@ -187,6 +198,54 @@ namespace ArchanistTower
                         string tileLocY = obj.Properties["DestinationY"].RawValue;
                         portal.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX), Convert.ToInt32(tileLocY));
                         Level.Portals.Add(portal);
+                        break;
+                    case "Portal2":
+                        Portal portal2 = new Portal();
+                        portal2.Bounds = obj.Bounds;
+                        Property tempP2 = obj.Properties["DestinationMap"];
+                        portal2.DestinationMap = tempP2.RawValue;
+                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
+                        tempP = obj.Properties["DestinationX"];
+                        string tileLocX2 = tempP.RawValue; //obj.Properties["DestinationX"].RawValue;
+                        string tileLocY2 = obj.Properties["DestinationY"].RawValue;
+                        portal2.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX2), Convert.ToInt32(tileLocY2));
+                        Level.Portals.Add(portal2);
+                        break;
+                    case "Portal3":
+                        Portal portal3 = new Portal();
+                        portal3.Bounds = obj.Bounds;
+                        Property tempP3 = obj.Properties["DestinationMap"];
+                        portal3.DestinationMap = tempP3.RawValue;
+                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
+                        tempP3 = obj.Properties["DestinationX"];
+                        string tileLocX3 = tempP3.RawValue; //obj.Properties["DestinationX"].RawValue;
+                        string tileLocY3 = obj.Properties["DestinationY"].RawValue;
+                        portal3.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX3), Convert.ToInt32(tileLocY3));
+                        Level.Portals.Add(portal3);
+                        break;
+                    case "Portal4":
+                        Portal portal4 = new Portal();
+                        portal4.Bounds = obj.Bounds;
+                        Property tempP4 = obj.Properties["DestinationMap"];
+                        portal4.DestinationMap = tempP4.RawValue;
+                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
+                        tempP4 = obj.Properties["DestinationX"];
+                        string tileLocX4 = tempP4.RawValue; //obj.Properties["DestinationX"].RawValue;
+                        string tileLocY4 = obj.Properties["DestinationY"].RawValue;
+                        portal4.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX4), Convert.ToInt32(tileLocY4));
+                        Level.Portals.Add(portal4);
+                        break;
+                    case "crys":
+                        Portal crys = new Portal();
+                        crys.Bounds = obj.Bounds;
+                        Property tempP5 = obj.Properties["DestinationMap"];
+                        crys.DestinationMap = tempP5.RawValue;
+                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
+                        tempP5 = obj.Properties["DestinationX"];
+                        string tileLocX5 = tempP5.RawValue; //obj.Properties["DestinationX"].RawValue;
+                        string tileLocY5 = obj.Properties["DestinationY"].RawValue;
+                        crys.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX5), Convert.ToInt32(tileLocY5));
+                        Level.Portals.Add(crys);
                         break;
                 }
             }

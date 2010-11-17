@@ -13,13 +13,14 @@ namespace ArchanistTower.Screens
     public class GameScreen : Screen
     { 
         public static GameWorld gameWorld;
-
+        ShaderCode shader = new ShaderCode();
         HUDScreen HUD;
          
         public GameScreen() 
         {
             gameWorld = new GameWorld();
             Initialize();
+            shader.LoadContent();
         }
 
         protected override void Initialize()
@@ -27,7 +28,10 @@ namespace ArchanistTower.Screens
             Name = "GameScreen";
             HUD = new HUDScreen();
             gameWorld.Initialize();
+
+            shader.Initialize();
             Level.Player = null;
+
         }
 
         protected override void Unload()
@@ -40,12 +44,13 @@ namespace ArchanistTower.Screens
                 this.Disable();
                 Globals.screenManager.AddScreen(new PauseScreen());
             }
-
+            shader.Update();
             gameWorld.Update(gameTime);
         }
 
         protected override void Draw()
         {
+            shader.DrawSetup();
             Globals.spriteBatch.Begin(
                 SpriteBlendMode.AlphaBlend,
                 SpriteSortMode.Deferred,
@@ -53,6 +58,7 @@ namespace ArchanistTower.Screens
                 Globals.camera.TransformMatrix);
             gameWorld.Draw();
             Globals.spriteBatch.End();
+            shader.Draw();
         }
 
 
