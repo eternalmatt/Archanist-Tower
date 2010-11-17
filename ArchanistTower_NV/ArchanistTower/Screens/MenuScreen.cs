@@ -66,7 +66,7 @@ namespace ArchanistTower.Screens
                 {
                     case 0:
                         this.Destroy();
-                        Globals.screenManager.AddScreen(new GameScreen());
+                        Globals.screenManager.AddScreen(new InstructionScreen());
                         break;
                     case 1:
                         ArchanistTower.ExitGame();
