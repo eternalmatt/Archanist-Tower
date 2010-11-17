@@ -84,6 +84,20 @@ namespace ArchanistTower.GameObjects
             Globals.camera.ClampToArea(
                 GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth,
                 GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);
+
+            int i = ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32();
+            if (i > 0)
+            {
+                red = true;
+                if (i > 1)
+                {
+                    green = true;
+                    if (i > 2)
+                    {
+                        blue = true;
+                    }
+                }
+            }
         }
 
 
@@ -129,7 +143,7 @@ namespace ArchanistTower.GameObjects
             if (Globals.input.KeyPressed(Keys.F2))
                 selectedSpell = SelectedSpell.wind;
 
-            if (ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32() > 0)
+            if (red || green || blue)
             {
                 if (Globals.input.KeyJustPressed(SpellCast))
                 {
@@ -144,9 +158,9 @@ namespace ArchanistTower.GameObjects
 
                     if (selectedSpell == SelectedSpell.fire)
                         GameScreen.gameWorld.AddObject(new FireSpell(Direction, SpriteAnimation.Position));
-                    else if (selectedSpell == SelectedSpell.wind && ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32() > 1)
+                    else if (selectedSpell == SelectedSpell.wind && green)
                         GameScreen.gameWorld.AddObject(new WindSpell(Direction, SpriteAnimation.Position));
-                    else if (ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32() > 2)
+                    else if (selectedSpell == SelectedSpell.water && blue)
                     {  } // reserved for water spell
                 }
             }
