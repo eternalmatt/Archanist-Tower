@@ -26,14 +26,6 @@ namespace ArchanistTower.Screens
 
         int Selection;
 
-        public bool BackToMenu
-        {
-            get { return backToMenu; }
-            set { backToMenu = value; }
-        }
-
-        bool backToMenu = false;
-
         public PauseScreen()
         {
             image = Globals.content.Load<Texture2D>("MenuScreens\\pause");
@@ -59,8 +51,8 @@ namespace ArchanistTower.Screens
                 Selection++;
 
             if (Selection < 0)
-                Selection = 1;
-            if (Selection > 1)
+                Selection = 2;
+            if (Selection > 2)
                 Selection = 0;
 
             if (Globals.input.KeyJustPressed(Keys.Enter))
@@ -73,6 +65,10 @@ namespace ArchanistTower.Screens
                         Globals.screenManager.FindScreen("HUDScreen").Activate();
                         break;
                     case 1:
+                        Globals.screenManager.AddScreen(new InstructionScreen());
+                        this.Disable();
+                        break;
+                    case 2:
                         this.Destroy();
                         Globals.screenManager.FindScreen("GameScreen").Destroy();
                         Globals.screenManager.AddScreen(new MenuScreen());
@@ -101,12 +97,20 @@ namespace ArchanistTower.Screens
             if (Selection == 0)
             {
                 Globals.spriteBatch.DrawString(Font, "RETURN TO GAME", new Vector2(540, 300), Color.Yellow);
-                Globals.spriteBatch.DrawString(Font, "EXIT TO MENU", new Vector2(540, 375), Color.White);
+                Globals.spriteBatch.DrawString(Font, "CONTROLS", new Vector2(540, 350), Color.White);
+                Globals.spriteBatch.DrawString(Font, "EXIT TO MENU", new Vector2(540, 400), Color.White);
             }
             else if (Selection == 1)
             {
                 Globals.spriteBatch.DrawString(Font, "RETURN TO GAME", new Vector2(540, 300), Color.White);
-                Globals.spriteBatch.DrawString(Font, "EXIT TO MENU", new Vector2(540, 375), Color.Yellow);
+                Globals.spriteBatch.DrawString(Font, "CONTROLS", new Vector2(540, 350), Color.Yellow);
+                Globals.spriteBatch.DrawString(Font, "EXIT TO MENU", new Vector2(540, 400), Color.White);
+            }
+            else
+            {
+                Globals.spriteBatch.DrawString(Font, "RETURN TO GAME", new Vector2(540, 300), Color.White);
+                Globals.spriteBatch.DrawString(Font, "CONTROLS", new Vector2(540, 350), Color.White);
+                Globals.spriteBatch.DrawString(Font, "EXIT TO MENU", new Vector2(540, 400), Color.Yellow);
             }
 
             Globals.spriteBatch.End();

@@ -41,7 +41,14 @@ namespace ArchanistTower.Screens
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
             {
                 this.Destroy();
-                Globals.screenManager.AddScreen(new GameScreen());
+                if (Globals.screenManager.FindScreen("GameScreen") == null) // Game not started yet
+                {
+                    Globals.screenManager.AddScreen(new GameScreen());
+                }
+                else // Instruction screen is called from pause screen
+                {
+                    Globals.screenManager.FindScreen("PauseScreen").Activate();
+                }
             }
         }
 
