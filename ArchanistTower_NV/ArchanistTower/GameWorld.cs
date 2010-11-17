@@ -77,6 +77,9 @@ namespace ArchanistTower
                         {
                             if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
                             {
+                                for (int j = 0; j < GameObjects.Count; j++)
+                                    if (GameObjects[j].GetType() == typeof(FireEnemy))
+                                        GameObjects[j].Dead = true;
                                 LoadMap(portal.DestinationMap);
                                 GameObjects[i].SpriteAnimation.Position = new Vector2(
                                     (portal.DestinationTileLocation.X * map.TileWidth) + (map.TileWidth / 2),
