@@ -29,7 +29,7 @@ namespace ArchanistTower
 
         // Our effect object, this is where our shader will be loaded and compiled
         Effect effect;
-        Effect effectPost;
+        public static Effect effectPost;
 
         RenderTarget2D renderTarget;
         Texture2D SceneTexture;

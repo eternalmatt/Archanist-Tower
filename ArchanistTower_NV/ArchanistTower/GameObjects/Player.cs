@@ -129,20 +129,23 @@ namespace ArchanistTower.GameObjects
             if (Globals.input.KeyPressed(Keys.F2))
                 selectedSpell = SelectedSpell.wind;
 
-            if (Globals.input.KeyJustPressed(SpellCast))
+            if (ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32() > 0)
             {
-                if (Globals.input.KeyPressed(CastLeft))
-                    Direction = FacingDirection.Left;
-                if (Globals.input.KeyPressed(CastRight))
-                    Direction = FacingDirection.Right;
-                if (Globals.input.KeyPressed(CastUp))
-                    Direction = FacingDirection.Up;
-                if (Globals.input.KeyPressed(CastDown))
-                    Direction = FacingDirection.Down;
-                if(selectedSpell == SelectedSpell.fire)
-                    GameScreen.gameWorld.AddObject(new FireSpell(Direction, SpriteAnimation.Position));
-                if(selectedSpell == SelectedSpell.wind)
-                    GameScreen.gameWorld.AddObject(new WindSpell(Direction, SpriteAnimation.Position));
+                if (Globals.input.KeyJustPressed(SpellCast))
+                {
+                    if (Globals.input.KeyPressed(CastLeft))
+                        Direction = FacingDirection.Left;
+                    if (Globals.input.KeyPressed(CastRight))
+                        Direction = FacingDirection.Right;
+                    if (Globals.input.KeyPressed(CastUp))
+                        Direction = FacingDirection.Up;
+                    if (Globals.input.KeyPressed(CastDown))
+                        Direction = FacingDirection.Down;
+                    if (selectedSpell == SelectedSpell.fire)
+                        GameScreen.gameWorld.AddObject(new FireSpell(Direction, SpriteAnimation.Position));
+                    if (selectedSpell == SelectedSpell.wind)
+                        GameScreen.gameWorld.AddObject(new WindSpell(Direction, SpriteAnimation.Position));
+                }
             }
         }
 
