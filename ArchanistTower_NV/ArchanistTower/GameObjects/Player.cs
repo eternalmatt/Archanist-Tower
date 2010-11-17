@@ -135,16 +135,19 @@ namespace ArchanistTower.GameObjects
                 {
                     if (Globals.input.KeyPressed(CastLeft))
                         Direction = FacingDirection.Left;
-                    if (Globals.input.KeyPressed(CastRight))
+                    else if (Globals.input.KeyPressed(CastRight))
                         Direction = FacingDirection.Right;
-                    if (Globals.input.KeyPressed(CastUp))
+                    else if (Globals.input.KeyPressed(CastUp))
                         Direction = FacingDirection.Up;
-                    if (Globals.input.KeyPressed(CastDown))
+                    else if (Globals.input.KeyPressed(CastDown))
                         Direction = FacingDirection.Down;
+
                     if (selectedSpell == SelectedSpell.fire)
                         GameScreen.gameWorld.AddObject(new FireSpell(Direction, SpriteAnimation.Position));
-                    if (selectedSpell == SelectedSpell.wind)
+                    else if (selectedSpell == SelectedSpell.wind && ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32() > 1)
                         GameScreen.gameWorld.AddObject(new WindSpell(Direction, SpriteAnimation.Position));
+                    else if (ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32() > 2)
+                    {  } // reserved for water spell
                 }
             }
         }

@@ -22,7 +22,7 @@ namespace ArchanistTower.Screens
 
         protected override void Unload()
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
         
         protected override void Initialize()

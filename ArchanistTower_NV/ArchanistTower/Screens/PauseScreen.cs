@@ -72,9 +72,6 @@ namespace ArchanistTower.Screens
                         this.Destroy();
                         Globals.screenManager.FindScreen("GameScreen").Destroy();
                         Globals.screenManager.AddScreen(new MenuScreen());
-                        // sleep for 100ms so that it won't jump straight back to game after exiting
-                        // can't think of a better solution right now
-                        //Thread.Sleep(100);
                         break;
                 }
             }

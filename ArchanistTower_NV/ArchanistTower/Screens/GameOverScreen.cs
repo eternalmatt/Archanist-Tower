@@ -38,9 +38,9 @@ namespace ArchanistTower.Screens
             if (Globals.input.KeyJustPressed(Keys.Enter) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
             {
-                Globals.screenManager.AddScreen(new MenuScreen());
-                Globals.screenManager.RemoveScreen("GameScreen");
-                Globals.screenManager.RemoveScreen("HUDScreen");
+                Globals.screenManager.AddScreen(new SplashScreen());
+                Globals.screenManager.FindScreen("GameScreen").Destroy();
+                Globals.screenManager.FindScreen("HUDScreen").Destroy();
                 this.Destroy();
             }
 
