@@ -24,6 +24,10 @@ namespace ArchanistTower.GameObjects
         protected Keys MoveUp;
         protected Keys MoveDown;
         protected Keys SpellCast;
+        protected Keys CastLeft;
+        protected Keys CastRight;
+        protected Keys CastUp;
+        protected Keys CastDown;
 
         protected bool red;
         protected bool blue;
@@ -61,7 +65,7 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.CurrentAnimationName = "Down";
             direction = FacingDirection.Down;
 
-            SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space);
+            SetKeys(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.Left, Keys.Right, Keys.Up, Keys.Down);
 
             Collidable = true;
             CollisionRadius = 64;
@@ -128,6 +132,14 @@ namespace ArchanistTower.GameObjects
 
             if (Globals.input.KeyJustPressed(SpellCast))
             {
+                if (Globals.input.KeyPressed(CastLeft))
+                    direction = FacingDirection.Left;
+                if (Globals.input.KeyPressed(CastRight))
+                    direction = FacingDirection.Right;
+                if (Globals.input.KeyPressed(CastUp))
+                    direction = FacingDirection.Up;
+                if (Globals.input.KeyPressed(CastDown))
+                    direction = FacingDirection.Down;
                 if(selectedSpell == SelectedSpell.fire)
                     GameScreen.gameWorld.AddObject(new FireSpell(direction, SpriteAnimation.Position));
                 if(selectedSpell == SelectedSpell.wind)
@@ -170,13 +182,17 @@ namespace ArchanistTower.GameObjects
             //GameScreen.gameWorld
         }
 
-        public void SetKeys(Keys left, Keys right, Keys up, Keys down, Keys cast)
+        public void SetKeys(Keys left, Keys right, Keys up, Keys down, Keys cast, Keys cLeft, Keys cRight, Keys cUp, Keys cDown)
         {
             MoveLeft = left;
             MoveRight = right;
             MoveUp = up;
             MoveDown = down;
             SpellCast = cast;
+            CastLeft = cLeft;
+            CastRight = cRight;
+            CastUp = cUp;
+            CastDown = cDown;
         }
 
 
