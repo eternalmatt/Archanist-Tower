@@ -72,6 +72,7 @@ namespace ArchanistTower.Screens
                         this.Destroy();
                         Globals.screenManager.FindScreen("GameScreen").Destroy();
                         Globals.screenManager.AddScreen(new MenuScreen());
+                        Level.Player = null;
                         break;
                 }
             }

@@ -41,6 +41,7 @@ namespace ArchanistTower.Screens
                 Globals.screenManager.AddScreen(new SplashScreen());
                 Globals.screenManager.FindScreen("GameScreen").Destroy();
                 Globals.screenManager.FindScreen("HUDScreen").Destroy();
+                Level.Player = null;
                 this.Destroy();
             }
 

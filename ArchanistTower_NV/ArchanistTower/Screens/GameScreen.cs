@@ -30,7 +30,6 @@ namespace ArchanistTower.Screens
             gameWorld.Initialize();
 
             shader.Initialize();
-            Level.Player = null;
         }
 
         protected override void Unload()
