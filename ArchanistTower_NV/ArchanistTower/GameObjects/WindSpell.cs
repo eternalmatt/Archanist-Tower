@@ -48,7 +48,19 @@ namespace ArchanistTower.GameObjects
         {
             if (!Dead)
                 SpriteAnimation.Position += SpriteAnimation.Speed * motion;
+            SpriteAnimation.Update(gameTime);
+        }
 
+        public override void Collision(GameObject o)
+        {
+            if (o is Enemy)
+            {
+                if (o is FireEnemy)
+                {
+                    o.Health -= 25;
+                }
+                Dead = true;
+            }
         }
         
     }

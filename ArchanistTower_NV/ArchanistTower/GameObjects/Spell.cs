@@ -12,7 +12,6 @@ namespace ArchanistTower.GameObjects
 {
     public class Spell : GameObject
     {
-        public FacingDirection Direction { get; set; }
         public Vector2 SpellOrigin { get; set; }
         public Vector2 motion;
 

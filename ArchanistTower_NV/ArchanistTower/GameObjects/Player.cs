@@ -203,7 +203,7 @@ namespace ArchanistTower.GameObjects
                 if (o is FireEnemy)
                 {
                     EnemyCollision(o.Direction);
-                    Health -= 15;
+                    Health -= 10;
                 }
             }
             //Not sure that spell will be handled here...maybe in the spell class.

@@ -68,7 +68,10 @@ namespace ArchanistTower.Screens
             {
                 crystal.CurrentAnimationName = "Wind";
             }
-            else { }
+            else
+            {
+                //reserved for water spell
+            }
             crystal.Draw(Globals.spriteBatch);
 
             Globals.spriteBatch.End(); 

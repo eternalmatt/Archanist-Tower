@@ -25,7 +25,7 @@ namespace ArchanistTower.GameObjects
             cast.FramesPerSecond = 10;
             SpriteAnimation.Animations.Add("Cast", cast);
             SpriteAnimation.CurrentAnimationName = "Cast";
-            SpriteAnimation.Speed = 5;
+            SpriteAnimation.Speed = 3;
 
             motion = Vector2.Zero;
 
@@ -48,15 +48,17 @@ namespace ArchanistTower.GameObjects
         {
             if (!Dead)
                 SpriteAnimation.Position += SpriteAnimation.Speed * motion;
-
+            SpriteAnimation.Update(gameTime);
         }
-
 
         public override void Collision(GameObject o)
         {
             if (o is Enemy)
             {
-                o.Health -= 50;
+                if (o is FireEnemy)
+                {
+                    o.Health -= 35;
+                }
                 Dead = true;
             }
         }
