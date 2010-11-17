@@ -156,7 +156,7 @@ namespace ArchanistTower.GameObjects
                     else if (Globals.input.KeyPressed(CastDown))
                         Direction = FacingDirection.Down;
 
-                    if (selectedSpell == SelectedSpell.fire)
+                    if (selectedSpell == SelectedSpell.fire && red)
                         GameScreen.gameWorld.AddObject(new FireSpell(Direction, SpriteAnimation.Position));
                     else if (selectedSpell == SelectedSpell.wind && green)
                         GameScreen.gameWorld.AddObject(new WindSpell(Direction, SpriteAnimation.Position));
