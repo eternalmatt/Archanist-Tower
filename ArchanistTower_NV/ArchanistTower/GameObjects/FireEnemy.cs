@@ -15,6 +15,7 @@ namespace ArchanistTower.GameObjects
         private const int enemyAttackRadius = 70;
         private const int enemyChaseRadius = 150;
         private Stopwatch stopwatch;
+        private Texture2D lifebar;
 
         private float enemyAttackVelocity { get { return 1.2f; } }
 
@@ -29,6 +30,7 @@ namespace ArchanistTower.GameObjects
         public override void Initialize()
         {
             SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Enemies/avt3"));
+            lifebar = Globals.content.Load<Texture2D>("HUD/rectangle");
 
             FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
             up.FramesPerSecond = 10;
@@ -53,6 +55,17 @@ namespace ArchanistTower.GameObjects
             CollisionRadius = 64;
             stopwatch = new Stopwatch(); 
             base.Initialize();
+        }
+
+        public override void Draw()
+        {
+            Globals.spriteBatch.Draw(
+                lifebar, 
+                new Rectangle(SpriteAnimation.Bounds.X + 3, SpriteAnimation.Bounds.Y - 5,   //x and y adjusted for sprite
+                    SpriteAnimation.Bounds.Width * Health / 100 - 6, 2),    //width based on health / adjusted for sprite
+                Color.White                                                 //height is width 2
+            );
+            base.Draw();
         }
 
         public override void Update(GameTime gameTime)
