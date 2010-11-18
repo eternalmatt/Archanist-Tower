@@ -42,7 +42,11 @@ namespace ArchanistTower.Screens
             wind.FramesPerSecond = 10;
             crystal.Animations.Add("Wind", wind);
 
-            crystal.CurrentAnimationName = "Fire";
+            FrameAnimation none = new FrameAnimation(1, 0, 0, 0, 0);
+            none.FramesPerSecond = 0;
+            crystal.Animations.Add("None", none);
+
+            crystal.CurrentAnimationName = "None";
             crystal.IsAnimating = true;
             crystal.Position = new Vector2(128, Globals.ScreenHeight - 32);
         }

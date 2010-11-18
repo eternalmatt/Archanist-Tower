@@ -12,6 +12,7 @@ namespace ArchanistTower.GameObjects
 {
     public enum SelectedSpell
     {
+        none,
         fire,
         wind,
         water
@@ -63,6 +64,7 @@ namespace ArchanistTower.GameObjects
 
             SpriteAnimation.CurrentAnimationName = "Down";
             Direction = FacingDirection.Down;
+            selectedSpell = SelectedSpell.none;
 
             SetKeys(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.Left, Keys.Right, Keys.Up, Keys.Down);
 

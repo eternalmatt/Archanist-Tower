@@ -8,11 +8,6 @@
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -24,11 +19,6 @@
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
    </properties>
   </tile>
  </tileset>
@@ -36,11 +26,6 @@
   <image source="FireEnemyIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
@@ -80,12 +65,12 @@
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2VQQoAIAgEPfj/N3eXSoN0LXZAOgg7ekmRPDQxe+WzhfCjoB8L/T1meMm/+7NmvYqK+r09TlxR1LzVoG6LncHr354vmpd1f9H+KJ38WflI0H5CCPmFAVkwDT4AEAAA
+   H4sIAAAAAAAAC+2WQQoAIAgEO/j/N3eXSiN1DXYgOgg7dtHGyEMSs3c+fRB+FPRjob9HDz/5TzNrVas4Xr/1jhuXF1F3Najdonuw6tH9efOy9i/a76WTPysfCdpPCIkD9cd5mZFROR2Y4bm/7wAQAAA=
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3OMQ0AAAgDsCX494yG8fC0CpoAABfzHQAAKCwkV0wXABAAAA==
+   H4sIAAAAAAAAC+3OAQkAAAwDoMH7d36MMdAEJgDAmmsHAIA5D8hqavoAEAAA
   </data>
  </layer>
  <objectgroup name="Objects" width="32" height="32">

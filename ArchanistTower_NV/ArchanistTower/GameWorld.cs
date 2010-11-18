@@ -11,28 +11,35 @@ namespace ArchanistTower
 {
     public class GameWorld
     {
-        Map map;
-        public List<GameObject> GameObjects;
+
+        //Map Things
+        public static Map Map { get; set; }
+        public static Dictionary<Vector2, Rectangle> ClipLayer { get; set; }
+        public static List<Portal> Portals { get; set; }
+        public  List<GameObject> GameObjects { get; set; }
+        public static bool Debug { get; set; }
+        //public List<GameObject> GameObjects;
+
 
 
         public int TileWidth
         {
-            get { return map.TileWidth; }
+            get { return Map.TileWidth; }
         }
 
         public int TileHeight
         {
-            get { return map.TileHeight; }
+            get { return Map.TileHeight; }
         }
 
         public int MapWidthInPixels
         {
-            get { return map.Width * TileWidth; }
+            get { return Map.Width * TileWidth; }
         }
 
         public int MapHeightInPixels
         {
-            get { return map.Height * TileHeight; }
+            get { return Map.Height * TileHeight; }
         }
 
         public GameWorld()
@@ -47,6 +54,7 @@ namespace ArchanistTower
             //LoadMap("Levels//TestMap//TestMap");
             //LoadMap("Levels//TestFireMap//Mountain1");
             LoadMap("Levels//TestFireMap//MountainEntrance");
+            Debug = false;
 
         }
 
@@ -59,8 +67,11 @@ namespace ArchanistTower
         {
             for (int i = 0; i < GameObjects.Count; i++)
             {
-                GameObjects[i].Update(gameTime);
-                foreach (Rectangle clip in Level.ClipMap.Values)
+                //update each obj
+                GameObjects[i].Update(gameTime);  
+
+                //Check for collision with clip layer
+                foreach (Rectangle clip in ClipLayer.Values)
                     if (GameObjects[i].SpriteAnimation.Bounds.Intersects(clip))
                     {
                         GameObjects[i].WorldCollision();
@@ -71,19 +82,20 @@ namespace ArchanistTower
                     for (int j = 0; j < GameObjects.Count; j++)
                         if (GameObjects[j].GetType() == typeof(FireEnemy) || GameObjects[j].GetType() == typeof(FireBoss))
                             GameObjects[j].PlayerPosition = GameObjects[i].SpriteAnimation.Position;
-                    foreach (Portal portal in Level.Portals)
+
+                    foreach (Portal portal in Portals)
                     {
                         if (portal.DestinationMap != "crys")
                         {
                             if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
                             {
-                                for (int j = 0; j < GameObjects.Count; j++)
-                                    if (GameObjects[j].GetType() == typeof(FireEnemy) || GameObjects[j].GetType() == typeof(FireBoss))
-                                        GameObjects[j].Dead = true;
+                                //for (int j = 0; j < GameObjects.Count; j++)
+                                //    if (GameObjects[j].GetType() == typeof(FireEnemy) || GameObjects[j].GetType() == typeof(FireBoss))
+                                //        GameObjects[j].Dead = true;
                                 LoadMap(portal.DestinationMap);
                                 GameObjects[i].SpriteAnimation.Position = new Vector2(
-                                    (portal.DestinationTileLocation.X * map.TileWidth) + (map.TileWidth / 2),
-                                    (portal.DestinationTileLocation.Y * map.TileHeight) + (map.TileHeight / 2));
+                                    (portal.DestinationTileLocation.X * Map.TileWidth) + (Map.TileWidth / 2),
+                                    (portal.DestinationTileLocation.Y * Map.TileHeight) + (Map.TileHeight / 2));
                             }
                         }
                         else
@@ -111,6 +123,137 @@ namespace ArchanistTower
             }
 
         }
+
+
+        public void Draw()
+        {
+            Map.Draw(Globals.spriteBatch);
+            for (int i = 0; i < GameObjects.Count; i++)
+                GameObjects[i].Draw();            
+
+        }
+
+
+        #region Load
+
+        private void LoadMap(string fileName)
+        {
+            Portals = new List<Portal>();
+            Level.ClipMap = new Dictionary<Vector2, Rectangle>();
+            Level.Enemies = new List<Enemy>();
+            if (Level.Player != null)
+            {
+                Level.Player = (Player)GameObjects[0];
+                GameObjects.Clear();
+                GameObjects.Add(Level.Player);
+            }
+            Map = Globals.content.Load<Map>(fileName);
+
+            MapObjectLayer objects = Map.GetLayer("Objects") as MapObjectLayer;
+
+            foreach (MapObject obj in objects.Objects)
+            {
+                switch (obj.Name)
+                {
+                    case "PlayerStart":
+                        if (Level.Player == null)
+                        {
+                            Level.Player = new Player(new Vector2(obj.Bounds.X, obj.Bounds.Y));
+                            GameObjects.Add((Player)Level.Player);
+                            //gameObjects.Add(new FireEnemy(new Vector2(obj.Bounds.X, obj.Bounds.Y)));
+                        }
+                        break;
+
+                    case "Portal":
+                    case "Portal2":
+                    case "Portal3":
+                    case "Portal4":
+                        Portal portal = new Portal();
+                        portal.Bounds = obj.Bounds;
+                        Property tempP = obj.Properties["DestinationMap"];
+                        portal.DestinationMap = tempP.RawValue;
+                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
+                        tempP = obj.Properties["DestinationX"];
+                        string tileLocX = tempP.RawValue; //obj.Properties["DestinationX"].RawValue;
+                        string tileLocY = obj.Properties["DestinationY"].RawValue;
+                        portal.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX), Convert.ToInt32(tileLocY));
+                        Portals.Add(portal);
+                        break;
+                    case "crys":
+                        Portal crys = new Portal();
+                        crys.Bounds = obj.Bounds;
+                        Property tempP5 = obj.Properties["DestinationMap"];
+                        crys.DestinationMap = tempP5.RawValue;
+                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
+                        tempP5 = obj.Properties["DestinationX"];
+                        string tileLocX5 = tempP5.RawValue; //obj.Properties["DestinationX"].RawValue;
+                        string tileLocY5 = obj.Properties["DestinationY"].RawValue;
+                        crys.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX5), Convert.ToInt32(tileLocY5));
+                        Portals.Add(crys);
+                        break;
+                }
+            }
+            LoadClipMap();
+            LoadEnemies();
+            LoadBoss();
+        }
+
+        private void LoadClipMap()
+        {
+            ClipLayer = new Dictionary<Vector2, Rectangle>();
+            TileLayer clipLayer = Map.GetLayer("Clip") as TileLayer;            
+            for (int y = 0; y < clipLayer.Width; y++)
+                for (int x = 0; x < clipLayer.Height; x++)
+                {
+                    Tile tile = clipLayer.Tiles[x, y];
+                    if (tile != null)
+                        ClipLayer.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
+                }
+            Map.GetLayer("Clip").Visible = false; 
+        }
+
+        private void LoadEnemies()
+        {
+            Level.Enemies = new List<Enemy>();
+            TileLayer enemyLayer = Map.GetLayer("Enemy") as TileLayer;
+            for (int y = 0; y < enemyLayer.Width; y++)
+                for (int x = 0; x < enemyLayer.Height; x++)
+                {
+                    Tile tile = enemyLayer.Tiles[x, y];
+                    if (tile != null)
+                    {
+                        string enemyType = tile.Properties["Type"].RawValue;
+                        int enemyX = x * Map.TileWidth;
+                        int enemyY = y * Map.TileHeight;
+                        if (enemyType == "Fire")
+                            GameObjects.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
+                    }
+                }
+            Map.GetLayer("Enemy").Visible = false; 
+        }
+
+        private void LoadBoss()
+        {
+            TileLayer bossLayer = Map.GetLayer("Boss") as TileLayer;
+            for (int y = 0; y < bossLayer.Width; y++)
+                for (int x = 0; x < bossLayer.Height; x++)
+                {
+                    Tile tile = bossLayer.Tiles[x, y];
+                    if (tile != null)
+                    {
+                        string bossType = tile.Properties["Type"].RawValue;
+                        int bossX = x * Map.TileWidth;
+                        int bossY = y * Map.TileHeight;
+                        if (bossType == "Fire")
+                            GameObjects.Add(new FireBoss(new Vector2(bossX, bossY)));
+                    }
+                }
+            Map.GetLayer("Boss").Visible = false;
+        }
+
+        #endregion //Load
+
+
 
         #region PerPixelCollision
         private bool PerPixelCollision(Rectangle rectangleA, Texture2D textureA, Rectangle rectangleB, Texture2D textureB)
@@ -150,167 +293,6 @@ namespace ArchanistTower
         }
         #endregion
 
-
-        public void Draw()
-        {
-;
-            map.Draw(Globals.spriteBatch);
-            for (int i = 0; i < GameObjects.Count; i++)
-                GameObjects[i].Draw();            
-
-        }
-
-        #region Load
-
-        private void LoadMap(string fileName)
-        {
-            Level.Portals = new List<Portal>();
-            Level.ClipMap = new Dictionary<Vector2, Rectangle>();
-            Level.Enemies = new List<Enemy>();
-            if (Level.Player != null)
-            {
-                Level.Player = (Player)GameObjects[0];
-                GameObjects.Clear();
-                GameObjects.Add(Level.Player);
-            }
-            map = Globals.content.Load<Map>(fileName);
-
-            MapObjectLayer objects = map.GetLayer("Objects") as MapObjectLayer;
-
-            foreach (MapObject obj in objects.Objects)
-            {
-                switch (obj.Name)
-                {
-                    case "PlayerStart":
-                        if (Level.Player == null)
-                        {
-                            Level.Player = new Player(new Vector2(obj.Bounds.X, obj.Bounds.Y));
-                            GameObjects.Add((Player)Level.Player);
-                            //gameObjects.Add(new FireEnemy(new Vector2(obj.Bounds.X, obj.Bounds.Y)));
-                        }
-                        break;
-
-                    case "Portal":
-                        Portal portal = new Portal();
-                        portal.Bounds = obj.Bounds;
-                        Property tempP = obj.Properties["DestinationMap"];
-                        portal.DestinationMap = tempP.RawValue;
-                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
-                        tempP = obj.Properties["DestinationX"];
-                        string tileLocX = tempP.RawValue; //obj.Properties["DestinationX"].RawValue;
-                        string tileLocY = obj.Properties["DestinationY"].RawValue;
-                        portal.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX), Convert.ToInt32(tileLocY));
-                        Level.Portals.Add(portal);
-                        break;
-                    case "Portal2":
-                        Portal portal2 = new Portal();
-                        portal2.Bounds = obj.Bounds;
-                        Property tempP2 = obj.Properties["DestinationMap"];
-                        portal2.DestinationMap = tempP2.RawValue;
-                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
-                        tempP = obj.Properties["DestinationX"];
-                        string tileLocX2 = tempP.RawValue; //obj.Properties["DestinationX"].RawValue;
-                        string tileLocY2 = obj.Properties["DestinationY"].RawValue;
-                        portal2.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX2), Convert.ToInt32(tileLocY2));
-                        Level.Portals.Add(portal2);
-                        break;
-                    case "Portal3":
-                        Portal portal3 = new Portal();
-                        portal3.Bounds = obj.Bounds;
-                        Property tempP3 = obj.Properties["DestinationMap"];
-                        portal3.DestinationMap = tempP3.RawValue;
-                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
-                        tempP3 = obj.Properties["DestinationX"];
-                        string tileLocX3 = tempP3.RawValue; //obj.Properties["DestinationX"].RawValue;
-                        string tileLocY3 = obj.Properties["DestinationY"].RawValue;
-                        portal3.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX3), Convert.ToInt32(tileLocY3));
-                        Level.Portals.Add(portal3);
-                        break;
-                    case "Portal4":
-                        Portal portal4 = new Portal();
-                        portal4.Bounds = obj.Bounds;
-                        Property tempP4 = obj.Properties["DestinationMap"];
-                        portal4.DestinationMap = tempP4.RawValue;
-                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
-                        tempP4 = obj.Properties["DestinationX"];
-                        string tileLocX4 = tempP4.RawValue; //obj.Properties["DestinationX"].RawValue;
-                        string tileLocY4 = obj.Properties["DestinationY"].RawValue;
-                        portal4.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX4), Convert.ToInt32(tileLocY4));
-                        Level.Portals.Add(portal4);
-                        break;
-                    case "crys":
-                        Portal crys = new Portal();
-                        crys.Bounds = obj.Bounds;
-                        Property tempP5 = obj.Properties["DestinationMap"];
-                        crys.DestinationMap = tempP5.RawValue;
-                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
-                        tempP5 = obj.Properties["DestinationX"];
-                        string tileLocX5 = tempP5.RawValue; //obj.Properties["DestinationX"].RawValue;
-                        string tileLocY5 = obj.Properties["DestinationY"].RawValue;
-                        crys.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX5), Convert.ToInt32(tileLocY5));
-                        Level.Portals.Add(crys);
-                        break;
-                }
-            }
-            LoadClipMap();
-            LoadEnemies();
-            LoadBoss();
-        }
-
-        private void LoadClipMap()
-        {
-            Level.ClipMap = new Dictionary<Vector2, Rectangle>();
-            TileLayer clipLayer = map.GetLayer("Clip") as TileLayer;
-            for (int y = 0; y < clipLayer.Width; y++)
-                for (int x = 0; x < clipLayer.Height; x++)
-                {
-                    Tile tile = clipLayer.Tiles[x, y];
-                    if (tile != null)
-                        Level.ClipMap.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
-                }
-            map.GetLayer("Clip").Visible = false; 
-        }
-
-        private void LoadEnemies()
-        {
-            Level.Enemies = new List<Enemy>();
-            TileLayer enemyLayer = map.GetLayer("Enemy") as TileLayer;
-            for (int y = 0; y < enemyLayer.Width; y++)
-                for (int x = 0; x < enemyLayer.Height; x++)
-                {
-                    Tile tile = enemyLayer.Tiles[x, y];
-                    if (tile != null)
-                    {
-                        string enemyType = tile.Properties["Type"].RawValue;
-                        int enemyX = x * map.TileWidth;
-                        int enemyY = y * map.TileHeight;
-                        if (enemyType == "Fire")
-                            GameObjects.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
-                    }
-                }
-            map.GetLayer("Enemy").Visible = false; 
-        }
-
-        private void LoadBoss()
-        {
-            TileLayer bossLayer = map.GetLayer("Boss") as TileLayer;
-            for (int y = 0; y < bossLayer.Width; y++)
-                for (int x = 0; x < bossLayer.Height; x++)
-                {
-                    Tile tile = bossLayer.Tiles[x, y];
-                    if (tile != null)
-                    {
-                        string bossType = tile.Properties["Type"].RawValue;
-                        int bossX = x * map.TileWidth;
-                        int bossY = y * map.TileHeight;
-                        if (bossType == "Fire")
-                            GameObjects.Add(new FireBoss(new Vector2(bossX, bossY)));
-                    }
-                }
-            map.GetLayer("Boss").Visible = false;
-        }
-
-        #endregion //Load
 
     }
 }
