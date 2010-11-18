@@ -88,15 +88,9 @@ namespace ArchanistTower.GameObjects
             int i = ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32();
             if (i > 0)
             {
-                red = true;
-                if (i > 1)
-                {
-                    green = true;
-                    if (i > 2)
-                    {
-                        blue = true;
-                    }
-                }
+                if (i == 1) red = true;
+                if (i == 2) green = true;
+                if (i == 3) blue = true;
             }
         }
 
