@@ -59,12 +59,22 @@ namespace ArchanistTower.GameObjects
 
         public override void Draw()
         {
-            Globals.spriteBatch.Draw(
-                lifebar, 
-                new Rectangle(SpriteAnimation.Bounds.X + 3, SpriteAnimation.Bounds.Y - 5,   //x and y adjusted for sprite
-                    SpriteAnimation.Bounds.Width * Health / 100 - 6, 2),    //width based on health / adjusted for sprite
-                Color.White                                                 //height is width 2
-            );
+            int healthMod = Health;
+            while (healthMod > 0)
+            {
+                //sorry for this mess of code. it works but its not very clean
+                //basically what i'm doing is looping through each hundred of Health
+                //and then drawing that line to the screen
+                //I might replace with a proper for() loop later
+                Globals.spriteBatch.Draw(
+                    lifebar,
+                    new Rectangle(SpriteAnimation.Bounds.X + 3, SpriteAnimation.Bounds.Y - 5 - 4 * (healthMod % 100 != 0 ? healthMod / 100 + 1 : healthMod / 100),   //x and y adjusted for sprite and health
+                        SpriteAnimation.Bounds.Width * (healthMod % 100 != 0 ? healthMod % 100 : 100) / 100 - 6, 2),    //width based on health / adjusted for sprite
+                    Color.White
+                );
+                if (healthMod % 100 == 0) healthMod -= 100;
+                else healthMod -= healthMod % 100;
+            }
             base.Draw();
         }
 
