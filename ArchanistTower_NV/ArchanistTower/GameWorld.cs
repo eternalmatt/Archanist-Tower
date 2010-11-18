@@ -102,7 +102,8 @@ namespace ArchanistTower
                         {
                             if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
                             {
-                                Globals.shading = portal.DestinationTileLocation.X;
+                                if (portal.DestinationTileLocation.X > Globals.shading)
+                                    Globals.shading = portal.DestinationTileLocation.X;
                             }
                         }
                     }
