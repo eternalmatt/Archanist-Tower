@@ -5,13 +5,6 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -20,13 +13,6 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
    </properties>
   </tile>
  </tileset>
@@ -34,13 +20,6 @@
   <image source="FireEnemyIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
    </properties>
   </tile>
@@ -59,6 +38,14 @@
  </tileset>
  <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
   <image source="Overflow.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="461" name="FireBossIcon" tilewidth="32" tileheight="32">
+  <image source="FireBossIcon.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Layer 1" width="32" height="32">
   <data encoding="base64" compression="gzip">
@@ -101,4 +88,9 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="Boss" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3TMQEAAAgCQe2fzU52YGG5S/ADzACQuG0XQI/9Q4//AakHO8mdggAQAAA=
+  </data>
+ </layer>
 </map>
