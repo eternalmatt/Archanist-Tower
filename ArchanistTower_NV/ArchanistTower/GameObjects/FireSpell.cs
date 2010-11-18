@@ -55,7 +55,7 @@ namespace ArchanistTower.GameObjects
         {
             if (o is Enemy)
             {
-                if (o is FireEnemy)
+                if (o is FireEnemy || o is FireBoss)
                 {
                     o.Health -= 35;
                 }

@@ -223,6 +223,11 @@ namespace ArchanistTower.GameObjects
                 if (o is FireEnemy)
                 {
                     EnemyCollision(o.Direction);
+                    Health -= 5;
+                }
+                else if (o is FireBoss)
+                {
+                    EnemyCollision(o.Direction);
                     Health -= 10;
                 }
             }

@@ -69,7 +69,7 @@ namespace ArchanistTower
                 if (GameObjects[i].GetType() == typeof(Player))
                 {
                     for (int j = 0; j < GameObjects.Count; j++)
-                        if (GameObjects[j].GetType() == typeof(FireEnemy))
+                        if (GameObjects[j].GetType() == typeof(FireEnemy) || GameObjects[j].GetType() == typeof(FireBoss))
                             GameObjects[j].PlayerPosition = GameObjects[i].SpriteAnimation.Position;
                     foreach (Portal portal in Level.Portals)
                     {
@@ -78,7 +78,7 @@ namespace ArchanistTower
                             if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
                             {
                                 for (int j = 0; j < GameObjects.Count; j++)
-                                    if (GameObjects[j].GetType() == typeof(FireEnemy))
+                                    if (GameObjects[j].GetType() == typeof(FireEnemy) || GameObjects[j].GetType() == typeof(FireBoss))
                                         GameObjects[j].Dead = true;
                                 LoadMap(portal.DestinationMap);
                                 GameObjects[i].SpriteAnimation.Position = new Vector2(
@@ -254,6 +254,7 @@ namespace ArchanistTower
             }
             LoadClipMap();
             LoadEnemies();
+            LoadBoss();
         }
 
         private void LoadClipMap()
@@ -288,6 +289,25 @@ namespace ArchanistTower
                     }
                 }
             map.GetLayer("Enemy").Visible = false; 
+        }
+
+        private void LoadBoss()
+        {
+            TileLayer bossLayer = map.GetLayer("Boss") as TileLayer;
+            for (int y = 0; y < bossLayer.Width; y++)
+                for (int x = 0; x < bossLayer.Height; x++)
+                {
+                    Tile tile = bossLayer.Tiles[x, y];
+                    if (tile != null)
+                    {
+                        string bossType = tile.Properties["Type"].RawValue;
+                        int bossX = x * map.TileWidth;
+                        int bossY = y * map.TileHeight;
+                        if (bossType == "Fire")
+                            GameObjects.Add(new FireBoss(new Vector2(bossX, bossY)));
+                    }
+                }
+            map.GetLayer("Boss").Visible = false;
         }
 
         #endregion //Load
