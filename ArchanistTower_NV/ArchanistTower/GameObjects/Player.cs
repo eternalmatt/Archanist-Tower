@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using ArchanistTower.Screens;
 using Microsoft.Xna.Framework.Graphics;
 using TiledLib;
+using System.Diagnostics;
 
 namespace ArchanistTower.GameObjects
 {
@@ -34,6 +35,7 @@ namespace ArchanistTower.GameObjects
         protected bool blue;
         protected bool green;
         public static SelectedSpell selectedSpell;
+        private Stopwatch stopwatch;
 
         public Player(Vector2 startPosition)
         {
@@ -70,10 +72,15 @@ namespace ArchanistTower.GameObjects
 
             Collidable = true;
             CollisionRadius = 64;
+            stopwatch = new Stopwatch();
         }
 
         public override void Update(GameTime gameTime)
         {
+            if (stopwatch.ElapsedMilliseconds > 1500) stopwatch.Reset();
+            if (stopwatch.IsRunning) Collidable = false;
+            else Collidable = true;
+
             InputCheck();
 
             SpriteAnimation.ClampToArea(
@@ -222,6 +229,9 @@ namespace ArchanistTower.GameObjects
         {
             if (o is Enemy)
             {
+                if (!stopwatch.IsRunning) stopwatch.Start();
+                o.Collision(this);
+
                 if (o is FireEnemy)
                 {
                     EnemyCollision(o.Direction);
@@ -266,6 +276,12 @@ namespace ArchanistTower.GameObjects
                     SpriteAnimation.Position.Y += 20;
                     break;
             }
+        }
+
+        public override void Draw()
+        {
+            if (!   (stopwatch.IsRunning && (stopwatch.Elapsed.Milliseconds / 100) % 2 == 0))
+                base.Draw();
         }
     }
 
