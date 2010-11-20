@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="GameObjects\ElementalEnemy.cs" />
     <Compile Include="GameObjects\FireBoss.cs" />
     <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\FireEnemy.cs" />

@@ -6,63 +6,69 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using ArchanistTower.Screens;
 
 namespace ArchanistTower.GameObjects
 {
     public class Enemy : GameObject
     {
         private Vector2 spriteWanderDirection;
-        private const float enemyHysteresis = 15.0f;
         private float enemyWanderVelocity { get { return 0.75f; } }
-        private float enemyChaseVelocity { get { return 0.57f; } }
-        private FacingDirection Direction;
 
-        public float enemyOrientation;
-        public float enemyTurnSpeed = 0.12f;
-        public EnemySpriteState enemyState = EnemySpriteState.Chase;
-        public enum EnemySpriteState
+        protected Texture2D lifebar;
+        protected Stopwatch stopwatch;
+        protected float enemyOrientation;
+        protected float enemyTurnSpeed = 0.12f;
+        protected EnemySpriteState enemyState = EnemySpriteState.Chase;
+        protected enum EnemySpriteState
         {
             Wander,
             Chase,
             Attack
         }
 
+        public override void Initialize()
+        {
+            Collidable = true;
+            stopwatch = new Stopwatch();
+            base.Initialize();
+        }
+
+
+        /// <summary>
+        /// Be sure to call base.update when inheriting
+        /// </summary>
         public override void Update(GameTime gameTime)
         {
+            //don't allow sprite to leave gameworld
+            SpriteAnimation.ClampToArea(
+                   GameScreen.gameWorld.MapWidthInPixels,
+                   GameScreen.gameWorld.MapHeightInPixels);            
+
             if (enemyState == EnemySpriteState.Wander)
-            {
+            {   //if enemyState == Wander, make sprite wander, and adjust his speed
                 Wander(SpriteAnimation.Position, ref spriteWanderDirection, ref enemyOrientation, enemyTurnSpeed);
                 SpriteAnimation.Speed = enemyWanderVelocity;
             }
-            else if (enemyState == EnemySpriteState.Chase)
-            {
-                Chase(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
-                SpriteAnimation.Speed = enemyChaseVelocity;
-            }
 
-
-            Vector2 Direction = new Vector2((float)Math.Cos(enemyOrientation), (float)Math.Sin(enemyOrientation));
-            UpdateSpriteAnimation(Direction);
-            SpriteAnimation.IsAnimating = (SpriteAnimation.Speed != 0.0f) ? true : false;
-
-            LastMovement = SpriteAnimation.Speed * Direction;
-            SpriteAnimation.Position += LastMovement;
+            Vector2 directUnitVect = new Vector2((float)Math.Cos(enemyOrientation), (float)Math.Sin(enemyOrientation));
+            UpdateSpriteAnimation(directUnitVect);
+            SpriteAnimation.Update(gameTime);
         }
-        
 
-        public virtual void Chase(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
+
+        /// <summary>
+        /// Logic for Collision between enemy and other GameObject
+        /// </summary>
+        /// <param name="obj">GameObject being collided with</param>
+        public override void Collision(GameObject obj)
         {
-            orient = TurnToFace(position, playerPosition, orient, turnSpeed);
-            /*
-            if (position.X < playerPosition.X)
-                position.X += enemyChaseVelocity.X;
-            else position.X -= enemyChaseVelocity.X;
-
-            if (position.Y < playerPosition.Y)
-                position.Y += enemyChaseVelocity.Y;
-            else position.Y -= enemyChaseVelocity.Y;
-            */
-            //return position;
+            if (obj is Player)
+            {
+                if (!stopwatch.IsRunning)
+                    stopwatch.Start();
+            }
+            else WorldCollision();
         }
 
 
@@ -96,52 +102,42 @@ namespace ArchanistTower.GameObjects
             float x = faceThis.X - position.X;
             float y = faceThis.Y - position.Y;
             float desiredAngle = (float)Math.Atan2(y, x);
-            float difference = WrapAngle(desiredAngle - currentAngle);
-            
+            float difference = MathHelper.WrapAngle(desiredAngle - currentAngle);
+
             difference = MathHelper.Clamp(difference, -turnSpeed, turnSpeed);
-            return WrapAngle(currentAngle + difference);
+            return MathHelper.WrapAngle(currentAngle + difference);
         }
 
-     
-        private static float WrapAngle(float radians)
-        {
-            /*
-            while (radians < -MathHelper.Pi)
-            {
-                radians += MathHelper.TwoPi;
-            }
-            while (radians > MathHelper.Pi)
-            {
-                radians -= MathHelper.TwoPi;
-            }
-            return radians;
-            */
-            return MathHelper.WrapAngle(radians);//not sure why its not this
-        }
-
+        /// <summary>
+        /// Updates all information of the SpriteAnimation
+        /// </summary>
+        /// <param name="motion">Last motion vector</param>
         private void UpdateSpriteAnimation(Vector2 motion)
         {
-            float motionAngle = (float)Math.Atan2(motion.Y, motion.X);
+            SpriteAnimation.IsAnimating = (SpriteAnimation.Speed != 0.0f) ? true : false; //if speed isn't 0, animating the sprite.
+            LastMovement = SpriteAnimation.Speed * motion;   //LastMovement is a Vector2 of speed * motion
+            SpriteAnimation.Position += LastMovement;        //position updated for LastMovement
 
+            float motionAngle = (float)Math.Atan2(motion.Y, motion.X);  //translate motion to radians
             if (motionAngle >= -MathHelper.PiOver4 && motionAngle <= MathHelper.PiOver4)
-            {
+            {   //if motion is pointed to right, adjust animation and facingdirection
                 SpriteAnimation.CurrentAnimationName = "Right";
                 Direction = FacingDirection.Right;
             }
             else if (motionAngle >= MathHelper.PiOver4 && motionAngle <= 3f * MathHelper.PiOver4)
-            {
+            {   //if motion is pointed down, etc.
                 SpriteAnimation.CurrentAnimationName = "Down";
                 Direction = FacingDirection.Down;
             }
             else if (motionAngle <= -MathHelper.PiOver4 && motionAngle >= -3f * MathHelper.PiOver4)
-            {
+            {   //motion pointed up
                 SpriteAnimation.CurrentAnimationName = "Up";
                 Direction = FacingDirection.Up;
             }
             else
-            {
+            {   //motion pointed left
                 SpriteAnimation.CurrentAnimationName = "Left";
-                Direction = FacingDirection.Down;
+                Direction = FacingDirection.Left;
             }
         }
     }

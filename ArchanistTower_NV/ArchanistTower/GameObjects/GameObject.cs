@@ -18,6 +18,7 @@ namespace ArchanistTower.GameObjects
         public FacingDirection Direction;
 
 
+
         /// <summary>
         /// Only enemy classes need this information.
         /// </summary>

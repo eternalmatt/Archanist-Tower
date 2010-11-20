@@ -9,14 +9,11 @@ using System.Diagnostics;
 
 namespace ArchanistTower.GameObjects
 {
-    class FireEnemy : Enemy
+    class FireEnemy : ElementalEnemy
     {
 
         private const int enemyAttackRadius = 70;
         private const int enemyChaseRadius = 150;
-        private Stopwatch stopwatch;
-        private Texture2D lifebar;
-
         private float enemyAttackVelocity { get { return 1.2f; } }
 
         public FireEnemy(Vector2 startPosition)
@@ -51,65 +48,32 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.CurrentAnimationName = "Down";
             Direction = FacingDirection.Down;
 
-            Collidable = true;
             CollisionRadius = 64;
-            stopwatch = new Stopwatch(); 
             base.Initialize();
         }
 
-        public override void Draw()
-        {
-            Globals.spriteBatch.Draw(
-                lifebar, 
-                new Rectangle(SpriteAnimation.Bounds.X + 3, SpriteAnimation.Bounds.Y - 5,   //x and y adjusted for sprite
-                    SpriteAnimation.Bounds.Width * Health / 100 - 6, 2),    //width based on health / adjusted for sprite
-                Color.White                                                 //height is width 2
-            );
-            base.Draw();
-        }
 
         public override void Update(GameTime gameTime)
         {
-            if (stopwatch.IsRunning && stopwatch.Elapsed.Seconds >= 3)
-                stopwatch.Reset();
-
-            if (Health <= 0) Dead = true;
-            else if (stopwatch.IsRunning) SpriteAnimation.IsAnimating = false;
+            if (Health <= 0) Dead = true;   //if Health < 0, dead = true and skip update logic
+            else if (stopwatch.IsRunning)   //if stopwatch isrunning, sprite is paused, skip update logic
+            {
+                SpriteAnimation.IsAnimating = false;    //don't animate sprite
+                if (stopwatch.Elapsed.Seconds >= 3) stopwatch.Reset(); //if sprite is paused for more than 3 second, reset stopwatch
+            }
             else
             {
-                SpriteAnimation.ClampToArea(
-                       GameScreen.gameWorld.MapWidthInPixels,
-                       GameScreen.gameWorld.MapHeightInPixels);
-                SpriteAnimation.Update(gameTime);
-
-                CheckEnemyState();
-
+                CheckEnemyState();  //check the Wander/Chase/Attack state
 
                 if (enemyState == EnemySpriteState.Attack)
-                {
+                {   //if enemyState == Attack, make sprite attack player, and adjust his speed
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
                     SpriteAnimation.Speed = enemyAttackVelocity;
                 }
-
                 base.Update(gameTime);
             }
         }
 
-
-
-
-        public override void Collision(GameObject obj)
-        {
-            if (obj is Player)
-            {
-                if (!stopwatch.IsRunning)
-                    stopwatch.Start();
-            }
-            else if (obj.GetType() == typeof(FireEnemy))
-            {
-                WorldCollision();
-            }
-        }
 
         private void CheckEnemyState()
         {
@@ -122,20 +86,9 @@ namespace ArchanistTower.GameObjects
                 enemyState = EnemySpriteState.Wander;
         }
 
-        private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed) 
-        {
+        private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
+        {   //change the oritenation to face player
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
-            /*
-            if (position.X < playerPosition.X)
-                position.X += enemyAttackVelocity.X;
-            else position.X -= enemyAttackVelocity.X;
-
-            if (position.Y < playerPosition.Y)
-                position.Y += enemyAttackVelocity.Y;
-            else position.Y -= enemyAttackVelocity.Y;
-             */
-
-            //return position;
         }
     }
 }
