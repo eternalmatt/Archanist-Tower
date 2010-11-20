@@ -68,7 +68,7 @@ namespace ArchanistTower
             for (int i = 0; i < GameObjects.Count; i++)
             {
                 //update each obj
-                GameObjects[i].Update(gameTime);  
+                GameObjects[i].Update(gameTime);
 
                 //Check for collision with clip layer
                 foreach (Rectangle clip in ClipLayer.Values)
@@ -107,22 +107,29 @@ namespace ArchanistTower
                             }
                         }
                     }
-                    
+
                 }
                 //Makes as many inexpensive checks before checking intersection
                 if (GameObjects[i].Collidable)
                     for (int j = 0; j < GameObjects.Count; j++)
+                    {
                         if (i != j && GameObjects[j].Collidable)
                             if (Math.Abs(GameObjects[i].SpriteAnimation.Position.X - GameObjects[j].SpriteAnimation.Position.X) <= GameObjects[i].CollisionRadius &&
                                Math.Abs(GameObjects[i].SpriteAnimation.Position.Y - GameObjects[j].SpriteAnimation.Position.Y) <= GameObjects[i].CollisionRadius)
                                 if (GameObjects[i].SpriteAnimation.Bounds.Intersects(GameObjects[j].SpriteAnimation.Bounds))
                                     if (PerPixelCollision(GameObjects[i].SpriteAnimation.Bounds, GameObjects[i].SpriteAnimation.SpriteTexture, GameObjects[j].SpriteAnimation.Bounds, GameObjects[j].SpriteAnimation.SpriteTexture))
+                                    {
                                         GameObjects[i].Collision(GameObjects[j]);
-                
-                if (GameObjects[i].Dead)
-                    GameObjects.RemoveAt(i);
+                                        GameObjects[j].Collision(GameObjects[i]);
+                                    }
+                        if (GameObjects[j].Dead)
+                            GameObjects.RemoveAt(j--);
+                    }
+                if (i < GameObjects.Count)
+                    if (GameObjects[i].Dead)
+                        GameObjects.RemoveAt(i--);
             }
-
+    
         }
 
 
