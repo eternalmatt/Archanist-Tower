@@ -101,6 +101,7 @@
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameObjects\Spell.cs" />
     <Compile Include="GameObjects\WaterSpell.cs" />
+    <Compile Include="GameObjects\WindEnemy.cs" />
     <Compile Include="GameObjects\WindSpell.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="InputManager.cs" />

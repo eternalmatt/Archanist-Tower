@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using ArchanistTower.Screens;
-using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
 
 namespace ArchanistTower.GameObjects
 {
-    class FireEnemy : ElementalEnemy
+    class WindEnemy : ElementalEnemy
     {
 
         private const int enemyAttackRadius = 70;
         private const int enemyChaseRadius = 150;
         private float enemyAttackVelocity { get { return 1.2f; } }
 
-        public FireEnemy(Vector2 startPosition)
+        public WindEnemy(Vector2 startPosition)
         {
             Health = 100;
             Initialize();
@@ -26,7 +23,7 @@ namespace ArchanistTower.GameObjects
 
         public override void Initialize()
         {
-            SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Enemies/avt3"));
+            SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Enemies/wmn3"));
             lifebar = Globals.content.Load<Texture2D>("HUD/rectangle");
             FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
             FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
