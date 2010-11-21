@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ArchanistTower.GameObjects
 {
@@ -36,7 +37,7 @@ namespace ArchanistTower.GameObjects
                 lifebar,
                 new Rectangle(SpriteAnimation.Bounds.X + 3, SpriteAnimation.Bounds.Y - 5,   //x and y adjusted for sprite
                     SpriteAnimation.Bounds.Width * Health / 100 - 6, 2),    //width based on health / adjusted for sprite
-                Microsoft.Xna.Framework.Graphics.Color.White);
+                Color.White);
             base.Draw();
         }
  

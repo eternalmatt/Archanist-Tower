@@ -23,8 +23,8 @@ namespace ArchanistTower.GameObjects
 
         public override void Initialize()
         {
-            SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Enemies/wmn3"));
-            lifebar = Globals.content.Load<Texture2D>("HUD/rectangle");
+            SpriteAnimation = new AnimatedSprite(Globals.content.Load<Microsoft.Xna.Framework.Graphics.Texture2D>("Sprites/Enemies/wmn3"));
+            lifebar = Globals.content.Load<Microsoft.Xna.Framework.Graphics.Texture2D>("HUD/rectangle");
             FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
             FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
             FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
