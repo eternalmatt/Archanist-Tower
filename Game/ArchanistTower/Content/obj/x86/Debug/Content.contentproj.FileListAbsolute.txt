@@ -1,0 +1,2 @@
+C:\Users\Seth\Desktop\Game\ArchanistTower_NV\ArchanistTower\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Seth\Desktop\Game\ArchanistTower\Content\obj\x86\Debug\ResolveAssemblyReference.cache

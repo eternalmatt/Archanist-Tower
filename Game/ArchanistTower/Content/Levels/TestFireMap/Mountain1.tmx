@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Rock" tilewidth="32" tileheight="32">
+  <image source="rock.png"/>
+  <tile id="0">
+   <properties>
+    <property name="TileType" value="0"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="2" name="Lava" tilewidth="32" tileheight="32">
+  <image source="lava.png"/>
+  <tile id="0">
+   <properties>
+    <property name="TileType" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="FireEnemy" tilewidth="32" tileheight="32">
+  <image source="FireEnemyIcon.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="4" name="Clip" tilewidth="32" tileheight="32">
+  <image source="solid.jpg" trans="ff00ff"/>
+ </tileset>
+ <tileset firstgid="5" name="MountainPieces" tilewidth="32" tileheight="32">
+  <image source="MountainPieces.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="317" name="ConnectionLavat" tilewidth="32" tileheight="32">
+  <image source="ConnectionLavat.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="365" name="LavaGround" tilewidth="32" tileheight="32">
+  <image source="LavaGround.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
+  <image source="Overflow.png" trans="ffffff"/>
+ </tileset>
+ <layer name="Layer 1" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DAQkAAAwEoQvw/fOux1Bw1VRVVdXXDwiD1TcAEAAA
+  </data>
+ </layer>
+ <layer name="Layer 2" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYHADwQG2X5JE9UPNvaOAcqACxCJ0sAeWtgoYMe2HYWygEqi+CgsmFZCbtlqBdrVhwfQCuOzHFiYgXE1lt+GyHxduH7UfDNDTOb3tpwQgu32ohv9A2U9q3sRVvsEwqXaTGjbk+G+o21/MOLL9Pxjsh8XBSPX/aPqnzH4ACqsyYgAQAAA=
+  </data>
+ </layer>
+ <layer name="Clip" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3UywkAIAwE0RzSf81WsIiy5AMz4E14UdAIotnlMn/bvOSp4t5/jRSr0u9M+epe3PN2/yH4+Nv8l7d52+88j/KrwsfHx3f4B+T783MAEAAA
+  </data>
+ </layer>
+ <layer name="Enemy" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NsQkAAAgEsQf339nGCezEBK6+BABuqenrHwBgowGxO81ZABAAAA==
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="32" height="32">
+  <object name="Portal" x="447" y="988" width="119" height="36">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\MountainEntrance"/>
+    <property name="DestinationX" value="15"/>
+    <property name="DestinationY" value="13"/>
+   </properties>
+  </object>
+  <object name="Portal4" x="991" y="12" width="29" height="339">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\Mountain2"/>
+    <property name="DestinationX" value="2"/>
+    <property name="DestinationY" value="4"/>
+   </properties>
+  </object>
+  <object name="Portal3" x="9" y="5" width="976" height="16">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\Mountain5"/>
+    <property name="DestinationX" value="16"/>
+    <property name="DestinationY" value="29"/>
+   </properties>
+  </object>
+  <object name="Portal2" x="3" y="47" width="17" height="396">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\Mountain6"/>
+    <property name="DestinationX" value="29"/>
+    <property name="DestinationY" value="12"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Boss" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
+  </data>
+ </layer>
+</map>

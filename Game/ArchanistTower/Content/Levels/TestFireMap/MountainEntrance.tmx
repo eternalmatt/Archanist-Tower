@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Rock" tilewidth="32" tileheight="32">
+  <image source="rock.png"/>
+  <tile id="0">
+   <properties>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="2" name="Lava" tilewidth="32" tileheight="32">
+  <image source="lava.png"/>
+  <tile id="0">
+   <properties>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="FireEnemy" tilewidth="32" tileheight="32">
+  <image source="FireEnemyIcon.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="4" name="Clip" tilewidth="32" tileheight="32">
+  <image source="solid.jpg" trans="ff00ff"/>
+ </tileset>
+ <tileset firstgid="5" name="MountainPieces" tilewidth="32" tileheight="32">
+  <image source="MountainPieces.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="317" name="ConnectionLavat" tilewidth="32" tileheight="32">
+  <image source="ConnectionLavat.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="365" name="LavaGround" tilewidth="32" tileheight="32">
+  <image source="LavaGround.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
+  <image source="Overflow.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="461" name="Collectables" tilewidth="32" tileheight="32">
+  <image source="Untitled.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Red"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Blue"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="Type" value="Green"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Layer 1" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC9NjYGDQG8WjeBQPOWw5CNwwiinDthToZYFicvXbA7HrAPrdfRCEPy0wBxQPpN0D4QZ0u+npBlx208MNhOyGYULlNbnlObH2D9fwH6j0hy2+BjL/obthIOwexUMLmwKx2QBhcwZI+8dugLD9ILDfdQDtB7W/AA/diXQAEAAA
+  </data>
+ </layer>
+ <layer name="Layer 2" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3SuQoCMRAG4OwTqGujD6NWKu5aedbqM3o0Ho1H41Gpj+MvWAxhnaSYKCzzwweBTPJDiDHh0omMSb5Io/B9I8Y4QP/Q0an92p/n/gnunBK/7n+nRNbce4Tqr5K1/R7U7NNftzTI+VrGPpVACl3HHKdlaZP+ZsY+1YM+DBxzHI1s5rCAJawE7y16zMSwhg1sYSfYX/Gc28MBjnAS7PfNGS5whdsf+stwhwc8A9zv8w9oYuF+7h8UhLs0Go0mz3kBtT6G8AAQAAA=
+  </data>
+ </layer>
+ <layer name="Layer 3" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3TOw5AQBSF4ZlFoEKhVNqExqNBhQoV9t85MpEobqjGJe6X/A3FGclQ6h9K7gM8KCWeuch7+iAnAQoZ9/+EuuvpzXvbHIbNw/7tvqL/izeKtImSoRwVFvdjbaJUqEaNxf1Emygt6lBvcf/KgEY0Me3PaEEr074QQgghvm8DkoJvHAAQAAA=
+  </data>
+ </layer>
+ <layer name="Clip" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2WQQoAIAgEO/j/N3eXSiN1DXYgOgg7dtHGyEMSs3c+fRB+FPRjob9HDz/5TzNrVas4Xr/1jhuXF1F3Najdonuw6tH9efOy9i/a76WTPysfCdpPCIkD9cd5mZFROR2Y4bm/7wAQAAA=
+  </data>
+ </layer>
+ <layer name="Enemy" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OAQkAAAwDoMH7d36MMdAEJgDAmmsHAIA5D8hqavoAEAAA
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="32" height="32">
+  <object name="PlayerStart" x="423" y="568" width="32" height="32"/>
+  <object name="Portal" x="511" y="384" width="32" height="32">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\Mountain1"/>
+    <property name="DestinationX" value="16"/>
+    <property name="DestinationY" value="28"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Boss" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
+  </data>
+ </layer>
+ <layer name="Collectable" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3QQQ0AIAwEweJfG2CpFng0QNIZBXsXAf9b43XBPbPR1grbXwAAcCQBiBsDGgAQAAA=
+  </data>
+ </layer>
+</map>
