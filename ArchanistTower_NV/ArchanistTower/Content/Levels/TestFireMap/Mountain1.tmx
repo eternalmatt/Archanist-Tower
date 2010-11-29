@@ -51,7 +51,7 @@
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3UQQoAIAgFURfe/8ztg09kogkz0C56FZQZ0d/5MH/afimninuPGi5Gpd+Z8tW9ZO+3+w/Bx5/m37zN0/yX8+xrKL8qfHx8/Ax/AVOsQeQAEAAA
+   H4sIAAAAAAAAC+3UywkAIAwE0RzSf81WsIiy5AMz4E14UdAIotnlMn/bvOSp4t5/jRSr0u9M+epe3PN2/yH4+Nv8l7d52+88j/KrwsfHx3f4B+T783MAEAAA
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">

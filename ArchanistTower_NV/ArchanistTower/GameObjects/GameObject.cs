@@ -22,11 +22,7 @@ namespace ArchanistTower.GameObjects
         /// <summary>
         /// Only enemy classes need this information.
         /// </summary>
-        public Vector2 PlayerPosition
-        {
-            get;
-            set;
-        }
+        
 
 
         

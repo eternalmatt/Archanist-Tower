@@ -6,8 +6,6 @@
    <properties>
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -17,8 +15,6 @@
    <properties>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
    </properties>
   </tile>
  </tileset>
@@ -26,8 +22,6 @@
   <image source="FireEnemyIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
    </properties>
@@ -47,6 +41,24 @@
  </tileset>
  <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
   <image source="Overflow.png" trans="ffffff"/>
+ </tileset>
+ <tileset firstgid="461" name="Collectables" tilewidth="32" tileheight="32">
+  <image source="Untitled.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Red"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Blue"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="Type" value="Green"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Layer 1" width="32" height="32">
   <data encoding="base64" compression="gzip">
@@ -82,17 +94,15 @@
     <property name="DestinationY" value="28"/>
    </properties>
   </object>
-  <object name="crys" x="613" y="612" width="48" height="56">
-   <properties>
-    <property name="DestinationMap" value="crys"/>
-    <property name="DestinationX" value="1"/>
-    <property name="DestinationY" value="0"/>
-   </properties>
-  </object>
  </objectgroup>
  <layer name="Boss" width="32" height="32">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
+  </data>
+ </layer>
+ <layer name="Collectable" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3QQQ0AIAwEweJfG2CpFng0QNIZBXsXAf9b43XBPbPR1grbXwAAcCQBiBsDGgAQAAA=
   </data>
  </layer>
 </map>

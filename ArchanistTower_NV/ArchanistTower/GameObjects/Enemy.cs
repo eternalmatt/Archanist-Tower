@@ -20,6 +20,7 @@ namespace ArchanistTower.GameObjects
         protected float enemyOrientation;
         protected float enemyTurnSpeed = 0.12f;
         protected EnemySpriteState enemyState = EnemySpriteState.Chase;
+        public Vector2 PlayerPosition { get; set; }
         protected enum EnemySpriteState
         {
             Wander,

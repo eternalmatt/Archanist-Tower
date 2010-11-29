@@ -53,7 +53,7 @@ namespace ArchanistTower.Screens
 
         protected override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            PlayerHealth = GameScreen.gameWorld.GameObjects[0].Health;
+            PlayerHealth = GameWorld.Player.Health;
 
             crystal.Update(gameTime);
         }

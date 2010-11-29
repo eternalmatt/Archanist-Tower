@@ -167,9 +167,9 @@ namespace ArchanistTower.GameObjects
                         Direction = FacingDirection.Down;
 
                     if (selectedSpell == SelectedSpell.fire && red)
-                        GameScreen.gameWorld.AddObject(new FireSpell(Direction, SpriteAnimation.Position));
+                        GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position));
                     else if (selectedSpell == SelectedSpell.wind && green)
-                        GameScreen.gameWorld.AddObject(new WindSpell(Direction, SpriteAnimation.Position));
+                        GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position));
                     else if (selectedSpell == SelectedSpell.water && blue)
                     {  } // reserved for water spell
                 }

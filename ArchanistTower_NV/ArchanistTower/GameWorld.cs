@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using ArchanistTower.GameObjects;
+using ArchanistTower.Collectables;
 using TiledLib;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -14,12 +15,14 @@ namespace ArchanistTower
 
         //Map Things
         public static Map Map { get; set; }
-        public static Dictionary<Vector2, Rectangle> ClipLayer { get; set; }
+        public static Dictionary<Vector2, Rectangle> ClipMap { get; set; }
         public static List<Portal> Portals { get; set; }
-        public  List<GameObject> GameObjects { get; set; }
+        public static List<Enemy> Enemies { get; set; }
+        public static List<Spell> Spells { get; set; }
+        public static List<Collectable> Collectables { get; set; }
         public static bool Debug { get; set; }
-        //public List<GameObject> GameObjects;
 
+        public static Player Player;
 
 
         public int TileWidth
@@ -44,7 +47,10 @@ namespace ArchanistTower
 
         public GameWorld()
         {
-            GameObjects = new List<GameObject>();
+           // Portals = new List<Portal>();
+            Enemies = new List<Enemy>();
+            Spells = new List<Spell>();
+            Collectables = new List<Collectable>();
             //shader.LoadContent();
         }
 
@@ -58,86 +64,55 @@ namespace ArchanistTower
 
         }
 
-        public void AddObject(GameObject obj)
-        {
-            GameObjects.Add(obj);
-        }
-
         public void Update(GameTime gameTime)
         {
-            for (int i = 0; i < GameObjects.Count; i++)
+            PlayerUpdate(gameTime);
+
+
+            foreach (Enemy e in Enemies)
             {
-                //update each obj
-                GameObjects[i].Update(gameTime);
-
-                //Check for collision with clip layer
-                foreach (Rectangle clip in ClipLayer.Values)
-                    if (GameObjects[i].SpriteAnimation.Bounds.Intersects(clip))
-                    {
-                        GameObjects[i].WorldCollision();
-                        break;
-                    }
-                if (GameObjects[i].GetType() == typeof(Player))
-                {
-                    for (int j = 0; j < GameObjects.Count; j++)
-                        if (GameObjects[j].GetType() == typeof(FireEnemy) || GameObjects[j].GetType() == typeof(FireBoss))
-                            GameObjects[j].PlayerPosition = GameObjects[i].SpriteAnimation.Position;
-
-                    foreach (Portal portal in Portals)
-                    {
-                        if (portal.DestinationMap != "crys")
-                        {
-                            if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
-                            {
-                                //for (int j = 0; j < GameObjects.Count; j++)
-                                //    if (GameObjects[j].GetType() == typeof(FireEnemy) || GameObjects[j].GetType() == typeof(FireBoss))
-                                //        GameObjects[j].Dead = true;
-                                LoadMap(portal.DestinationMap);
-                                GameObjects[i].SpriteAnimation.Position = new Vector2(
-                                    (portal.DestinationTileLocation.X * Map.TileWidth) + (Map.TileWidth / 2),
-                                    (portal.DestinationTileLocation.Y * Map.TileHeight) + (Map.TileHeight / 2));
-                            }
-                        }
-                        else
-                        {
-                            if (GameObjects[i].SpriteAnimation.Bounds.Intersects(portal.Bounds))
-                            {
-                                if (portal.DestinationTileLocation.X > Globals.shading)
-                                    Globals.shading = portal.DestinationTileLocation.X;
-                            }
-                        }
-                    }
-
-                }
-                //Makes as many inexpensive checks before checking intersection
-                if (GameObjects[i].Collidable)
-                    for (int j = 0; j < GameObjects.Count; j++)
-                    {
-                        if (i != j && GameObjects[j].Collidable)
-                            if (Math.Abs(GameObjects[i].SpriteAnimation.Position.X - GameObjects[j].SpriteAnimation.Position.X) <= GameObjects[i].CollisionRadius &&
-                               Math.Abs(GameObjects[i].SpriteAnimation.Position.Y - GameObjects[j].SpriteAnimation.Position.Y) <= GameObjects[i].CollisionRadius)
-                                if (GameObjects[i].SpriteAnimation.Bounds.Intersects(GameObjects[j].SpriteAnimation.Bounds))
-                                    if (PerPixelCollision(GameObjects[i].SpriteAnimation.Bounds, GameObjects[i].SpriteAnimation.SpriteTexture, GameObjects[j].SpriteAnimation.Bounds, GameObjects[j].SpriteAnimation.SpriteTexture))
-                                    {
-                                        GameObjects[i].Collision(GameObjects[j]);
-                                        GameObjects[j].Collision(GameObjects[i]);
-                                    }
-                        if (GameObjects[j].Dead)
-                            GameObjects.RemoveAt(j--);
-                    }
-                if (i < GameObjects.Count)
-                    if (GameObjects[i].Dead)
-                        GameObjects.RemoveAt(i--);
+                e.Update(gameTime);
+                foreach(Rectangle clip in ClipMap.Values)
+                    if(e.SpriteAnimation.Bounds.Intersects(clip))
+                        e.WorldCollision();
+                e.PlayerPosition = Player.SpriteAnimation.Position;
             }
-    
+
+            foreach (Collectable c in Collectables)
+                c.Update(gameTime);
+
+
         }
+
+        public void PlayerUpdate(GameTime gameTime)
+        {
+            Player.Update(gameTime);
+
+            foreach (Rectangle clip in ClipMap.Values)
+                if (Player.SpriteAnimation.Bounds.Intersects(clip))
+                    Player.WorldCollision();
+
+            foreach(Portal p in Portals)
+                if (Player.SpriteAnimation.Bounds.Intersects(p.Bounds))
+                {
+                    LoadMap(p.DestinationMap);
+                    Player.SpriteAnimation.Position = new Vector2(
+                        (p.DestinationTileLocation.X * Map.TileWidth) + (Map.TileWidth / 2),
+                        (p.DestinationTileLocation.Y * Map.TileHeight) + (Map.TileHeight / 2));
+                }
+        }
+    
+
 
 
         public void Draw()
         {
             Map.Draw(Globals.spriteBatch);
-            for (int i = 0; i < GameObjects.Count; i++)
-                GameObjects[i].Draw();            
+            foreach(Enemy enemy in Enemies)
+                enemy.Draw();
+            foreach (Collectable c in Collectables)
+                c.Draw();
+            Player.Draw();
 
         }
 
@@ -147,14 +122,7 @@ namespace ArchanistTower
         private void LoadMap(string fileName)
         {
             Portals = new List<Portal>();
-            Level.ClipMap = new Dictionary<Vector2, Rectangle>();
-            Level.Enemies = new List<Enemy>();
-            if (Level.Player != null)
-            {
-                Level.Player = (Player)GameObjects[0];
-                GameObjects.Clear();
-                GameObjects.Add(Level.Player);
-            }
+            Enemies = new List<Enemy>();
             Map = Globals.content.Load<Map>(fileName);
 
             MapObjectLayer objects = Map.GetLayer("Objects") as MapObjectLayer;
@@ -164,12 +132,8 @@ namespace ArchanistTower
                 switch (obj.Name)
                 {
                     case "PlayerStart":
-                        if (Level.Player == null)
-                        {
-                            Level.Player = new Player(new Vector2(obj.Bounds.X, obj.Bounds.Y));
-                            GameObjects.Add((Player)Level.Player);
-                            //gameObjects.Add(new FireEnemy(new Vector2(obj.Bounds.X, obj.Bounds.Y)));
-                        }
+                        if (Player == null)
+                            Player = new Player(new Vector2(obj.Bounds.X, obj.Bounds.Y));
                         break;
 
                     case "Portal":
@@ -204,25 +168,26 @@ namespace ArchanistTower
             LoadClipMap();
             LoadEnemies();
             LoadBoss();
+            LoadCollectables();
         }
 
         private void LoadClipMap()
         {
-            ClipLayer = new Dictionary<Vector2, Rectangle>();
+            ClipMap = new Dictionary<Vector2, Rectangle>();
             TileLayer clipLayer = Map.GetLayer("Clip") as TileLayer;            
             for (int y = 0; y < clipLayer.Width; y++)
                 for (int x = 0; x < clipLayer.Height; x++)
                 {
                     Tile tile = clipLayer.Tiles[x, y];
                     if (tile != null)
-                        ClipLayer.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
+                        ClipMap.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
                 }
             Map.GetLayer("Clip").Visible = false; 
         }
 
         private void LoadEnemies()
         {
-            Level.Enemies = new List<Enemy>();
+            Enemies = new List<Enemy>();
             TileLayer enemyLayer = Map.GetLayer("Enemy") as TileLayer;
             for (int y = 0; y < enemyLayer.Width; y++)
                 for (int x = 0; x < enemyLayer.Height; x++)
@@ -234,7 +199,7 @@ namespace ArchanistTower
                         int enemyX = x * Map.TileWidth;
                         int enemyY = y * Map.TileHeight;
                         if (enemyType == "Fire")
-                            GameObjects.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
+                            Enemies.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
                     }
                 }
             Map.GetLayer("Enemy").Visible = false; 
@@ -253,10 +218,30 @@ namespace ArchanistTower
                         int bossX = x * Map.TileWidth;
                         int bossY = y * Map.TileHeight;
                         if (bossType == "Fire")
-                            GameObjects.Add(new FireBoss(new Vector2(bossX, bossY)));
+                            Enemies.Add(new FireBoss(new Vector2(bossX, bossY)));
                     }
                 }
             Map.GetLayer("Boss").Visible = false;
+        }
+
+        private void LoadCollectables()
+        {
+            TileLayer cLayer = Map.GetLayer("Collectable") as TileLayer;
+            for(int y = 0; y < cLayer.Width; y++)
+                for (int x = 0; x < cLayer.Height; x++)
+                {
+                    Tile tile = cLayer.Tiles[x, y];
+                    if (tile != null)
+                    {
+                        string cType = tile.Properties["Type"].RawValue;
+                        int cX = x * Map.TileWidth;
+                        int cY = y * Map.TileHeight;
+                        if (cType == "Health")
+                            break;
+                        else
+                            Collectables.Add(new Crystal(cType, new Vector2(cX, cY)));
+                    }
+                }
         }
 
         #endregion //Load
