@@ -7,12 +7,12 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\TestMap.xnb</Output>
-      <Time>2010-11-29T15:13:53.1847-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_grass_texture.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_wood_texture.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\FireEnemyIcon.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\TestMap.xnb</Output>
+      <Time>2010-11-29T15:35:33.2127-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_grass_texture.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_wood_texture.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\FireEnemyIcon.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestMap\Test.tmx</Source>
@@ -20,12 +20,12 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\Test.xnb</Output>
-      <Time>2010-11-29T15:13:53.1877-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_grass_texture.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_wood_texture.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\FireEnemyIcon.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\Test.xnb</Output>
+      <Time>2010-11-29T15:35:33.2177-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_grass_texture.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_wood_texture.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\FireEnemyIcon.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\TestFireMap.tmx</Source>
@@ -33,15 +33,15 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\TestFireMap.xnb</Output>
-      <Time>2010-11-29T15:13:53.0817-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\TestFireMap.xnb</Output>
+      <Time>2010-11-29T15:35:31.5887-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\BasicForm.tmx</Source>
@@ -49,16 +49,16 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\BasicForm.xnb</Output>
-      <Time>2010-11-29T15:13:53.1097-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\BasicForm.xnb</Output>
+      <Time>2010-11-29T15:35:31.8117-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\BossRoom.tmx</Source>
@@ -66,17 +66,17 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\BossRoom.xnb</Output>
-      <Time>2010-11-29T15:13:53.1027-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireBossIcon.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\BossRoom.xnb</Output>
+      <Time>2010-11-29T15:35:31.7657-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireBossIcon.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Mountain1.tmx</Source>
@@ -84,16 +84,16 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain1.xnb</Output>
-      <Time>2010-11-29T15:13:53.0517-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain1.xnb</Output>
+      <Time>2010-11-29T15:35:31.5647-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Mountain2.tmx</Source>
@@ -101,16 +101,16 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain2.xnb</Output>
-      <Time>2010-11-29T15:13:53.0547-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain2.xnb</Output>
+      <Time>2010-11-29T15:35:31.5667-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Mountain3.tmx</Source>
@@ -118,16 +118,16 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain3.xnb</Output>
-      <Time>2010-11-29T15:13:53.0567-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain3.xnb</Output>
+      <Time>2010-11-29T15:35:31.5677-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Mountain4.tmx</Source>
@@ -135,16 +135,16 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain4.xnb</Output>
-      <Time>2010-11-29T15:13:53.0597-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain4.xnb</Output>
+      <Time>2010-11-29T15:35:31.5697-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Mountain5.tmx</Source>
@@ -152,16 +152,16 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain5.xnb</Output>
-      <Time>2010-11-29T15:13:53.0697-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain5.xnb</Output>
+      <Time>2010-11-29T15:35:31.5777-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Mountain6.tmx</Source>
@@ -169,16 +169,16 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain6.xnb</Output>
-      <Time>2010-11-29T15:13:53.0727-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain6.xnb</Output>
+      <Time>2010-11-29T15:35:31.5807-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Mountain7.tmx</Source>
@@ -186,17 +186,17 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain7.xnb</Output>
-      <Time>2010-11-29T15:13:53.0747-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireBossIcon.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Mountain7.xnb</Output>
+      <Time>2010-11-29T15:35:31.5827-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireBossIcon.xnb</Request>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\MountainEntrance.tmx</Source>
@@ -204,17 +204,17 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainEntrance.xnb</Output>
-      <Time>2010-11-29T15:13:53.0177-05:00</Time>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
-      <Request>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Untitled.xnb</Request>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainEntrance.xnb</Output>
+      <Time>2010-11-29T15:35:31.5107-05:00</Time>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Request>
+      <Request>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Untitled.xnb</Request>
     </Item>
     <Item>
       <Source>Sprites\Player\man1.png</Source>
@@ -222,8 +222,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Player\man1.xnb</Output>
-      <Time>2010-11-29T15:13:52.3377-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Player\man1.xnb</Output>
+      <Time>2010-11-29T15:35:29.7247-05:00</Time>
     </Item>
     <Item>
       <Source>HUD\rectangle.PNG</Source>
@@ -231,8 +231,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\HUD\rectangle.xnb</Output>
-      <Time>2010-11-29T15:13:50.6607-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\HUD\rectangle.xnb</Output>
+      <Time>2010-11-29T15:35:27.2937-05:00</Time>
     </Item>
     <Item>
       <Source>Menuscreens\menu.png</Source>
@@ -240,8 +240,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\menu.xnb</Output>
-      <Time>2010-11-29T15:13:51.0767-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\menu.xnb</Output>
+      <Time>2010-11-29T15:35:27.7307-05:00</Time>
     </Item>
     <Item>
       <Source>Menuscreens\pause.png</Source>
@@ -249,8 +249,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\pause.xnb</Output>
-      <Time>2010-11-29T15:13:51.0447-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\pause.xnb</Output>
+      <Time>2010-11-29T15:35:27.6837-05:00</Time>
     </Item>
     <Item>
       <Source>Menuscreens\splash.png</Source>
@@ -258,8 +258,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\splash.xnb</Output>
-      <Time>2010-11-29T15:13:51.0847-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\splash.xnb</Output>
+      <Time>2010-11-29T15:35:27.7377-05:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Spells\spellsprites.png</Source>
@@ -267,8 +267,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Spells\spellsprites.xnb</Output>
-      <Time>2010-11-29T15:13:51.3787-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Spells\spellsprites.xnb</Output>
+      <Time>2010-11-29T15:35:29.1387-05:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Enemies\avt3.png</Source>
@@ -276,8 +276,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Enemies\avt3.xnb</Output>
-      <Time>2010-11-29T15:13:51.4897-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Enemies\avt3.xnb</Output>
+      <Time>2010-11-29T15:35:29.2327-05:00</Time>
     </Item>
     <Item>
       <Source>Menuscreens\gameover.png</Source>
@@ -285,8 +285,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\gameover.xnb</Output>
-      <Time>2010-11-29T15:13:51.0807-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\gameover.xnb</Output>
+      <Time>2010-11-29T15:35:27.7337-05:00</Time>
     </Item>
     <Item>
       <Source>HUD\crystals.png</Source>
@@ -297,8 +297,8 @@
         <Data Key="ColorKeyColor">0, 0, 0, 255</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\HUD\crystals.xnb</Output>
-      <Time>2010-11-29T15:13:50.6567-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\HUD\crystals.xnb</Output>
+      <Time>2010-11-29T15:35:27.2907-05:00</Time>
     </Item>
     <Item>
       <Source>Menuscreens\instruction.png</Source>
@@ -306,8 +306,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\instruction.xnb</Output>
-      <Time>2010-11-29T15:13:51.0487-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Menuscreens\instruction.xnb</Output>
+      <Time>2010-11-29T15:35:27.6877-05:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Enemies\amg1.png</Source>
@@ -315,8 +315,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Enemies\amg1.xnb</Output>
-      <Time>2010-11-29T15:13:51.4967-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Enemies\amg1.xnb</Output>
+      <Time>2010-11-29T15:35:29.2407-05:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Enemies\wmn3.png</Source>
@@ -324,8 +324,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Enemies\wmn3.xnb</Output>
-      <Time>2010-11-29T15:13:51.4937-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Enemies\wmn3.xnb</Output>
+      <Time>2010-11-29T15:35:29.2367-05:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Collectables\bluerelic.png</Source>
@@ -333,8 +333,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Collectables\bluerelic.xnb</Output>
-      <Time>2010-11-29T15:13:51.6837-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Collectables\bluerelic.xnb</Output>
+      <Time>2010-11-29T15:35:29.6517-05:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Collectables\greenrelic.png</Source>
@@ -342,8 +342,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Collectables\greenrelic.xnb</Output>
-      <Time>2010-11-29T15:13:51.6787-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Collectables\greenrelic.xnb</Output>
+      <Time>2010-11-29T15:35:29.6487-05:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Collectables\redrelic.png</Source>
@@ -351,8 +351,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Collectables\redrelic.xnb</Output>
-      <Time>2010-11-29T15:13:51.9507-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Sprites\Collectables\redrelic.xnb</Output>
+      <Time>2010-11-29T15:35:29.6607-05:00</Time>
     </Item>
     <Item>
       <Source>Fonts\Arial.spritefont</Source>
@@ -360,8 +360,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Fonts\Arial.xnb</Output>
-      <Time>2010-11-29T15:13:51.2167-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Fonts\Arial.xnb</Output>
+      <Time>2010-11-29T15:35:28.0507-05:00</Time>
     </Item>
     <Item>
       <Source>Fonts\menufont.spritefont</Source>
@@ -369,8 +369,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Fonts\menufont.xnb</Output>
-      <Time>2010-11-29T15:13:51.2187-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Fonts\menufont.xnb</Output>
+      <Time>2010-11-29T15:35:28.0527-05:00</Time>
     </Item>
     <Item>
       <Source>Shaders\BaseShader.fx</Source>
@@ -378,8 +378,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Shaders\BaseShader.xnb</Output>
-      <Time>2010-11-29T15:13:51.2977-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Shaders\BaseShader.xnb</Output>
+      <Time>2010-11-29T15:35:28.4597-05:00</Time>
     </Item>
     <Item>
       <Source>Shaders\GrayingEffect.fx</Source>
@@ -387,8 +387,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Shaders\GrayingEffect.xnb</Output>
-      <Time>2010-11-29T15:13:51.2947-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Shaders\GrayingEffect.xnb</Output>
+      <Time>2010-11-29T15:35:28.4567-05:00</Time>
     </Item>
     <Item>
       <Source>Shaders\WaterTest.fx</Source>
@@ -396,8 +396,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Shaders\WaterTest.xnb</Output>
-      <Time>2010-11-29T15:13:51.3057-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Shaders\WaterTest.xnb</Output>
+      <Time>2010-11-29T15:35:28.8087-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestMap\se_free_grass_texture.jpg</Source>
@@ -412,8 +412,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_grass_texture.xnb</Output>
-      <Time>2010-11-29T15:13:53.1917-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_grass_texture.xnb</Output>
+      <Time>2010-11-29T15:35:33.2207-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestMap\se_free_wood_texture.jpg</Source>
@@ -428,8 +428,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_wood_texture.xnb</Output>
-      <Time>2010-11-29T15:13:53.1817-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\se_free_wood_texture.xnb</Output>
+      <Time>2010-11-29T15:35:33.2097-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestMap\solid.jpg</Source>
@@ -444,8 +444,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\solid.xnb</Output>
-      <Time>2010-11-29T15:13:53.1977-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\solid.xnb</Output>
+      <Time>2010-11-29T15:35:33.2247-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestMap\FireEnemyIcon.png</Source>
@@ -460,8 +460,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\FireEnemyIcon.xnb</Output>
-      <Time>2010-11-29T15:13:53.1777-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestMap\FireEnemyIcon.xnb</Output>
+      <Time>2010-11-29T15:35:33.2047-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\rock.png</Source>
@@ -476,8 +476,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Output>
-      <Time>2010-11-29T15:13:53.0487-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\rock.xnb</Output>
+      <Time>2010-11-29T15:35:31.5577-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\lava.png</Source>
@@ -492,8 +492,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Output>
-      <Time>2010-11-29T15:13:53.0907-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\lava.xnb</Output>
+      <Time>2010-11-29T15:35:31.5967-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\FireEnemyIcon.png</Source>
@@ -508,8 +508,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Output>
-      <Time>2010-11-29T15:13:53.0147-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireEnemyIcon.xnb</Output>
+      <Time>2010-11-29T15:35:31.5087-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\solid.jpg</Source>
@@ -524,8 +524,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Output>
-      <Time>2010-11-29T15:13:53.0787-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\solid.xnb</Output>
+      <Time>2010-11-29T15:35:31.5857-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\MountainPieces.png</Source>
@@ -540,8 +540,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFFFFFF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Output>
-      <Time>2010-11-29T15:13:53.0867-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\MountainPieces.xnb</Output>
+      <Time>2010-11-29T15:35:31.5917-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\ConnectionLavat.png</Source>
@@ -556,8 +556,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFFFFFF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Output>
-      <Time>2010-11-29T15:13:53.0997-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\ConnectionLavat.xnb</Output>
+      <Time>2010-11-29T15:35:31.7627-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\LavaGround.png</Source>
@@ -572,8 +572,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFFFFFF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Output>
-      <Time>2010-11-29T15:13:53.0627-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\LavaGround.xnb</Output>
+      <Time>2010-11-29T15:35:31.5727-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Overflow.png</Source>
@@ -588,8 +588,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFFFFFF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Output>
-      <Time>2010-11-29T15:13:53.0677-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Overflow.xnb</Output>
+      <Time>2010-11-29T15:35:31.5757-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\FireBossIcon.png</Source>
@@ -604,8 +604,8 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireBossIcon.xnb</Output>
-      <Time>2010-11-29T15:13:53.0947-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\FireBossIcon.xnb</Output>
+      <Time>2010-11-29T15:35:31.5997-05:00</Time>
     </Item>
     <Item>
       <Source>Levels\TestFireMap\Untitled.png</Source>
@@ -620,23 +620,23 @@
         <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Untitled.xnb</Output>
-      <Time>2010-11-29T15:13:53.1067-05:00</Time>
+      <Output>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\Levels\TestFireMap\Untitled.xnb</Output>
+      <Time>2010-11-29T15:35:31.8087-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Seth\Desktop\Game\ArchanistTower\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Seth\Desktop\Game\ArchanistTower\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Seth\Desktop\Game\ArchanistTower\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Seth\Desktop\Game\ArchanistTower\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Seth\Desktop\Pant\Game\ArchanistTower\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Users\Seth\Desktop\Game\ArchanistTower\TiledLib\ContentPipeline\TiledPipelineExtensions.dll</Key>
-        <Value>2010-11-29T15:13:49.9527-05:00</Value>
+        <Key>C:\Users\Seth\Desktop\Pant\Game\References\ContentPipeline\TiledPipelineExtensions.dll</Key>
+        <Value>2010-11-29T15:35:19.2587-05:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.1\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
