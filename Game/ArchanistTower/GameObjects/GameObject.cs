@@ -17,15 +17,6 @@ namespace ArchanistTower.GameObjects
         public int CollisionRadius { get; set; }
         public FacingDirection Direction;
 
-
-
-        /// <summary>
-        /// Only enemy classes need this information.
-        /// </summary>
-        
-
-
-        
         public enum FacingDirection
         {
             Up,

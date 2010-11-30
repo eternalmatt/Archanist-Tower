@@ -150,11 +150,20 @@ namespace ArchanistTower
             FrameAnimation animation = CurrentAnimation;
 
             if (animation != null)
-                spriteBatch.Draw(
+                   spriteBatch.Draw(
+                         texture,
+                         Position,
+                         animation.CurrentRect,
+                         Color.White); 
+               /* spriteBatch.Draw(
                     texture,
                     Position,
                     animation.CurrentRect,
-                    Color.White);        
+                    Color.White,
+                    0.0f, Vector2.Zero, 2.0f,
+                    SpriteEffects.None,
+                    0.0f);
+                */
         }
     }
 }

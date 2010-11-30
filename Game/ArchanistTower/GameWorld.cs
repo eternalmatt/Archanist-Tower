@@ -87,6 +87,8 @@ namespace ArchanistTower
                         if (PerPixelCollision(s.SpriteAnimation.Bounds, s.SpriteAnimation.SpriteTexture,
                             e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
                             s.Collision(e);
+
+
             }
         }
 
@@ -156,6 +158,8 @@ namespace ArchanistTower
                 enemy.Draw();
             foreach (Collectable c in Collectables)
                 c.Draw();
+            foreach (Spell s in Spells)
+                s.Draw();
             Player.Draw();
 
         }
@@ -271,7 +275,7 @@ namespace ArchanistTower
         private void LoadCollectables()
         {
             TileLayer cLayer = Map.GetLayer("Collectable") as TileLayer;
-            for(int y = 0; y < cLayer.Width; y++)
+            for (int y = 0; y < cLayer.Width; y++)
                 for (int x = 0; x < cLayer.Height; x++)
                 {
                     Tile tile = cLayer.Tiles[x, y];
@@ -286,6 +290,7 @@ namespace ArchanistTower
                             Collectables.Add(new Crystal(cType, new Vector2(cX, cY)));
                     }
                 }
+
         }
 
         #endregion //Load
