@@ -24,6 +24,19 @@ namespace ArchanistTower.GameObjects
         }
 
 
+        private Vector2 AvoidClosestSpell()
+        {
+            if (SpellList.Count > 0)
+            {
+                Vector2 motion = SpriteAnimation.Position + (SpriteAnimation.Position - SpellList[0]);
+                motion.Normalize();
+                return motion;
+            }
+            else return Vector2.Zero;
+        }
+
+
+
         public override void Initialize()
         {
             SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Enemies/amg1"));
@@ -90,11 +103,12 @@ namespace ArchanistTower.GameObjects
             {
                 CheckEnemyState();
 
-                if (enemyState == EnemySpriteState.Attack)
-                {   //if enemyState == Attack, make Boss attack player, and adjust his speed
+                if (SpellList.Count > 0)
+                    Attack(SpriteAnimation.Position, AvoidClosestSpell(), ref enemyOrientation, enemyTurnSpeed);
+                else if (enemyState == EnemySpriteState.Attack)
+                    //if enemyState == Attack, make Boss attack player, and adjust his speed
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
-                    SpriteAnimation.Speed = enemyAttackVelocity;
-                }
+                
 
                 base.Update(gameTime);
             }
@@ -114,6 +128,7 @@ namespace ArchanistTower.GameObjects
         private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {   //change the oritenation to face player
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
+            SpriteAnimation.Speed = enemyAttackVelocity;
         }
     }
 }
