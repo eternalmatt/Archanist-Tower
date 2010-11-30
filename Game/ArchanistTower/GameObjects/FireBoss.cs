@@ -28,7 +28,13 @@ namespace ArchanistTower.GameObjects
         {
             if (SpellList.Count > 0)
             {
-                Vector2 motion = SpriteAnimation.Position + (SpriteAnimation.Position - SpellList[0]);
+                int closestIndex = 0;
+                int closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[0]);
+                for (int i = 1; i < SpellList.Count; i++)
+                    if (Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[i]) < closest)
+                        closestIndex = i;
+
+                Vector2 motion = SpriteAnimation.Position + (SpriteAnimation.Position - SpellList[closestIndex]);
                 motion.Normalize();
                 return motion;
             }
