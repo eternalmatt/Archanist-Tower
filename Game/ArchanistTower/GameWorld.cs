@@ -74,21 +74,22 @@ namespace ArchanistTower
 
         private void SpellUpdate(GameTime gameTime)
         {
-            foreach (Spell s in Spells)
+            for(int i = 0; i < Spells.Count; i++)
             {
-                s.Update(gameTime);
+                Spells[i].Update(gameTime);
                 foreach (Rectangle c in ClipMap.Values)
-                    if (s.SpriteAnimation.Bounds.Intersects(c))
-                        s.WorldCollision();
+                    if (Spells[i].SpriteAnimation.Bounds.Intersects(c))
+                        Spells[i].WorldCollision();
 
                 foreach (Enemy e in Enemies)
-                    if (Math.Abs(s.SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= s.CollisionRadius &&
-                        Math.Abs(s.SpriteAnimation.Position.Y - e.SpriteAnimation.Position.Y) <= s.CollisionRadius)
-                        if (PerPixelCollision(s.SpriteAnimation.Bounds, s.SpriteAnimation.SpriteTexture,
+                    if (Math.Abs(Spells[i].SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= Spells[i].CollisionRadius &&
+                        Math.Abs(Spells[i].SpriteAnimation.Position.Y - e.SpriteAnimation.Position.Y) <= Spells[i].CollisionRadius)
+                        if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
                             e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
-                            s.Collision(e);
+                            Spells[i].Collision(e);
 
-
+                if (Spells[i].Dead)
+                    Spells.RemoveAt(i);
             }
         }
 
@@ -136,16 +137,15 @@ namespace ArchanistTower
                         c.Collected();
 
             foreach (Enemy e in Enemies)
-                if(Math.Abs(Player.SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= Player.CollisionRadius &&
-                    Math.Abs(Player.SpriteAnimation.Position.Y - e.SpriteAnimation.Position.Y) <= Player.CollisionRadius)
-                    if (PerPixelCollision(Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture,
-                        e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
-                    {
-                        Player.Collision(e);
-                        e.Collision(Player);
-                    }
-
-
+                if(!e.Dead)
+                    if(Math.Abs(Player.SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= Player.CollisionRadius &&
+                        Math.Abs(Player.SpriteAnimation.Position.Y - e.SpriteAnimation.Position.Y) <= Player.CollisionRadius)
+                        if (PerPixelCollision(Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture,
+                            e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
+                        {
+                            Player.Collision(e);
+                            e.Collision(Player);
+                        }
         }
     
 
