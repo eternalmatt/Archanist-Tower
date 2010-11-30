@@ -86,7 +86,7 @@
     </Reference>
     <Reference Include="TiledLib, Version=1.5.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>TiledLib\Windows\TiledLib.dll</HintPath>
+      <HintPath>..\References\Windows\TiledLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
