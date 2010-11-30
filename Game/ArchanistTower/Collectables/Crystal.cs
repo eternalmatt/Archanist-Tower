@@ -34,12 +34,15 @@ namespace ArchanistTower.Collectables
         {
             if (cType == CrystalType.blue)
             {
+                Globals.blue = 1;
             }
             if (cType == CrystalType.green)
             {
+                Globals.green = 1;
             }
             if (cType == CrystalType.red)
             {
+                Globals.red = 1;
             }
             Active = false;
         }

@@ -26,7 +26,9 @@ namespace ArchanistTower
         public static InputManager input;
         public static ScreenManager screenManager;
         public static Random random;
-        public static float shading;
+        public static float green;
+        public static float red;
+        public static float blue;
 
 
         public static GraphicsDevice GraphicsDevice
@@ -47,8 +49,9 @@ namespace ArchanistTower
 
             input = new InputManager();
             random = new Random();
-            shading = 0;
-
+            green = 0;
+            red = 0;
+            blue = 0;
 
         }
 

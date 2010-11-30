@@ -94,7 +94,13 @@ namespace ArchanistTower.GameObjects
                 GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth,
                 GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);
 
-            int i = ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32();
+            if (Globals.blue == 1)
+                blue = true;
+            if (Globals.red == 1)
+                red = true;
+            if (Globals.green == 1)
+                green = true;
+            /*int i = ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32();
             if (i > 0)
             {
                 if (i >= 1)
@@ -107,7 +113,7 @@ namespace ArchanistTower.GameObjects
                             blue = true;
                     }
                 }
-            }
+            }*/
         }
 
 

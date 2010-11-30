@@ -1,5 +1,7 @@
 
-float powerGained;
+float powerGreen;
+float powerRed;
+float powerBlue;
 float2 blendTexturePosition2;
 
 // Global variables
@@ -15,20 +17,42 @@ float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
     
     
 	//Color.rgb = (Color.r + Color.g + Color.b)/3;
-	if (powerGained == 0)
-		Color.rgb = dot(Color.rgb, float3(0.3, .59, .11));
-	if (powerGained == 1)
+	Color.rgb = dot(Color.rgb, float3(0.3, .59, .11));
+	if (powerRed == 1)
 	{
-		Color.rgb = dot(Color.rgb, float3(0.3, .59, .11));
 			if (color2.r*.66 > color2.b && color2.r*.66 > color2.g)
 			{
 				Color = color2;
 			}
+			if(powerGreen == 1)
+			{
+				if(color2.g*.66 > color2.b)
+					Color = color2;
+					if(powerBlue == 1)
+						Color = color2;
+			}
+			if(powerBlue == 1)
+			{
+				if(color2.b*.66 > color2.g)
+					Color = color2;
+			}
 	}
-	if (powerGained == 2)
+	if (powerGreen == 1)
 	{
-		Color.rgb = dot(Color.rgb, float3(0.3, .59, .11));
-			if (color2.r*.66 > color2.b  || color2.g*.66 > color2.b)
+			if (color2.g*.66 > color2.b && color2.g*.66 > color2.r)
+			{
+				Color = color2;
+			}
+			if(powerBlue == 1)
+			{
+				if(color2.b*.66 > color2.r)
+					Color = color2;
+			}
+			
+	}
+	if (powerBlue == 1)
+	{
+			if (color2.b*.66 > color2.r && color2.b*.66 > color2.g)
 			{
 				Color = color2;
 			}

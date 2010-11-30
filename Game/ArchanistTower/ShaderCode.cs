@@ -64,7 +64,9 @@ namespace ArchanistTower
             renderTarget = new RenderTarget2D(graphics.GraphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, 1,
             graphics.GraphicsDevice.DisplayMode.Format);
             //blendTexturePosition = Globals.content.;
-            effectPost.Parameters["powerGained"].SetValue(Globals.shading);
+            effectPost.Parameters["powerGreen"].SetValue(Globals.green); 
+            effectPost.Parameters["powerRed"].SetValue(Globals.red); 
+            effectPost.Parameters["powerBlue"].SetValue(Globals.blue);
         }
         /// <summary>
         /// Allows the game component to update itself.
@@ -72,7 +74,9 @@ namespace ArchanistTower
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public void Update()
         {
-            effectPost.Parameters["powerGained"].SetValue(Globals.shading);
+            effectPost.Parameters["powerGreen"].SetValue(Globals.green);
+            effectPost.Parameters["powerRed"].SetValue(Globals.red);
+            effectPost.Parameters["powerBlue"].SetValue(Globals.blue);
         }
         public void DrawSetup()
         {
