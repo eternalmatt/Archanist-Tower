@@ -46,30 +46,35 @@ namespace ArchanistTower.GameObjects
         }
 
         /// <summary>
-        /// Drawing JUST the lifebar above enemy's head.
+        /// Drawing JUST the lifebar above BOSS's head.
         /// </summary>
         public override void Draw()
         {   //this requires a bit more logic than ElementalEnemies as Bosses have Health > 100
-            int healthMod = Health;
-            while (healthMod > 0)
-            {
-                if (healthMod % 100 != 0)
-                {   //if Health == NNN where N isn't 0
-                    Globals.spriteBatch.Draw(lifebar,
-                        new Rectangle(SpriteAnimation.Bounds.X + 3, SpriteAnimation.Bounds.Y - 5 - 4 * (healthMod / 100 + 1),//x adjusted for spritebounds,y adjusted for spritebounds and each hundred of life
-                            SpriteAnimation.Bounds.Width * (healthMod % 100) / 100 - 6, 2),//width based on sprite bounds and ammount health, height 2 pixels
-                        Color.White);
-                    healthMod -= healthMod % 100; //NNN = N00
-                }
-                else
-                {   //if Health == N00 where N is a number
-                    Globals.spriteBatch.Draw(lifebar,
-                        new Rectangle(SpriteAnimation.Bounds.X + 3, SpriteAnimation.Bounds.Y - 5 - 4 * (healthMod / 100),//x adjusted for spritebounds,y adjusted for spritebounds and each hundred of life
-                            SpriteAnimation.Bounds.Width - 6, 2),//width based on sprite bounds, height 2 pixels
-                        Color.White);
-                    healthMod -= 100;   //N00 -= 100
-                }
+            int healthTemp;  //a temp variable
+            Rectangle rectangle = new Rectangle(SpriteAnimation.Bounds.X + 3, //X based on SpriteAnimation
+                SpriteAnimation.Bounds.Y - 5 - 4 * (Health / 100),  //Y Based on SpriteAnimation and health
+                SpriteAnimation.Bounds.Width - 6,   //width based on sprite's width
+                2);     //height is 2 pixels
+
+            if (Health % 100 != 0)
+            {   //if Health == NNN where N isn't 0
+                rectangle.Width = SpriteAnimation.Bounds.Width * (Health % 100) / 100 - 6; //width adjusted to health
+                Globals.spriteBatch.Draw(lifebar, rectangle, Color.White);  //draw first lifebar
+                healthTemp = Health - Health % 100; //NNN = N00
+                rectangle.Width = SpriteAnimation.Bounds.Width - 6; //correct width for rest of life bars 
             }
+            else
+            {   //if Health == N00 where N is a number
+                Globals.spriteBatch.Draw(lifebar, rectangle, Color.White); //draw first lifebar
+                healthTemp = Health - 100;   //N00 -= 100
+            }
+
+            for (int i = healthTemp / 100; i > 0; i--)  //loop through each 100 of health
+            {
+                rectangle.Y += 4;   //increment Y position to draw
+                Globals.spriteBatch.Draw(lifebar, rectangle, Color.White); //draw health's rectangles
+            }
+            
             base.Draw();
         }
 
