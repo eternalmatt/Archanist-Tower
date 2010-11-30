@@ -99,6 +99,13 @@ namespace ArchanistTower
                     if (e.SpriteAnimation.Bounds.Intersects(c))
                         e.WorldCollision();
                 e.PlayerPosition = Player.SpriteAnimation.Position;
+
+                if (e is FireBoss)
+                {
+                    e.SpellList.Clear();
+                    foreach (Spell spell in Spells)
+                        e.SpellList.Add(spell.SpriteAnimation.Position);
+                }
             }
         }
 
