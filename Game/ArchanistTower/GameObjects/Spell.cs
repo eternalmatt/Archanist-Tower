@@ -17,15 +17,14 @@ namespace ArchanistTower.GameObjects
 
         public override void Draw()
         {
-            SpriteAnimation.Draw(Globals.spriteBatch);
+            if(!Dead)
+                SpriteAnimation.Draw(Globals.spriteBatch);
         }
 
         public override void WorldCollision()
         {
             Dead = true;    
-        }
-
-       
+        }       
     }
 }
 

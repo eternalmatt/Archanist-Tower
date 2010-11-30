@@ -57,8 +57,6 @@ namespace ArchanistTower
         public void Initialize()
         {
             //shader.Initialize();
-            //LoadMap("Levels//TestMap//TestMap");
-            //LoadMap("Levels//TestFireMap//Mountain1");
             LoadMap("Levels//TestFireMap//MountainEntrance");
             Debug = false;
 
@@ -67,32 +65,52 @@ namespace ArchanistTower
         public void Update(GameTime gameTime)
         {
             PlayerUpdate(gameTime);
-
-
-            foreach (Enemy e in Enemies)
-            {
-                e.Update(gameTime);
-                foreach(Rectangle clip in ClipMap.Values)
-                    if(e.SpriteAnimation.Bounds.Intersects(clip))
-                        e.WorldCollision();
-                e.PlayerPosition = Player.SpriteAnimation.Position;
-            }
+            EnemyUpdate(gameTime);
+            SpellUpdate(gameTime);
 
             foreach (Collectable c in Collectables)
                 c.Update(gameTime);
-
-
         }
 
-        public void PlayerUpdate(GameTime gameTime)
+        private void SpellUpdate(GameTime gameTime)
+        {
+            foreach (Spell s in Spells)
+            {
+                s.Update(gameTime);
+                foreach (Rectangle c in ClipMap.Values)
+                    if (s.SpriteAnimation.Bounds.Intersects(c))
+                        s.WorldCollision();
+
+                foreach (Enemy e in Enemies)
+                    if (Math.Abs(s.SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= s.CollisionRadius &&
+                        Math.Abs(s.SpriteAnimation.Position.Y - e.SpriteAnimation.Position.Y) <= s.CollisionRadius)
+                        if (PerPixelCollision(s.SpriteAnimation.Bounds, s.SpriteAnimation.SpriteTexture,
+                            e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
+                            s.Collision(e);
+            }
+        }
+
+        private void EnemyUpdate(GameTime gameTime)
+        {
+            foreach (Enemy e in Enemies)
+            {
+                e.Update(gameTime);
+                foreach (Rectangle c in ClipMap.Values)
+                    if (e.SpriteAnimation.Bounds.Intersects(c))
+                        e.WorldCollision();
+                e.PlayerPosition = Player.SpriteAnimation.Position;
+            }
+        }
+
+        private void PlayerUpdate(GameTime gameTime)
         {
             Player.Update(gameTime);
 
-            foreach (Rectangle clip in ClipMap.Values)
-                if (Player.SpriteAnimation.Bounds.Intersects(clip))
+            foreach (Rectangle c in ClipMap.Values)
+                if (Player.SpriteAnimation.Bounds.Intersects(c))
                     Player.WorldCollision();
 
-            foreach(Portal p in Portals)
+            foreach (Portal p in Portals)
                 if (Player.SpriteAnimation.Bounds.Intersects(p.Bounds))
                 {
                     LoadMap(p.DestinationMap);
@@ -100,6 +118,25 @@ namespace ArchanistTower
                         (p.DestinationTileLocation.X * Map.TileWidth) + (Map.TileWidth / 2),
                         (p.DestinationTileLocation.Y * Map.TileHeight) + (Map.TileHeight / 2));
                 }
+
+            foreach (Collectable c in Collectables)
+                if (Math.Abs(Player.SpriteAnimation.Position.X - c.SpriteAnimation.Position.X) <= Player.CollisionRadius &&
+                    Math.Abs(Player.SpriteAnimation.Position.Y - c.SpriteAnimation.Position.Y) <= Player.CollisionRadius)
+                    if (PerPixelCollision(Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture,
+                        c.SpriteAnimation.Bounds, c.SpriteAnimation.SpriteTexture))
+                        c.Collected();
+
+            foreach (Enemy e in Enemies)
+                if(Math.Abs(Player.SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= Player.CollisionRadius &&
+                    Math.Abs(Player.SpriteAnimation.Position.Y - e.SpriteAnimation.Position.Y) <= Player.CollisionRadius)
+                    if (PerPixelCollision(Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture,
+                        e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
+                    {
+                        Player.Collision(e);
+                        e.Collision(Player);
+                    }
+
+
         }
     
 

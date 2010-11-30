@@ -30,6 +30,20 @@ namespace ArchanistTower.Collectables
             Initialize(position);
         }
 
+        public override void Collected()
+        {
+            if (cType == CrystalType.blue)
+            {
+            }
+            if (cType == CrystalType.green)
+            {
+            }
+            if (cType == CrystalType.red)
+            {
+            }
+            Active = false;
+        }
+
         public override void Initialize(Vector2 position)
         {
             Active = true;

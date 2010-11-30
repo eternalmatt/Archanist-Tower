@@ -12,6 +12,7 @@ namespace ArchanistTower.Collectables
         public AnimatedSprite SpriteAnimation { get; set; }
 
         public Collectable() { }
+        public virtual void Collected() { }
         public virtual void Initialize(Vector2 position) { }
         public virtual void Update(GameTime gameTime) { }
         public virtual void Draw()
