@@ -88,6 +88,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\Windows\TiledLib.dll</HintPath>
     </Reference>
+    <Reference Include="TiledPipelineExtensions, Version=1.5.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\ContentPipeline\TiledPipelineExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />

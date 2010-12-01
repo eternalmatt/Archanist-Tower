@@ -15,6 +15,33 @@ namespace ArchanistTower.GameObjects
         public Vector2 SpellOrigin { get; set; }
         public Vector2 motion;
 
+        public override void Initialize()
+        {
+            SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Spells/spellsprites"));
+
+            motion = Vector2.Zero;
+            if (Direction == FacingDirection.Down)
+                motion.Y = 1;
+            else if (Direction == FacingDirection.Up)
+                motion.Y = -1;
+            else if (Direction == FacingDirection.Left)
+                motion.X = -1;
+            else if (Direction == FacingDirection.Right)
+                motion.X = 1;
+            motion.Normalize();
+            SpriteAnimation.Position = SpellOrigin;
+            Collidable = true;
+            CollisionRadius = 32;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (!Dead)
+                SpriteAnimation.Position += SpriteAnimation.Speed * motion;
+            SpriteAnimation.Update(gameTime);
+            base.Update(gameTime);
+        }
+
         public override void Draw()
         {
             if(!Dead)
