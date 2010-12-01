@@ -12,7 +12,7 @@ namespace ArchanistTower
 
         public Matrix TransformMatrix
         {
-            get { return Matrix.Multiply(Matrix.CreateTranslation(new Vector3(-Position, 0f)), Matrix.CreateScale(1.3f)); }
+            get { return Matrix.CreateTranslation(new Vector3(-Position, 0f)); }
         }
 
         public void LockToTarget(AnimatedSprite sprite, int screenWidth, int screenHeight)

@@ -161,8 +161,9 @@ namespace ArchanistTower
             foreach (Spell s in Spells)
                 s.Draw();
             Player.Draw();
-
         }
+
+
 
 
         #region Load
@@ -215,7 +216,7 @@ namespace ArchanistTower
             }
             LoadClipMap();
             LoadEnemies();
-            LoadBoss();
+            //LoadBoss();
             LoadCollectables();
         }
 
@@ -230,7 +231,7 @@ namespace ArchanistTower
                     if (tile != null)
                         ClipMap.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
                 }
-            Map.GetLayer("Clip").Visible = false; 
+            Map.GetLayer("Clip").Visible = false;
         }
 
         private void LoadEnemies()
@@ -250,27 +251,27 @@ namespace ArchanistTower
                             Enemies.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
                     }
                 }
-            Map.GetLayer("Enemy").Visible = false; 
+            Map.GetLayer("Enemy").Visible = false;
         }
 
-        private void LoadBoss()
-        {
-            TileLayer bossLayer = Map.GetLayer("Boss") as TileLayer;
-            for (int y = 0; y < bossLayer.Width; y++)
-                for (int x = 0; x < bossLayer.Height; x++)
-                {
-                    Tile tile = bossLayer.Tiles[x, y];
-                    if (tile != null)
-                    {
-                        string bossType = tile.Properties["Type"].RawValue;
-                        int bossX = x * Map.TileWidth;
-                        int bossY = y * Map.TileHeight;
-                        if (bossType == "Fire")
-                            Enemies.Add(new FireBoss(new Vector2(bossX, bossY)));
-                    }
-                }
-            Map.GetLayer("Boss").Visible = false;
-        }
+        //private void LoadBoss()
+        //{
+        //    TileLayer bossLayer = Map.GetLayer("Boss") as TileLayer;
+        //    for (int y = 0; y < bossLayer.Width; y++)
+        //        for (int x = 0; x < bossLayer.Height; x++)
+        //        {
+        //            Tile tile = bossLayer.Tiles[x, y];
+        //            if (tile != null)
+        //            {
+        //                string bossType = tile.Properties["Type"].RawValue;
+        //                int bossX = x * Map.TileWidth;
+        //                int bossY = y * Map.TileHeight;
+        //                if (bossType == "Fire")
+        //                    Enemies.Add(new FireBoss(new Vector2(bossX, bossY)));
+        //            }
+        //        }
+        //    Map.GetLayer("Boss").Visible = false;
+        //}
 
         private void LoadCollectables()
         {

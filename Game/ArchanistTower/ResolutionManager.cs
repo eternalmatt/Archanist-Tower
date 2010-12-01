@@ -29,5 +29,10 @@ namespace ArchanistTower
         {
             get { return new Vector2(1280, 720); }
         }
+
+        public static Vector2 Res1024x1024
+        {
+            get { return new Vector2(1024, 1024); }
+        }
     }
 }
