@@ -54,21 +54,21 @@ namespace ArchanistTower.Collectables
             if(cType == CrystalType.blue)
             {
                 SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Collectables/bluerelic"));
-                FrameAnimation relic = new FrameAnimation(1, 32, 32, 0, 0);
+                FrameAnimation relic = new FrameAnimation(1, 64, 64, 0, 0);
                 relic.FramesPerSecond = 1;
                 SpriteAnimation.Animations.Add("Relic", relic);
             }
             if(cType == CrystalType.red)
             {
                 SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Collectables/redrelic"));
-                FrameAnimation relic = new FrameAnimation(1, 32, 32, 0, 0);
+                FrameAnimation relic = new FrameAnimation(1, 64, 64, 0, 0);
                 relic.FramesPerSecond = 1;
                 SpriteAnimation.Animations.Add("Relic", relic);
             }
             if(cType == CrystalType.green)
             {
                 SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Collectables/greenrelic"));
-                FrameAnimation relic = new FrameAnimation(1, 32, 32, 0, 0);
+                FrameAnimation relic = new FrameAnimation(1, 64, 64, 0, 0);
                 relic.FramesPerSecond = 1;
                 SpriteAnimation.Animations.Add("Relic", relic);
             }
