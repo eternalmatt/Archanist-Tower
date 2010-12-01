@@ -34,7 +34,7 @@ namespace ArchanistTower.GameObjects
                     if (Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[i].SpriteAnimation.Position) < closest)
                         closestIndex = i;
 
-                //this is the vector perpendicular to the closest spell (i hope)
+                //this is the vector perpendicular to the closest spell's motion vector (i hope)
                 Vector2 perpendicular = new Vector2(SpellList[closestIndex].motion.Y * -1, SpellList[closestIndex].motion.X);
                 perpendicular.Normalize();
                 return perpendicular;

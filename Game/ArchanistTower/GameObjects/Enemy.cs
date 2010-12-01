@@ -33,7 +33,7 @@ namespace ArchanistTower.GameObjects
         {
             Collidable = true;
             stopwatch = new Stopwatch();
-            SpellList = new List<Vector2>();
+            SpellList = new List<Spell>();
             base.Initialize();
         }
 
