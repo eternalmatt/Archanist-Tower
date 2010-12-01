@@ -19,7 +19,7 @@ namespace ArchanistTower.GameObjects
         public override void Initialize()
         {
             base.Initialize();
-            FrameAnimation cast = new FrameAnimation(4, 32, 32, 128, 0);
+            FrameAnimation cast = new FrameAnimation(4, 16, 16, 64, 0);
             cast.FramesPerSecond = 10;
             SpriteAnimation.Animations.Add("Cast", cast);
             SpriteAnimation.CurrentAnimationName = "Cast";
