@@ -13,6 +13,7 @@ namespace ArchanistTower.GameObjects
 
         private const int enemyAttackRadius = 140;
         private const int enemyChaseRadius = 300;
+        private const int runFromSpellRadius = 100;
 
         private float enemyAttackVelocity { get { return 1.5f; } }
 
@@ -28,16 +29,25 @@ namespace ArchanistTower.GameObjects
         {
             if (SpellList.Count > 0)
             {
-                int closestIndex = 0;
+                Spell cSpell = SpellList[0];   //for closest spell
                 int closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[0].SpriteAnimation.Position);
                 for (int i = 1; i < SpellList.Count; i++)
                     if (Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[i].SpriteAnimation.Position) < closest)
-                        closestIndex = i;
+                        cSpell = SpellList[i];
 
-                //this is the vector perpendicular to the closest spell's motion vector (i hope)
-                Vector2 perpendicular = new Vector2(SpellList[closestIndex].motion.Y * -1, SpellList[closestIndex].motion.X);
-                perpendicular.Normalize();
-                return perpendicular;
+                //http://www.intmath.com/Plane-analytic-geometry/Perpendicular-distance-point-line.php this link helped me with some math
+                int A = (int)(cSpell.motion.Y / cSpell.motion.X) * -1;
+                int C = (int)(-1 * A * cSpell.SpriteAnimation.Position.X - cSpell.SpriteAnimation.Position.Y);
+                int distance = (int)Math.Abs(A * cSpell.SpriteAnimation.Position.X + cSpell.SpriteAnimation.Position.Y + C / A);
+
+                if (distance < runFromSpellRadius)
+                {
+                    //this is the vector perpendicular to the closest spell's motion vector (i hope)
+                    Vector2 perpendicular = new Vector2(cSpell.motion.Y * -1, cSpell.motion.X);
+                    perpendicular.Normalize();
+                    return perpendicular;
+                }
+                else return Vector2.Zero;
             }
             else return Vector2.Zero;
         }
@@ -112,7 +122,8 @@ namespace ArchanistTower.GameObjects
 
                 if (SpellList.Count > 0)
                     Attack(SpriteAnimation.Position, AvoidClosestSpell(), ref enemyOrientation, enemyTurnSpeed);
-                else if (enemyState == EnemySpriteState.Attack)
+                
+                if (enemyState == EnemySpriteState.Attack)
                     //if enemyState == Attack, make Boss attack player, and adjust his speed
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
                 
