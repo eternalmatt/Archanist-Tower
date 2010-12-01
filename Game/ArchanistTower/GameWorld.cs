@@ -107,7 +107,7 @@ namespace ArchanistTower
                 {
                     e.SpellList.Clear();
                     foreach (Spell spell in Spells)
-                        e.SpellList.Add(spell.SpriteAnimation.Position);
+                        e.SpellList.Add(spell);
                 }
             }
         }

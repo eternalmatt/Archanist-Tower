@@ -9,7 +9,6 @@ namespace ArchanistTower.GameObjects
 {
     public class WindSpell : Spell
     {
-
         public WindSpell(FacingDirection fd, Vector2 pPosition)
         {
             SpellOrigin = pPosition;
@@ -38,6 +37,5 @@ namespace ArchanistTower.GameObjects
                 Dead = true;
             }
         }
-        
     }
 }

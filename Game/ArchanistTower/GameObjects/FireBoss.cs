@@ -29,14 +29,15 @@ namespace ArchanistTower.GameObjects
             if (SpellList.Count > 0)
             {
                 int closestIndex = 0;
-                int closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[0]);
+                int closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[0].SpriteAnimation.Position);
                 for (int i = 1; i < SpellList.Count; i++)
-                    if (Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[i]) < closest)
+                    if (Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[i].SpriteAnimation.Position) < closest)
                         closestIndex = i;
 
-                Vector2 motion = SpriteAnimation.Position + (SpriteAnimation.Position - SpellList[closestIndex]);
-                motion.Normalize();
-                return motion;
+                //this is the vector perpendicular to the closest spell (i hope)
+                Vector2 perpendicular = new Vector2(SpellList[closestIndex].motion.Y * -1, SpellList[closestIndex].motion.X);
+                perpendicular.Normalize();
+                return perpendicular;
             }
             else return Vector2.Zero;
         }
