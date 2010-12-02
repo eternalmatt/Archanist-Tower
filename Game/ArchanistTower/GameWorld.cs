@@ -59,8 +59,9 @@ namespace ArchanistTower
             //shader.Initialize();
             LoadMap("Levels//TestFireMap//MountainEntrance");
             Debug = false;
-
         }
+
+        #region Update
 
         public void Update(GameTime gameTime)
         {
@@ -162,9 +163,8 @@ namespace ArchanistTower
                             e.Collision(Player);
                         }
         }
-    
 
-
+        #endregion //Update
 
         public void Draw()
         {
@@ -306,7 +306,7 @@ namespace ArchanistTower
                             Collectables.Add(new Crystal(cType, new Vector2(cX, cY)));
                     }
                 }
-
+            Map.GetLayer("Collectable").Visible = false;
         }
 
         #endregion //Load
