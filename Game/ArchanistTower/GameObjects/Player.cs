@@ -91,8 +91,8 @@ namespace ArchanistTower.GameObjects
             Globals.camera.LockToTarget(SpriteAnimation, Globals.ScreenWidth, Globals.ScreenHeight);
 
             Globals.camera.ClampToArea(
-                GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth,
-                GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight);
+                GameScreen.gameWorld.MapWidthInPixels - Globals.ScreenWidth, Globals.ScreenWidth,
+                GameScreen.gameWorld.MapHeightInPixels - Globals.ScreenHeight, Globals.ScreenHeight);
 
             if (Globals.blue == 1)
                 blue = true;

@@ -9,7 +9,7 @@ namespace ArchanistTower
     public class Camera
     {
         public Vector2 Position = Vector2.Zero;
-        public const float ZOOM = 1.0f;
+        public const float ZOOM = 1.3f;
 
         public Matrix TransformMatrix
         {
@@ -28,13 +28,13 @@ namespace ArchanistTower
                 (screenHeight / 2) / ZOOM;
         }
 
-        public void ClampToArea(int width, int height)
+        public void ClampToArea(int width,int sWidth, int height, int sHeight)
         {
             //Restrict where the camera can go. (i.e. not off the map)
-            if (Position.X > width + (((width * ZOOM) - width) / 2))
-                Position.X = width + (((width * ZOOM) - width) / 2);
-            if (Position.Y > height)// * ZOOM)
-                Position.Y = height;// * ZOOM;
+            if (Position.X > width+ (sWidth - sWidth/ ZOOM))// + (((width * ZOOM) - width) / 2))
+                Position.X = width + (sWidth - sWidth / ZOOM);// +(((width * ZOOM) - width) / 2);
+            if (Position.Y > height + (sHeight - sHeight / ZOOM))// * ZOOM)
+                Position.Y = height + (sHeight - sHeight / ZOOM);// * ZOOM;
 
             if (Position.X < 0)
                 Position.X = 0;

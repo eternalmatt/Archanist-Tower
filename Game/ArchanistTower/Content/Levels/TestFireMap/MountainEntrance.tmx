@@ -5,7 +5,6 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -14,7 +13,6 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
    </properties>
   </tile>
  </tileset>
@@ -22,7 +20,6 @@
   <image source="FireEnemyIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
-    <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
    </properties>
   </tile>
@@ -72,7 +69,7 @@
  </layer>
  <layer name="Layer 3" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3TOw5AQBSF4ZlFoEKhVNqExqNBhQoV9t85MpEobqjGJe6X/A3FGclQ6h9K7gM8KCWeuch7+iAnAQoZ9/+EuuvpzXvbHIbNw/7tvqL/izeKtImSoRwVFvdjbaJUqEaNxf1Emygt6lBvcf/KgEY0Me3PaEEr074QQgghvm8DkoJvHAAQAAA=
+   H4sIAAAAAAAAC+3TOw5AQBSFYbMIVCiUSpvQeDSoUKHC/jtHJhLFDdXMJe6X/A3FGclQzj9U3AewKCOeeci3fZCLEEWM+39C3fXs4b1pLsPm6fj2wKH/izeKlY6SowKVBvcTpaPUqEGtwf1U6Sgd6tFgcP/OiCY0M+0vaEUb074QQgghvm8Hviu3RgAQAAA=
   </data>
  </layer>
  <layer name="Clip" width="32" height="32">
