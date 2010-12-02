@@ -94,7 +94,7 @@ namespace ArchanistTower.GameObjects
         private void Cast(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {   //change the oritenation to face player
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
-            if (Globals.random.Next(10) == 5) // probability to cast spell = 1/10
+            if (Globals.random.Next(50) == 5) // probability to cast spell = 1/50
                 GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Boss });
         }
         

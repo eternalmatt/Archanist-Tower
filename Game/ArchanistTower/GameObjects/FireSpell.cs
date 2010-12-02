@@ -24,7 +24,7 @@ namespace ArchanistTower.GameObjects
         public FireSpell(Vector2 towards, Vector2 from)
         {
             SpellOrigin = from;
-            motion = from - towards;
+            motion = towards - from;
             Initialize();
         }
 
