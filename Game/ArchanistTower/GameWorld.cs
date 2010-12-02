@@ -129,6 +129,9 @@ namespace ArchanistTower
 
         private void PlayerUpdate(GameTime gameTime)
         {
+            if (Player.Dead) 
+                Screens.GameScreen.GameOver();
+
             Player.Update(gameTime);
 
             foreach (Rectangle c in ClipMap.Values)

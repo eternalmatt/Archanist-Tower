@@ -82,6 +82,8 @@ namespace ArchanistTower.GameObjects
 
         public override void Update(GameTime gameTime)
         {
+            if (Health <= 0) Dead = true;
+            
             if (stopwatch.ElapsedMilliseconds > 1500) stopwatch.Reset();
             if (stopwatch.IsRunning) Collidable = false;
             else Collidable = true;
@@ -280,11 +282,6 @@ namespace ArchanistTower.GameObjects
                 {
 
                 }
-            }
-
-            if (Health <= 0)
-            {
-                GameScreen.GameOver();
             }
         }
 
