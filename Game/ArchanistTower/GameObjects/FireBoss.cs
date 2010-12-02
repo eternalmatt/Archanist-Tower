@@ -154,7 +154,7 @@ namespace ArchanistTower.GameObjects
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
 
 
-            GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = "FireBoss" });
+            GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Boss });
             //SpriteAnimation.Speed = enemyAttackVelocity;
         }
 

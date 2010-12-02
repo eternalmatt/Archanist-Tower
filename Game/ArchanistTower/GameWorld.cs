@@ -108,7 +108,7 @@ namespace ArchanistTower
                     e.spellMotionList.Clear();
                     e.spellPositionList.Clear();
                     foreach (Spell spell in Spells)
-                        if (spell.originatingType == "Player")
+                        if (spell.originatingType == GameObjects.Spell.OriginatingType.Player)
                         {
                             e.spellMotionList.Add(spell.motion);
                             e.spellPositionList.Add(spell.SpriteAnimation.Position);

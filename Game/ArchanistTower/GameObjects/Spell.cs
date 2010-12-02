@@ -14,7 +14,13 @@ namespace ArchanistTower.GameObjects
     {
         public Vector2 SpellOrigin { get; set; }
         public Vector2 motion = Vector2.Zero;
-        public String originatingType;
+
+        public enum OriginatingType
+        {
+            Player,
+            Boss
+        }
+        public OriginatingType originatingType;
 
         public override void Initialize()
         {

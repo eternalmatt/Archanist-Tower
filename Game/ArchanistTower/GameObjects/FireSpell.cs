@@ -42,14 +42,14 @@ namespace ArchanistTower.GameObjects
         {
             if (o is Enemy)
             {
-                if (originatingType == "Player")
+                if (originatingType == OriginatingType.Player)
                     if (o is FireEnemy || o is FireBoss)
                     {
                         o.Health -= 35;
                     }
                 Dead = true;
             }
-            else if (o is Player && originatingType == "FireBoss")
+            else if (o is Player && originatingType == OriginatingType.Boss)
             {
                 o.Health -= 10;
                 Dead = true;

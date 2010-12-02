@@ -173,9 +173,9 @@ namespace ArchanistTower.GameObjects
                         Direction = FacingDirection.Down;
 
                     if (selectedSpell == SelectedSpell.fire && red)
-                        GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = "Player" });
+                        GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                     else if (selectedSpell == SelectedSpell.wind && green)
-                        GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = "Player" });
+                        GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                     else if (selectedSpell == SelectedSpell.water && blue)
                     { } // reserved for water spell
                 }
