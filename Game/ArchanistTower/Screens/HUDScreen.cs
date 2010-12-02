@@ -11,6 +11,7 @@ namespace ArchanistTower.Screens
     {
         SpriteFont Font, ArialFont;
         int PlayerHealth;
+        int PlayerMana;
 
         AnimatedSprite crystal;
 
@@ -54,6 +55,7 @@ namespace ArchanistTower.Screens
         protected override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             PlayerHealth = GameWorld.Player.Health;
+            PlayerMana = GameWorld.Player.Mana;
 
             crystal.Update(gameTime);
         }
@@ -61,7 +63,8 @@ namespace ArchanistTower.Screens
         protected override void Draw()
         {
             Globals.spriteBatch.Begin();
-            Globals.spriteBatch.DrawString(Font, "Health:  " + PlayerHealth.ToString(), new Vector2(5, 5), Color.AntiqueWhite);
+            Globals.spriteBatch.DrawString(Font, "Health:  " + PlayerHealth.ToString(), new Vector2(5, 5), Color.Red);
+            Globals.spriteBatch.DrawString(Font, "Mana:  " + PlayerMana.ToString(), new Vector2(5, 35), Color.Blue);
             Globals.spriteBatch.DrawString(ArialFont, "Current Spell:  ", new Vector2(5, Globals.ScreenHeight - 32), Color.AntiqueWhite);
 
             if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.fire)

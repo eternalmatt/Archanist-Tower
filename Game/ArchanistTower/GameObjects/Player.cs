@@ -21,6 +21,9 @@ namespace ArchanistTower.GameObjects
 
     public class Player : GameObject
     {
+        public int Mana;
+        float timer;
+
         protected Keys MoveLeft;
         protected Keys MoveRight;
         protected Keys MoveUp;
@@ -40,6 +43,8 @@ namespace ArchanistTower.GameObjects
         public Player(Vector2 startPosition)
         {
             Health = 100;
+            Mana = 100;
+            timer = 0f;
             Initialize();
             SpriteAnimation.Position = startPosition;
         }
@@ -100,6 +105,17 @@ namespace ArchanistTower.GameObjects
                 red = true;
             if (Globals.green == 1)
                 green = true;
+
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds * 3;
+            if (timer >= 1)
+            {
+                Mana += 1;
+                timer = 0;
+            }
+            if (Mana > 100)
+                Mana = 100;
+            
+
             /*int i = ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32();
             if (i > 0)
             {
@@ -172,12 +188,20 @@ namespace ArchanistTower.GameObjects
                     else if (Globals.input.KeyPressed(CastDown))
                         Direction = FacingDirection.Down;
 
-                    if (selectedSpell == SelectedSpell.fire && red)
+                    if (selectedSpell == SelectedSpell.fire && red && Mana >= 15)
+                    {
                         GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
-                    else if (selectedSpell == SelectedSpell.wind && green)
+                        Mana -= 15;
+                    }
+                    else if (selectedSpell == SelectedSpell.wind && green && Mana >= 10)
+                    {
                         GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
+                        Mana -= 10;
+                    }
                     else if (selectedSpell == SelectedSpell.water && blue)
-                    { } // reserved for water spell
+                    {
+                        // reserved for water spell
+                    }
                 }
             }
         }
