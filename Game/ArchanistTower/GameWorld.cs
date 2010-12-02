@@ -80,24 +80,24 @@ namespace ArchanistTower
                 foreach (Rectangle c in ClipMap.Values)
                     if (Spells[i].SpriteAnimation.Bounds.Intersects(c))
                         Spells[i].WorldCollision();
-                
-                if (Spells[i].originatingType==GameObjects.Spell.OriginatingType.Player)
+
+                if (Spells[i].originatingType == GameObjects.Spell.OriginatingType.Player)
                     foreach (Enemy e in Enemies)
-                        if (Math.Abs(Spells[i].SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= Spells[i].CollisionRadius &&
-                            Math.Abs(Spells[i].SpriteAnimation.Position.Y - e.SpriteAnimation.Position.Y) <= Spells[i].CollisionRadius)
-                            if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
-                                e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
-                                Spells[i].Collision(e);
+                        if (Vector2.Distance(Spells[i].SpriteAnimation.Position, e.SpriteAnimation.Position) <= Spells[i].CollisionRadius)
+                            if (Spells[i].SpriteAnimation.Bounds.Intersects(e.SpriteAnimation.Bounds))
+                                if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
+                                                              e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
+                                    Spells[i].Collision(e);
 
                 if (Spells[i].originatingType == GameObjects.Spell.OriginatingType.Boss)
-                    if (Math.Abs(Spells[i].SpriteAnimation.Position.X - Player.SpriteAnimation.Position.X) <= Spells[i].CollisionRadius &&
-                           Math.Abs(Spells[i].SpriteAnimation.Position.Y - Player.SpriteAnimation.Position.Y) <= Spells[i].CollisionRadius)
-                        if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
-                            Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture))
-                            Spells[i].Collision(Player);
+                    if (Vector2.Distance(Spells[i].SpriteAnimation.Position, Player.SpriteAnimation.Position) <= Spells[i].CollisionRadius)
+                        if (Spells[i].SpriteAnimation.Bounds.Intersects(Player.SpriteAnimation.Bounds))
+                            if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
+                                                     Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture))
+                                Spells[i].Collision(Player);
 
                 if (Spells[i].Dead)
-                    Spells.RemoveAt(i);
+                    Spells.RemoveAt(i--);
             }
         }
 
