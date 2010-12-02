@@ -214,19 +214,7 @@ namespace ArchanistTower
                         string tileLocY = obj.Properties["DestinationY"].RawValue;
                         portal.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX), Convert.ToInt32(tileLocY));
                         Portals.Add(portal);
-                        break;
-                    case "crys":
-                        Portal crys = new Portal();
-                        crys.Bounds = obj.Bounds;
-                        Property tempP5 = obj.Properties["DestinationMap"];
-                        crys.DestinationMap = tempP5.RawValue;
-                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
-                        tempP5 = obj.Properties["DestinationX"];
-                        string tileLocX5 = tempP5.RawValue; //obj.Properties["DestinationX"].RawValue;
-                        string tileLocY5 = obj.Properties["DestinationY"].RawValue;
-                        crys.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX5), Convert.ToInt32(tileLocY5));
-                        Portals.Add(crys);
-                        break;
+                        break;                    
                 }
             }
             LoadClipMap();
