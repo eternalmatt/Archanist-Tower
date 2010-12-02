@@ -40,19 +40,19 @@ namespace ArchanistTower.GameObjects
 
         public override void Collision(GameObject o)
         {
-            if (o is Enemy)
+            if (o is Enemy) //if collision is with an enemy
             {
-                if (originatingType == OriginatingType.Player)
+                if (originatingType == OriginatingType.Player)  //and if the Player threw the spell
                     if (o is FireEnemy || o is FireBoss)
                     {
-                        o.Health -= 35;
+                        o.Health -= 35; //the enemy's health is decreased
                     }
-                Dead = true;
+                Dead = true;    //spell is dead
             }
-            else if (o is Player && originatingType == OriginatingType.Boss)
+            else if (o is Player && originatingType == OriginatingType.Enemy)   //if collision is with player and Enemy threw spell
             {
-                o.Health -= 10;
-                Dead = true;
+                o.Health -= 10; //player takes 10 damage
+                Dead = true;    //spell is dead
             }
         }
         

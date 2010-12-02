@@ -60,7 +60,7 @@ namespace ArchanistTower.GameObjects
                 }
                 Dead = true;
             }
-            else if (o is Player && originatingType == OriginatingType.Boss)
+            else if (o is Player && originatingType == OriginatingType.Enemy)
             {
                 o.Health -= 5;
                 switch (Direction) // stuns the player backwards for 20 units

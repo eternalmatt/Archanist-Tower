@@ -23,7 +23,7 @@ namespace ArchanistTower.GameObjects
         }
 
         /// <summary>
-        /// Chases the player
+        /// Chases the player. Elemental Enemies gain chase capability.
         /// </summary>
         public virtual void Chase(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {   //change the oritenation to face player

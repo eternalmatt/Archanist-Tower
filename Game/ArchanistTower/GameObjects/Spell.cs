@@ -15,10 +15,13 @@ namespace ArchanistTower.GameObjects
         public Vector2 SpellOrigin { get; set; }
         public Vector2 motion = Vector2.Zero;
 
+        /// <summary>
+        /// The type of GameObject that casted this spell
+        /// </summary>
         public enum OriginatingType
         {
             Player,
-            Boss
+            Enemy
         }
         public OriginatingType originatingType;
 
@@ -26,7 +29,7 @@ namespace ArchanistTower.GameObjects
         {
             SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Spells/spellsprites"));
 
-            if (motion == Vector2.Zero)
+            if (motion == Vector2.Zero) //if motion hasn't been overwritten by an Enemy
                 if (Direction == FacingDirection.Down)
                     motion.Y = 1;
                 else if (Direction == FacingDirection.Up)
@@ -36,7 +39,7 @@ namespace ArchanistTower.GameObjects
                 else if (Direction == FacingDirection.Right)
                     motion.X = 1;
 
-            motion.Normalize();
+            motion.Normalize(); //normalize to unit vector
             SpriteAnimation.Position = SpellOrigin;
             Collidable = true;
             CollisionRadius = 32;
@@ -58,7 +61,7 @@ namespace ArchanistTower.GameObjects
 
         public override void WorldCollision()
         {
-            Dead = true;    
+            Dead = true; //dies upon worldcollision   
         }       
     }
 }

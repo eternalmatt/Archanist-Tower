@@ -41,7 +41,6 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Animations.Add("Right", right);
             SpriteAnimation.CurrentAnimationName = "Down";
             Direction = FacingDirection.Down;
-
             CollisionRadius = 64;
             base.Initialize();
         }
@@ -60,10 +59,8 @@ namespace ArchanistTower.GameObjects
                 CheckEnemyState();  //check the Wander/Chase/Attack state
 
                 if (enemyState == EnemySpriteState.Attack)
-                {   //if enemyState == Attack, make sprite attack player, and adjust his speed
+                    //if enemyState == Attack, make sprite attack player, and adjust his speed
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
-                    SpriteAnimation.Speed = enemyAttackVelocity;
-                }
                 else if (enemyState == EnemySpriteState.Cast)
                 {
                     Cast(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
@@ -87,16 +84,21 @@ namespace ArchanistTower.GameObjects
                 enemyState = EnemySpriteState.Wander;
         }
 
+        /// <summary>
+        /// FireEnemy will chase Player if close enough
+        /// </summary>
         private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
-        {   //change the oritenation to face player
-            orient = TurnToFace(position, playerPosition, orient, turnSpeed);
+        {
+            orient = TurnToFace(position, playerPosition, orient, turnSpeed);//change the oritenation to face player
+            SpriteAnimation.Speed = enemyAttackVelocity;    //make the sprite's speed be the attackvelocity
         }
 
         private void Cast(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {   //change the oritenation to face player
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
             if (Globals.random.Next(50) == 5) // probability to cast spell = 1/50
-                GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Boss });
+                GameWorld.Spells.Add(new FireSpell(playerPosition, position)    //add a firespell to gameworld 
+                                    { originatingType = GameObjects.Spell.OriginatingType.Enemy });  //with originating type Enemy
         }
         
     }

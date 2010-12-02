@@ -71,11 +71,11 @@ namespace ArchanistTower.GameObjects
         public override void Collision(GameObject obj)
         {
             if (obj is Player)
-            {
-                if (!stopwatch.IsRunning)
-                    stopwatch.Start();
+            {   //if GameObject is the player,
+                if (!stopwatch.IsRunning)   //and stopwatch isn't running
+                    stopwatch.Start();      //start the stopwatch (so enemy doesn't move)
             }
-            else WorldCollision();
+            else WorldCollision();  //else, use worldcollision logic
         }
 
 
@@ -104,6 +104,14 @@ namespace ArchanistTower.GameObjects
             orient = TurnToFace(position, screenCenter, orient, turnToCenterSpeed);
         }
 
+        /// <summary>
+        /// Turn to face a Vector2 position in the world
+        /// </summary>
+        /// <param name="position">Current position of sprite</param>
+        /// <param name="faceThis">Position sprite will face</param>
+        /// <param name="currentAngle">Angle sprite is facing</param>
+        /// <param name="turnSpeed">The speed to turn</param>
+        /// <returns>Orientation angle to face</returns>
         public static float TurnToFace(Vector2 position, Vector2 faceThis, float currentAngle, float turnSpeed)
         {
             float x = faceThis.X - position.X;

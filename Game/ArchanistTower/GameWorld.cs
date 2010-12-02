@@ -90,7 +90,7 @@ namespace ArchanistTower
                                                               e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
                                     Spells[i].Collision(e);
 
-                if (Spells[i].originatingType == GameObjects.Spell.OriginatingType.Boss)
+                if (Spells[i].originatingType == GameObjects.Spell.OriginatingType.Enemy)
                     if (Vector2.Distance(Spells[i].SpriteAnimation.Position, Player.SpriteAnimation.Position) <= Spells[i].CollisionRadius)
                         if (Spells[i].SpriteAnimation.Bounds.Intersects(Player.SpriteAnimation.Bounds))
                             if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
@@ -113,7 +113,7 @@ namespace ArchanistTower
                 Enemies[i].PlayerPosition = Player.SpriteAnimation.Position;
 
                 if (Enemies[i] is FireBoss)
-                {
+                {   //if the enemy is a fireboss, we must repopulate spellLists with new information
                     Enemies[i].spellMotionList.Clear();
                     Enemies[i].spellPositionList.Clear();
                     foreach (Spell spell in Spells)

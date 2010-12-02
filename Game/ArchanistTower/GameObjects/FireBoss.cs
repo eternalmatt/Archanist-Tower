@@ -156,7 +156,7 @@ namespace ArchanistTower.GameObjects
             if (!spellwatch.IsRunning)
             {
                 spellwatch.Start();
-                GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Boss });
+                GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Enemy });
                 //SpriteAnimation.Speed = enemyAttackVelocity;
             }
         }
