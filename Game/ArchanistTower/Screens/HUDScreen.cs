@@ -9,20 +9,21 @@ namespace ArchanistTower.Screens
 {
     class HUDScreen : Screen
     {
-        const int max = 200;
-        const int manaStart = 30;
+        /*
+         * lol, so the reason i put all these constants in here 
+         * is so that our hud would be more modular, especially
+         * when we needed to move everything for xbox's cutoff.
+         */
+        const int offset_x = 10;
+        const int offset_y = 10;
+        const int maxWidth = 200;
+        const int manaStart = 30 + offset_y;
         const int barHeight = 20;
         SpriteFont Font, ArialFont;
         AnimatedSprite crystal;
         Texture2D lifeBarTexture, manaBarTexture, borderTexture;
-        Rectangle lifeBar = new Rectangle(0, 0, 0, barHeight);
-        Rectangle manaBar = new Rectangle(0, manaStart, 0, barHeight);
-        Rectangle borderA = new Rectangle(0, barHeight, max, 2);
-        Rectangle borderB = new Rectangle(max, 0, 2, barHeight);
-        Rectangle borderC = new Rectangle(0, manaStart - 2, max, 2);
-        Rectangle borderD = new Rectangle(0, manaStart + barHeight, max, 2);
-        Rectangle borderE = new Rectangle(max, manaStart, 2, barHeight);
-        List<Rectangle> BorderList;
+        Rectangle lifeBar = new Rectangle(offset_x, offset_y, maxWidth, barHeight);
+        Rectangle manaBar = new Rectangle(offset_x, manaStart, maxWidth, barHeight);
         int PlayerHealth
         {
             get { return lifeBar.Width; }
@@ -33,6 +34,17 @@ namespace ArchanistTower.Screens
             get { return manaBar.Width; }
             set { manaBar.Width = value * 2; }
         }
+
+        //don't change ANY of these values;
+        Rectangle borderAL = new Rectangle(offset_x, offset_y - 2, maxWidth, 2);         //above life
+        Rectangle borderAM = new Rectangle(offset_x, manaStart - 2, maxWidth, 2);        //above mana
+        Rectangle borderBL = new Rectangle(offset_x, barHeight + offset_y, maxWidth, 2); //below life
+        Rectangle borderBM = new Rectangle(offset_x, manaStart + barHeight, maxWidth, 2);//below mana
+        Rectangle borderRL = new Rectangle(offset_x + maxWidth, offset_y, 2, barHeight); //right of life
+        Rectangle borderRM = new Rectangle(offset_x + maxWidth, manaStart, 2, barHeight);//right of mana
+        Rectangle borderLL = new Rectangle(offset_x - 2, offset_y, 2, barHeight);        //left of life
+        Rectangle borderLM = new Rectangle(offset_x - 2, manaStart, 2, barHeight);       //left of mana
+        List<Rectangle> BorderList;
 
 
         public HUDScreen()
@@ -70,11 +82,14 @@ namespace ArchanistTower.Screens
             lifeBarTexture = Globals.content.Load<Texture2D>("HUD/rectangle");
             manaBarTexture = Globals.content.Load<Texture2D>("HUD/rectangle_blue");
             BorderList = new List<Rectangle>();
-            BorderList.Add(borderA);
-            BorderList.Add(borderB);
-            BorderList.Add(borderC);
-            BorderList.Add(borderD);
-            BorderList.Add(borderE);
+            BorderList.Add(borderBL);
+            BorderList.Add(borderRL);
+            BorderList.Add(borderAM);
+            BorderList.Add(borderBM);
+            BorderList.Add(borderRM);
+            BorderList.Add(borderAL);
+            BorderList.Add(borderLL);
+            BorderList.Add(borderLM);
         }
 
         protected override void Update(GameTime gameTime)
@@ -88,14 +103,12 @@ namespace ArchanistTower.Screens
         protected override void Draw()
         {
             Globals.spriteBatch.Begin();
-            foreach (Rectangle border in BorderList)
+            foreach (Rectangle border in BorderList)    //draw all the borders
                 Globals.spriteBatch.Draw(borderTexture, border, Color.White);
-            Globals.spriteBatch.Draw(borderTexture, borderA, Color.White);
-            Globals.spriteBatch.Draw(borderTexture, borderB, Color.White);
             
             Globals.spriteBatch.Draw(lifeBarTexture, lifeBar, Color.White);
             Globals.spriteBatch.Draw(manaBarTexture, manaBar, Color.White);
-            //Globals.spriteBatch.DrawString(Font, "Health:  " + PlayerHealth.ToString(), new Vector2(5, 5), Color.Red);
+            //Globals.spriteBatch.DrawString(Font, GameWorld.Player.Health.ToString(), new Vector2(5, 10), Color.White);
             //Globals.spriteBatch.DrawString(Font, "Mana:  " + PlayerMana.ToString(), new Vector2(5, 35), Color.Blue);
             Globals.spriteBatch.DrawString(ArialFont, "Current Spell:  ", new Vector2(5, Globals.ScreenHeight - 32), Color.AntiqueWhite);
 
@@ -104,9 +117,8 @@ namespace ArchanistTower.Screens
             else if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.wind)
                 crystal.CurrentAnimationName = "Wind";
             else
-            {
-                //reserved for water spell
-            }
+            { }     //reserved for water spell
+
             crystal.Draw(Globals.spriteBatch);
 
             Globals.spriteBatch.End(); 
