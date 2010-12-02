@@ -36,6 +36,8 @@ namespace ArchanistTower.GameObjects
         {
             Collidable = true;
             stopwatch = new Stopwatch();
+            spellMotionList = new List<Vector2>();
+            spellPositionList = new List<Vector2>();
             base.Initialize();
         }
 
