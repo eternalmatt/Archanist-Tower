@@ -59,8 +59,6 @@ namespace ArchanistTower.GameObjects
             else return Vector2.Zero;
         }
 
-
-
         public override void Initialize()
         {
             SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Enemies/amg1"));

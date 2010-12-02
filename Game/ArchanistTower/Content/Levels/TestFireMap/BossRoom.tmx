@@ -12,6 +12,17 @@
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -27,6 +38,17 @@
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
    </properties>
   </tile>
  </tileset>
@@ -34,6 +56,17 @@
   <image source="FireEnemyIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
@@ -64,7 +97,8 @@
   <image source="FireBossIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
-    <property name="Type" value="Fire"/>
+    <property name="Type" value="FireBoss"/>
+    <property name="Type" value="FireBoss"/>
    </properties>
   </tile>
  </tileset>
@@ -90,18 +124,18 @@
  </layer>
  <layer name="Enemy" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
+   H4sIAAAAAAAAC+3TMREAAAgDMfCvDU9o4BgYSBT80EYAMFV5XQB/+R+f2T+w0ZruAPkAEAAA
   </data>
  </layer>
  <objectgroup name="Objects" width="32" height="32">
-  <object name="Portal" x="3" y="999" width="791" height="15">
+  <object name="Portal" type="Portal" x="3" y="999" width="791" height="15">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain3"/>
     <property name="DestinationX" value="12"/>
     <property name="DestinationY" value="2"/>
    </properties>
   </object>
-  <object name="Portal" x="5" y="80" width="17" height="899">
+  <object name="Portal" type="Portal" x="5" y="80" width="17" height="899">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain4"/>
     <property name="DestinationX" value="29"/>
@@ -109,11 +143,6 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="Boss" width="32" height="32">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3TMQEAAAgCQe2fzU52YGG5S/ADzACQuG0XQI/9Q4//AakHO8mdggAQAAA=
-  </data>
- </layer>
  <layer name="Collectable" width="32" height="32">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=

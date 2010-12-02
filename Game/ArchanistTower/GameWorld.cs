@@ -104,28 +104,27 @@ namespace ArchanistTower
 
         private void EnemyUpdate(GameTime gameTime)
         {
-            foreach (Enemy e in Enemies)
+            for (int i = 0; i < Enemies.Count; i++)
             {
-                e.Update(gameTime);
+                Enemies[i].Update(gameTime);
                 foreach (Rectangle c in ClipMap.Values)
-                    if (e.SpriteAnimation.Bounds.Intersects(c))
-                        e.WorldCollision();
-                e.PlayerPosition = Player.SpriteAnimation.Position;
+                    if (Enemies[i].SpriteAnimation.Bounds.Intersects(c))
+                        Enemies[i].WorldCollision();
+                Enemies[i].PlayerPosition = Player.SpriteAnimation.Position;
 
-                if (e is FireBoss)
+                if (Enemies[i] is FireBoss)
                 {
-                    e.spellMotionList.Clear();
-                    e.spellPositionList.Clear();
+                    Enemies[i].spellMotionList.Clear();
+                    Enemies[i].spellPositionList.Clear();
                     foreach (Spell spell in Spells)
                         if (spell.originatingType == GameObjects.Spell.OriginatingType.Player)
                         {
-                            e.spellMotionList.Add(spell.motion);
-                            e.spellPositionList.Add(spell.SpriteAnimation.Position);
+                            Enemies[i].spellMotionList.Add(spell.motion);
+                            Enemies[i].spellPositionList.Add(spell.SpriteAnimation.Position);
                         }
                 }
-            }
-            for (int i = 0; i < Enemies.Count; i++)
                 if (Enemies[i].Dead) Enemies.RemoveAt(i--);
+            }               
         }
 
         private void PlayerUpdate(GameTime gameTime)
@@ -193,7 +192,7 @@ namespace ArchanistTower
 
             foreach (MapObject obj in objects.Objects)
             {
-                switch (obj.Name)
+                switch (obj.Type)
                 {
                     case "PlayerStart":
                         if (Player == null)
@@ -201,9 +200,6 @@ namespace ArchanistTower
                         break;
 
                     case "Portal":
-                    case "Portal2":
-                    case "Portal3":
-                    case "Portal4":
                         Portal portal = new Portal();
                         portal.Bounds = obj.Bounds;
                         Property tempP = obj.Properties["DestinationMap"];
@@ -219,7 +215,6 @@ namespace ArchanistTower
             }
             LoadClipMap();
             LoadEnemies();
-            //LoadBoss();
             LoadCollectables();
         }
 
@@ -251,30 +246,13 @@ namespace ArchanistTower
                         int enemyX = x * Map.TileWidth;
                         int enemyY = y * Map.TileHeight;
                         if (enemyType == "Fire")
-                            Enemies.Add(new FireEnemy(new Vector2(enemyX, enemyY)));                                          
+                            Enemies.Add(new FireEnemy(new Vector2(enemyX, enemyY)));
+                        if (enemyType == "FireBoss")
+                            Enemies.Add(new FireBoss(new Vector2(enemyX, enemyY)));
                     }
                 }
             Map.GetLayer("Enemy").Visible = false;
         }
-
-        //private void LoadBoss()
-        //{
-        //    TileLayer bossLayer = Map.GetLayer("Boss") as TileLayer;
-        //    for (int y = 0; y < bossLayer.Width; y++)
-        //        for (int x = 0; x < bossLayer.Height; x++)
-        //        {
-        //            Tile tile = bossLayer.Tiles[x, y];
-        //            if (tile != null)
-        //            {
-        //                string bossType = tile.Properties["Type"].RawValue;
-        //                int bossX = x * Map.TileWidth;
-        //                int bossY = y * Map.TileHeight;
-        //                if (bossType == "Fire")
-        //                    Enemies.Add(new FireBoss(new Vector2(bossX, bossY)));
-        //            }
-        //        }
-        //    Map.GetLayer("Boss").Visible = false;
-        //}
 
         private void LoadCollectables()
         {

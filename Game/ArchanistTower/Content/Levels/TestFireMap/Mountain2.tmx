@@ -9,6 +9,14 @@
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -21,6 +29,14 @@
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
    </properties>
   </tile>
  </tileset>
@@ -28,6 +44,14 @@
   <image source="FireEnemyIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
@@ -77,28 +101,28 @@
   </data>
  </layer>
  <objectgroup name="Objects" width="32" height="32">
-  <object name="Portal" x="2" y="0" width="27" height="338">
+  <object name="Portal" type="Portal" x="2" y="0" width="27" height="338">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain1"/>
     <property name="DestinationX" value="29"/>
     <property name="DestinationY" value="4"/>
    </properties>
   </object>
-  <object name="Portal2" x="990" y="850" width="27" height="43">
+  <object name="Portal2" type="Portal" x="990" y="850" width="27" height="43">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain3"/>
     <property name="DestinationX" value="1"/>
     <property name="DestinationY" value="26"/>
    </properties>
   </object>
-  <object name="Portal3" x="995" y="5" width="22" height="344">
+  <object name="Portal3" type="Portal" x="995" y="5" width="22" height="344">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain3"/>
     <property name="DestinationX" value="1"/>
     <property name="DestinationY" value="5"/>
    </properties>
   </object>
-  <object name="Portal4" x="51" y="10" width="934" height="12">
+  <object name="Portal4" type="Portal" x="51" y="10" width="934" height="12">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain4"/>
     <property name="DestinationX" value="15"/>
@@ -106,11 +130,6 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="Boss" width="32" height="32">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
-  </data>
- </layer>
  <layer name="Collectable" width="32" height="32">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
