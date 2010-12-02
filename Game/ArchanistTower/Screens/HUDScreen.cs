@@ -13,12 +13,14 @@ namespace ArchanistTower.Screens
          * lol, so the reason i put all these constants in here 
          * is so that our hud would be more modular, especially
          * when we needed to move everything for xbox's cutoff.
+         * just change each number and the borders should hopefully scale.
          */
-        const int offset_x = 10;
-        const int offset_y = 10;
-        const int maxWidth = 200;
-        const int manaStart = 30 + offset_y;
-        const int barHeight = 20;
+        const int offset_x = 10;    //x for lifebar to start
+        const int offset_y = 10;    //y for lifebar to start
+        const int maxWidth = 200;   //maxwidth of bars
+        const int barHeight = 20;   //bar heigh
+        const int manaStart = 10 + offset_y + barHeight;    //space between mana and lifebar
+        List<Rectangle> BorderList;
         SpriteFont Font, ArialFont;
         AnimatedSprite crystal;
         Texture2D lifeBarTexture, manaBarTexture, borderTexture;
@@ -27,24 +29,13 @@ namespace ArchanistTower.Screens
         int PlayerHealth
         {
             get { return lifeBar.Width; }
-            set { lifeBar.Width = value * 2; }
+            set { lifeBar.Width = value * maxWidth / 100; }
         }
         int PlayerMana
         {
             get { return manaBar.Width; }
-            set { manaBar.Width = value * 2; }
+            set { manaBar.Width = value * maxWidth / 100; }
         }
-
-        //don't change ANY of these values;
-        Rectangle borderAL = new Rectangle(offset_x, offset_y - 2, maxWidth, 2);         //above life
-        Rectangle borderAM = new Rectangle(offset_x, manaStart - 2, maxWidth, 2);        //above mana
-        Rectangle borderBL = new Rectangle(offset_x, barHeight + offset_y, maxWidth, 2); //below life
-        Rectangle borderBM = new Rectangle(offset_x, manaStart + barHeight, maxWidth, 2);//below mana
-        Rectangle borderRL = new Rectangle(offset_x + maxWidth, offset_y, 2, barHeight); //right of life
-        Rectangle borderRM = new Rectangle(offset_x + maxWidth, manaStart, 2, barHeight);//right of mana
-        Rectangle borderLL = new Rectangle(offset_x - 2, offset_y, 2, barHeight);        //left of life
-        Rectangle borderLM = new Rectangle(offset_x - 2, manaStart, 2, barHeight);       //left of mana
-        List<Rectangle> BorderList;
 
 
         public HUDScreen()
@@ -81,6 +72,15 @@ namespace ArchanistTower.Screens
             borderTexture = Globals.content.Load<Texture2D>("HUD/border");
             lifeBarTexture = Globals.content.Load<Texture2D>("HUD/rectangle");
             manaBarTexture = Globals.content.Load<Texture2D>("HUD/rectangle_blue");
+            //don't change ANY of these values;
+            Rectangle borderAL = new Rectangle(offset_x, offset_y - 2, maxWidth, 2);         //above life
+            Rectangle borderAM = new Rectangle(offset_x, manaStart - 2, maxWidth, 2);        //above mana
+            Rectangle borderBL = new Rectangle(offset_x, offset_y + barHeight, maxWidth, 2); //below life
+            Rectangle borderBM = new Rectangle(offset_x, manaStart + barHeight, maxWidth, 2);//below mana
+            Rectangle borderRL = new Rectangle(offset_x + maxWidth, offset_y, 2, barHeight); //right of life
+            Rectangle borderRM = new Rectangle(offset_x + maxWidth, manaStart, 2, barHeight);//right of mana
+            Rectangle borderLL = new Rectangle(offset_x - 2, offset_y, 2, barHeight);        //left of life
+            Rectangle borderLM = new Rectangle(offset_x - 2, manaStart, 2, barHeight);       //left of mana
             BorderList = new List<Rectangle>();
             BorderList.Add(borderBL);
             BorderList.Add(borderRL);
