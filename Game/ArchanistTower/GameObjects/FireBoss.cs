@@ -16,12 +16,14 @@ namespace ArchanistTower.GameObjects
         private const int runFromSpellRadius = 100;
         private const float runFromSpellSpeed = 1.5f;
         private float enemyAttackVelocity { get { return 1.5f; } }
+        private Stopwatch spellwatch;
 
         public FireBoss(Vector2 startPosition)
         {
             Health = 300;
             Initialize();
             SpriteAnimation.Position = startPosition;
+            spellwatch = new Stopwatch();
         }
 
 
@@ -44,7 +46,7 @@ namespace ArchanistTower.GameObjects
                 //http://www.intmath.com/Plane-analytic-geometry/Perpendicular-distance-point-line.php this link helped me with some math
                 int A = (int)(cMotion.Y / cMotion.X) * -1;
                 int C = (int)(-1 * A * cPosition.X - cPosition.Y);
-                int distance = (int)Math.Abs(A * cPosition.X + cPosition.Y + C / A);
+                int distance = (int)Math.Abs((-1* A * cPosition.X + cPosition.Y + C) / A);
 
                 if (distance < runFromSpellRadius)
                 {
@@ -152,10 +154,14 @@ namespace ArchanistTower.GameObjects
         private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {   //change the oritenation to face player
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
+            if (spellwatch.ElapsedMilliseconds > 1000) spellwatch.Reset();
 
-
-            GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Boss });
-            //SpriteAnimation.Speed = enemyAttackVelocity;
+            if (!spellwatch.IsRunning)
+            {
+                spellwatch.Start();
+                GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Boss });
+                //SpriteAnimation.Speed = enemyAttackVelocity;
+            }
         }
 
         private void RunFromPlayerSpell(Vector2 position, Vector2 perpendicular, ref float orient, float turnspeed)
