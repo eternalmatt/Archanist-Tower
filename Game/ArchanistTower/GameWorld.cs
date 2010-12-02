@@ -82,6 +82,9 @@ namespace ArchanistTower
                     if (Spells[i].SpriteAnimation.Bounds.Intersects(c))
                         Spells[i].WorldCollision();
 
+                if (Spells[i].SpriteAnimation.Bounds.Intersects(new Rectangle(0,0,800,600)))
+                    Spells[i].WorldCollision();
+
                 if (Spells[i].originatingType == GameObjects.Spell.OriginatingType.Player)
                     foreach (Enemy e in Enemies)
                         if (Vector2.Distance(Spells[i].SpriteAnimation.Position, e.SpriteAnimation.Position) <= Spells[i].CollisionRadius)
@@ -96,6 +99,7 @@ namespace ArchanistTower
                             if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
                                                      Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture))
                                 Spells[i].Collision(Player);
+
 
                 if (Spells[i].Dead)
                     Spells.RemoveAt(i--);
@@ -141,6 +145,7 @@ namespace ArchanistTower
             foreach (Portal p in Portals)
                 if (Player.SpriteAnimation.Bounds.Intersects(p.Bounds))
                 {
+                    Spells.Clear();
                     LoadMap(p.DestinationMap);
                     Player.SpriteAnimation.Position = new Vector2(
                         (p.DestinationTileLocation.X * Map.TileWidth) + (Map.TileWidth / 2),

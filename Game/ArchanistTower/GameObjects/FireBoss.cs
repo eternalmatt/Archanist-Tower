@@ -28,6 +28,7 @@ namespace ArchanistTower.GameObjects
 
         private Vector2 AvoidClosestSpell()
         {
+            //return new Vector2(1, 0) + SpriteAnimation.Position;
             if (spellPositionList.Count > 0)
             {
                 int index = 0;
@@ -45,14 +46,14 @@ namespace ArchanistTower.GameObjects
                 //http://www.intmath.com/Plane-analytic-geometry/Perpendicular-distance-point-line.php this link helped me with some math
                 int A = (int)(cMotion.Y / cMotion.X) * -1;
                 int C = (int)(-1 * A * cPosition.X - cPosition.Y);
-                int distance = (int)Math.Abs((-1* A * cPosition.X + cPosition.Y + C) / A);
+                int distance = (int)Math.Abs((A * cPosition.X + cPosition.Y + C) / A);
 
                 if (distance < runFromSpellRadius)
                 {
                     //this is the vector perpendicular to the closest spell's motion vector (i hope)
-                    Vector2 perpendicular = new Vector2(cMotion.Y * -1, cMotion.X);
+                    Vector2 perpendicular = new Vector2(cMotion.Y * -1, cMotion.X) - SpriteAnimation.Position;
                     perpendicular.Normalize();
-                    return perpendicular;
+                    return perpendicular + SpriteAnimation.Position;
                 }
                 else return Vector2.Zero;
             }
@@ -127,7 +128,7 @@ namespace ArchanistTower.GameObjects
 
                 if (spellPositionList.Count > 0)
                     RunFromPlayerSpell(SpriteAnimation.Position, AvoidClosestSpell(), ref enemyOrientation, enemyTurnSpeed);
-
+                else
                 if (enemyState == EnemySpriteState.Attack)
                     //if enemyState == Attack, make Boss attack player, and adjust his speed
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
