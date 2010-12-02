@@ -97,5 +97,6 @@ namespace ArchanistTower.GameObjects
             if (Globals.random.Next(10) == 5) // probability to cast spell = 1/10
                 GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Boss });
         }
+        
     }
 }

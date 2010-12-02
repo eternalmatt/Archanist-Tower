@@ -10,7 +10,6 @@ namespace ArchanistTower.GameObjects
 {
     class FireBoss : Enemy
     {
-
         private const int enemyAttackRadius = 140;
         private const int enemyChaseRadius = 300;
         private const int runFromSpellRadius = 100;

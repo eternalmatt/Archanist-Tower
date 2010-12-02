@@ -26,14 +26,15 @@ namespace ArchanistTower.GameObjects
         {
             SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Spells/spellsprites"));
 
-            if (Direction == FacingDirection.Down)
-                motion.Y = 1;
-            else if (Direction == FacingDirection.Up)
-                motion.Y = -1;
-            else if (Direction == FacingDirection.Left)
-                motion.X = -1;
-            else if (Direction == FacingDirection.Right)
-                motion.X = 1;
+            if (motion == Vector2.Zero)
+                if (Direction == FacingDirection.Down)
+                    motion.Y = 1;
+                else if (Direction == FacingDirection.Up)
+                    motion.Y = -1;
+                else if (Direction == FacingDirection.Left)
+                    motion.X = -1;
+                else if (Direction == FacingDirection.Right)
+                    motion.X = 1;
 
             motion.Normalize();
             SpriteAnimation.Position = SpellOrigin;
