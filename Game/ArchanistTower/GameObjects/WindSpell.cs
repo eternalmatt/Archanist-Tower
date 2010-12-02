@@ -16,6 +16,18 @@ namespace ArchanistTower.GameObjects
             Initialize();
         }
 
+        /// <summary>
+        /// Used for fireboss to throw a spell in all directions and not just cardinal
+        /// </summary>
+        /// <param name="towards">Direction spell will travel towards</param>
+        /// <param name="from">Position spell originated (usually SpriteAnimation.Position)</param>
+        public WindSpell(Vector2 towards, Vector2 from)
+        {
+            SpellOrigin = from;
+            motion = towards - from;
+            Initialize();
+        }
+
         public override void Initialize()
         {
             base.Initialize();
@@ -30,9 +42,41 @@ namespace ArchanistTower.GameObjects
         {
             if (o is Enemy)
             {
-                if (o is FireEnemy || o is FireBoss)
+                o.Health -= 20;
+                switch (Direction) // stuns the enemy backwards for 20 units
                 {
-                    o.Health -= 25;
+                    case FacingDirection.Left:
+                        o.SpriteAnimation.Position.X -= 20;
+                        break;
+                    case FacingDirection.Right:
+                        o.SpriteAnimation.Position.X += 20;
+                        break;
+                    case FacingDirection.Up:
+                        o.SpriteAnimation.Position.Y -= 20;
+                        break;
+                    case FacingDirection.Down:
+                        o.SpriteAnimation.Position.Y += 20;
+                        break;
+                }
+                Dead = true;
+            }
+            else if (o is Player && originatingType == OriginatingType.Boss)
+            {
+                o.Health -= 5;
+                switch (Direction) // stuns the player backwards for 20 units
+                {
+                    case FacingDirection.Left:
+                        o.SpriteAnimation.Position.X -= 20;
+                        break;
+                    case FacingDirection.Right:
+                        o.SpriteAnimation.Position.X += 20;
+                        break;
+                    case FacingDirection.Up:
+                        o.SpriteAnimation.Position.Y -= 20;
+                        break;
+                    case FacingDirection.Down:
+                        o.SpriteAnimation.Position.Y += 20;
+                        break;
                 }
                 Dead = true;
             }

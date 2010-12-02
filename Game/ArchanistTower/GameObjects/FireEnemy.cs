@@ -16,6 +16,7 @@ namespace ArchanistTower.GameObjects
         private const int enemyAttackRadius = 70;
         private const int enemyChaseRadius = 150;
         private float enemyAttackVelocity { get { return 1.2f; } }
+        private float enemyCastVelocity { get { return 0.2f; } }
 
         public FireEnemy(Vector2 startPosition)
         {
@@ -66,7 +67,7 @@ namespace ArchanistTower.GameObjects
                 else if (enemyState == EnemySpriteState.Cast)
                 {
                     Cast(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
-                    SpriteAnimation.Speed = 0.1f;
+                    SpriteAnimation.Speed = enemyCastVelocity;
                 }
                 base.Update(gameTime);
             }
