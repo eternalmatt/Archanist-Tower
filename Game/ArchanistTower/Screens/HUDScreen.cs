@@ -9,6 +9,7 @@ namespace ArchanistTower.Screens
 {
     class HUDScreen : Screen
     {
+        #region Properties
         /*
          * lol, so the reason i put all these constants in here 
          * is so that our hud would be more modular, especially
@@ -20,6 +21,10 @@ namespace ArchanistTower.Screens
         const int maxWidth = 200;   //maxwidth of bars
         const int barHeight = 20;   //bar heigh
         const int manaStart = 10 + offset_y + barHeight;    //space between mana and lifebar
+
+        const byte fadeValue = (byte)175;   //fade value of lifebars. number between 0 and 255.
+        readonly Color FadedColor = new Color(Color.White, fadeValue); //our faded color
+        
         List<Rectangle> BorderList;
         SpriteFont Font, ArialFont;
         AnimatedSprite crystal;
@@ -36,13 +41,13 @@ namespace ArchanistTower.Screens
             get { return manaBar.Width; }
             set { manaBar.Width = value * maxWidth / 100; }
         }
+        #endregion
 
-
+        #region Initialize
         public HUDScreen()
         {
             Initialize();
         }
-
         protected override void Unload() { }
         protected override void Initialize()
         {
@@ -91,6 +96,7 @@ namespace ArchanistTower.Screens
             BorderList.Add(borderLL);
             BorderList.Add(borderLM);
         }
+        #endregion
 
         protected override void Update(GameTime gameTime)
         {
@@ -105,23 +111,24 @@ namespace ArchanistTower.Screens
             Globals.spriteBatch.Begin();
             foreach (Rectangle border in BorderList)    //draw all the borders
                 Globals.spriteBatch.Draw(borderTexture, border, Color.White);
-            
-            Globals.spriteBatch.Draw(lifeBarTexture, lifeBar, Color.White);
-            Globals.spriteBatch.Draw(manaBarTexture, manaBar, Color.White);
-            //Globals.spriteBatch.DrawString(Font, GameWorld.Player.Health.ToString(), new Vector2(5, 10), Color.White);
-            //Globals.spriteBatch.DrawString(Font, "Mana:  " + PlayerMana.ToString(), new Vector2(5, 35), Color.Blue);
-            Globals.spriteBatch.DrawString(ArialFont, "Current Spell:  ", new Vector2(5, Globals.ScreenHeight - 32), Color.AntiqueWhite);
 
+            Globals.spriteBatch.DrawString(ArialFont, "Current Spell:  ", new Vector2(5, Globals.ScreenHeight - 32), Color.AntiqueWhite);
             if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.fire)
                 crystal.CurrentAnimationName = "Fire";
             else if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.wind)
                 crystal.CurrentAnimationName = "Wind";
             else
             { }     //reserved for water spell
-
             crystal.Draw(Globals.spriteBatch);
+            Globals.spriteBatch.End();
 
-            Globals.spriteBatch.End(); 
+            //whoever wrote SplashScreen.cs, thanks for insight on how to fade colors.
+            Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+            Globals.spriteBatch.Draw(lifeBarTexture, lifeBar, FadedColor);
+            Globals.spriteBatch.Draw(manaBarTexture, manaBar, FadedColor);
+            Globals.spriteBatch.End();
+            //Globals.spriteBatch.DrawString(Font, GameWorld.Player.Health.ToString(), new Vector2(5, 10), Color.White);
+            //Globals.spriteBatch.DrawString(Font, "Mana:  " + PlayerMana.ToString(), new Vector2(5, 35), Color.Blue);
         }
     }
 }
