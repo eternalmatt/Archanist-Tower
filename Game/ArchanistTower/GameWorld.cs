@@ -105,11 +105,18 @@ namespace ArchanistTower
 
                 if (e is FireBoss)
                 {
-                    e.SpellList.Clear();
+                    e.spellMotionList.Clear();
+                    e.spellPositionList.Clear();
                     foreach (Spell spell in Spells)
-                        e.SpellList.Add(spell);
+                        if (spell.originatingType == "Player")
+                        {
+                            e.spellMotionList.Add(spell.motion);
+                            e.spellPositionList.Add(spell.SpriteAnimation.Position);
+                        }
                 }
             }
+            for (int i = 0; i < Enemies.Count; i++)
+                if (Enemies[i].Dead) Enemies.RemoveAt(i--);
         }
 
         private void PlayerUpdate(GameTime gameTime)

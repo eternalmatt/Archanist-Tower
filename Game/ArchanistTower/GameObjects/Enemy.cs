@@ -21,7 +21,9 @@ namespace ArchanistTower.GameObjects
         protected float enemyTurnSpeed = 0.12f;
         protected EnemySpriteState enemyState = EnemySpriteState.Chase;
         public Vector2 PlayerPosition { get; set; }
-        public List<Spell> SpellList;
+        public List<Vector2> spellMotionList;
+        public List<Vector2> spellPositionList;
+
         protected enum EnemySpriteState
         {
             Wander,
@@ -33,7 +35,6 @@ namespace ArchanistTower.GameObjects
         {
             Collidable = true;
             stopwatch = new Stopwatch();
-            SpellList = new List<Spell>();
             base.Initialize();
         }
 

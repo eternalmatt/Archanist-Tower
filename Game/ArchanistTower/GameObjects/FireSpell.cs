@@ -16,6 +16,18 @@ namespace ArchanistTower.GameObjects
             Initialize();
         }
 
+        /// <summary>
+        /// Used for fireboss to throw a spell in all directions and not just cardinal
+        /// </summary>
+        /// <param name="towards">Direction spell will travel towards</param>
+        /// <param name="from">Position spell originated (usually SpriteAnimation.Position)</param>
+        public FireSpell(Vector2 towards, Vector2 from)
+        {
+            SpellOrigin = from;
+            motion = towards;
+            Initialize();
+        }
+
         public override void Initialize()
         {
             base.Initialize();
@@ -30,10 +42,16 @@ namespace ArchanistTower.GameObjects
         {
             if (o is Enemy)
             {
-                if (o is FireEnemy || o is FireBoss)
-                {
-                    o.Health -= 35;
-                }
+                if (originatingType == "Player")
+                    if (o is FireEnemy || o is FireBoss)
+                    {
+                        o.Health -= 35;
+                    }
+                Dead = true;
+            }
+            else if (o is Player && originatingType == "FireBoss")
+            {
+                o.Health -= 10;
                 Dead = true;
             }
         }

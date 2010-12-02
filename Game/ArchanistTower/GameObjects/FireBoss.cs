@@ -14,7 +14,7 @@ namespace ArchanistTower.GameObjects
         private const int enemyAttackRadius = 140;
         private const int enemyChaseRadius = 300;
         private const int runFromSpellRadius = 100;
-
+        private const float runFromSpellSpeed = 1.5f;
         private float enemyAttackVelocity { get { return 1.5f; } }
 
         public FireBoss(Vector2 startPosition)
@@ -27,23 +27,29 @@ namespace ArchanistTower.GameObjects
 
         private Vector2 AvoidClosestSpell()
         {
-            if (SpellList.Count > 0)
+            if (spellPositionList.Count > 0)
             {
-                Spell cSpell = SpellList[0];   //for closest spell
-                int closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[0].SpriteAnimation.Position);
-                for (int i = 1; i < SpellList.Count; i++)
-                    if (Vector2.DistanceSquared(SpriteAnimation.Position, SpellList[i].SpriteAnimation.Position) < closest)
-                        cSpell = SpellList[i];
+                int index = 0;
+                int closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[0]);
+                for (int i = 1; i < spellPositionList.Count; i++)
+                    if (Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[i]) < closest)
+                    {
+                        closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[i]);
+                        index = i;
+                    }
+
+                Vector2 cPosition = spellPositionList[index];   //for closest spell position
+                Vector2 cMotion = spellMotionList[index];       //for closest spell motion
 
                 //http://www.intmath.com/Plane-analytic-geometry/Perpendicular-distance-point-line.php this link helped me with some math
-                int A = (int)(cSpell.motion.Y / cSpell.motion.X) * -1;
-                int C = (int)(-1 * A * cSpell.SpriteAnimation.Position.X - cSpell.SpriteAnimation.Position.Y);
-                int distance = (int)Math.Abs(A * cSpell.SpriteAnimation.Position.X + cSpell.SpriteAnimation.Position.Y + C / A);
+                int A = (int)(cMotion.Y / cMotion.X) * -1;
+                int C = (int)(-1 * A * cPosition.X - cPosition.Y);
+                int distance = (int)Math.Abs(A * cPosition.X + cPosition.Y + C / A);
 
                 if (distance < runFromSpellRadius)
                 {
                     //this is the vector perpendicular to the closest spell's motion vector (i hope)
-                    Vector2 perpendicular = new Vector2(cSpell.motion.Y * -1, cSpell.motion.X);
+                    Vector2 perpendicular = new Vector2(cMotion.Y * -1, cMotion.X);
                     perpendicular.Normalize();
                     return perpendicular;
                 }
@@ -120,9 +126,9 @@ namespace ArchanistTower.GameObjects
             {
                 CheckEnemyState();
 
-                if (SpellList.Count > 0)
-                    Attack(SpriteAnimation.Position, AvoidClosestSpell(), ref enemyOrientation, enemyTurnSpeed);
-                
+                if (spellPositionList.Count > 0)
+                    RunFromPlayerSpell(SpriteAnimation.Position, AvoidClosestSpell(), ref enemyOrientation, enemyTurnSpeed);
+
                 if (enemyState == EnemySpriteState.Attack)
                     //if enemyState == Attack, make Boss attack player, and adjust his speed
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
@@ -146,7 +152,16 @@ namespace ArchanistTower.GameObjects
         private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {   //change the oritenation to face player
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
-            SpriteAnimation.Speed = enemyAttackVelocity;
+
+
+            GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = "FireBoss" });
+            //SpriteAnimation.Speed = enemyAttackVelocity;
+        }
+
+        private void RunFromPlayerSpell(Vector2 position, Vector2 perpendicular, ref float orient, float turnspeed)
+        {
+            orient = TurnToFace(position, perpendicular, orient, turnspeed);
+            SpriteAnimation.Speed = runFromSpellSpeed;
         }
     }
 }
