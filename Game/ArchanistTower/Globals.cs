@@ -49,10 +49,7 @@ namespace ArchanistTower
 
             input = new InputManager();
             random = new Random();
-            green = 0;
-            red = 0;
-            blue = 0;
-
+            ResetColor();
         }
 
         public static void LoadContent()
@@ -90,6 +87,13 @@ namespace ArchanistTower
         public static int ScreenMiddleY
         {
             get { return Resolution.GetHeight() / 2; }
+        }
+
+        public static void ResetColor()
+        {
+            blue = 0;
+            green = 0;
+            red = 0;
         }
 
     }

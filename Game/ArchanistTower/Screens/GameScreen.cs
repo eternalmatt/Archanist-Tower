@@ -30,6 +30,7 @@ namespace ArchanistTower.Screens
             gameWorld.Initialize();
 
             shader.Initialize();
+            Globals.ResetColor();
             
         }
 

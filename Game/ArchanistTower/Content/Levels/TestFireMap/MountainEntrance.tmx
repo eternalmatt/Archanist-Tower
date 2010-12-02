@@ -11,19 +11,6 @@
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -38,19 +25,6 @@
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
    </properties>
   </tile>
  </tileset>
@@ -58,19 +32,6 @@
   <image source="FireEnemyIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
@@ -131,7 +92,7 @@
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2WQQoAIAgEO/j/N3eXSiN1DXYgOgg7dtHGyEMSs3c+fRB+FPRjob9HDz/5TzNrVas4Xr/1jhuXF1F3Najdonuw6tH9efOy9i/a76WTPysfCdpPCIkD9cd5mZFROR2Y4bm/7wAQAAA=
+   H4sIAAAAAAAAC+2WQQoAIAgEPfT/N3cNqTRSt2AHooOwYxdNJI+WmL3y6VPtR0I//Wj/Cz385N/NrFmt4nj91jtOXF6auqtB7Rbdg1WP7s+bl7V/0X4vaP/YQ1Y2ErSfEBIH6o9zMyOjcl6gAxY+Uv4AEAAA
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">
