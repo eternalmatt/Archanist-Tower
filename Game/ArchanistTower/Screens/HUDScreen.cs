@@ -102,6 +102,14 @@ namespace ArchanistTower.Screens
         {
             PlayerHealth = GameWorld.Player.Health;
             PlayerMana = GameWorld.Player.Mana;
+
+            if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.fire && Globals.red == 1)
+                crystal.CurrentAnimationName = "Fire";
+            else if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.wind && Globals.green == 1)
+                crystal.CurrentAnimationName = "Wind";
+            else if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.water && Globals.blue == 1)
+                crystal.CurrentAnimationName = "Water";
+
             crystal.Update(gameTime);
         }
 
@@ -113,12 +121,8 @@ namespace ArchanistTower.Screens
                 Globals.spriteBatch.Draw(borderTexture, border, Color.White);
 
             Globals.spriteBatch.DrawString(ArialFont, "Current Spell:  ", new Vector2(5, Globals.ScreenHeight - 32), Color.AntiqueWhite);
-            if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.fire)
-                crystal.CurrentAnimationName = "Fire";
-            else if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.wind)
-                crystal.CurrentAnimationName = "Wind";
-            else
-            { }     //reserved for water spell
+            if (Globals.I_AM_INVINCIBLE) Globals.spriteBatch.DrawString(ArialFont, "Invincibility enabled", new Vector2(400, 0), Color.White);
+            if (Globals.UNLIMITED_MANA) Globals.spriteBatch.DrawString(ArialFont, "Unlimited mana enabled", new Vector2(400, 50), Color.White);
             crystal.Draw(Globals.spriteBatch);
             Globals.spriteBatch.End();
 

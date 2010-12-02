@@ -29,6 +29,8 @@ namespace ArchanistTower
         public static float green;
         public static float red;
         public static float blue;
+        public static bool I_AM_INVINCIBLE = false;
+        public static bool UNLIMITED_MANA = false;
 
 
         public static GraphicsDevice GraphicsDevice

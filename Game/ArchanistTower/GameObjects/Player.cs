@@ -82,7 +82,7 @@ namespace ArchanistTower.GameObjects
 
         public override void Update(GameTime gameTime)
         {
-            if (Health <= 0) Dead = true;
+            if (Health <= 0 && Globals.I_AM_INVINCIBLE == false) Dead = true;
             
             if (stopwatch.ElapsedMilliseconds > 1500) stopwatch.Reset();
             if (stopwatch.IsRunning) Collidable = false;
@@ -190,12 +190,12 @@ namespace ArchanistTower.GameObjects
                     else if (Globals.input.KeyPressed(CastDown))
                         Direction = FacingDirection.Down;
 
-                    if (selectedSpell == SelectedSpell.fire && red && Mana >= 15)
+                    if (selectedSpell == SelectedSpell.fire && red && Mana >= 15 || Globals.UNLIMITED_MANA)
                     {
                         GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= 15;
                     }
-                    else if (selectedSpell == SelectedSpell.wind && green && Mana >= 10)
+                    else if (selectedSpell == SelectedSpell.wind && green && Mana >= 10 || Globals.UNLIMITED_MANA)
                     {
                         GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= 10;

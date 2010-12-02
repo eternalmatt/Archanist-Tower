@@ -151,6 +151,7 @@ namespace ArchanistTower.GameObjects
         private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {   //change the oritenation to face player
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
+            SpriteAnimation.Speed = enemyAttackVelocity;
             if (spellwatch.ElapsedMilliseconds > 1000) spellwatch.Reset();
 
             if (!spellwatch.IsRunning)
