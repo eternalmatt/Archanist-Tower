@@ -88,6 +88,12 @@ namespace ArchanistTower
                             e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
                             Spells[i].Collision(e);
 
+                if (Math.Abs(Spells[i].SpriteAnimation.Position.X - Player.SpriteAnimation.Position.X) <= Spells[i].CollisionRadius &&
+                       Math.Abs(Spells[i].SpriteAnimation.Position.Y - Player.SpriteAnimation.Position.Y) <= Spells[i].CollisionRadius)
+                    if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
+                        Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture))
+                        Spells[i].Collision(Player);
+
                 if (Spells[i].Dead)
                     Spells.RemoveAt(i);
             }

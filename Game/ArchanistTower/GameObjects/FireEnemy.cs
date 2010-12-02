@@ -12,6 +12,7 @@ namespace ArchanistTower.GameObjects
     class FireEnemy : ElementalEnemy
     {
 
+        private const int enemyCastRadius = 120;
         private const int enemyAttackRadius = 70;
         private const int enemyChaseRadius = 150;
         private float enemyAttackVelocity { get { return 1.2f; } }
@@ -62,6 +63,11 @@ namespace ArchanistTower.GameObjects
                     Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
                     SpriteAnimation.Speed = enemyAttackVelocity;
                 }
+                else if (enemyState == EnemySpriteState.Cast)
+                {
+                    Cast(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
+                    SpriteAnimation.Speed = 0.1f;
+                }
                 base.Update(gameTime);
             }
         }
@@ -72,6 +78,8 @@ namespace ArchanistTower.GameObjects
             int distance = (int)Vector2.Distance(SpriteAnimation.Position, PlayerPosition);
             if (distance < enemyAttackRadius)
                 enemyState = EnemySpriteState.Attack;
+            else if (distance < enemyCastRadius)
+                enemyState = EnemySpriteState.Cast;
             else if (distance < enemyChaseRadius)
                 enemyState = EnemySpriteState.Chase;
             else
@@ -81,6 +89,13 @@ namespace ArchanistTower.GameObjects
         private void Attack(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
         {   //change the oritenation to face player
             orient = TurnToFace(position, playerPosition, orient, turnSpeed);
+        }
+
+        private void Cast(Vector2 position, Vector2 playerPosition, ref float orient, float turnSpeed)
+        {   //change the oritenation to face player
+            orient = TurnToFace(position, playerPosition, orient, turnSpeed);
+            if (Globals.random.Next(10) == 5) // probability to cast spell = 1/10
+                GameWorld.Spells.Add(new FireSpell(playerPosition, position) { originatingType = GameObjects.Spell.OriginatingType.Boss });
         }
     }
 }
