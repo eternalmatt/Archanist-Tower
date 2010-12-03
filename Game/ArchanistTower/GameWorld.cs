@@ -89,15 +89,13 @@ namespace ArchanistTower
                     foreach (Enemy e in Enemies)
                         if (Vector2.Distance(Spells[i].SpriteAnimation.Position, e.SpriteAnimation.Position) <= Spells[i].CollisionRadius)
                             if (Spells[i].SpriteAnimation.Bounds.Intersects(e.SpriteAnimation.Bounds))
-                                if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
-                                                              e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
+                                if (PerPixelCollision(e.SpriteAnimation, Spells[i].SpriteAnimation))
                                     Spells[i].Collision(e);
 
                 if (Spells[i].originatingType == GameObjects.Spell.OriginatingType.Enemy)
                     if (Vector2.Distance(Spells[i].SpriteAnimation.Position, Player.SpriteAnimation.Position) <= Spells[i].CollisionRadius)
                         if (Spells[i].SpriteAnimation.Bounds.Intersects(Player.SpriteAnimation.Bounds))
-                            if (PerPixelCollision(Spells[i].SpriteAnimation.Bounds, Spells[i].SpriteAnimation.SpriteTexture,
-                                                     Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture))
+                            if (PerPixelCollision(Player.SpriteAnimation, Spells[i].SpriteAnimation))
                                 Spells[i].Collision(Player);
 
 
@@ -133,7 +131,7 @@ namespace ArchanistTower
 
         private void PlayerUpdate(GameTime gameTime)
         {
-            if (Player.Dead) 
+            if (Player.Dead)
                 Screens.GameScreen.GameOver();
 
             Player.Update(gameTime);
@@ -155,16 +153,14 @@ namespace ArchanistTower
             foreach (Collectable c in Collectables)
                 if (Math.Abs(Player.SpriteAnimation.Position.X - c.SpriteAnimation.Position.X) <= Player.CollisionRadius &&
                     Math.Abs(Player.SpriteAnimation.Position.Y - c.SpriteAnimation.Position.Y) <= Player.CollisionRadius)
-                    if (PerPixelCollision(Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture,
-                        c.SpriteAnimation.Bounds, c.SpriteAnimation.SpriteTexture))
+                    if (PerPixelCollision(c.SpriteAnimation, Player.SpriteAnimation))
                         c.Collected();
 
             foreach (Enemy e in Enemies)
-                if(!e.Dead)
-                    if(Math.Abs(Player.SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= Player.CollisionRadius &&
+                if (!e.Dead)
+                    if (Math.Abs(Player.SpriteAnimation.Position.X - e.SpriteAnimation.Position.X) <= Player.CollisionRadius &&
                         Math.Abs(Player.SpriteAnimation.Position.Y - e.SpriteAnimation.Position.Y) <= Player.CollisionRadius)
-                        if (PerPixelCollision(Player.SpriteAnimation.Bounds, Player.SpriteAnimation.SpriteTexture,
-                            e.SpriteAnimation.Bounds, e.SpriteAnimation.SpriteTexture))
+                        if (PerPixelCollision(e.SpriteAnimation, Player.SpriteAnimation))
                         {
                             Player.Collision(e);
                             e.Collision(Player);
@@ -285,10 +281,27 @@ namespace ArchanistTower
 
         #endregion //Load
 
-
-
         #region PerPixelCollision
-        private bool PerPixelCollision(Rectangle rectangleA, Texture2D textureA, Rectangle rectangleB, Texture2D textureB)
+        /// <summary>
+        /// Optimized PerPixelCollision
+        /// </summary>
+        private static bool PerPixelCollision(AnimatedSprite A, AnimatedSprite B)
+        {
+            int bottom = Math.Min(A.Bounds.Bottom, B.Bounds.Bottom);
+            int right = Math.Min(A.Bounds.Right, B.Bounds.Right);
+
+            for (int y = Math.Max(A.Bounds.Top, B.Bounds.Top); y < bottom; y++)
+                for (int x = Math.Max(A.Bounds.Left, B.Bounds.Left); x < right; x++)
+                    if (A.data[(x - A.Bounds.Left) + (y - A.Bounds.Top) * A.Bounds.Width].A != 0 &&
+                        B.data[(x - B.Bounds.Left) + (y - B.Bounds.Top) * B.Bounds.Width].A != 0)
+                        return true;
+            return false;
+        }
+        /*
+        /// <summary>
+        /// Old PerPixelCollision
+        /// </summary>
+        private static bool PerPixelCollision(Rectangle rectangleA, Texture2D textureA, Rectangle rectangleB, Texture2D textureB)
         {
             int areaA = textureA.Width * textureA.Height;
             int areaB = textureB.Width * textureB.Height;
@@ -309,8 +322,8 @@ namespace ArchanistTower
                     if (dataA[(x - rectangleA.Left) + (y - rectangleA.Top) * rectangleA.Width].A != 0 &&
                         dataB[(x - rectangleB.Left) + (y - rectangleB.Top) * rectangleB.Width].A != 0)
                         return true;
-            /* I modified this section to sacrifice readability for better CPU by avoiding 
-             * the repeated copying of large arrays of objects.
+            //I modified this section to sacrifice readability for better CPU by avoiding 
+            //the repeated copying of large arrays of objects.
             // Get the color of both pixels at this point
             Color colorA = dataA[(x - rectangleA.Left) + (y - rectangleA.Top) * rectangleA.Width];
             Color colorB = dataB[(x - rectangleB.Left) + (y - rectangleB.Top) * rectangleB.Width];
@@ -320,11 +333,10 @@ namespace ArchanistTower
             {
                 return true;// then an intersection has been found
             }
-            */
+            
             return false;// No intersection found
         }
+        */
         #endregion
-
-
     }
 }

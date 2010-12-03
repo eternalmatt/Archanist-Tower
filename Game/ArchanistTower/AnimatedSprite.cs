@@ -15,7 +15,8 @@ namespace ArchanistTower
         string currentAnimation = null;
         bool animating = true;
         Texture2D texture;
-        public Texture2D SpriteTexture { get { return texture; } }
+        public Color[] data { get; set; }
+        //public Texture2D SpriteTexture { get { return texture; } }
 
         public Vector2 Position = Vector2.Zero;
         public Vector2 OriginOffset = Vector2.Zero;
@@ -106,6 +107,9 @@ namespace ArchanistTower
         public AnimatedSprite(Texture2D texture)
         {
             this.texture = texture;
+            int area = texture.Width * texture.Height;
+            data = new Color[area];
+            texture.GetData(0, null, data, 0, area);
         }
 
         public void ClampToArea(int width, int height)

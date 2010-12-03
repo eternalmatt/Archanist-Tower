@@ -71,6 +71,12 @@ namespace ArchanistTower
             graphics.ApplyChanges();
         }
 
+
+        public static Rectangle ScreenRectangle
+        {
+            get { return new Rectangle((int)camera.Position.X, (int)camera.Position.Y, ScreenWidth, ScreenHeight); }
+        }
+
         public static int ScreenWidth
         {
             get { return Resolution.GetWidth(); }
