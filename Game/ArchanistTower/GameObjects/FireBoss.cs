@@ -55,9 +55,9 @@ namespace ArchanistTower.GameObjects
                     perpendicular.Normalize();
                     return perpendicular + SpriteAnimation.Position;
                 }
-                else return Vector2.Zero;
+                else return SpriteAnimation.Position;
             }
-            else return Vector2.Zero;
+            else return SpriteAnimation.Position;
         }
 
         public override void Initialize()

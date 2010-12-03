@@ -70,7 +70,7 @@ namespace ArchanistTower
             SpellUpdate(gameTime);
 
             foreach (Collectable c in Collectables)
-                c.Update(gameTime);
+                c.Update(gameTime);           
         }
 
         private void SpellUpdate(GameTime gameTime)

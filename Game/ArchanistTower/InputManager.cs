@@ -368,10 +368,6 @@ namespace ArchanistTower
 #if WINDOWS
             OldKeyState = NewKeyState;
             NewKeyState = Keyboard.GetState();
-            if (KeyJustPressed(Keys.I))
-                Globals.I_AM_INVINCIBLE = !Globals.I_AM_INVINCIBLE;
-            if (KeyJustPressed(Keys.U))
-                Globals.UNLIMITED_MANA = !Globals.UNLIMITED_MANA;
 
             NewMouseState = Mouse.GetState();
             mouse_move_x = 0f;

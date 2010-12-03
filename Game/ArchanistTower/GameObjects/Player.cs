@@ -109,14 +109,11 @@ namespace ArchanistTower.GameObjects
                 green = true;
 
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds * 3;
-            if (timer >= 1)
+            if (timer >= 1 && Mana < 100)
             {
                 Mana += 1;
                 timer = 0;
-            }
-            if (Mana > 100)
-                Mana = 100;
-            
+            }            
 
             /*int i = ShaderCode.effectPost.Parameters["powerGained"].GetValueInt32();
             if (i > 0)
@@ -190,12 +187,12 @@ namespace ArchanistTower.GameObjects
                     else if (Globals.input.KeyPressed(CastDown))
                         Direction = FacingDirection.Down;
 
-                    if ((selectedSpell == SelectedSpell.fire && red && Mana >= 15) || Globals.UNLIMITED_MANA)
+                    if (selectedSpell == SelectedSpell.fire && red && (Mana >= 15 || Globals.UNLIMITED_MANA))
                     {
                         GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= 15;
                     }
-                    else if ((selectedSpell == SelectedSpell.wind && green && Mana >= 10) || Globals.UNLIMITED_MANA)
+                    else if (selectedSpell == SelectedSpell.wind && green && (Mana >= 10 || Globals.UNLIMITED_MANA))
                     {
                         GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= 10;
@@ -206,6 +203,11 @@ namespace ArchanistTower.GameObjects
                     }
                 }
             }
+
+            if (Globals.input.KeyJustPressed(Keys.I))
+                Globals.I_AM_INVINCIBLE = !Globals.I_AM_INVINCIBLE;
+            if (Globals.input.KeyJustPressed(Keys.U))
+                Globals.UNLIMITED_MANA = !Globals.UNLIMITED_MANA;
         }
 
         private void UpdateSpriteAnimation(Vector2 motion)
