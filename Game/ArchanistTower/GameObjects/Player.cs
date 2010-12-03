@@ -190,12 +190,12 @@ namespace ArchanistTower.GameObjects
                     else if (Globals.input.KeyPressed(CastDown))
                         Direction = FacingDirection.Down;
 
-                    if (selectedSpell == SelectedSpell.fire && red && Mana >= 15 || Globals.UNLIMITED_MANA)
+                    if ((selectedSpell == SelectedSpell.fire && red && Mana >= 15) || Globals.UNLIMITED_MANA)
                     {
                         GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= 15;
                     }
-                    else if (selectedSpell == SelectedSpell.wind && green && Mana >= 10 || Globals.UNLIMITED_MANA)
+                    else if ((selectedSpell == SelectedSpell.wind && green && Mana >= 10) || Globals.UNLIMITED_MANA)
                     {
                         GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= 10;
