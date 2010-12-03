@@ -10,8 +10,8 @@ namespace ArchanistTower.GameObjects
 {
     class FireBoss : Enemy
     {
-        private const int enemyAttackRadius = 140;
-        private const int enemyChaseRadius = 200;
+        private const int enemyAttackRadius = 150;
+        private const int enemyChaseRadius = 230;
         private const int runFromSpellRadius = 100;
         private const float runFromSpellSpeed = 1.5f;
         private float enemyAttackVelocity { get { return 1.5f; } }
@@ -95,7 +95,7 @@ namespace ArchanistTower.GameObjects
                 {
                     if (spellPositionList.Count > 0)
                         RunFromPlayerSpell(SpriteAnimation.Position, cSpell, ref enemyOrientation, enemyTurnSpeed);
-                    // let the boss run for 1 seconds, then return to wander
+                    // let the boss run for 0.5 seconds, then return to wander
                     timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     if (timer >= 0.5)
                     {
