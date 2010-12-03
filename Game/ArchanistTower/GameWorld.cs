@@ -82,7 +82,7 @@ namespace ArchanistTower
                     if (Spells[i].SpriteAnimation.Bounds.Intersects(c))
                         Spells[i].WorldCollision();
 
-                if (Spells[i].SpriteAnimation.Bounds.Intersects(new Rectangle(0,0,800,600)))
+                if (!Spells[i].SpriteAnimation.Bounds.Intersects(new Rectangle(0,0,800,600)))
                     Spells[i].WorldCollision();
 
                 if (Spells[i].originatingType == GameObjects.Spell.OriginatingType.Player)
