@@ -11,7 +11,7 @@ namespace ArchanistTower.GameObjects
     class FireBoss : Enemy
     {
         private const int enemyAttackRadius = 140;
-        private const int enemyChaseRadius = 300;
+        private const int enemyChaseRadius = 200;
         private const int runFromSpellRadius = 100;
         private const float runFromSpellSpeed = 1.5f;
         private float enemyAttackVelocity { get { return 1.5f; } }
@@ -24,46 +24,6 @@ namespace ArchanistTower.GameObjects
             Initialize();
             SpriteAnimation.Position = startPosition;
             spellwatch = new Stopwatch();
-        }
-
-
-        private Vector2 AvoidClosestSpell()
-        {
-            //return new Vector2(1, 0) + SpriteAnimation.Position;
-            if (spellPositionList.Count > 0)
-            {
-                int index = 0;
-                int closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[0]);
-                for (int i = 1; i < spellPositionList.Count; i++)
-                    if (Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[i]) < closest)
-                    {
-                        closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[i]);
-                        index = i;
-                    }
-
-                Vector2 cPosition = spellPositionList[index];   //for closest spell position
-                Vector2 cMotion = spellMotionList[index];       //for closest spell motion
-
-                //http://www.intmath.com/Plane-analytic-geometry/Perpendicular-distance-point-line.php this link helped me with some math
-                float A = (cMotion.Y / cMotion.X) * -1;
-                float C = -1 * A * cPosition.X - cPosition.Y;
-                int distance = (int)Math.Abs((A * cPosition.X + cPosition.Y + C) / A);
-
-                if (distance < runFromSpellRadius)
-                {
-                    enemyState = EnemySpriteState.Run;
-                    //this is the vector perpendicular to the closest spell's motion vector (i hope)
-                    Vector2 perpendicular = new Vector2(cMotion.Y * -1, cMotion.X) - SpriteAnimation.Position;
-                    perpendicular.Normalize();
-                    return perpendicular + SpriteAnimation.Position;
-                }
-                else
-                {
-                    enemyState = EnemySpriteState.Wander;
-                    return SpriteAnimation.Position;
-                }
-            }
-            else return SpriteAnimation.Position;
         }
 
         public override void Initialize()
@@ -130,14 +90,14 @@ namespace ArchanistTower.GameObjects
             }
             else
             {
-                if (spellPositionList.Count > 0)
-                     RunFromPlayerSpell(SpriteAnimation.Position, AvoidClosestSpell(), ref enemyOrientation, enemyTurnSpeed);
-
+                Vector2 cSpell = AvoidClosestSpell();        
                 if (enemyState == EnemySpriteState.Run)
                 {
-                    // let the boss run for 1 second, then return to wander
+                    if (spellPositionList.Count > 0)
+                        RunFromPlayerSpell(SpriteAnimation.Position, cSpell, ref enemyOrientation, enemyTurnSpeed);
+                    // let the boss run for 1 seconds, then return to wander
                     timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (timer >= 1)
+                    if (timer >= 0.5)
                     {
                         CheckEnemyState();
                         timer = 0f;
@@ -184,6 +144,42 @@ namespace ArchanistTower.GameObjects
         {
             orient = TurnToFace(position, perpendicular, orient, turnspeed);
             SpriteAnimation.Speed = runFromSpellSpeed;
+        }
+
+        private Vector2 AvoidClosestSpell()
+        {
+            //return new Vector2(1, 0) + SpriteAnimation.Position;
+            if (spellPositionList.Count > 0)
+            {
+                int index = 0;
+                int closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[0]);
+                for (int i = 1; i < spellPositionList.Count; i++)
+                    if (Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[i]) < closest)
+                    {
+                        closest = (int)Vector2.DistanceSquared(SpriteAnimation.Position, spellPositionList[i]);
+                        index = i;
+                    }
+
+                Vector2 cPosition = spellPositionList[index];   //for closest spell position
+                Vector2 cMotion = spellMotionList[index];       //for closest spell motion
+
+                //http://www.intmath.com/Plane-analytic-geometry/Perpendicular-distance-point-line.php this link helped me with some math
+                //float A = (cMotion.Y / cMotion.X) * -1;
+                //float C = -1 * A * cPosition.X - cPosition.Y;
+                //int distance = (int)Math.Abs((A * cPosition.X + cPosition.Y + C) / A);
+                int distance = (int)Vector2.Distance(cPosition, SpriteAnimation.Position);
+
+                if (distance < runFromSpellRadius)
+                {
+                    enemyState = EnemySpriteState.Run;
+                    //this is the vector perpendicular to the closest spell's motion vector (i hope)
+                    Vector2 perpendicular = new Vector2(cMotion.Y * -1, cMotion.X);
+                    perpendicular.Normalize();
+                    return perpendicular + SpriteAnimation.Position;
+                }
+            }
+            enemyState = EnemySpriteState.Wander;
+            return SpriteAnimation.Position;
         }
     }
 }
