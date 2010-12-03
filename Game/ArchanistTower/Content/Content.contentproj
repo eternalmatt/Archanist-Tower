@@ -42,21 +42,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Levels\TestMap\se_free_grass_texture.jpg">
-      <Name>se_free_grass_texture</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Levels\TestMap\TestMap.tmx">
-      <Name>TestMap</Name>
-      <Importer>TmxImporter</Importer>
-      <Processor>TmxProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sprites\Player\man1.png">
       <Name>man1</Name>
       <Importer>TextureImporter</Importer>
@@ -75,16 +60,6 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
-    <Compile Include="Levels\TestMap\Test.tmx">
-      <Name>Test</Name>
-      <Importer>TmxImporter</Importer>
-      <Processor>TmxProcessor</Processor>
-    </Compile>
-    <None Include="Levels\TestMap\se_free_wood_texture.jpg">
-      <Name>se_free_wood_texture</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </None>
     <Compile Include="Shaders\BaseShader.fx">
       <Name>BaseShader</Name>
       <Importer>EffectImporter</Importer>
@@ -146,11 +121,6 @@
       <Importer>TmxImporter</Importer>
       <Processor>TmxProcessor</Processor>
     </Compile>
-    <None Include="Levels\TestMap\FireEnemyIcon.png">
-      <Name>FireEnemyIcon</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menuscreens\gameover.png">

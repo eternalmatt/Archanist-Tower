@@ -169,9 +169,9 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Position += SpriteAnimation.Speed * movement;
             LastMovement = SpriteAnimation.Speed * movement;
 
-            if (Globals.input.KeyPressed(Keys.F1))
+            if (Globals.input.KeyPressed(Keys.D1))
                 selectedSpell = SelectedSpell.fire;
-            if (Globals.input.KeyPressed(Keys.F2))
+            if (Globals.input.KeyPressed(Keys.D2))
                 selectedSpell = SelectedSpell.wind;
 
             if (red || green || blue)
