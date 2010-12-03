@@ -16,6 +16,7 @@ namespace ArchanistTower.GameObjects
         private const float runFromSpellSpeed = 1.5f;
         private float enemyAttackVelocity { get { return 1.5f; } }
         private Stopwatch spellwatch;
+        private float timer = 0f;
 
         public FireBoss(Vector2 startPosition)
         {
@@ -44,18 +45,23 @@ namespace ArchanistTower.GameObjects
                 Vector2 cMotion = spellMotionList[index];       //for closest spell motion
 
                 //http://www.intmath.com/Plane-analytic-geometry/Perpendicular-distance-point-line.php this link helped me with some math
-                int A = (int)(cMotion.Y / cMotion.X) * -1;
-                int C = (int)(-1 * A * cPosition.X - cPosition.Y);
+                float A = (cMotion.Y / cMotion.X) * -1;
+                float C = -1 * A * cPosition.X - cPosition.Y;
                 int distance = (int)Math.Abs((A * cPosition.X + cPosition.Y + C) / A);
 
                 if (distance < runFromSpellRadius)
                 {
+                    enemyState = EnemySpriteState.Run;
                     //this is the vector perpendicular to the closest spell's motion vector (i hope)
                     Vector2 perpendicular = new Vector2(cMotion.Y * -1, cMotion.X) - SpriteAnimation.Position;
                     perpendicular.Normalize();
                     return perpendicular + SpriteAnimation.Position;
                 }
-                else return SpriteAnimation.Position;
+                else
+                {
+                    enemyState = EnemySpriteState.Wander;
+                    return SpriteAnimation.Position;
+                }
             }
             else return SpriteAnimation.Position;
         }
@@ -124,15 +130,26 @@ namespace ArchanistTower.GameObjects
             }
             else
             {
-                CheckEnemyState();
-
                 if (spellPositionList.Count > 0)
-                    RunFromPlayerSpell(SpriteAnimation.Position, AvoidClosestSpell(), ref enemyOrientation, enemyTurnSpeed);
+                     RunFromPlayerSpell(SpriteAnimation.Position, AvoidClosestSpell(), ref enemyOrientation, enemyTurnSpeed);
+
+                if (enemyState == EnemySpriteState.Run)
+                {
+                    // let the boss run for 1 second, then return to wander
+                    timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (timer >= 1)
+                    {
+                        CheckEnemyState();
+                        timer = 0f;
+                    }
+                }
                 else
-                if (enemyState == EnemySpriteState.Attack)
-                    //if enemyState == Attack, make Boss attack player, and adjust his speed
-                    Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
-                
+                {
+                    CheckEnemyState();
+                    if (enemyState == EnemySpriteState.Attack)
+                        //if enemyState == Attack, make Boss attack player, and adjust his speed
+                        Attack(SpriteAnimation.Position, PlayerPosition, ref enemyOrientation, enemyTurnSpeed);
+                }                
 
                 base.Update(gameTime);
             }

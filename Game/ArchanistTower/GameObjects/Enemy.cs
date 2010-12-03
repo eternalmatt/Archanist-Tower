@@ -29,7 +29,8 @@ namespace ArchanistTower.GameObjects
             Wander,
             Chase,
             Attack,
-            Cast
+            Cast,
+            Run
         }
 
         public override void Initialize()
