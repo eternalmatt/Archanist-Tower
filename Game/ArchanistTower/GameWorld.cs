@@ -81,10 +81,10 @@ namespace ArchanistTower
                 foreach (Rectangle c in ClipMap.Values)
                     if (Spells[i].SpriteAnimation.Bounds.Intersects(c))
                         Spells[i].WorldCollision();
-
+                /*
                 if (!Spells[i].SpriteAnimation.Bounds.Intersects(new Rectangle(0,0,800,600)))
                     Spells[i].WorldCollision();
-
+                */
                 if (Spells[i].originatingType == GameObjects.Spell.OriginatingType.Player)
                     foreach (Enemy e in Enemies)
                         if (Vector2.Distance(Spells[i].SpriteAnimation.Position, e.SpriteAnimation.Position) <= Spells[i].CollisionRadius)
