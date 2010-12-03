@@ -12,7 +12,6 @@ namespace ArchanistTower
 {
     public class GameWorld
     {
-
         //Map Things
         public static Map Map { get; set; }
         public static Dictionary<Vector2, Rectangle> ClipMap { get; set; }
@@ -23,7 +22,6 @@ namespace ArchanistTower
         public static bool Debug { get; set; }
 
         public static Player Player;
-
 
         public int TileWidth
         {
@@ -190,6 +188,7 @@ namespace ArchanistTower
         {
             Portals = new List<Portal>();
             Enemies = new List<Enemy>();
+            Spells = new List<Spell>();
             Map = Globals.content.Load<Map>(fileName);
 
             MapObjectLayer objects = Map.GetLayer("Objects") as MapObjectLayer;
@@ -208,9 +207,8 @@ namespace ArchanistTower
                         portal.Bounds = obj.Bounds;
                         Property tempP = obj.Properties["DestinationMap"];
                         portal.DestinationMap = tempP.RawValue;
-                        //portal.DestinationMap = (string)obj.Properties["DestinationMap"];
                         tempP = obj.Properties["DestinationX"];
-                        string tileLocX = tempP.RawValue; //obj.Properties["DestinationX"].RawValue;
+                        string tileLocX = tempP.RawValue; 
                         string tileLocY = obj.Properties["DestinationY"].RawValue;
                         portal.DestinationTileLocation = new Vector2(Convert.ToInt32(tileLocX), Convert.ToInt32(tileLocY));
                         Portals.Add(portal);
