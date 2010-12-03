@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="FireEnemy" tilewidth="32" tileheight="32">
+  <image source="FireEnemyIcon.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="Clip" tilewidth="32" tileheight="32">
+  <image source="solid.jpg" trans="ff00ff"/>
+ </tileset>
+ <tileset firstgid="4" name="Collectables" tilewidth="32" tileheight="32">
+  <image source="Untitled.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="8" name="foresttiles" tilewidth="32" tileheight="32">
+  <image source="../Map Textures/ForestMap/foresttiles.png" trans="ff0ce6"/>
+ </tileset>
+ <layer name="Layer 1" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DAQkAAAwEoYvw/dOux1Bw1VRVVdXXD4z9cF0AEAAA
+  </data>
+ </layer>
+ <layer name="Layer 2" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoAxoUqh/oIEmibiQEYGRxSsZIRiXPlxyMH3kYkMKzWikAe7EQaPjJjzhpUXzmIeAUfuxYx0gVkTCSnS2n17hQYr9SUSYR4wacu3PIsI8YtSQYz96esCVLopoZD+t0sVws59W6Y9Y+2mV/oi1fzT90cd+EwZI28MIzTx6pT9c/qZX+sNlP73SH7XqQ1LiGhmjxzst7Yf5FZa2TjHiNo8W6Q9m/0DVvzD7iUlbtEh/tGyL0sL+HCAuBeI8OtqPL03Sw35yAQBKLfxRABAAAA==
+  </data>
+ </layer>
+ <layer name="Layer 3" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3UyUoDQRSF4fgMvoxDnOPsIpOaSQVBBdEEGzTgxudyxnnlSsSN4kocFk5P4C+koSi6TOV2UlmYAx8JpLtOV+XSu5FIZA/7OMAhjnCMKHrQiz7EkUASKbzgVfEWcI2+RhrTmMEsTnCKM5zjApe4QgzDGMEoMsgihzw+8aX4DrhGX6OAOcxjARttcktYxorwfg9hss79RZSE62w3uT9sNundQrlJ/bbp4Pk60YVuRB0/bz99AxjEEGKO+8foG8cEJjHluD9OXwJJpJAW9i8K+zP0ZZFDHgVh/6qwv17xHPW0G75Lcl056xs+70Ku1egE7fVWmRXp/NUrrubP9J97FtcE5UHxVKHn3nDvGoo1dJn635X+33yEXNMm/l7V/f+Vamfqz5/t2Qedc5j8l/efn1pm3DTXruLPmZ5HwVolYb/t/p+r/F4W9NvE9I7Rs9Og/lZa0fMDFM03wAAQAAA=
+  </data>
+ </layer>
+ <layer name="Clip" width="32" height="32" opacity="0.99">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+WWQQoAIAgEA///5y4dIsqylE0dkKDCzY3IUuRQi9WaNT/q02L+NNdNaOVB6mcCVe8PvqPvnIbxJYd0T1/3iwe3+lqg9bOD9j+yPtdPaNQ0+y+9Efn+PehnYdfbcx5bvFVJbo2zWelnAdFrevW9AqPkSH8AEAAA
+  </data>
+ </layer>
+ <layer name="Enemy" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3QsQkAQAwDsfD7D53e/UPAUuPaNwMA/7zYJvm9uUGb/K0DABcsz5ZAVwAQAAA=
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="32" height="32">
+  <object name="PlayerStart" type="PlayerStart" x="442" y="990" width="32" height="32"/>
+  <object name="Portal" type="Portal" x="489" y="9" width="134" height="19">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\Forest2"/>
+    <property name="DestinationX" value="16"/>
+    <property name="DestinationY" value="28"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Collectable" width="32" height="32">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
+  </data>
+ </layer>
+</map>

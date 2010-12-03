@@ -217,6 +217,41 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </None>
+    <Compile Include="Levels\TestFireMap\Forest2.tmx">
+      <Name>Forest2</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Forest3.tmx">
+      <Name>Forest3</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Forest4.tmx">
+      <Name>Forest4</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Forest5.tmx">
+      <Name>Forest5</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Forest6.tmx">
+      <Name>Forest6</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\Forest7.tmx">
+      <Name>Forest7</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
+    <Compile Include="Levels\TestFireMap\ForestEntrance.tmx">
+      <Name>ForestEntrance</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
+    </Compile>
     <None Include="Levels\TestFireMap\LavaGround.png">
       <Name>LavaGround</Name>
       <Importer>TextureImporter</Importer>
@@ -281,6 +316,18 @@
       <Name>border</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Levels\TestFireMap\foresttiles.png">
+      <Name>foresttiles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </None>
+    <Compile Include="Levels\TestFireMap\Starting.tmx">
+      <Name>Starting</Name>
+      <Importer>TmxImporter</Importer>
+      <Processor>TmxProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

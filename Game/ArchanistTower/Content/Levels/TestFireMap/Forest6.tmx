@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="64" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="FireEnemy" tilewidth="32" tileheight="32">
+  <image source="FireEnemyIcon.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="Clip" tilewidth="32" tileheight="32">
+  <image source="solid.jpg" trans="ff00ff"/>
+ </tileset>
+ <tileset firstgid="4" name="Collectables" tilewidth="32" tileheight="32">
+  <image source="Untitled.png" trans="ff00ff"/>
+  <tile id="0">
+   <properties>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="8" name="foresttiles" tilewidth="32" tileheight="32">
+  <image source="../Map Textures/ForestMap/foresttiles.png" trans="ff0ce6"/>
+ </tileset>
+ <layer name="Layer 1" width="25" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DAQkAAAwEoYvw/dOux1Bw1VRVVVVVVR89XpevmwAZAAA=
+  </data>
+ </layer>
+ <layer name="Layer 2" width="25" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YN3MUQRBG9yABlGASTERIBhkmEZBgEkyC+QtARo733kvCScJJwkpYCW//ACHBQYRAAUgEAhLelHakYa57ZnfvVEXAV/eqtu5u+5u57Zvp6STJrs/Q6/Alx72aBuEn/ILfqccshzwefqxhlXjBGBhbqs7Dj2U1juvxMAHqFI8tsBW2wXbYATthF+yGh0osq4lcT4LJMEXx2AN7YR/shwNwEA7B4USPZTWV62kwHWYoHkfgKByD43ACTsIpOJ3osazcayPJ4ww0QCM0wVk4B+fhQnrfoBPDPO8yfFT4KnhchGZogVa4BJfhClxNKlUW4oQwHtegDdqhA67DDbgJt9K4Nl/zxrcet+EOdEIX3IV7cB8epB5a7sf4Af3JUG4+gm7ogcfwBJ7Cs9RDy30T43uA/vT+5/ACXsIreA1v4C28S78Tyv33SW0Uyn2rDzXy8j36Ej2HQ3wSYjcyh6YCz1zDjs31aiF+aw09XC/r0078DvjG9cAo+XQSvytdl4xPKF9DaOMzudNN/B5v7TPaAJthk/feRu89Kzs+36vP+1450XMk9Jkr6bm695v1qtfBzV/tM99Leq7Wu7cg0p7uz6UsjLHWHtXMwf5m/u9Vaw9pLv89/h2PclJZF7hr1EANPKQ921VsTfTHYPd8u7dLczD+Ws1uvi/VcP5/I1Tj2dpFqtml8RTB/oZ+zV6r+MNzSOL1f7VzMIrV/7FaLlbjGbnnJqNQnaWe6SKqy+GhneliMs8g69nVz4/M88pxdq040ynzKid/78Oxs6u7b/v5IZ1VTXz7X7X7V9bclWoE/143vruW+WOL1YuheUlruNYnyFKXavt4Vg/rE6oxJR/NYy7Mg/mwoIBXqM6zHvWwEBbBYi++6z87w7wsvscSWArLYLnnIfnHnpU0jxWwElbBas9D84+tzb7HGlgL62C956H551n/Yz0uyb+c5O93uDL3z4zgxs+yt7j1hLTnh7B7qbTuSv+Hor0Sbd2tTyrzsWivROsRSvlYtN+p9QilfCzqofUIpXyU9qVYfmnnWk1Faqos47AYjUYfw6WhNNT7CdXs1fo3l0Z6P5o0/6zebaWR3k9eSd5zBP4ArtV+jwAZAAA=
+  </data>
+ </layer>
+ <layer name="Layer 3" width="25" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC61Yt64UQRCcgwS44DDBARfDi9BLMckBCSbBJA/ICBFGQkKEeO8yrISVsBLu4R8mwP0AIR8CvIQ6aUfqq6uemT1dSaW92dvpHlPd07uTIYRX4GvwDfg21MM6cD24Adxo7i8HV4ArwSnwI/gJ/Ax+ydhsUXsTuBncAm4197vganAN+BX8Bn4Hf4A/wauNEK6B18EbjUE/HeNrAtwGbgd3OPNTuA27d8C74D3howR2fn/Av+A/cLr6/yHsPgIfg0+Ej3aBDzu/ABsNcAY4s7L3HNcX4EtwknzENerUmNMs2JgNzgGblb13uL4HP4BT5KNZYy4Rc2FjHjgfXJBZ+2i3zhx6WAi7i8DFYCfhI9pl7TJymoxoV2wlbDYde0qTMRZXmb5q/Hb9o19lT2kyxuJaYSMHZU9pknNNnf1U9pQmOdfU0WRK4xY218S9KF2rYRDn0AqDe2/hrWeqT4nPSNZXyZxZu14fO3ZP395aK+32MB1GB9bushHYZG2qc5Lh+V0CLg36DLL5gc/JYbShziDPlspN9rmWuNeDOoPqxpj1qWLDO4NazvM8Zs+f/b/0DOLxRpTsj63XYpxZWxOij5qfmtdYde0GP85azu+IXA4er65ePZrKazlNsG9Vj6o1jvGUwk6n7dWjdc6iiF2ZtkVJfOwGD1TcA+4F99Mztj2KPGcxVL4ZAqoW4nMkQsUP28lpPIduSNdYqfPPA4/bi586YJs8bu99ruP0V2CbPG4VP3Gd2qK/qqPZpjduC7vu3F/V0WzTi3tG1BT3V3V0qU0LqyXun3pXzEHVFkq/pXW0zOtObWGRyqP7zO94PvDzqraIdkvq+YNiHGP0TO791tpX63BI3BundkltUZpXSs4mjm2OO5Urc23WVDf0x3bdbzRy30hTHNveNxr+7sDasGvGmuLY9uLO7kluD1hTHNsq7nJ7wdor0ZRdh07w970ORmEj4iR4ytiz+8fz9dZcnWNWqxfBS8ZHypaHbhA1gdHqZTSvmOe9+P2d8KFqAqvVm2jfcsb/q9CfOlutVu+j/aC6X/cbXoQ6B61Wn6L9zDyv8n47lH/rU+Bv7Pbdle02hf8Q8u/Bw8L64+81KV1y/j0MHgGPgsfA4+CJ0B9Tdg/VGgyA8u9p3DoDngXPgefBC6E/pkrwH+ayXRgAGQAA
+  </data>
+ </layer>
+ <layer name="Clip" width="25" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+VX2w7FIAhbsv//5/OwLDGmQluRhx2SvSi0XBTcdT1yD58irH6kl/EqPo1YKKYqnkg/w7nBp4oaR8SDcuTmCdkq2BUcrLAxujViOVzs11aJw+VQ9itqkd2R1RlnOZj6Vt4BFaNCTuN38nwxlmxOne47aH32KdNzpaIv/QvHi93RL05woDlXzdPBgXB350DFWymTivk82yvzmclRV9/9yqyq5HDePwpmdBbcWaScr2zd8ZXhd/9hlHow85rZjzhm+93zoviC3kWKKPpuL3LuiZI/t2+pHF3CzI9dfGdPsanmQHYn3t/oLp2oR9esdSTqX2w/ZfDnXK7WXI4VZ6bL4I2YzLraV9D8XeUrw1Jk5ftuPVQfvsAx8qBaVfaUuT4rfJXnB/sIy58AGQAA
+  </data>
+ </layer>
+ <layer name="Enemy" width="25" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3SMQoAIAwDQPH/j3YXRBGlpdwtXUuS1mCvRz+QmGxq028duiTaaoO2GUf2nLATdmzkvz5duGVDtegzlvzfyJBjhh9+GsnnAgQAGQAA
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="25" height="64">
+  <object name="PlayerStart" x="946" y="13" width="32" height="32"/>
+  <object name="Portal" type="Portal" x="365" y="7" width="128" height="17">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\Forest7"/>
+    <property name="DestinationX" value="16"/>
+    <property name="DestinationY" value="29"/>
+   </properties>
+  </object>
+  <object name="Portal" type="Portal" x="775" y="1912" width="14" height="117">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\Forest2"/>
+    <property name="DestinationX" value="2"/>
+    <property name="DestinationY" value="14"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Collectable" width="25" height="64">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAAAAwJcBSxPzAQAZAAA=
+  </data>
+ </layer>
+</map>

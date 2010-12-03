@@ -78,12 +78,14 @@ namespace ArchanistTower
             effectPost.Parameters["powerRed"].SetValue(Globals.red);
             effectPost.Parameters["powerBlue"].SetValue(Globals.blue);
         }
+        //Place before draws
         public void DrawSetup()
         {
             graphics.GraphicsDevice.SetRenderTarget(0, renderTarget);
         }
         public void Draw()
         {
+            //sets screen as texture for shader
             graphics.GraphicsDevice.SetRenderTarget(0, null);
             SceneTexture = renderTarget.GetTexture();
 

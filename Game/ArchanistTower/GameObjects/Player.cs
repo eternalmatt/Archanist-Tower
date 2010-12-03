@@ -111,7 +111,7 @@ namespace ArchanistTower.GameObjects
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds * 3;
             if (timer >= 1 && Mana < 100)
             {
-                Mana += 1;
+                Mana += 10;
                 timer = 0;
             }            
 

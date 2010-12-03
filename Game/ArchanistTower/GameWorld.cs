@@ -55,7 +55,8 @@ namespace ArchanistTower
         public void Initialize()
         {
             //shader.Initialize();
-            LoadMap("Levels//TestFireMap//MountainEntrance");
+            //LoadMap("Levels//TestFireMap//MountainEntrance");
+            LoadMap("Levels//TestFireMap//Starting");
             Debug = false;
         }
 
@@ -224,8 +225,8 @@ namespace ArchanistTower
         {
             ClipMap = new Dictionary<Vector2, Rectangle>();
             TileLayer clipLayer = Map.GetLayer("Clip") as TileLayer;            
-            for (int y = 0; y < clipLayer.Width; y++)
-                for (int x = 0; x < clipLayer.Height; x++)
+            for (int x = 0; x < clipLayer.Width; x++)
+                for (int y = 0; y < clipLayer.Height; y++)
                 {
                     Tile tile = clipLayer.Tiles[x, y];
                     if (tile != null)
@@ -238,8 +239,8 @@ namespace ArchanistTower
         {
             Enemies = new List<Enemy>();
             TileLayer enemyLayer = Map.GetLayer("Enemy") as TileLayer;
-            for (int y = 0; y < enemyLayer.Width; y++)
-                for (int x = 0; x < enemyLayer.Height; x++)
+            for (int x = 0; x < enemyLayer.Width; x++)
+                for (int y = 0; y < enemyLayer.Height; y++)
                 {
                     Tile tile = enemyLayer.Tiles[x, y];
                     if (tile != null)
@@ -259,8 +260,8 @@ namespace ArchanistTower
         private void LoadCollectables()
         {
             TileLayer cLayer = Map.GetLayer("Collectable") as TileLayer;
-            for (int y = 0; y < cLayer.Width; y++)
-                for (int x = 0; x < cLayer.Height; x++)
+            for (int x = 0; x < cLayer.Width; x++)
+                for (int y = 0; y < cLayer.Height; y++)
                 {
                     Tile tile = cLayer.Tiles[x, y];
                     if (tile != null)
