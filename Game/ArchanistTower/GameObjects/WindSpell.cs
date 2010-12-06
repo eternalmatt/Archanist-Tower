@@ -47,15 +47,19 @@ namespace ArchanistTower.GameObjects
                 {
                     case FacingDirection.Left:
                         o.SpriteAnimation.Position.X -= 20;
+                        o.WorldCollision();
                         break;
                     case FacingDirection.Right:
                         o.SpriteAnimation.Position.X += 20;
+                        o.WorldCollision();
                         break;
                     case FacingDirection.Up:
                         o.SpriteAnimation.Position.Y -= 20;
+                        o.WorldCollision();
                         break;
                     case FacingDirection.Down:
                         o.SpriteAnimation.Position.Y += 20;
+                        o.WorldCollision();
                         break;
                 }
                 Dead = true;

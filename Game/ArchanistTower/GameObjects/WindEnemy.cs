@@ -25,10 +25,10 @@ namespace ArchanistTower.GameObjects
         {
             SpriteAnimation = new AnimatedSprite(Globals.content.Load<Microsoft.Xna.Framework.Graphics.Texture2D>("Sprites/Enemies/wmn3"));
             lifebar = Globals.content.Load<Microsoft.Xna.Framework.Graphics.Texture2D>("HUD/rectangle");
-            FrameAnimation up = new FrameAnimation(2, 64, 64, 0, 0);
-            FrameAnimation down = new FrameAnimation(2, 64, 64, 128, 0);
-            FrameAnimation left = new FrameAnimation(2, 64, 64, 256, 0);
-            FrameAnimation right = new FrameAnimation(2, 64, 64, 384, 0);
+            FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
+            FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
+            FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
+            FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
             up.FramesPerSecond = down.FramesPerSecond = left.FramesPerSecond = right.FramesPerSecond = 10;
             SpriteAnimation.Animations.Add("Up", up);
             SpriteAnimation.Animations.Add("Down", down);

@@ -32,6 +32,8 @@ namespace ArchanistTower
         public static bool I_AM_INVINCIBLE = false;
         public static bool UNLIMITED_MANA = false;
         public static int controlScheme = 0;
+        public static Vector4 crysLoc;
+        public static Texture2D crysTex;
 
 
         public static GraphicsDevice GraphicsDevice

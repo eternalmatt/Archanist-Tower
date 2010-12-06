@@ -19,10 +19,7 @@ namespace ArchanistTower
     /// </summary>
     public class ShaderCode : Microsoft.Xna.Framework.Game
     {
-        float width, height;
-
-        Vector2 blendTexturePos = new Vector2(0);
-        Vector2 blendTexturePos2 = new Vector2(0);
+        float width, height, crysX, crysY;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -63,10 +60,13 @@ namespace ArchanistTower
             PresentationParameters pp = graphics.GraphicsDevice.PresentationParameters;
             renderTarget = new RenderTarget2D(graphics.GraphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, 1,
             graphics.GraphicsDevice.DisplayMode.Format);
-            //blendTexturePosition = Globals.content.;
             effectPost.Parameters["powerGreen"].SetValue(Globals.green); 
             effectPost.Parameters["powerRed"].SetValue(Globals.red); 
             effectPost.Parameters["powerBlue"].SetValue(Globals.blue);
+            crysX = Globals.crysLoc.X;
+            crysY = Globals.crysLoc.Y;
+            effectPost.Parameters["rectangleA"].SetValue(Globals.crysLoc);
+
         }
         /// <summary>
         /// Allows the game component to update itself.
@@ -77,6 +77,9 @@ namespace ArchanistTower
             effectPost.Parameters["powerGreen"].SetValue(Globals.green);
             effectPost.Parameters["powerRed"].SetValue(Globals.red);
             effectPost.Parameters["powerBlue"].SetValue(Globals.blue);
+            effectPost.Parameters["rectangleA"].SetValue(Globals.crysLoc);
+            if (Globals.crysTex != null)
+                effectPost.Parameters["textureA"].SetValue(Globals.crysTex);
         }
         //Place before draws
         public void DrawSetup()

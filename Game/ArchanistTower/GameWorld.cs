@@ -55,8 +55,8 @@ namespace ArchanistTower
         public void Initialize()
         {
             //shader.Initialize();
-            LoadMap("Levels//TestFireMap//MountainEntrance");
-            //LoadMap("Levels//TestFireMap//Starting");
+            //LoadMap("Levels//TestFireMap//MountainEntrance");
+            LoadMap("Levels//TestFireMap//ForestEntrance");
             Debug = false;
         }
 
@@ -69,9 +69,16 @@ namespace ArchanistTower
             SpellUpdate(gameTime);
 
             foreach (Collectable c in Collectables)
-                c.Update(gameTime);           
+            {
+                c.Update(gameTime);
+                if (c is Crystal)
+                {
+                    Globals.crysLoc = new Vector4(c.SpriteAnimation.Top, c.SpriteAnimation.Left, 32, 32);
+                    Globals.crysLoc.Normalize();
+                }
+            }
         }
-
+         
         private void SpellUpdate(GameTime gameTime)
         {
             for(int i = 0; i < Spells.Count; i++)
@@ -250,6 +257,8 @@ namespace ArchanistTower
                         int enemyY = y * Map.TileHeight;
                         if (enemyType == "Fire")
                             Enemies.Add(new FireEnemy(new Vector2(enemyX, enemyY)));
+                        if (enemyType == "Wind")
+                            Enemies.Add(new WindEnemy(new Vector2(enemyX, enemyY)));
                         if (enemyType == "FireBoss")
                             Enemies.Add(new FireBoss(new Vector2(enemyX, enemyY)));
                     }
@@ -272,7 +281,9 @@ namespace ArchanistTower
                         if (cType == "Health")
                             break;
                         else
+                        {
                             Collectables.Add(new Crystal(cType, new Vector2(cX, cY)));
+                        }
                     }
                 }
             Map.GetLayer("Collectable").Visible = false;

@@ -6,7 +6,6 @@
    <properties>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
    </properties>
   </tile>
   <tile id="1">
@@ -25,12 +24,10 @@
    <properties>
     <property name="Type" value="Red"/>
     <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="Type" value="Blue"/>
     <property name="Type" value="Blue"/>
     <property name="Type" value="Blue"/>
    </properties>
@@ -39,7 +36,11 @@
    <properties>
     <property name="Type" value="Green"/>
     <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="Type" value="Health"/>
    </properties>
   </tile>
  </tileset>

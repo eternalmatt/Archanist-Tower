@@ -67,7 +67,7 @@ namespace ArchanistTower.Collectables
             }
             if(cType == CrystalType.green)
             {
-                SpriteAnimation = new AnimatedSprite(Globals.content.Load<Texture2D>("Sprites/Collectables/greenrelic"));
+                SpriteAnimation = new AnimatedSprite(Globals.crysTex = Globals.content.Load<Texture2D>("Sprites/Collectables/greenrelic"));
                 FrameAnimation relic = new FrameAnimation(1, 32, 32, 0, 0);
                 relic.FramesPerSecond = 1;
                 SpriteAnimation.Animations.Add("Relic", relic);
