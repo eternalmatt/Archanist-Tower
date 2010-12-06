@@ -18,6 +18,7 @@ namespace ArchanistTower
         Texture2D texture;
         public Color[] data { get; set; }
         //public Texture2D SpriteTexture { get { return texture; } }
+        public float spriteScale = 1.0f;
 
         public Vector2 Position = Vector2.Zero;
         public Vector2 OriginOffset = Vector2.Zero;
@@ -155,11 +156,12 @@ namespace ArchanistTower
             FrameAnimation animation = CurrentAnimation;
 
             if (animation != null)
-                   spriteBatch.Draw(
-                         texture,
-                         Position,
-                         animation.CurrentRect,
-                         Color.White); 
+                /*spriteBatch.Draw(
+                      texture,
+                      Position,
+                      animation.CurrentRect,
+                      Color.White);*/
+                spriteBatch.Draw(texture, Position, animation.CurrentRect, Color.White, 0f, Vector2.Zero, spriteScale, SpriteEffects.None, 0f);
                /* spriteBatch.Draw(
                     texture,
                     Position,

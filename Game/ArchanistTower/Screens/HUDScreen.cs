@@ -73,6 +73,7 @@ namespace ArchanistTower.Screens
             crystal.CurrentAnimationName = "None";
             crystal.IsAnimating = true;
             crystal.Position = new Vector2(128, Globals.ScreenHeight - 32);
+            crystal.spriteScale = 2.0f;
 
             borderTexture = Globals.content.Load<Texture2D>("HUD/border");
             lifeBarTexture = Globals.content.Load<Texture2D>("HUD/rectangle");
@@ -120,7 +121,7 @@ namespace ArchanistTower.Screens
             foreach (Rectangle border in BorderList)    //draw all the borders
                 Globals.spriteBatch.Draw(borderTexture, border, Color.White);
 
-            Globals.spriteBatch.DrawString(ArialFont, "Current Spell:  ", new Vector2(5, Globals.ScreenHeight - 32), Color.AntiqueWhite);
+            Globals.spriteBatch.DrawString(ArialFont, "Current Spell:  ", new Vector2(5, Globals.ScreenHeight - 24), Color.AntiqueWhite);
             if (Globals.I_AM_INVINCIBLE) Globals.spriteBatch.DrawString(ArialFont, "Invincibility enabled", new Vector2(400, 0), Color.White);
             if (Globals.UNLIMITED_MANA) Globals.spriteBatch.DrawString(ArialFont, "Unlimited mana enabled", new Vector2(400, 50), Color.White);
             crystal.Draw(Globals.spriteBatch);
