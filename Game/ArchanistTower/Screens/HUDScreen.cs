@@ -130,8 +130,8 @@ namespace ArchanistTower.Screens
             Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
             Globals.spriteBatch.Draw(lifeBarTexture, lifeBar, FadedColor);
             Globals.spriteBatch.Draw(manaBarTexture, manaBar, FadedColor);                                                        //.8f can be used to scale between 0 and 1
-            Globals.spriteBatch.DrawString(ArialFont, PlayerHealth.ToString(), new Vector2(offset_x, offset_y), Color.White);//, 0, Vector2.Zero, .8f, SpriteEffects.None, 1);
-            Globals.spriteBatch.DrawString(ArialFont, PlayerMana.ToString(), new Vector2(offset_x, manaStart), Color.White);//, 0, Vector2.Zero, .8f, SpriteEffects.None, 1);
+            Globals.spriteBatch.DrawString(ArialFont, (PlayerHealth / 2).ToString(), new Vector2(offset_x, offset_y), Color.White);//, 0, Vector2.Zero, .8f, SpriteEffects.None, 1);
+            Globals.spriteBatch.DrawString(ArialFont, (PlayerMana / 2).ToString(), new Vector2(offset_x, manaStart), Color.White);//, 0, Vector2.Zero, .8f, SpriteEffects.None, 1);
             Globals.spriteBatch.End();
         }
     }

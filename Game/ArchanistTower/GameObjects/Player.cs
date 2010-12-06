@@ -114,11 +114,11 @@ namespace ArchanistTower.GameObjects
             if (Globals.green == 1)
                 green = true;
 
-            timer += (float)gameTime.ElapsedGameTime.TotalSeconds * 3;
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds * MANA_RECHARGE;
             if (timer >= 1 && Mana < 100)
             {
                 if (Mana > 100 - MANA_RECHARGE) Mana = 100;
-                else Mana += MANA_RECHARGE;
+                else Mana ++;
                 timer = 0;
             }            
 
