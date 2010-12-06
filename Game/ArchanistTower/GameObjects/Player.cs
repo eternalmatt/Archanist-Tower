@@ -321,7 +321,7 @@ namespace ArchanistTower.GameObjects
                 base.Draw();
         }
 
-        public void CheckControlScheme()
+        private void CheckControlScheme()
         {
             switch (currentControlScheme)
             {
