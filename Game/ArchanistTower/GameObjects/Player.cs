@@ -21,6 +21,10 @@ namespace ArchanistTower.GameObjects
 
     public class Player : GameObject
     {
+        const int MANA_RECHARGE = 5;
+        const int FIRE_SPELL_MANA = 12;
+        const int WIND_SPELL_MANA = 9;
+
         public int Mana;
         float timer;
 
@@ -113,7 +117,8 @@ namespace ArchanistTower.GameObjects
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds * 3;
             if (timer >= 1 && Mana < 100)
             {
-                Mana += 10;
+                if (Mana > 100 - MANA_RECHARGE) Mana = 100;
+                else Mana += MANA_RECHARGE;
                 timer = 0;
             }            
 
@@ -235,12 +240,12 @@ namespace ArchanistTower.GameObjects
                     if (selectedSpell == SelectedSpell.fire && red && (Mana >= 15 || Globals.UNLIMITED_MANA))
                     {
                         GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
-                        Mana -= 15;
+                        Mana -= FIRE_SPELL_MANA;
                     }
                     else if (selectedSpell == SelectedSpell.wind && green && (Mana >= 10 || Globals.UNLIMITED_MANA))
                     {
                         GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
-                        Mana -= 10;
+                        Mana -= WIND_SPELL_MANA;
                     }
                     else if (selectedSpell == SelectedSpell.water && blue)
                     {
@@ -303,14 +308,6 @@ namespace ArchanistTower.GameObjects
                 {
                     EnemyCollision(o.Direction);
                     Health -= 10;
-                }
-            }
-            //Not sure that spell will be handled here...maybe in the spell class.
-            else if (o.GetType() == typeof(Spell))
-            {
-                if (o.GetType() == typeof(FireSpell))
-                {
-
                 }
             }
         }
