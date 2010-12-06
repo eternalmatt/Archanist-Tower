@@ -73,8 +73,9 @@ namespace ArchanistTower.GameObjects
         {
             if (obj is Player)
             {   //if GameObject is the player,
-                if (!stopwatch.IsRunning)   //and stopwatch isn't running
-                    stopwatch.Start();      //start the stopwatch (so enemy doesn't move)
+                if (!GameWorld.Player.HasBeenHit)
+                    if (!stopwatch.IsRunning)   //and stopwatch isn't running
+                        stopwatch.Start();      //start the stopwatch (so enemy doesn't move)
             }
             else WorldCollision();  //else, use worldcollision logic
         }

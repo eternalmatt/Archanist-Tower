@@ -43,6 +43,7 @@ namespace ArchanistTower.GameObjects
         protected bool green;
         public static SelectedSpell selectedSpell;
         private Stopwatch stopwatch;
+        public bool HasBeenHit { get { return stopwatch.IsRunning; } }
         private int currentControlScheme;
 
         public Player(Vector2 startPosition)

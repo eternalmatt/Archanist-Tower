@@ -44,16 +44,16 @@ namespace ArchanistTower.GameObjects
             {
                 if (originatingType == OriginatingType.Player)  //and if the Player threw the spell
                     if (o is FireEnemy || o is FireBoss)
-                    {
                         o.Health -= 35; //the enemy's health is decreased
-                    }
-                Dead = true;    //spell is dead
+                    else if (o is WindEnemy)
+                        o.Health -= 20;
             }
             else if (o is Player && originatingType == OriginatingType.Enemy)   //if collision is with player and Enemy threw spell
             {
                 o.Health -= 10; //player takes 10 damage
-                Dead = true;    //spell is dead
             }
+
+            Dead = true;    //spell is dead
         }
         
     }

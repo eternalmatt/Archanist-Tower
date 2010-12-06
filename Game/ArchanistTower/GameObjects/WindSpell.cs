@@ -40,7 +40,7 @@ namespace ArchanistTower.GameObjects
 
         public override void Collision(GameObject o)
         {
-            if (o is Enemy)
+            if (o is Enemy && originatingType == OriginatingType.Player)
             {
                 o.Health -= 20;
                 switch (Direction) // stuns the enemy backwards for 20 units
