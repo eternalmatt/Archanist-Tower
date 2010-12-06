@@ -211,9 +211,9 @@ namespace ArchanistTower.GameObjects
             SpriteAnimation.Position += SpriteAnimation.Speed * movement;
             LastMovement = SpriteAnimation.Speed * movement;
 
-            if (Globals.input.KeyPressed(Keys.D1))
+            if (Globals.input.KeyPressed(Keys.D1) || (Globals.red == 1 && Globals.blue == 0 && Globals.green == 0))
                 selectedSpell = SelectedSpell.fire;
-            if (Globals.input.KeyPressed(Keys.D2))
+            else if (Globals.input.KeyPressed(Keys.D2) || (Globals.red == 0 && Globals.blue == 0 && Globals.green == 1))
                 selectedSpell = SelectedSpell.wind;
 
             CastSpell();
@@ -296,22 +296,28 @@ namespace ArchanistTower.GameObjects
 
         public override void Collision(GameObject o)
         {
-            if (o is Enemy)
-            {
-                if (!stopwatch.IsRunning) stopwatch.Start();
-                o.Collision(this);
+            if (!stopwatch.IsRunning)
+                if (o is Enemy)
+                {
+                    o.Collision(this);
+                    stopwatch.Start();
 
-                if (o is FireEnemy)
-                {
-                    EnemyCollision(o.Direction);
-                    Health -= 5;
+                    if (o is FireEnemy)
+                    {
+                        EnemyCollision(o.Direction);
+                        Health -= 5;
+                    }
+                    else if (o is WindEnemy)
+                    {
+                        EnemyCollision(o.Direction);
+                        Health -= 5;
+                    }
+                    else if (o is FireBoss)
+                    {
+                        EnemyCollision(o.Direction);
+                        Health -= 10;
+                    }
                 }
-                else if (o is FireBoss)
-                {
-                    EnemyCollision(o.Direction);
-                    Health -= 10;
-                }
-            }
         }
 
         private void EnemyCollision(FacingDirection Direction)
