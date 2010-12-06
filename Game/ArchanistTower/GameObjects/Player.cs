@@ -117,8 +117,9 @@ namespace ArchanistTower.GameObjects
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds * MANA_RECHARGE;
             if (timer >= 1 && Mana < 100)
             {
-                if (Mana > 100 - MANA_RECHARGE) Mana = 100;
-                else Mana ++;
+                //if (Mana > 100 - MANA_RECHARGE) Mana = 100;
+                //else Mana++;
+                Mana++;
                 timer = 0;
             }            
 
