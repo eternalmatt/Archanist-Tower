@@ -130,6 +130,7 @@ namespace ArchanistTower.Screens
             Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
             Globals.spriteBatch.Draw(lifeBarTexture, lifeBar, FadedColor);
             Globals.spriteBatch.Draw(manaBarTexture, manaBar, FadedColor);
+            Globals.spriteBatch.DrawString(ArialFont, PlayerMana.ToString(), new Vector2(400, 0), Color.White);
             Globals.spriteBatch.End();
             //Globals.spriteBatch.DrawString(Font, GameWorld.Player.Health.ToString(), new Vector2(5, 10), Color.White);
             //Globals.spriteBatch.DrawString(Font, "Mana:  " + PlayerMana.ToString(), new Vector2(5, 35), Color.Blue);

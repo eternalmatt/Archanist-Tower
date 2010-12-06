@@ -131,8 +131,35 @@ namespace ArchanistTower.GameObjects
                     }
                 }
             }*/
+        }       
+
+        private void UpdateSpriteAnimation(Vector2 motion)
+        {
+            float motionAngle = (float)Math.Atan2(motion.Y, motion.X);
+
+            if (motionAngle >= -MathHelper.PiOver4 &&
+                motionAngle <= MathHelper.PiOver4)
+                SpriteAnimation.CurrentAnimationName = "Right";
+
+            else if (motionAngle >= MathHelper.PiOver4 &&
+                motionAngle <= 3f * MathHelper.PiOver4)
+                SpriteAnimation.CurrentAnimationName = "Down";
+
+            else if (motionAngle <= -MathHelper.PiOver4 &&
+                motionAngle >= -3f * MathHelper.PiOver4)
+                SpriteAnimation.CurrentAnimationName = "Up";
+
+            else
+                SpriteAnimation.CurrentAnimationName = "Left";
         }
 
+        public override void Draw()
+        {
+            if (!   (stopwatch.IsRunning && (stopwatch.Elapsed.Milliseconds / 100) % 2 == 0))
+                base.Draw();
+        }
+
+        #region Input
 
         private void InputCheck()
         {
@@ -182,6 +209,16 @@ namespace ArchanistTower.GameObjects
             if (Globals.input.KeyPressed(Keys.D2))
                 selectedSpell = SelectedSpell.wind;
 
+            CastSpell();
+
+            if (Globals.input.KeyJustPressed(Keys.I))
+                Globals.I_AM_INVINCIBLE = !Globals.I_AM_INVINCIBLE;
+            if (Globals.input.KeyJustPressed(Keys.U))
+                Globals.UNLIMITED_MANA = !Globals.UNLIMITED_MANA;
+        }
+
+        private void CastSpell()
+        {
             if (red || green || blue)
             {
                 if (Globals.input.KeyJustPressed(SpellCast))
@@ -198,12 +235,12 @@ namespace ArchanistTower.GameObjects
                     if (selectedSpell == SelectedSpell.fire && red && (Mana >= 15 || Globals.UNLIMITED_MANA))
                     {
                         GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
-                        Mana -= 5;
+                        Mana -= 15;
                     }
                     else if (selectedSpell == SelectedSpell.wind && green && (Mana >= 10 || Globals.UNLIMITED_MANA))
                     {
                         GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
-                        Mana -= 3;
+                        Mana -= 10;
                     }
                     else if (selectedSpell == SelectedSpell.water && blue)
                     {
@@ -211,47 +248,11 @@ namespace ArchanistTower.GameObjects
                     }
                 }
             }
-
-            if (Globals.input.KeyJustPressed(Keys.I))
-                Globals.I_AM_INVINCIBLE = !Globals.I_AM_INVINCIBLE;
-            if (Globals.input.KeyJustPressed(Keys.U))
-                Globals.UNLIMITED_MANA = !Globals.UNLIMITED_MANA;
         }
 
-        private void UpdateSpriteAnimation(Vector2 motion)
-        {
-            float motionAngle = (float)Math.Atan2(motion.Y, motion.X);
+        #endregion //Input
 
-            if (motionAngle >= -MathHelper.PiOver4 &&
-                motionAngle <= MathHelper.PiOver4)
-            {
-                SpriteAnimation.CurrentAnimationName = "Right";
-                //motion = new Vector2(1f, 0f);  //These lines restrict diagonal movement
-            }
-            else if (motionAngle >= MathHelper.PiOver4 &&
-                motionAngle <= 3f * MathHelper.PiOver4)
-            {
-                SpriteAnimation.CurrentAnimationName = "Down";
-                //motion = new Vector2(0f, 1f);
-            }
-            else if (motionAngle <= -MathHelper.PiOver4 &&
-                motionAngle >= -3f * MathHelper.PiOver4)
-            {
-                SpriteAnimation.CurrentAnimationName = "Up";
-                //motion = new Vector2(0f, -1f);
-            }
-            else
-            {
-                SpriteAnimation.CurrentAnimationName = "Left";
-                //motion = new Vector2(-1f, 0f);
-            }
-            //sprite.Position += motion * sprite.Speed; //must be after for tile based movement
-        }
-
-        private void CastSpell()
-        {
-            //GameScreen.gameWorld
-        }
+        #region Controls
 
         public void SetKeys(Keys left, Keys right, Keys up, Keys down, Keys cast, Keys cLeft, Keys cRight, Keys cUp, Keys cDown)
         {
@@ -266,6 +267,25 @@ namespace ArchanistTower.GameObjects
             CastDown = cDown;
         }
 
+        private void CheckControlScheme()
+        {
+            switch (currentControlScheme)
+            {
+                case 0:
+                    SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space, Keys.A, Keys.D, Keys.W, Keys.S);
+                    break;
+                case 1:
+                    SetKeys(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.Left, Keys.Right, Keys.Up, Keys.Down);
+                    break;
+                case 2:
+                    SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space, Keys.None, Keys.None, Keys.None, Keys.None);
+                    break;
+            }
+        }
+
+        #endregion //Controls
+
+        #region Collision
 
         public override void Collision(GameObject o)
         {
@@ -295,7 +315,6 @@ namespace ArchanistTower.GameObjects
             }
         }
 
-
         private void EnemyCollision(FacingDirection Direction)
         {
             switch (Direction)
@@ -315,27 +334,7 @@ namespace ArchanistTower.GameObjects
             }
         }
 
-        public override void Draw()
-        {
-            if (!   (stopwatch.IsRunning && (stopwatch.Elapsed.Milliseconds / 100) % 2 == 0))
-                base.Draw();
-        }
-
-        private void CheckControlScheme()
-        {
-            switch (currentControlScheme)
-            {
-                case 0:
-                    SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space, Keys.A, Keys.D, Keys.W, Keys.S);
-                    break;
-                case 1:
-                    SetKeys(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.Left, Keys.Right, Keys.Up, Keys.Down);
-                    break;
-                case 2:
-                    SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space, Keys.None, Keys.None, Keys.None, Keys.None);
-                    break;
-            }
-        }
+        #endregion //Collision
     }
 
 }
