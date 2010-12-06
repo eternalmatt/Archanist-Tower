@@ -55,8 +55,8 @@ namespace ArchanistTower
         public void Initialize()
         {
             //shader.Initialize();
-            //LoadMap("Levels//TestFireMap//MountainEntrance");
-            LoadMap("Levels//TestFireMap//Starting");
+            LoadMap("Levels//TestFireMap//MountainEntrance");
+            //LoadMap("Levels//TestFireMap//Starting");
             Debug = false;
         }
 

@@ -205,13 +205,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menuscreens\instruction.png">
-      <Name>instruction</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Levels\TestFireMap\ConnectionLavat.png">
       <Name>ConnectionLavat</Name>
       <Importer>TextureImporter</Importer>
@@ -324,10 +317,22 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </None>
-    <Compile Include="Levels\TestFireMap\Starting.tmx">
-      <Name>Starting</Name>
-      <Importer>TmxImporter</Importer>
-      <Processor>TmxProcessor</Processor>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Menuscreens\instruction1.png">
+      <Name>instruction1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Menuscreens\instruction2.png">
+      <Name>instruction2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Menuscreens\instruction3.png">
+      <Name>instruction3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

@@ -20,15 +20,18 @@ namespace ArchanistTower.Screens
         Texture2D image;
         Rectangle imageRectangle;
 
+        int Selection;
+
         public InstructionScreen()
         {
-            image = Globals.content.Load<Texture2D>("Menuscreens\\instruction");
+            image = Globals.content.Load<Texture2D>("Menuscreens\\instruction1");
             imageRectangle = new Rectangle(0, 0, Globals.ScreenWidth, Globals.ScreenHeight);
             Initialize();
         }
 
         protected override void Initialize()
         {
+            Selection = Globals.controlScheme;
             Name = "InstructionScreen";
         }
 
@@ -36,19 +39,45 @@ namespace ArchanistTower.Screens
         { }
 
         protected override void Update(GameTime gameTime)
-        {    
-            if (Globals.input.KeyJustPressed(Keys.Enter) ||
+        {
+            if (Globals.input.KeyJustPressed(Keys.Left) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadLeft))
+                Selection--;
+            if (Globals.input.KeyJustPressed(Keys.Right) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickRight) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadRight))
+                Selection++;
+
+            if (Selection < 0)
+                Selection = 2;
+            if (Selection > 2)
+                Selection = 0;
+
+            switch (Selection)
+            {
+                case 0:
+                    image = Globals.content.Load<Texture2D>("Menuscreens\\instruction1");
+                    Globals.controlScheme = 0;
+                    break;
+                case 1:
+                    image = Globals.content.Load<Texture2D>("Menuscreens\\instruction2");
+                    Globals.controlScheme = 1;
+                    break;
+                case 2:
+                    image = Globals.content.Load<Texture2D>("Menuscreens\\instruction3");
+                    Globals.controlScheme = 2;
+                    break;
+            }
+
+            if (Globals.input.KeyJustPressed(Keys.Enter) || Globals.input.KeyJustPressed(Keys.Escape) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
             {
                 this.Destroy();
-                if (Globals.screenManager.FindScreen("GameScreen") == null) // Game not started yet
-                {
-                    Globals.screenManager.AddScreen(new GameScreen());
-                }
-                else // Instruction screen is called from pause screen
-                {
+                if (Globals.screenManager.FindScreen("PauseScreen") != null) // this screen is called from pause screen
                     Globals.screenManager.FindScreen("PauseScreen").Activate();
-                }
+                else // this screen is called from menu screen
+                    Globals.screenManager.FindScreen("MenuScreen").Activate();
             }
         }
 

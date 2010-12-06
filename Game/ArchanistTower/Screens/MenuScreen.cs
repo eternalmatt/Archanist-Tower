@@ -55,8 +55,8 @@ namespace ArchanistTower.Screens
                 Selection++;
 
             if (Selection < 0)
-                Selection = 1;
-            if (Selection > 1)
+                Selection = 2;
+            if (Selection > 2)
                 Selection = 0;
 
             if (Globals.input.KeyJustPressed(Keys.Enter)||
@@ -66,9 +66,13 @@ namespace ArchanistTower.Screens
                 {
                     case 0:
                         this.Destroy();
-                        Globals.screenManager.AddScreen(new InstructionScreen());
+                        Globals.screenManager.AddScreen(new GameScreen());
                         break;
                     case 1:
+                        this.Disable();
+                        Globals.screenManager.AddScreen(new InstructionScreen());
+                        break;
+                    case 2:
                         ArchanistTower.ExitGame();
                         break;
                 }
@@ -91,13 +95,21 @@ namespace ArchanistTower.Screens
             Globals.spriteBatch.Draw(image, imageRectangle, FadeColor(Color.White, FadeValue));
             if (Selection == 0)
             {
-                Globals.spriteBatch.DrawString(Font, "START THE GAME", new Vector2(540, 300), Color.Yellow);
-                Globals.spriteBatch.DrawString(Font, "EXIT", new Vector2(540, 375), Color.White);
+                Globals.spriteBatch.DrawString(Font, "START THE GAME", new Vector2(500, 300), Color.Yellow);
+                Globals.spriteBatch.DrawString(Font, "CONTROLS SETTING", new Vector2(500, 375), Color.White);
+                Globals.spriteBatch.DrawString(Font, "EXIT", new Vector2(500, 450), Color.White);
             }
             else if (Selection == 1)
             {
-                Globals.spriteBatch.DrawString(Font, "START THE GAME", new Vector2(540, 300), Color.White);
-                Globals.spriteBatch.DrawString(Font, "EXIT", new Vector2(540, 375), Color.Yellow);
+                Globals.spriteBatch.DrawString(Font, "START THE GAME", new Vector2(500, 300), Color.White);
+                Globals.spriteBatch.DrawString(Font, "CONTROLS SETTING", new Vector2(500, 375), Color.Yellow);
+                Globals.spriteBatch.DrawString(Font, "EXIT", new Vector2(500, 450), Color.White);
+            }
+            else
+            {
+                Globals.spriteBatch.DrawString(Font, "START THE GAME", new Vector2(500, 300), Color.White);
+                Globals.spriteBatch.DrawString(Font, "CONTROLS SETTING", new Vector2(500, 375), Color.White);
+                Globals.spriteBatch.DrawString(Font, "EXIT", new Vector2(500, 450), Color.Yellow);
             }
             Globals.spriteBatch.End();
         }

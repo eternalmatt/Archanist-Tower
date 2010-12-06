@@ -39,6 +39,7 @@ namespace ArchanistTower.GameObjects
         protected bool green;
         public static SelectedSpell selectedSpell;
         private Stopwatch stopwatch;
+        private int currentControlScheme;
 
         public Player(Vector2 startPosition)
         {
@@ -73,7 +74,8 @@ namespace ArchanistTower.GameObjects
             Direction = FacingDirection.Down;
             selectedSpell = SelectedSpell.none;
 
-            SetKeys(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.Left, Keys.Right, Keys.Up, Keys.Down);
+            currentControlScheme = Globals.controlScheme;
+            CheckControlScheme();
 
             Collidable = true;
             CollisionRadius = 64;
@@ -134,6 +136,12 @@ namespace ArchanistTower.GameObjects
 
         private void InputCheck()
         {
+            if (currentControlScheme != Globals.controlScheme) // change control scheme only when the setting is changed
+            {
+                currentControlScheme = Globals.controlScheme;
+                CheckControlScheme();
+            }
+
             Vector2 movement = Vector2.Zero;
 
             if (Globals.input.KeyPressed(MoveRight))
@@ -311,6 +319,22 @@ namespace ArchanistTower.GameObjects
         {
             if (!   (stopwatch.IsRunning && (stopwatch.Elapsed.Milliseconds / 100) % 2 == 0))
                 base.Draw();
+        }
+
+        public void CheckControlScheme()
+        {
+            switch (currentControlScheme)
+            {
+                case 0:
+                    SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space, Keys.A, Keys.D, Keys.W, Keys.S);
+                    break;
+                case 1:
+                    SetKeys(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space, Keys.Left, Keys.Right, Keys.Up, Keys.Down);
+                    break;
+                case 2:
+                    SetKeys(Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space, Keys.None, Keys.None, Keys.None, Keys.None);
+                    break;
+            }
         }
     }
 
