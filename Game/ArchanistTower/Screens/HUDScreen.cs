@@ -19,7 +19,7 @@ namespace ArchanistTower.Screens
         const int offset_x = 10;    //x for lifebar to start
         const int offset_y = 10;    //y for lifebar to start
         const int maxWidth = 200;   //maxwidth of bars
-        const int barHeight = 20;   //bar heigh
+        const int barHeight = 20;   //bar height
         const int manaStart = 10 + offset_y + barHeight;    //space between mana and lifebar
 
         const byte fadeValue = (byte)175;   //fade value of lifebars. number between 0 and 255.
@@ -129,11 +129,10 @@ namespace ArchanistTower.Screens
             //whoever wrote SplashScreen.cs, thanks for insight on how to fade colors.
             Globals.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
             Globals.spriteBatch.Draw(lifeBarTexture, lifeBar, FadedColor);
-            Globals.spriteBatch.Draw(manaBarTexture, manaBar, FadedColor);
-            Globals.spriteBatch.DrawString(ArialFont, PlayerMana.ToString(), new Vector2(400, 0), Color.White);
+            Globals.spriteBatch.Draw(manaBarTexture, manaBar, FadedColor);                                                        //.8f can be used to scale between 0 and 1
+            Globals.spriteBatch.DrawString(ArialFont, PlayerHealth.ToString(), new Vector2(offset_x, offset_y), Color.White);//, 0, Vector2.Zero, .8f, SpriteEffects.None, 1);
+            Globals.spriteBatch.DrawString(ArialFont, PlayerMana.ToString(), new Vector2(offset_x, manaStart), Color.White);//, 0, Vector2.Zero, .8f, SpriteEffects.None, 1);
             Globals.spriteBatch.End();
-            //Globals.spriteBatch.DrawString(Font, GameWorld.Player.Health.ToString(), new Vector2(5, 10), Color.White);
-            //Globals.spriteBatch.DrawString(Font, "Mana:  " + PlayerMana.ToString(), new Vector2(5, 35), Color.Blue);
         }
     }
 }
