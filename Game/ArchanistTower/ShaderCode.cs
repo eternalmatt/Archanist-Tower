@@ -95,7 +95,7 @@ namespace ArchanistTower
 
             // Render the scene with Edge Detection, using the render target from last frame.
             graphics.GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
-            //spriteBatch.End();
+            //Globals.spriteBatch.End();
             spriteBatch.Begin(SpriteBlendMode.None, SpriteSortMode.Immediate, SaveStateMode.SaveState);
             {
                 // Apply the post process shader

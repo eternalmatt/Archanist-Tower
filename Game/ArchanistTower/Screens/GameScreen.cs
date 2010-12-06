@@ -58,7 +58,7 @@ namespace ArchanistTower.Screens
                 Globals.camera.TransformMatrix);
             gameWorld.Draw();
             Globals.spriteBatch.End();
-            shader.Draw();
+            //shader.Draw();
         }
 
 

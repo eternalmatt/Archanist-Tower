@@ -24,7 +24,7 @@ float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
 {
 	float4 Color = tex2D(ColorMapSampler, Tex);	
 	float4 color2 = tex2D(ColorMapSampler, Tex);
-	float4 colorCrys = tex2D(crysTex ,Tex*4-rectangleA); 
+	float4 colorCrys = tex2D(crysTex ,Tex*4); 
     //float4 color3 = tex2D(ColorMapSampler, Tex + blendTexturePosition2); 
     
     
@@ -70,7 +70,7 @@ float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
 			}
 	}
 	//Color = colorCrys;
-	//if (Tex.x > rectangleA.x && Tex.x <= rectangleA.x+rectangleA.z && Tex.y > rectangleA.y && Tex.y <= rectangleA.y+rectangleA.z)
+	//if (Tex.x < rectangleA.x && Tex.x >= rectangleA.x-rectangleA.z && Tex.y < rectangleA.y && Tex.y >= rectangleA.y-rectangleA.z)
         //if (colorCrys.g > color2.g)//  && Tex.r > rectangleA.r)
            //Color = color2;
 

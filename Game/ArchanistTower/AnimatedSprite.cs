@@ -12,6 +12,7 @@ namespace ArchanistTower
         public Dictionary<string, FrameAnimation> Animations = 
             new Dictionary<string, FrameAnimation>();
 
+        private float speed = 2f;
         string currentAnimation = null;
         bool animating = true;
         Texture2D texture;
@@ -67,7 +68,7 @@ namespace ArchanistTower
             }
         }
 
-        private float speed = 2f;
+
         public float Speed
         {
             get { return speed; }

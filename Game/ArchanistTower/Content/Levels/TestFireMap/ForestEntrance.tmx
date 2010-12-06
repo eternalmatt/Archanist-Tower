@@ -84,7 +84,7 @@
  </objectgroup>
  <layer name="Collectable" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
+   H4sIAAAAAAAAC+3OwQ0AMAjEMB7Q/UfuFOiEZC+QVAEAAHDBBJodaKa99MCSDzZqmm8AEAAA
   </data>
  </layer>
 </map>

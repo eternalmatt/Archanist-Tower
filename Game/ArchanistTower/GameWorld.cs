@@ -21,6 +21,7 @@ namespace ArchanistTower
         public static List<Collectable> Collectables { get; set; }
         public static bool Debug { get; set; }
 
+        public static ShaderCode shader = new ShaderCode();
         public static Player Player;
 
         public int TileWidth
@@ -49,12 +50,12 @@ namespace ArchanistTower
             Enemies = new List<Enemy>();
             Spells = new List<Spell>();
             Collectables = new List<Collectable>();
-            //shader.LoadContent();
+            shader.Initialize();
+            shader.LoadContent();
         }
 
         public void Initialize()
         {
-            //shader.Initialize();
             //LoadMap("Levels//TestFireMap//MountainEntrance");
             LoadMap("Levels//TestFireMap//ForestEntrance");
             Debug = false;
@@ -67,13 +68,13 @@ namespace ArchanistTower
             PlayerUpdate(gameTime);
             EnemyUpdate(gameTime);
             SpellUpdate(gameTime);
-
+            shader.Update();
             foreach (Collectable c in Collectables)
             {
                 c.Update(gameTime);
                 if (c is Crystal)
                 {
-                    Globals.crysLoc = new Vector4(c.SpriteAnimation.Top, c.SpriteAnimation.Left, 32, 32);
+                    Globals.crysLoc = new Vector4(c.SpriteAnimation.Bounds.X, c.SpriteAnimation.Bounds.Y, 64, 64);
                     Globals.crysLoc.Normalize();
                 }
             }
@@ -177,14 +178,22 @@ namespace ArchanistTower
 
         public void Draw()
         {
+            shader.DrawSetup();
             Map.Draw(Globals.spriteBatch);
             foreach(Enemy enemy in Enemies)
                 enemy.Draw();
-            foreach (Collectable c in Collectables)
-                c.Draw();
             foreach (Spell s in Spells)
                 s.Draw();
             Player.Draw();
+            Globals.spriteBatch.End();
+            shader.Draw();
+            Globals.spriteBatch.Begin(
+    SpriteBlendMode.AlphaBlend,
+    SpriteSortMode.Deferred,
+    SaveStateMode.None,
+    Globals.camera.TransformMatrix);
+            foreach (Collectable c in Collectables)
+                c.Draw();
         }
 
 
