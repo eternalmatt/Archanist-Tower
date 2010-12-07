@@ -70,7 +70,7 @@ namespace ArchanistTower.Screens
                         this.Destroy();
                         Globals.screenManager.FindScreen("GameScreen").Activate();
                         Globals.screenManager.FindScreen("HUDScreen").Activate();
-                       // MediaPlayer.Resume();
+                        MediaPlayer.Resume();
                         break;
                     case 1:
                         Globals.screenManager.AddScreen(new SettingsScreen());

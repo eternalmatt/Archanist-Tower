@@ -31,8 +31,11 @@ namespace ArchanistTower.Screens
             gameWorld.Initialize();            
             shader.Initialize();
             Globals.ResetColor();
-           // Globals.BGSong = Globals.content.Load<Song>("Sounds\\Overworld_Theme");
-           // MediaPlayer.Play(Globals.BGSong);
+            Globals.BGSong = Globals.content.Load<Song>("Sounds\\Overworld_Theme");
+            //MediaPlayer.Play(Globals.BGSong);
+            //MediaPlayer.Pause();
+            //MediaPlayer.Resume();
+            //MediaPlayer.Volume = Globals.BGVolume();
         }
 
         protected override void Unload()
@@ -45,10 +48,11 @@ namespace ArchanistTower.Screens
             {
                 this.Disable();
                 Globals.screenManager.AddScreen(new PauseScreen());
+                MediaPlayer.Pause();
             }
             shader.Update();
             gameWorld.Update(gameTime);
-            
+            //MediaPlayer.Volume = Globals.BGVolume();
         }
 
         protected override void Draw()
