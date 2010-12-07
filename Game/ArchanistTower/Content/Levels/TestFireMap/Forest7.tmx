@@ -5,12 +5,10 @@
   <tile id="0">
    <properties>
     <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="Type" value="Wind"/>
     <property name="Type" value="Wind"/>
    </properties>
   </tile>
@@ -23,18 +21,15 @@
   <tile id="0">
    <properties>
     <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
     <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="Type" value="Green"/>
     <property name="Type" value="Green"/>
    </properties>
   </tile>
@@ -74,13 +69,6 @@
  </layer>
  <objectgroup name="Objects" width="32" height="32">
   <object name="PlayerStart" x="946" y="13" width="32" height="32"/>
-  <object name="Portal" x="897" y="13" width="32" height="32">
-   <properties>
-    <property name="DestinationMap" value="Levels\TestFireMap\Mountain1"/>
-    <property name="DestinationX" value="16"/>
-    <property name="DestinationY" value="28"/>
-   </properties>
-  </object>
  </objectgroup>
  <layer name="Collectable" width="32" height="32">
   <data encoding="base64" compression="gzip">

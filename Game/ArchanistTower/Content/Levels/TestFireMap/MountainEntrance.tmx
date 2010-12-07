@@ -5,6 +5,8 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -12,6 +14,8 @@
   <image source="lava.png"/>
   <tile id="0">
    <properties>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
    </properties>
   </tile>
@@ -24,15 +28,10 @@
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
     <property name="Type" value="Wind"/>
     <property name="Type" value="Wind"/>
     <property name="Type" value="Wind"/>
@@ -59,21 +58,15 @@
   <tile id="0">
    <properties>
     <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
     <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
     <property name="Type" value="Green"/>
    </properties>
   </tile>
@@ -90,7 +83,7 @@
  </layer>
  <layer name="Layer 2" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3SuQoCMRAG4OwbqGujD6NWKu5aedbqM3o0Ho1H41Gpb+MvWAxhnaSYKCzzwweBTPJDiDHh0omMSb5Io/B9I8Y4QP/Q0an92p/n/gnunBK/7n+nRNbce4Tqr5K1/R7U7NNftzTI+VrGPpVACl3HHKdlaZP+ZsY+1YM+DBxzHI1s5rCAJawE7y16zMSwhg1sYSfYX/Gc28MBjnAS7PfNGS5whdsf+stwhwc8A9zv8w9oYuF+7h8UhLs0Go0mz3kBikf2xgAQAAA=
+   H4sIAAAAAAAAC+3SuQoCMRAG4OwbqFvpw6iVirtWnrX6jB6NR+PReFTq2/gvWAxhnaSYKCzzwweBTPJDiDHh0o2MSb5Io/B9Y8YkQP/I0an92l/k/inunBG/7s9SIWvuPUL118jafg9q/ulvWJrkfD1nn0oghZ5jjtO2dEh/K2ef6sMAho45jkY2C1jCCtaC95Y9ZmLYwBZ2sBfsr3rOHeAIJzgL9vvmAle4wf0P/Vke8IRXgLt9/gFNLNzP/YOScJdGo9EUOW/KKeD+ABAAAA==
   </data>
  </layer>
  <layer name="Layer 3" width="32" height="32">

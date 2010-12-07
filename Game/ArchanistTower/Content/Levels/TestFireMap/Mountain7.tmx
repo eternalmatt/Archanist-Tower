@@ -9,19 +9,6 @@
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -29,19 +16,6 @@
   <image source="lava.png"/>
   <tile id="0">
    <properties>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
@@ -60,37 +34,32 @@
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="4" name="Clip" tilewidth="32" tileheight="32">
+ <tileset firstgid="5" name="Clip" tilewidth="32" tileheight="32">
   <image source="solid.jpg" trans="ff00ff"/>
  </tileset>
- <tileset firstgid="5" name="MountainPieces" tilewidth="32" tileheight="32">
+ <tileset firstgid="6" name="MountainPieces" tilewidth="32" tileheight="32">
   <image source="MountainPieces.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="317" name="ConnectionLavat" tilewidth="32" tileheight="32">
+ <tileset firstgid="318" name="ConnectionLavat" tilewidth="32" tileheight="32">
   <image source="ConnectionLavat.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="365" name="LavaGround" tilewidth="32" tileheight="32">
+ <tileset firstgid="366" name="LavaGround" tilewidth="32" tileheight="32">
   <image source="LavaGround.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
+ <tileset firstgid="414" name="Overflow" tilewidth="32" tileheight="32">
   <image source="Overflow.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="461" name="FireBossIcon" tilewidth="32" tileheight="32">
+ <tileset firstgid="462" name="FireBossIcon" tilewidth="32" tileheight="32">
   <image source="FireBossIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
@@ -100,27 +69,27 @@
  </tileset>
  <layer name="Layer 1" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3DAQkAAAwEoQvw/fOux1Bw1VRVVdXXDwiD1TcAEAAA
+   H4sIAAAAAAAAC+3DAQkAAAwEoSvw/euux1Bw1VRVVdXXDwWeoLgAEAAA
   </data>
  </layer>
  <layer name="Layer 2" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC92WTQrCMBCF0zv4s6l6T11b1+qibkShp/B2JtBAHN/8ZLQIDjzSoM33Xiel6UMIl6ieGa/N6/xO5kMj36+Nt7SmMCaeNB8a+X5tzD5o7eO6jwp1UYcGLKRU9iHxOyD0m4cv5UdcTdtCO4MfKb+Hz/nhvFjynxxCXpCHnL8dRfmenkrPj3oo85cepuLT9bT+T83X+m/lz5z8f8nv5dP80v5rw/t7Qn+r5dP8Gn9GONz1FP1H+dG8hv+N/qN+WPjpvl/u/8S35kcZ51GLqOV47eFb86N9v4paR23G6xp+Xqum/+gZcOXZ/9r3j3v3P+HT75/E53yUZ54s7jzySX7qQcpp5XvyB/A/L9+b/1t8y/kP9Vfrsyd/WUfH2lToXHo25s8euLOsJsrhisuPfFhlZaeS8nurDfhbjcqSf8p6AkvlNxEAEAAA
+   H4sIAAAAAAAAC92WTW7CMBCFJ4fgZxPoPekaWAMLuqlciVP0dNhSLJnhzY8Hokod6cmxIP7eyziKr0T0lXUVxu/hcf7D5rdBv98aU1lTGQtPm98G/X5rrD547fO6vx06ZB0HsJBR1YfGPwCh3yJ8LT/iWto1+nT40fJH+JIfyYsn/zkg5AV5qPnHSZwf6an2/LiHNn/rYS4+Xy+R3v+5+Vb/vfxFkJ/of+SP8hM95tf230jP7wn/rZfP81v8BeNI13P0H+VH8x7+O/qP+uHhl/sS/d3+L3xvfpRxmbXKWk/XEX4iX3607zdZ26yP6bqHX9fq6T96BlJF9r/1/ZPe/Vf4/Pun8SUf7ZmnSjqPvJKfe9ByevmR/AT+F+VH87+L7zn/of5afY7kb+sUWJsLnUsvzvzVg3SWtcQ5Ukn5kQ+vvOxSWv5ojYS/1agS2fnnrDuTSzaNABAAAA==
   </data>
  </layer>
  <layer name="Layer 3" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3VwQqAMAwD0PXoUSeKCgru///R/kEpLkQwD3LpYDn00FLkDw5yfyP3yzt7ct7bnZwj1eB9sDhIo8VB2iyOiIhgLJ6V2H96rs5/Tn43qmcm3Y+v96N3HvUjdp7pR2P3IzytbULXABAAAA==
+   H4sIAAAAAAAAC+3VsQqAQAwD0OvqeCqKCgr6/99o/6CUuxDBPMjSoRk6tBT5g4Pc/5D7pc2enPd2J+dMg8VBqhYHabM4IiKCsXhWYv/puTrvHP1vTJ6Z9D++3o++edSPuHmmH43dj/ACvnlbEQAQAAA=
   </data>
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2VOw7AMAhDGXr/M3fpUFUBbEMStSoSSz48R3xiNs+Oy9Fzd6/wGDcb8xQtFd0dsaI77F5XDlbzRxqyPEZ8paa893saMr5iUU0rfEY7u470n8IZxVD5yHnVuuZPN9/bewMf6UmFj+pB6zXT1Nn/P7+e/+cZr65WvH83P7Iv8NH5i84ZT1eFz/4RM/gMu7P/VvC9e2x+lP/nqSG7k3EZ/igGyu+oySxe9D52Zqgzpst28k+Zm6wNABAAAA==
+   H4sIAAAAAAAAC+2WMQ7FMAhDWXr/K3f5Q1UBwTYhUvWRWJqER4ShMdtn18+r+56u8BA383lMLkreHbGyM+haVw2m+V4OqzpmfEZT0f2jHFZ8xjJNM3wkd/R7pf8YTlUHHf2v6lXlK7ZDf6f5HfX31lQ9ePGm+v/P1+v/3hPpauL+p/mZfYFfnb/VORPlpfDRf8QOPsLu7L8JfnQOrQ/7/oj2MFyE78Wo8js0uYqX3Q+dGeyM6bKT/BtIGm45ABAAAA==
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3RQQoAIAhEUcP7H607RVvBTTFk9d9GVwozZgBwN0926FTL2cNU3Z96Ez1ZVK2LV5Hzn+j9rJg/fQD7BrnrE14AEAAA
+   H4sIAAAAAAAAC+3RQQoAIAhEUcP7X60zRVvBTTFk9d9GVwozZgBwN0926FTL2cNU3Z96Ez1ZVK2LV5Hzn+j9rJg/fQD7BnulDy4AEAAA
   </data>
  </layer>
  <objectgroup name="Objects" width="32" height="32">
