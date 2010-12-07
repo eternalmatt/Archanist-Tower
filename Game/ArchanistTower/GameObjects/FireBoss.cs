@@ -82,7 +82,11 @@ namespace ArchanistTower.GameObjects
 
         public override void Update(GameTime gameTime)
         {
-            if (Health <= 0) Dead = true;   //if health <= 0, Dead = true and skip update logic
+            if (Health <= 0)
+            {
+                Dead = true;   //if Health < 0, dead = true and skip update logic
+                Globals.EdeathFX.Play(Globals.FXVolume(), 0, 0);
+            }
             else if (stopwatch.IsRunning)   //if stopwatch isrunning, boss is paused, skip update logic
             {
                 SpriteAnimation.IsAnimating = false;    //don't animate sprite

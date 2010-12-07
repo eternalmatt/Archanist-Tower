@@ -127,6 +127,7 @@
     <Compile Include="Screens\MenuScreen.cs" />
     <Compile Include="Screens\PauseScreen.cs" />
     <Compile Include="Screens\Screen.cs" />
+    <Compile Include="Screens\SettingsScreen.cs" />
     <Compile Include="Screens\SplashScreen.cs" />
     <Compile Include="ShaderCode.cs" />
   </ItemGroup>

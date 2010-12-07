@@ -34,6 +34,9 @@ namespace ArchanistTower
         public static int controlScheme = 0;
         public static Vector4 crysLoc;
         public static Texture2D crysTex;
+        public static int fxVolume, bgVolume;
+        public static SoundEffect PdeathFX, fireFX, PhitFX, EhitFX, EdeathFX, lowManaFX;
+        public static Song BGSong;
 
 
         public static GraphicsDevice GraphicsDevice
@@ -55,6 +58,14 @@ namespace ArchanistTower
             input = new InputManager();
             random = new Random();
             ResetColor();
+            fxVolume = bgVolume = 100;
+            fireFX = Globals.content.Load<SoundEffect>("Sounds/Fire_Spell");
+            PhitFX = Globals.content.Load<SoundEffect>("Sounds/Player_Hit");
+            lowManaFX = Globals.content.Load<SoundEffect>("Sounds/Low_Mana");
+            EhitFX = Globals.content.Load<SoundEffect>("Sounds/Enemy_Hit");
+            EdeathFX = Globals.content.Load<SoundEffect>("Sounds/Enemy_Kill");
+            PdeathFX = Globals.content.Load<SoundEffect>("Sounds/Player_Death");
+            MediaPlayer.Volume = BGVolume();
         }
 
         public static void LoadContent()
@@ -105,6 +116,16 @@ namespace ArchanistTower
             blue = 0;
             green = 0;
             red = 0;
+        }
+
+        public static float FXVolume()
+        {
+            return (float)fxVolume / 100;
+        }
+
+        public static float BGVolume()
+        {
+            return (float)bgVolume / 100;
         }
 
     }

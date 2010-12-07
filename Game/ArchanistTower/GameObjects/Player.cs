@@ -8,6 +8,7 @@ using ArchanistTower.Screens;
 using Microsoft.Xna.Framework.Graphics;
 using TiledLib;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace ArchanistTower.GameObjects
 {
@@ -85,11 +86,19 @@ namespace ArchanistTower.GameObjects
             Collidable = true;
             CollisionRadius = 64;
             stopwatch = new Stopwatch();
+
+
         }
+
+        #region Update
 
         public override void Update(GameTime gameTime)
         {
-            if (Health <= 0 && Globals.I_AM_INVINCIBLE == false) Dead = true;
+            if (Health <= 0 && Globals.I_AM_INVINCIBLE == false)
+            {
+                Dead = true;
+                Globals.PdeathFX.Play(Globals.FXVolume(), 0, 0);
+            }
             
             if (stopwatch.ElapsedMilliseconds > 1500) stopwatch.Reset();
             if (stopwatch.IsRunning) Collidable = false;
@@ -145,6 +154,8 @@ namespace ArchanistTower.GameObjects
                 SpriteAnimation.CurrentAnimationName = "Left";
         }
 
+        #endregion //Update
+
         public override void Draw()
         {
             if (!   (stopwatch.IsRunning && (stopwatch.Elapsed.Milliseconds / 100) % 2 == 0))
@@ -163,22 +174,30 @@ namespace ArchanistTower.GameObjects
 
             Vector2 movement = Vector2.Zero;
 
-            if (Globals.input.KeyPressed(MoveRight))
+            if (Globals.input.KeyPressed(MoveRight) ||
+                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadRight) ||
+                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickRight))
             {
                 movement.X = 1;
                 Direction = FacingDirection.Right;
             }
-            else if (Globals.input.KeyPressed(MoveLeft))
+            else if (Globals.input.KeyPressed(MoveLeft) ||
+                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadLeft) ||
+                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft))
             {
                 movement.X = -1;
                 Direction = FacingDirection.Left;
             }
-            if (Globals.input.KeyPressed(MoveUp))
+            if (Globals.input.KeyPressed(MoveUp) ||
+                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadUp) ||
+                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickUp))
             {
                 movement.Y = -1;
                 Direction = FacingDirection.Up;
             }
-            else if (Globals.input.KeyPressed(MoveDown))
+            else if (Globals.input.KeyPressed(MoveDown) ||
+                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadDown) ||
+                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickDown))
             {
                 movement.Y = 1;
                 Direction = FacingDirection.Down;
@@ -213,21 +232,27 @@ namespace ArchanistTower.GameObjects
         {
             if (red || green || blue)
             {
-                if (Globals.input.KeyJustPressed(SpellCast))
+                if (Globals.input.KeyJustPressed(SpellCast) ||
+                    Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.RightTrigger))
                 {
-                    if (Globals.input.KeyPressed(CastLeft))
+                    if (Globals.input.KeyPressed(CastLeft) ||
+                        Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickLeft))
                         Direction = FacingDirection.Left;
-                    else if (Globals.input.KeyPressed(CastRight))
+                    else if (Globals.input.KeyPressed(CastRight) ||
+                        Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickRight))
                         Direction = FacingDirection.Right;
-                    else if (Globals.input.KeyPressed(CastUp))
+                    else if (Globals.input.KeyPressed(CastUp) ||
+                        Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickUp))
                         Direction = FacingDirection.Up;
-                    else if (Globals.input.KeyPressed(CastDown))
+                    else if (Globals.input.KeyPressed(CastDown) ||
+                        Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickDown))
                         Direction = FacingDirection.Down;
 
                     if (selectedSpell == SelectedSpell.fire && red && (Mana >= FIRE_SPELL_MANA || Globals.UNLIMITED_MANA))
                     {
                         GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= FIRE_SPELL_MANA;
+                        Globals.fireFX.Play(Globals.FXVolume(), 0, 0);
                     }
                     else if (selectedSpell == SelectedSpell.wind && green && (Mana >= WIND_SPELL_MANA || Globals.UNLIMITED_MANA))
                     {
@@ -238,6 +263,8 @@ namespace ArchanistTower.GameObjects
                     {
                         // reserved for water spell
                     }
+                    else
+                        Globals.lowManaFX.Play(Globals.FXVolume(), 0, 0); 
                 }
             }
         }
@@ -302,6 +329,7 @@ namespace ArchanistTower.GameObjects
                         EnemyCollision(o.Direction);
                         Health -= 10;
                     }
+                    Globals.PhitFX.Play(Globals.FXVolume(), 0, 0);
                 }
         }
 

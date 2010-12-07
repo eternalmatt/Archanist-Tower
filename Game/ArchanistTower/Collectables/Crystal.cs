@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace ArchanistTower.Collectables
 {
@@ -17,6 +18,7 @@ namespace ArchanistTower.Collectables
         }
 
         private CrystalType cType;
+        private SoundEffect collectedEffect;
 
         public Crystal(string type, Vector2 position)
         {
@@ -32,19 +34,25 @@ namespace ArchanistTower.Collectables
 
         public override void Collected()
         {
-            if (cType == CrystalType.blue)
+            if (Active == true)
             {
-                Globals.blue = 1;
+                if (cType == CrystalType.blue)
+                {
+                    Globals.blue = 1;
+                }
+                if (cType == CrystalType.green)
+                {
+                    Globals.green = 1;
+                }
+                if (cType == CrystalType.red)
+                {
+                    
+                    Globals.red = 1;
+                }
+                collectedEffect.Play(Globals.FXVolume(), 0, 1);
+                Active = false;
             }
-            if (cType == CrystalType.green)
-            {
-                Globals.green = 1;
-            }
-            if (cType == CrystalType.red)
-            {
-                Globals.red = 1;
-            }
-            Active = false;
+            
         }
 
         public override void Initialize(Vector2 position)
@@ -74,6 +82,8 @@ namespace ArchanistTower.Collectables
             }
             SpriteAnimation.CurrentAnimationName = "Relic";
             SpriteAnimation.Position = position;
+
+            collectedEffect = Globals.content.Load<SoundEffect>("Sounds/Collect_Item");
         }
 
         public override void Update(GameTime gameTime)

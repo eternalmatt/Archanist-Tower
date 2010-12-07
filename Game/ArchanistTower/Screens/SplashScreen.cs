@@ -50,7 +50,8 @@ namespace ArchanistTower.Screens
                 FadeValue = 255;
             }
             if (Globals.input.KeyJustPressed(Keys.Enter) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 this.Destroy();
                 Globals.screenManager.AddScreen(new MenuScreen());

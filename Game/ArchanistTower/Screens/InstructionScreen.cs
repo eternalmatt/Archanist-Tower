@@ -71,13 +71,11 @@ namespace ArchanistTower.Screens
             }
 
             if (Globals.input.KeyJustPressed(Keys.Enter) || Globals.input.KeyJustPressed(Keys.Escape) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 this.Destroy();
-                if (Globals.screenManager.FindScreen("PauseScreen") != null) // this screen is called from pause screen
-                    Globals.screenManager.FindScreen("PauseScreen").Activate();
-                else // this screen is called from menu screen
-                    Globals.screenManager.FindScreen("MenuScreen").Activate();
+                Globals.screenManager.FindScreen("SettingsScreen").Activate();
             }
         }
 

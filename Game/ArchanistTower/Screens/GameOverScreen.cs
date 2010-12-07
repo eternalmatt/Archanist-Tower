@@ -36,7 +36,8 @@ namespace ArchanistTower.Screens
         protected override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if (Globals.input.KeyJustPressed(Keys.Enter) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 Globals.screenManager.AddScreen(new SplashScreen());
                 Globals.screenManager.FindScreen("GameScreen").Destroy();

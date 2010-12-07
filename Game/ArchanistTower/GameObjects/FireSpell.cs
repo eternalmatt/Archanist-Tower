@@ -47,10 +47,13 @@ namespace ArchanistTower.GameObjects
                         o.Health -= 35; //the enemy's health is decreased
                     else if (o is WindEnemy)
                         o.Health -= 20;
+
+                Globals.EhitFX.Play(Globals.FXVolume(), 0, 0);
             }
             else if (o is Player && originatingType == OriginatingType.Enemy)   //if collision is with player and Enemy threw spell
             {
                 o.Health -= 10; //player takes 10 damage
+                Globals.PhitFX.Play(Globals.FXVolume(), 0, 0);
             }
 
             Dead = true;    //spell is dead

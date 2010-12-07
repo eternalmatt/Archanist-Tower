@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ArchanistTower.GameObjects;
 using Microsoft.Xna.Framework.Input;
 using TiledLib;
+using Microsoft.Xna.Framework.Media;
 
 namespace ArchanistTower.Screens
 {
@@ -27,11 +28,11 @@ namespace ArchanistTower.Screens
         {
             Name = "GameScreen";
             HUD = new HUDScreen();
-            gameWorld.Initialize();
-
+            gameWorld.Initialize();            
             shader.Initialize();
             Globals.ResetColor();
-            
+           // Globals.BGSong = Globals.content.Load<Song>("Sounds\\Overworld_Theme");
+           // MediaPlayer.Play(Globals.BGSong);
         }
 
         protected override void Unload()
@@ -39,13 +40,15 @@ namespace ArchanistTower.Screens
 
         protected override void Update(GameTime gameTime)
         {
-            if (Globals.input.KeyJustPressed(Keys.Escape))
+            if (Globals.input.KeyJustPressed(Keys.Escape) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 this.Disable();
                 Globals.screenManager.AddScreen(new PauseScreen());
             }
             shader.Update();
             gameWorld.Update(gameTime);
+            
         }
 
         protected override void Draw()

@@ -70,7 +70,7 @@ namespace ArchanistTower.Screens
                         break;
                     case 1:
                         this.Disable();
-                        Globals.screenManager.AddScreen(new InstructionScreen());
+                        Globals.screenManager.AddScreen(new SettingsScreen());
                         break;
                     case 2:
                         ArchanistTower.ExitGame();
@@ -96,19 +96,19 @@ namespace ArchanistTower.Screens
             if (Selection == 0)
             {
                 Globals.spriteBatch.DrawString(Font, "START THE GAME", new Vector2(500, 300), Color.Yellow);
-                Globals.spriteBatch.DrawString(Font, "CONTROLS SETTING", new Vector2(500, 375), Color.White);
+                Globals.spriteBatch.DrawString(Font, "SETTINGS", new Vector2(500, 375), Color.White);
                 Globals.spriteBatch.DrawString(Font, "EXIT", new Vector2(500, 450), Color.White);
             }
             else if (Selection == 1)
             {
                 Globals.spriteBatch.DrawString(Font, "START THE GAME", new Vector2(500, 300), Color.White);
-                Globals.spriteBatch.DrawString(Font, "CONTROLS SETTING", new Vector2(500, 375), Color.Yellow);
+                Globals.spriteBatch.DrawString(Font, "SETTINGS", new Vector2(500, 375), Color.Yellow);
                 Globals.spriteBatch.DrawString(Font, "EXIT", new Vector2(500, 450), Color.White);
             }
             else
             {
                 Globals.spriteBatch.DrawString(Font, "START THE GAME", new Vector2(500, 300), Color.White);
-                Globals.spriteBatch.DrawString(Font, "CONTROLS SETTING", new Vector2(500, 375), Color.White);
+                Globals.spriteBatch.DrawString(Font, "SETTINGS", new Vector2(500, 375), Color.White);
                 Globals.spriteBatch.DrawString(Font, "EXIT", new Vector2(500, 450), Color.Yellow);
             }
             Globals.spriteBatch.End();
