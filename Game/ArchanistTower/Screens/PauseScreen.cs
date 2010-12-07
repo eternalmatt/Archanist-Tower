@@ -38,7 +38,6 @@ namespace ArchanistTower.Screens
             Font = Globals.content.Load<SpriteFont>("Fonts\\Arial");
             Selection = 0;
             Name = "PauseScreen";
-            //MediaPlayer.Stop();
         }
 
         protected override void Unload()

@@ -65,6 +65,7 @@ namespace ArchanistTower
             EhitFX = Globals.content.Load<SoundEffect>("Sounds/Enemy_Hit");
             EdeathFX = Globals.content.Load<SoundEffect>("Sounds/Enemy_Kill");
             PdeathFX = Globals.content.Load<SoundEffect>("Sounds/Player_Death");
+            BGSong = Globals.content.Load<Song>("Sounds\\Overworld_Theme");
             MediaPlayer.Volume = BGVolume();
         }
 

@@ -32,10 +32,10 @@ namespace ArchanistTower.Screens
             shader.Initialize();
             Globals.ResetColor();
             Globals.BGSong = Globals.content.Load<Song>("Sounds\\Overworld_Theme");
-            //MediaPlayer.Play(Globals.BGSong);
-            //MediaPlayer.Pause();
-            //MediaPlayer.Resume();
-            //MediaPlayer.Volume = Globals.BGVolume();
+            MediaPlayer.Play(Globals.BGSong);
+           // MediaPlayer.Pause();
+           // MediaPlayer.Resume();
+            MediaPlayer.Volume = Globals.BGVolume();
         }
 
         protected override void Unload()
