@@ -5,12 +5,6 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -18,12 +12,6 @@
   <image source="lava.png"/>
   <tile id="0">
    <properties>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
    </properties>
   </tile>
@@ -41,58 +29,78 @@
     <property name="Type" value="Fire"/>
    </properties>
   </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+   </properties>
+  </tile>
  </tileset>
- <tileset firstgid="4" name="Clip" tilewidth="32" tileheight="32">
+ <tileset firstgid="5" name="Clip" tilewidth="32" tileheight="32">
   <image source="solid.jpg" trans="ff00ff"/>
  </tileset>
- <tileset firstgid="5" name="MountainPieces" tilewidth="32" tileheight="32">
+ <tileset firstgid="6" name="MountainPieces" tilewidth="32" tileheight="32">
   <image source="MountainPieces.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="317" name="ConnectionLavat" tilewidth="32" tileheight="32">
+ <tileset firstgid="318" name="ConnectionLavat" tilewidth="32" tileheight="32">
   <image source="ConnectionLavat.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="365" name="LavaGround" tilewidth="32" tileheight="32">
+ <tileset firstgid="366" name="LavaGround" tilewidth="32" tileheight="32">
   <image source="LavaGround.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
+ <tileset firstgid="414" name="Overflow" tilewidth="32" tileheight="32">
   <image source="Overflow.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="461" name="Collectables" tilewidth="32" tileheight="32">
+ <tileset firstgid="462" name="Collectables" tilewidth="32" tileheight="32">
   <image source="Untitled.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
+    <property name="Type" value="Red"/>
+    <property name="Type" value="Red"/>
     <property name="Type" value="Red"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
     <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
+    <property name="Type" value="Blue"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
     <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+    <property name="Type" value="Green"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="Type" value="Health"/>
    </properties>
   </tile>
  </tileset>
  <layer name="Layer 1" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC9NjYGDQG8WjeBQPOWw5CNwwiinDthToZYFicvXbA7HrAPrdfRCEPy0wBxQPpN0D4QZ0u+npBlx208MNhOyGYULlNbnlObH2D9fwH6j0hy2+BjL/obthIOwexUMLmwKx2QBhcwZI+8dugLD9ILDfdQDtB7W/AA/diXQAEAAA
+   H4sIAAAAAAAAC9NnYGDQH8WjeBQPOWw1CNwwiinDdhToZYVicvU7ALHbAPrdYxCEPy0wJxQPpN0D4QZ0u+npBlx208MNhOyGYULlNbnlObH2D9fwH6j0hy2+BjL/obthIOwexUMLmwGx+QBhCwZI+8d+gLDDILDfbQDtB7W/AOti63MAEAAA
   </data>
  </layer>
  <layer name="Layer 2" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3SuQoCMRAG4OwTqGujD6NWKu5aedbqM3o0Ho1H41Gpj+MvWAxhnaSYKCzzwweBTPJDiDHh0omMSb5Io/B9I8Y4QP/Q0an92p/n/gnunBK/7n+nRNbce4Tqr5K1/R7U7NNftzTI+VrGPpVACl3HHKdlaZP+ZsY+1YM+DBxzHI1s5rCAJawE7y16zMSwhg1sYSfYX/Gc28MBjnAS7PfNGS5whdsf+stwhwc8A9zv8w9oYuF+7h8UhLs0Go0mz3kBtT6G8AAQAAA=
+   H4sIAAAAAAAAC+3SuQoCMRAG4OwbqGujD6NWKu5aedbqM3o0Ho1H41Gpb+MvWAxhnaSYKCzzwweBTPJDiDHh0omMSb5Io/B9I8Y4QP/Q0an92p/n/gnunBK/7n+nRNbce4Tqr5K1/R7U7NNftzTI+VrGPpVACl3HHKdlaZP+ZsY+1YM+DBxzHI1s5rCAJawE7y16zMSwhg1sYSfYX/Gc28MBjnAS7PfNGS5whdsf+stwhwc8A9zv8w9oYuF+7h8UhLs0Go0mz3kBikf2xgAQAAA=
   </data>
  </layer>
  <layer name="Layer 3" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3TOw5AQBSF4ZlFoEKhVNqExqNBhQoV9t85MpEobqjGJe6X/A3FGclQ6h9K7gM8KCWeuch7+iAnAQoZ9/+EuuvpzXvbHIbNw/7tvqL/izeKtImSoRwVFvdjbaJUqEaNxf1Emygt6lBvcf/KgEY0Me3PaEEr074QQgghvm8DkoJvHAAQAAA=
+   H4sIAAAAAAAAC+3TOw5AQBSF4ZlNoEKhVNqExqNBhQoV9l85MpEobqjGJe6X/A3FGclQ6h9K7gM8KCWeuch7+iAnAQoZ9/+EuuvpzXvbHIbNw/7tvqL/izeKtImSoRwVFvdjbaJUqEaNxf1Emygt6lBvcf/KgEY0Me3PaEEr074QQgghvm8Dbxi7EgAQAAA=
   </data>
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2WQQoAIAgEPfT/N3cNqTRSt2AHooOwYxdNJI+WmL3y6VPtR0I//Wj/Cz385N/NrFmt4nj91jtOXF6auqtB7Rbdg1WP7s+bl7V/0X4vaP/YQ1Y2ErSfEBIH6o9zMyOjcl6gAxY+Uv4AEAAA
+   H4sIAAAAAAAAC+2WQQoAIAgEvfT/L3cNqTRSt2AHooOwYxdNJI+WmL3y6VPtR0I//Wj/Cz385N/NrFmt4nj91jtOXF6auqtB7Rbdg1WP7s+bl7V/0X4vaP/YQ1Y2ErSfEBIH6o9zMyOjcl6gAydzZWsAEAAA
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">
@@ -101,7 +109,7 @@
   </data>
  </layer>
  <objectgroup name="Objects" width="32" height="32">
-  <object name="PlayerStart" type="PlayerStart" x="423" y="568" width="32" height="32"/>
+  <object name="PlayerStart" type="PlayerStart" x="66" y="31" width="32" height="32"/>
   <object name="Portal" type="Portal" x="511" y="384" width="32" height="32">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain1"/>
@@ -112,7 +120,7 @@
  </objectgroup>
  <layer name="Collectable" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3QQQ0AIAwEweJfG2CpFng0QNIZBXsXAf9b43XBPbPR1grbXwAAcCQBiBsDGgAQAAA=
+   H4sIAAAAAAAAC+3OAQ0AAAgDoNu/m5mMoXOQgAS4pGt7AAAAfDRuylz5ABAAAA==
   </data>
  </layer>
 </map>

@@ -6,33 +6,10 @@
    <properties>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
-    <property name="Type" value="Wind"/>
     <property name="Type" value="Wind"/>
     <property name="Type" value="Wind"/>
    </properties>
@@ -47,34 +24,10 @@
    <properties>
     <property name="Type" value="Red"/>
     <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
-    <property name="Type" value="Red"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
-    <property name="Type" value="Blue"/>
     <property name="Type" value="Blue"/>
     <property name="Type" value="Blue"/>
    </properties>
@@ -83,18 +36,11 @@
    <properties>
     <property name="Type" value="Green"/>
     <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
-    <property name="Type" value="Green"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="Type" value="Health"/>
    </properties>
   </tile>
  </tileset>
@@ -123,7 +69,7 @@
  </layer>
  <layer name="Enemy" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3SwQkAAAgDMXH/oV1BEfSTTFDoRQDs5PcATkx/1gVXtAYAPQVxGGURABAAAA==
+   H4sIAAAAAAAAC+3TuQ0AIAgAQHT/oV2AwoiaGO9KAhQ8EQA1PYm1Qr9K7Y9uzSvb8858zlq5k1d+0a0BwJwBRlB1vwAQAAA=
   </data>
  </layer>
  <objectgroup name="Objects" width="32" height="32">
@@ -138,7 +84,7 @@
  </objectgroup>
  <layer name="Collectable" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
+   H4sIAAAAAAAAC+3OMQkAAAwDsD7zb3kySiFRkARYc+0AAAAw5wEsUG/2ABAAAA==
   </data>
  </layer>
 </map>

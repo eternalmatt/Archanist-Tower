@@ -5,21 +5,6 @@
   <tile id="0">
    <properties>
     <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
-    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -27,21 +12,6 @@
   <image source="lava.png"/>
   <tile id="0">
    <properties>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
-    <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
    </properties>
   </tile>
@@ -54,54 +24,49 @@
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
-    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="4" name="Clip" tilewidth="32" tileheight="32">
+ <tileset firstgid="5" name="Clip" tilewidth="32" tileheight="32">
   <image source="solid.jpg" trans="ff00ff"/>
  </tileset>
- <tileset firstgid="5" name="MountainPieces" tilewidth="32" tileheight="32">
+ <tileset firstgid="6" name="MountainPieces" tilewidth="32" tileheight="32">
   <image source="MountainPieces.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="317" name="ConnectionLavat" tilewidth="32" tileheight="32">
+ <tileset firstgid="318" name="ConnectionLavat" tilewidth="32" tileheight="32">
   <image source="ConnectionLavat.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="365" name="LavaGround" tilewidth="32" tileheight="32">
+ <tileset firstgid="366" name="LavaGround" tilewidth="32" tileheight="32">
   <image source="LavaGround.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
+ <tileset firstgid="414" name="Overflow" tilewidth="32" tileheight="32">
   <image source="Overflow.png" trans="ffffff"/>
  </tileset>
  <layer name="Layer 1" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3DAQkAAAwEoQvw/fOux1Bw1VRVVdXXDwiD1TcAEAAA
+   H4sIAAAAAAAAC+3DAQkAAAwEoSvw/euux1Bw1VRVVdXXDwWeoLgAEAAA
   </data>
  </layer>
  <layer name="Layer 2" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+1WPU/DMBA1P4GRj6GUX8MAiAGYgAkxIWbK3FZCoqJBBSQkWljgZ/KsOtLp5LPvnJQw8KSn1BffvXeOk3runFuA846uH+Bng+t7w3yKbcIYpLiUT+dvZnI19bVzYjn9wty2PLQN67OwQPOsNB6oDwv6xvmr8ODxAD4WcBJ439D3LNTh2AcPwMMwvl1zbkB4B1aIvxn1ttjY9//M6vvax4idgKdh3hCxEeGY6fO6EnbZeBb0h6z2GWLn4IVSn9fVwvc/iehfIrYHXrnlvsrp5yDtT6n/a8SOwJuW9GsP2v65b63+jlE/1v+I7fUBu9ekf+6h7n/K6leEXNvzqfD9k/p3wUMValNMmZ/6vkY/9030/b+Ar4brgvxO6fP1ju2NL7c8o5TQ+/gOdXqC/l9Fr2sDCXS5bjnt9cI86zwJG5namjNbDamXNiB5obFUL6uC5TypWc/U/41FP3V++Y33ofT88o88fgBVtFVzABAAAA==
+   H4sIAAAAAAAAC+1WwU4CMRAtv+AR8CDwNRzQeFBO6sl4IpzBM5qQSHQNaGIi6EX+kmlok3HSaWe6i3DwJS+lw3TevG4XujTGrIDLPY1fwO8S42fJ9RjHiCFwcW49zm8k1krqS3NCa9qZa6vqoWpon4UGkmcl6QH3oUFbmb+LHiyegM8ZnDlOS/Y9d3UoesBT4Jmbj2rGjBHvgQXEP5R6TTK3/hekvq19AbFLYN/lTSD2gPhI9GldDh0ynzv9Cal9BbFr4I1Qn9aVwvqfBfRvIdYF3pntuUrpp8CdT87/AGLnwGFF+r4HqX/at1S/pdQP+Z/WfueMiHYZ/7QH7/8lok+9W75mvn8U3r9xPRSuNoaPF+R7iX7qN9H6fwO+K8YV+hzTp/sdOhs/ZntHyaHtY+3qnDD6h4pQv4eCfe5bSvsoc502j0M9UVtyZ/PgvFQBrhcci3nZFTT3Scl+xv5vNPqx+8tfvA+595d/pLEBKFRYvwAQAAA=
   </data>
  </layer>
  <layer name="Layer 3" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3PMQ0AMAwEsYRLx47lj60wXlFsAqerAgCY4XS2f8P9tLf8H2C6D6KM8voAEAAA
+   H4sIAAAAAAAAC+3NwQ0AEBQE0f2l4IQT+u/NdvFF5iVzHgkAAOB9JaTqWuT8u7/DTf4plr/bnaQ/APzgAvFD0hYAEAAA
   </data>
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NhYGBgGcF4FIyCUYAdDHT+ord+dPXUsp9Ycwbaflz6KbV/VD955g0294/qp51+bGqpVf4OtXbOUHPvYAEDHW7UtH84+WWgALX8MNBhMdD2D2cAAFlP2eoAEAAA
+   H4sIAAAAAAAAC+1WywoAIAzaZf//y92jmJFljwkRRM4pFbmZ+ccjkUi0ob5fEd+reZQf7Wfpo32g+nW+LP2on15dVv4IH107UX/2PI7W3OH/N/1V/J7X6E1F3t/b/jm39XsK1Lkx9V/yogLLgzoLtf7LKBpyHTEAEAAA
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">
@@ -129,6 +94,13 @@
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain7"/>
     <property name="DestinationX" value="29"/>
     <property name="DestinationY" value="15"/>
+   </properties>
+  </object>
+  <object name="Portal" type="Portal" x="454" y="423" width="22" height="22">
+   <properties>
+    <property name="DestinationMap" value="Levels\TestFireMap\ForestEntrance"/>
+    <property name="DestinationX" value="14"/>
+    <property name="DestinationY" value="31"/>
    </properties>
   </object>
  </objectgroup>

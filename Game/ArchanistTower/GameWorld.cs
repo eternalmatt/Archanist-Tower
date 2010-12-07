@@ -22,7 +22,9 @@ namespace ArchanistTower
         public static bool Debug { get; set; }
 
         public static ShaderCode shader = new ShaderCode();
+        public static World world;
         public static Player Player;
+        public static Point3D clipPos;
 
         public int TileWidth
         {
@@ -56,8 +58,8 @@ namespace ArchanistTower
 
         public void Initialize()
         {
-            //LoadMap("Levels//TestFireMap//MountainEntrance");
-            LoadMap("Levels//TestFireMap//ForestEntrance");
+            LoadMap("Levels//TestFireMap//MountainEntrance");
+            //LoadMap("Levels//TestFireMap//ForestEntrance");
             Debug = false;
         }
 
@@ -249,13 +251,28 @@ namespace ArchanistTower
         private void LoadClipMap()
         {
             ClipMap = new Dictionary<Vector2, Rectangle>();
-            TileLayer clipLayer = Map.GetLayer("Clip") as TileLayer;            
+            TileLayer clipLayer = Map.GetLayer("Clip") as TileLayer;
+            Tile hiBob = clipLayer.Tiles[1,1];
+             for (int x = 0; x < clipLayer.Width; x++)
+                 for (int y = 0; y < clipLayer.Height; y++)
+                 {
+                     hiBob = clipLayer.Tiles[x, y];
+                     if (hiBob != null)
+                     {
+                         break;
+                     }
+                 }
+            world = new World(clipLayer.Width*hiBob.Source.Width, clipLayer.Height*hiBob.Source.Height);
             for (int x = 0; x < clipLayer.Width; x++)
                 for (int y = 0; y < clipLayer.Height; y++)
                 {
                     Tile tile = clipLayer.Tiles[x, y];
                     if (tile != null)
+                    {
                         ClipMap.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
+                        clipPos = new Point3D(tile.Source.Width,tile.Source.Height,0);
+                        world.MarkPosition(clipPos,true);
+                    }
                 }
             Map.GetLayer("Clip").Visible = false;
         }
