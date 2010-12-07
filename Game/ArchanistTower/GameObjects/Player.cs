@@ -250,13 +250,13 @@ namespace ArchanistTower.GameObjects
 
                     if (selectedSpell == SelectedSpell.fire && red && (Mana >= FIRE_SPELL_MANA || Globals.UNLIMITED_MANA))
                     {
-                        GameWorld.Spells.Add(new FireSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
+                        GameWorld.Spells.Add(new FireSpell(Direction, new Vector2(SpriteAnimation.Position.X - SpriteAnimation.Bounds.Width/2 + 24, SpriteAnimation.Position.Y - SpriteAnimation.Bounds.Height/2 + 24)) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= FIRE_SPELL_MANA;
                         Globals.fireFX.Play(Globals.FXVolume(), 0, 0);
                     }
                     else if (selectedSpell == SelectedSpell.wind && green && (Mana >= WIND_SPELL_MANA || Globals.UNLIMITED_MANA))
                     {
-                        GameWorld.Spells.Add(new WindSpell(Direction, SpriteAnimation.Position) { originatingType = GameObjects.Spell.OriginatingType.Player });
+                        GameWorld.Spells.Add(new WindSpell(Direction, new Vector2(SpriteAnimation.Position.X - SpriteAnimation.Bounds.Width / 2 + 24, SpriteAnimation.Position.Y - SpriteAnimation.Bounds.Height / 2 + 24)) { originatingType = GameObjects.Spell.OriginatingType.Player });
                         Mana -= WIND_SPELL_MANA;
                     }
                     else if (selectedSpell == SelectedSpell.water && blue)
