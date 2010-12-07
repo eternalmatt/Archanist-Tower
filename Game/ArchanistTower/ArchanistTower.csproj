@@ -129,6 +129,7 @@
     <Compile Include="Screens\Screen.cs" />
     <Compile Include="Screens\SettingsScreen.cs" />
     <Compile Include="Screens\SplashScreen.cs" />
+    <Compile Include="Screens\StoryScreen.cs" />
     <Compile Include="ShaderCode.cs" />
   </ItemGroup>
   <ItemGroup>
