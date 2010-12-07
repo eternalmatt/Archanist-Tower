@@ -305,20 +305,67 @@ namespace ArchanistTower.GameObjects
                 }
         }
 
+        /// <summary>
+        /// Push the player back in direction enemy faces
+        /// </summary>
+        /// <param name="Direction">The direction enemy is facing</param>
         private void EnemyCollision(FacingDirection Direction)
         {
+            Rectangle futurePlayerRectangle = SpriteAnimation.Bounds;//rectangle we'll use to test
+
+ 
+            /* This method is pretty dense, but I assure you it is light on resources.
+             * First, we adjust where the player will be (if collision does occur)
+             * then we cycle through all the clips in the clip map
+             * if the clip intersects where the player will be,
+             * we adjust the player to next the clip.
+             * if no intersection was found, move the player the full length.
+             */
+
             switch (Direction)
             {
                 case FacingDirection.Left:
+                    futurePlayerRectangle.X -= 20;
+                    foreach (Rectangle clip in GameWorld.ClipMap.Values)
+                        if (clip.Intersects(futurePlayerRectangle))
+                            //if (clip.Right > SpriteAnimation.Position.X - 20)
+                            {
+                                SpriteAnimation.Position.X = clip.Right + 1;
+                                return;
+                            }
                     SpriteAnimation.Position.X -= 20;
                     break;
                 case FacingDirection.Right:
+                    futurePlayerRectangle.X += 20;
+                    foreach (Rectangle clip in GameWorld.ClipMap.Values)
+                        if (clip.Intersects(futurePlayerRectangle))
+                            //if (clip.Left < SpriteAnimation.Position.X + 20)
+                            {
+                                SpriteAnimation.Position.X = clip.Left - 1;
+                                return;
+                            }
                     SpriteAnimation.Position.X += 20;
                     break;
                 case FacingDirection.Up:
+                    futurePlayerRectangle.Y -= 20;
+                    foreach (Rectangle clip in GameWorld.ClipMap.Values)
+                        if (clip.Intersects(futurePlayerRectangle))
+                            //if (clip.Bottom > SpriteAnimation.Position.Y - 20)
+                            {
+                                SpriteAnimation.Position.Y = clip.Bottom + 1;
+                                return;
+                            }
                     SpriteAnimation.Position.Y -= 20;
                     break;
                 case FacingDirection.Down:
+                    futurePlayerRectangle.Y += 20;
+                    foreach (Rectangle clip in GameWorld.ClipMap.Values)
+                        if (clip.Intersects(futurePlayerRectangle))
+                            //if (clip.Top < SpriteAnimation.Position.Y + 20)
+                            {
+                                SpriteAnimation.Position.Y = clip.Top - 1;
+                                return;
+                            }
                     SpriteAnimation.Position.Y += 20;
                     break;
             }
