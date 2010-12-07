@@ -95,8 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatedSprite.cs" />
-    <Compile Include="AStar Pathing.cs" />
-    <Compile Include="Breadcrumb.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Collectables\Collectable.cs" />
     <Compile Include="Collectables\Crystal.cs" />
@@ -113,8 +111,6 @@
     <Compile Include="GameObjects\WindSpell.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="InputManager.cs" />
-    <Compile Include="Minheap.cs" />
-    <Compile Include="Point3D.cs" />
     <Compile Include="Portal.cs" />
     <Compile Include="Screens\InstructionScreen.cs" />
     <Compile Include="Screens\GameOverScreen.cs" />
@@ -133,7 +129,6 @@
     <Compile Include="Screens\Screen.cs" />
     <Compile Include="Screens\SplashScreen.cs" />
     <Compile Include="ShaderCode.cs" />
-    <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

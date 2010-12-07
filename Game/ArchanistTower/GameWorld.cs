@@ -22,9 +22,9 @@ namespace ArchanistTower
         public static bool Debug { get; set; }
 
         public static ShaderCode shader = new ShaderCode();
-        public static World world;
+        //public static World world;
         public static Player Player;
-        public static Point3D clipPos;
+        //public static Point3D clipPos;
 
         public int TileWidth
         {
@@ -262,18 +262,18 @@ namespace ArchanistTower
                          break;
                      }
                  }
-            world = new World(clipLayer.Width*hiBob.Source.Width, clipLayer.Height*hiBob.Source.Height);
-            for (int x = 0; x < clipLayer.Width; x++)
-                for (int y = 0; y < clipLayer.Height; y++)
-                {
-                    Tile tile = clipLayer.Tiles[x, y];
-                    if (tile != null)
-                    {
-                        ClipMap.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
-                        clipPos = new Point3D(tile.Source.Width,tile.Source.Height,0);
-                        world.MarkPosition(clipPos,true);
-                    }
-                }
+            //world = new World(clipLayer.Width*hiBob.Source.Width, clipLayer.Height*hiBob.Source.Height);
+            //for (int x = 0; x < clipLayer.Width; x++)
+            //    for (int y = 0; y < clipLayer.Height; y++)
+            //    {
+            //        Tile tile = clipLayer.Tiles[x, y];
+            //        if (tile != null)
+            //        {
+            //            ClipMap.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
+            //            clipPos = new Point3D(tile.Source.Width,tile.Source.Height,0);
+            //            world.MarkPosition(clipPos,true);
+            //        }
+            //    }
             Map.GetLayer("Clip").Visible = false;
         }
 
