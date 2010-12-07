@@ -161,7 +161,16 @@ namespace ArchanistTower
                 if (Math.Abs(Player.SpriteAnimation.Position.X - c.SpriteAnimation.Position.X) <= Player.CollisionRadius &&
                     Math.Abs(Player.SpriteAnimation.Position.Y - c.SpriteAnimation.Position.Y) <= Player.CollisionRadius)
                     if (PerPixelCollision(c.SpriteAnimation, Player.SpriteAnimation))
+                    {
                         c.Collected();
+                        if (Player.selectedSpell == SelectedSpell.none) // the first time player collects a crystal
+                        {
+                            // automatically selects the spell for the player
+                            if (Globals.red == 1) Player.selectedSpell = SelectedSpell.fire;
+                            else if (Globals.green == 1) Player.selectedSpell = SelectedSpell.wind;
+                            else Player.selectedSpell = SelectedSpell.water; 
+                        }
+                    }
 
             foreach (Enemy e in Enemies)
                 if (!e.Dead)
