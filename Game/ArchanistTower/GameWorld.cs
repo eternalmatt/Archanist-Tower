@@ -252,28 +252,28 @@ namespace ArchanistTower
         {
             ClipMap = new Dictionary<Vector2, Rectangle>();
             TileLayer clipLayer = Map.GetLayer("Clip") as TileLayer;
-            Tile hiBob = clipLayer.Tiles[1,1];
+            //Tile hiBob = clipLayer.Tiles[1,1];
+            // for (int x = 0; x < clipLayer.Width; x++)
+            //     for (int y = 0; y < clipLayer.Height; y++)
+            //     {
+            //         hiBob = clipLayer.Tiles[x, y];
+            //         if (hiBob != null)
+            //         {
+            //             break;
+            //         }
+            //     }
+            //world = new World(clipLayer.Width*hiBob.Source.Width, clipLayer.Height*hiBob.Source.Height);
              for (int x = 0; x < clipLayer.Width; x++)
                  for (int y = 0; y < clipLayer.Height; y++)
                  {
-                     hiBob = clipLayer.Tiles[x, y];
-                     if (hiBob != null)
+                     Tile tile = clipLayer.Tiles[x, y];
+                     if (tile != null)
                      {
-                         break;
+                         ClipMap.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
+                         //clipPos = new Point3D(tile.Source.Width, tile.Source.Height, 0);
+                         //world.MarkPosition(clipPos, true);
                      }
                  }
-            //world = new World(clipLayer.Width*hiBob.Source.Width, clipLayer.Height*hiBob.Source.Height);
-            //for (int x = 0; x < clipLayer.Width; x++)
-            //    for (int y = 0; y < clipLayer.Height; y++)
-            //    {
-            //        Tile tile = clipLayer.Tiles[x, y];
-            //        if (tile != null)
-            //        {
-            //            ClipMap.Add(new Vector2(x, y), new Rectangle(x * tile.Source.Width, y * tile.Source.Height, tile.Source.Width, tile.Source.Height));
-            //            clipPos = new Point3D(tile.Source.Width,tile.Source.Height,0);
-            //            world.MarkPosition(clipPos,true);
-            //        }
-            //    }
             Map.GetLayer("Clip").Visible = false;
         }
 
