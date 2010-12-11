@@ -62,7 +62,6 @@ namespace ArchanistTower.GameObjects
                 //        o.WorldCollision();
                 //        break;
                 //}
-                checkClipCollision(this, o);
                 Dead = true;
             }
             else if (o is Player && originatingType == OriginatingType.Enemy)
@@ -83,9 +82,9 @@ namespace ArchanistTower.GameObjects
                 //        o.SpriteAnimation.Position.Y += 20;
                 //        break;
                 //}
-                checkClipCollision(this, o);
                 Dead = true;
             }
+            checkClipCollision(this, o);
         }
 
         private void checkClipCollision(GameObject oHits, GameObject oGotHit)
