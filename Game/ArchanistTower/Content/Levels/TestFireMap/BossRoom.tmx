@@ -23,6 +23,13 @@
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
     <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
+    <property name="TileType" value="0"/>
    </properties>
   </tile>
  </tileset>
@@ -30,6 +37,13 @@
   <image source="lava.png"/>
   <tile id="0">
    <properties>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
+    <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
     <property name="TileType" value="1"/>
@@ -75,71 +89,96 @@
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
     <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+    <property name="Type" value="Fire"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="4" name="Clip" tilewidth="32" tileheight="32">
+ <tileset firstgid="5" name="Clip" tilewidth="32" tileheight="32">
   <image source="solid.jpg" trans="ff00ff"/>
  </tileset>
- <tileset firstgid="5" name="MountainPieces" tilewidth="32" tileheight="32">
+ <tileset firstgid="6" name="MountainPieces" tilewidth="32" tileheight="32">
   <image source="MountainPieces.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="317" name="ConnectionLavat" tilewidth="32" tileheight="32">
+ <tileset firstgid="318" name="ConnectionLavat" tilewidth="32" tileheight="32">
   <image source="ConnectionLavat.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="365" name="LavaGround" tilewidth="32" tileheight="32">
+ <tileset firstgid="366" name="LavaGround" tilewidth="32" tileheight="32">
   <image source="LavaGround.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
+ <tileset firstgid="414" name="Overflow" tilewidth="32" tileheight="32">
   <image source="Overflow.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="461" name="FireBossIcon" tilewidth="32" tileheight="32">
+ <tileset firstgid="462" name="FireBossIcon" tilewidth="32" tileheight="32">
   <image source="FireBossIcon.png" trans="ff00ff"/>
   <tile id="0">
    <properties>
     <property name="Type" value="FireBoss"/>
-    <property name="Type" value="FireBoss"/>
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="463" name="foresttiles" tilewidth="32" tileheight="32">
+  <image source="foresttiles.png" trans="ff0ce6"/>
+ </tileset>
  <layer name="Layer 1" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3DAQkAAAwEoQvw/fOux1Bw1VRVVdXXDwiD1TcAEAAA
+   H4sIAAAAAAAAC+3DAQkAAAwEoSvw/euux1Bw1VRVVdXXDwWeoLgAEAAA
   </data>
  </layer>
  <layer name="Layer 2" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3WUQ6AIAgGYLp9ncAe05MGDy1fcApELfk3Vpbrm2nNBAA7VnI4Uh3LfU7XM1Z5oLjnkl+3PbKiuTE1kjzY39qXZga/NTeWfu8aqPvN8P7DD9/Dl/yD/zT+8L/lt9bjdc/Cl+49rHxNwtf5mrm38LV56/vz8HsSfvicfwKp5i93ABAAAA==
+   H4sIAAAAAAAAC+3TTQ5AMBAG0Do+LsASB8TK38Y0IYTOpGpaSc0kX1DqtbSFUqqEFAGOOlVynOv2GtJ4CPZe7Z+vs+SeHHKtAdpmSEdkgUyGvqnBoGLybcbQI/24fGoM2Ny5fV3txR0J24c/bObZrQP5lIM9xz3/pyW++LH4tvvPl+9S4sfrU+txv8fhu6z7vWL+/n/w3/x7Dv9tfbX/Qvg2Jb74mLUCTqfFtAAQAAA=
   </data>
  </layer>
  <layer name="Layer 3" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3BAQ0AAADCoPdPbQ8HFAAAAPBuEQAcxwAQAAA=
+   H4sIAAAAAAAAC+3NoQ0AIBAEQfLdIJG0gKT/YhCgECQYgpgxl1WX0r0cc9vWr5T117d+pca5AQAA4DcDNlLDfgAQAAA=
   </data>
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3NoQ0AMAwDwYDsP3MXiFRUp+BeMjG5rqoelmqyX2wzPp/P5/P59z/lp+Lz+Xw+/zf/AH0HkKUAEAAA
+   H4sIAAAAAAAAC+3WQQoAIAhEUTfe/8pdQLIhM6gvuCgGn4sWuZl50F0V2SutzlD3yTKzc5bf9dVS5+Hj4+Pj45/01ftqvyqPj4//hn/7/43/9/vr9gfiwiKeABAAAA==
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3TMREAAAgDMfCvDU9o4BgYSBT80EYAMFV5XQB/+R+f2T+w0ZruAPkAEAAA
+   H4sIAAAAAAAAC+3OMQEAAAgDoNm/m5nMsMsHEpAAAI2d7wEAQO8AfOfMtwAQAAA=
   </data>
  </layer>
  <objectgroup name="Objects" width="32" height="32">
-  <object name="Portal" type="Portal" x="3" y="999" width="791" height="15">
+  <object name="Portal" type="Portal" x="483" y="43" width="23" height="12">
    <properties>
-    <property name="DestinationMap" value="Levels\TestFireMap\Mountain3"/>
-    <property name="DestinationX" value="12"/>
-    <property name="DestinationY" value="2"/>
-   </properties>
-  </object>
-  <object name="Portal" type="Portal" x="5" y="80" width="17" height="899">
-   <properties>
-    <property name="DestinationMap" value="Levels\TestFireMap\Mountain4"/>
-    <property name="DestinationX" value="29"/>
-    <property name="DestinationY" value="16"/>
+    <property name="DestinationMap" value="Levels\TestFireMap\ForestEntrance"/>
+    <property name="DestinationX" value="14"/>
+    <property name="DestinationY" value="31"/>
    </properties>
   </object>
  </objectgroup>

@@ -62,40 +62,53 @@
     <property name="Type" value="Fire"/>
    </properties>
   </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+   </properties>
+  </tile>
  </tileset>
- <tileset firstgid="4" name="Clip" tilewidth="32" tileheight="32">
+ <tileset firstgid="5" name="Clip" tilewidth="32" tileheight="32">
   <image source="solid.jpg" trans="ff00ff"/>
  </tileset>
- <tileset firstgid="5" name="MountainPieces" tilewidth="32" tileheight="32">
+ <tileset firstgid="6" name="MountainPieces" tilewidth="32" tileheight="32">
   <image source="MountainPieces.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="317" name="ConnectionLavat" tilewidth="32" tileheight="32">
+ <tileset firstgid="318" name="ConnectionLavat" tilewidth="32" tileheight="32">
   <image source="ConnectionLavat.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="365" name="LavaGround" tilewidth="32" tileheight="32">
+ <tileset firstgid="366" name="LavaGround" tilewidth="32" tileheight="32">
   <image source="LavaGround.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
+ <tileset firstgid="414" name="Overflow" tilewidth="32" tileheight="32">
   <image source="Overflow.png" trans="ffffff"/>
  </tileset>
  <layer name="Layer 1" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3DAQkAAAwEoQvw/fOux1Bw1VRVVdXXDwiD1TcAEAAA
+   H4sIAAAAAAAAC+3DAQkAAAwEoSvw/euux1Bw1VRVVdXXDwWeoLgAEAAA
   </data>
  </layer>
  <layer name="Layer 2" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3QOwoAIAwE0fXY2uu5xSKlnyIq6Cy8ekik/ctBKh0nRp/+rX4ctE/0R7e/3G9/T5O2d9+aK12THK02AQAA8K8KX8qdqQAQAAA=
+   H4sIAAAAAAAAC+3QMQ7AIAwEwePboaEi7+CnEYVLAwVGUbInTb2ym6QWrCbpdhTFj77fP7E390tw+xq0T/RHt3+53/+eJ+3dfWuudE3eaLUJAACA/3oAQOAywAAQAAA=
   </data>
  </layer>
  <layer name="Layer 3" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2UzQ7CIBCE6WuoJ5+mF7UX9aSe1MT/qCfrwzsXEiQFFhYwqJN8SdNSZhYWhLBroJFbLk811wiMwYTp51unHD8FMzC3jG0CvC8VzX8BlmAFevZfrPNQv8tc8v0abMAWDLWxtad/V37X3hzBCZwJXi7p+akZcoiboasHXT0WO0MM+Wb+iy7Kec05v+3eNM3VGJ5jeKZSSJ2lqBZ+NezAnsGBmfcKbgzuhfib9iSFv8+Z+rb1d/W+3u8c75D6ufWW4q/2YL96J3f9n/ZXlXr9XWf/V/rPpAdoI/IkeL4AAzh1KAAQAAA=
+   H4sIAAAAAAAAC+2UzQ7CIBCE6XOoJ5+mF7UX9aSe1MT/qCfruzsemlTCz8ICijrJlzSFMrOwVIjPVo8w3swZgCEYMf1snqpvnhqDCZga5lYe3qeC5j8Dc7AAHfMnxnWo402u5v0SrMAa9KW5paO/Kr/tbPbgAI4EL5vk/NQMKcTNoOpBW4+FzhBCrpn/ootyX1Oub/pv6taqNM8hPGPJp85cVAq3GjZgy2DHzHsGFwbXTPx1ZxLD3+VOfdv+23pf7neOt0/93Hpz8W/3YLd4JXX97/ZvK/b+2+7+r/SfTjdQB+RO8HwA7nEwMgAQAAA=
   </data>
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3VUQsAEAwEYA/+/2/2pKSUzc1N7mpv+LQWpcSnXjC60+tXf7zHy753z6r/1vNQPfPYyDBtpr+ahVvmrjvvOS1FQYU5j8j3V778nXURb6nFj0h2P/rvYv+J2f0s/ZfP8RvorN0AABAAAA==
+   H4sIAAAAAAAAC+3VQQoAIAgEQC/+/8tdIxA01FV0oVs1IWJMRJywMiJ5k/z7HZ393zNS/a33edUss/8lHxmUnz17XlPrdpyzmxlB9qPn/F1/fc2+iFlq8SNS3Y/+u9B/YnW/Sv3Xx/gHmyLzfQAQAAA=
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">
@@ -111,18 +124,11 @@
     <property name="DestinationY" value="26"/>
    </properties>
   </object>
-  <object name="Portal2" type="Portal" x="6" y="14" width="25" height="337">
+  <object name="Portal2" type="Portal" x="6" y="136" width="17" height="49">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain2"/>
     <property name="DestinationX" value="29"/>
     <property name="DestinationY" value="5"/>
-   </properties>
-  </object>
-  <object name="Portal3" type="Portal" x="38" y="7" width="756" height="13">
-   <properties>
-    <property name="DestinationMap" value="Levels\TestFireMap\BossRoom"/>
-    <property name="DestinationX" value="12"/>
-    <property name="DestinationY" value="29"/>
    </properties>
   </object>
  </objectgroup>

@@ -56,35 +56,48 @@
     <property name="Type" value="Fire"/>
    </properties>
   </tile>
+  <tile id="1">
+   <properties>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+    <property name="Type" value="Wind"/>
+   </properties>
+  </tile>
  </tileset>
- <tileset firstgid="4" name="Clip" tilewidth="32" tileheight="32">
+ <tileset firstgid="5" name="Clip" tilewidth="32" tileheight="32">
   <image source="solid.jpg" trans="ff00ff"/>
  </tileset>
- <tileset firstgid="5" name="MountainPieces" tilewidth="32" tileheight="32">
+ <tileset firstgid="6" name="MountainPieces" tilewidth="32" tileheight="32">
   <image source="MountainPieces.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="317" name="ConnectionLavat" tilewidth="32" tileheight="32">
+ <tileset firstgid="318" name="ConnectionLavat" tilewidth="32" tileheight="32">
   <image source="ConnectionLavat.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="365" name="LavaGround" tilewidth="32" tileheight="32">
+ <tileset firstgid="366" name="LavaGround" tilewidth="32" tileheight="32">
   <image source="LavaGround.png" trans="ffffff"/>
  </tileset>
- <tileset firstgid="413" name="Overflow" tilewidth="32" tileheight="32">
+ <tileset firstgid="414" name="Overflow" tilewidth="32" tileheight="32">
   <image source="Overflow.png" trans="ffffff"/>
  </tileset>
  <layer name="Layer 1" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3DAQkAAAwEoQvw/fOux1Bw1VRVVdXXDwiD1TcAEAAA
+   H4sIAAAAAAAAC+3DAQkAAAwEoSvw/euux1Bw1VRVVdXXDwWeoLgAEAAA
   </data>
  </layer>
  <layer name="Layer 2" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYHADwQG2X5JE9UPNvaOAcqACxCJ0sAeWtgoYMe2HYWygEqi+CgsmFZCbtlqBdrVhwfQCuOzHFiYgXE1lt+GyHxduH7UfDNDTOb3tpwQgu32ohv9A2U9q3sRVvsEwqXaTGjbk+G+o21/MOLL9Pxjsh8XBSPX/aPqnzH4ACqsyYgAQAAA=
+   H4sIAAAAAAAAC+2UzQ7BQBSFp68gYUFYEK+DFVZYYeUnscIaj6Aryou6TTrJzbi3vdOZFKmTnDQznc535uc2VEo9CvAzed5QO3akPqcrwa8VyL8T/JbRbiJj9cB98IAZa45vE/yQ4Es1BI/A45zfq4Qt4VeIvgl4Cp4JWV2GL1Gd6JuDF+Al8Y7Ky2UwxZ2fqRV4Dd4Q76i8nMKMHL5E1VWYwvedw6wrCV/XjIQfn23VMlPE8NN4+m5tg3e+NqU9jD8Q5vjcvtvcLawTsM6E02pQWgsufGpPYh/R/vrIwPE5X4LsOSlxWYvi4ww4R16+ec/N+dPOxQffRTi7T35D2Iflk98R9rnwpbWpxf3ftG3ZtnuTZ32/zt8F5V7/N/D1GZR1/f/778Z/ATnX/zoAEAAA
   </data>
  </layer>
  <layer name="Clip" width="32" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3UywkAIAwE0RzSf81WsIiy5AMz4E14UdAIotnlMn/bvOSp4t5/jRSr0u9M+epe3PN2/yH4+Nv8l7d52+88j/KrwsfHx3f4B+T783MAEAAA
+   H4sIAAAAAAAAC+3WwQrAIAwD0F76/7/sXabMJqZsRBheOl+RWs2IyOavazz5ynxQH41F9j+nubrGm/9XuTP8atzOV9TQ7vzcqiFksOtP4Z/mVom/bcwW2n/RfsFaj+kr7iXVPtv/v1/p+V/0T86m8p3Zdefbt2/fPtMflb1o6gAQAAA=
   </data>
  </layer>
  <layer name="Enemy" width="32" height="32">
@@ -100,25 +113,18 @@
     <property name="DestinationY" value="13"/>
    </properties>
   </object>
-  <object name="Portal4" type="Portal" x="991" y="12" width="29" height="339">
+  <object name="Portal4" type="Portal" x="996" y="203" width="19" height="47">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain2"/>
     <property name="DestinationX" value="2"/>
     <property name="DestinationY" value="4"/>
    </properties>
   </object>
-  <object name="Portal3" type="Portal" x="9" y="5" width="976" height="16">
-   <properties>
-    <property name="DestinationMap" value="Levels\TestFireMap\Mountain5"/>
-    <property name="DestinationX" value="16"/>
-    <property name="DestinationY" value="29"/>
-   </properties>
-  </object>
-  <object name="Portal2" type="Portal" x="3" y="47" width="17" height="396">
+  <object name="Portal2" type="Portal" x="9" y="196" width="17" height="52">
    <properties>
     <property name="DestinationMap" value="Levels\TestFireMap\Mountain6"/>
-    <property name="DestinationX" value="29"/>
-    <property name="DestinationY" value="12"/>
+    <property name="DestinationX" value="28"/>
+    <property name="DestinationY" value="7"/>
    </properties>
   </object>
  </objectgroup>
