@@ -358,7 +358,7 @@ namespace ArchanistTower.GameObjects
                         if (clip.Intersects(futurePlayerRectangle))
                             //if (clip.Right > SpriteAnimation.Position.X - 20)
                             {
-                                SpriteAnimation.Position.X = clip.Right + 1;
+                                SpriteAnimation.Position.X = clip.Right + 5;
                                 return;
                             }
                     SpriteAnimation.Position.X -= 20;
@@ -369,7 +369,7 @@ namespace ArchanistTower.GameObjects
                         if (clip.Intersects(futurePlayerRectangle))
                             //if (clip.Left < SpriteAnimation.Position.X + 20)
                             {
-                                SpriteAnimation.Position.X = clip.Left - 1;
+                                SpriteAnimation.Position.X = clip.Left - 5 - SpriteAnimation.Bounds.Width;
                                 return;
                             }
                     SpriteAnimation.Position.X += 20;
@@ -380,7 +380,7 @@ namespace ArchanistTower.GameObjects
                         if (clip.Intersects(futurePlayerRectangle))
                             //if (clip.Bottom > SpriteAnimation.Position.Y - 20)
                             {
-                                SpriteAnimation.Position.Y = clip.Bottom + 1;
+                                SpriteAnimation.Position.Y = clip.Bottom + 5;
                                 return;
                             }
                     SpriteAnimation.Position.Y -= 20;
@@ -391,7 +391,7 @@ namespace ArchanistTower.GameObjects
                         if (clip.Intersects(futurePlayerRectangle))
                             //if (clip.Top < SpriteAnimation.Position.Y + 20)
                             {
-                                SpriteAnimation.Position.Y = clip.Top - 1;
+                                SpriteAnimation.Position.Y = clip.Top - 5 - SpriteAnimation.Bounds.Height;
                                 return;
                             }
                     SpriteAnimation.Position.Y += 20;
