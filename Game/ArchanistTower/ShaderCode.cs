@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Storage;
 namespace ArchanistTower
 {
     /// <summary>
-    /// This is a game component that implements IUpdateable.
+    /// The shader code for the game.  This takes the screen and first grayscales it, then restores color based on the crystals found in the map.
     /// </summary>
     public class ShaderCode : Microsoft.Xna.Framework.Game
     {

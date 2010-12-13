@@ -1,4 +1,4 @@
-
+//Holds all the information on which powers are activated.
 float powerGreen;
 float powerRed;
 float powerBlue;
@@ -22,24 +22,25 @@ sampler crysTex = sampler_state
 // Grayscale
 float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
 {
+	//Color is the color information that will be passed onto the screen, while color2 holds the default screen and is used for calculations.
 	float4 Color = tex2D(ColorMapSampler, Tex);	
 	float4 color2 = tex2D(ColorMapSampler, Tex);
-	float4 colorCrys = tex2D(crysTex ,Tex*4); 
-    //float4 color3 = tex2D(ColorMapSampler, Tex + blendTexturePosition2); 
-    
-    
-	//Color.rgb = (Color.r + Color.g + Color.b)/3;
+
+	//The initial grayscale
 	Color.rgb = dot(Color.rgb, float3(0.3, .59, .11));
+	//if the red crystal is gained, it restores things that are primarily and strongly red.  Hence the .66 modifier.
 	if (powerRed == 1)
 	{
 			if (color2.r*.66 > color2.b && color2.r*.66 > color2.g)
 			{
 				Color = color2;
 			}
+			//if Red and Green have been restored, this restores all strong mixtures of the two as well as the individual colors.  Same for blue later.
 			if(powerGreen == 1)
 			{
 				if(color2.g*.66 > color2.b)
 					Color = color2;
+					//if all three are restored, all color is returned to normal.
 					if(powerBlue == 1)
 						Color = color2;
 			}
@@ -49,6 +50,7 @@ float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
 					Color = color2;
 			}
 	}
+	//As above, but only checks for green and blue, to save calculations.
 	if (powerGreen == 1)
 	{
 			if (color2.g*.66 > color2.b && color2.g*.66 > color2.r)
@@ -62,6 +64,7 @@ float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
 			}
 			
 	}
+	As above for blue.
 	if (powerBlue == 1)
 	{
 			if (color2.b*.66 > color2.r && color2.b*.66 > color2.g)
@@ -69,12 +72,6 @@ float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
 				Color = color2;
 			}
 	}
-	//Color = colorCrys;
-	//if (Tex.x < rectangleA.x && Tex.x >= rectangleA.x-rectangleA.z && Tex.y < rectangleA.y && Tex.y >= rectangleA.y-rectangleA.z)
-        //if (colorCrys.g > color2.g)//  && Tex.r > rectangleA.r)
-           //Color = color2;
-
-	//Color.b = color2.b;
 	// Keep our alphachannel at 1.
 	Color.a = 1.0f;
 		
