@@ -64,7 +64,7 @@ float4 PixelShader(float2 Tex: TEXCOORD0) : COLOR
 			}
 			
 	}
-	As above for blue.
+	//As above for blue.
 	if (powerBlue == 1)
 	{
 			if (color2.b*.66 > color2.r && color2.b*.66 > color2.g)
