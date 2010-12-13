@@ -46,8 +46,8 @@ namespace ArchanistTower.Screens
             if (Globals.input.KeyJustPressed(Keys.Escape) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
-                this.Disable();
-                Globals.screenManager.AddScreen(new PauseScreen());
+                this.Disable(); // disable game screen when Esc is pressed
+                Globals.screenManager.AddScreen(new PauseScreen()); // then add a pause screen
                 MediaPlayer.Pause();
             }
             shader.Update();
@@ -71,13 +71,13 @@ namespace ArchanistTower.Screens
 
         public override void OnAdd()
         {
-            Globals.screenManager.AddScreen(HUD);
+            Globals.screenManager.AddScreen(HUD); // add a HUD
         }
 
         public static void GameOver()
         {
-            Globals.screenManager.AddScreen(new GameOverScreen());
-            Globals.screenManager.FindScreen("GameScreen").Disable();
+            Globals.screenManager.AddScreen(new GameOverScreen()); // create a game over screen
+            Globals.screenManager.FindScreen("GameScreen").Disable(); // and disable this game screen
         }
         
     }

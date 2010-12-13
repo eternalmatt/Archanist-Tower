@@ -39,17 +39,17 @@ namespace ArchanistTower.Screens
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
-                Globals.screenManager.AddScreen(new SplashScreen());
-                Globals.screenManager.FindScreen("GameScreen").Destroy();
-                Globals.screenManager.FindScreen("HUDScreen").Destroy();
-                GameWorld.Player = null;
-                this.Destroy();
+                Globals.screenManager.AddScreen(new SplashScreen()); // return to splash screen after game over
+                Globals.screenManager.FindScreen("GameScreen").Destroy(); // destroy any existing game screen
+                Globals.screenManager.FindScreen("HUDScreen").Destroy(); // and hud screen
+                GameWorld.Player = null; // remove the player to prepare for a new game
+                this.Destroy(); // destroy this game over screen
             }
 
             float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (FadeValue < 255)
             {
-                FadeValue = FadeValue + (timeDelta * FadeSpeed);
+                FadeValue = FadeValue + (timeDelta * FadeSpeed); // calculates the alpha value (transparency) and set it as FadeValue
             }
             else
             {
@@ -65,7 +65,7 @@ namespace ArchanistTower.Screens
             Globals.spriteBatch.End();
         }
 
-        public Color FadeColor(Color baseColor, float FadeValue)
+        public Color FadeColor(Color baseColor, float FadeValue) // returns the current faded color based on the current faded value
         {
             Color tempColor;
             tempColor = new Color(baseColor.R, baseColor.G, baseColor.B, (byte)FadeValue);

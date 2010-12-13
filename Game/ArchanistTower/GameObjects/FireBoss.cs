@@ -94,12 +94,12 @@ namespace ArchanistTower.GameObjects
             }
             else
             {
-                Vector2 cSpell = AvoidClosestSpell();        
+                Vector2 cSpell = AvoidClosestSpell();
                 if (enemyState == EnemySpriteState.Run)
                 {
                     if (spellPositionList.Count > 0)
                         RunFromPlayerSpell(SpriteAnimation.Position, cSpell, ref enemyOrientation, enemyTurnSpeed);
-                    // let the boss run for 0.5 seconds, then return to wander
+                    // let the boss run for 0.5 seconds, then return to an appropriate state by CheckEnemyState()
                     timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     if (timer >= 0.5)
                     {
@@ -144,12 +144,15 @@ namespace ArchanistTower.GameObjects
             }
         }
 
+        // change the orientation of the Boss based on the vector perpendicular, obtained by AvoidClosestSpell()
         private void RunFromPlayerSpell(Vector2 position, Vector2 perpendicular, ref float orient, float turnspeed)
         {
             orient = TurnToFace(position, perpendicular, orient, turnspeed);
             SpriteAnimation.Speed = runFromSpellSpeed;
         }
 
+        // this method tells the Boss to run away from the coming spell, in a direction perpendicular to the spell motion
+        // returns a position vector where the Boss should turn / run to
         private Vector2 AvoidClosestSpell()
         {
             //return new Vector2(1, 0) + SpriteAnimation.Position;

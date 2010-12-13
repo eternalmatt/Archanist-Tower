@@ -87,6 +87,9 @@ namespace ArchanistTower.GameObjects
             checkClipCollision(this, o);
         }
 
+        // wind spell throws off the player / enemy upon collision
+        // this method checks whether the new position after collision is inside a Clip map tile
+        // if it is, set the new position to outside the tile
         private void checkClipCollision(GameObject oHits, GameObject oGotHit)
         {
             Rectangle futureRectangle = oGotHit.SpriteAnimation.Bounds;

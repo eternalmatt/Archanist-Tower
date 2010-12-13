@@ -124,6 +124,7 @@ namespace ArchanistTower.GameObjects
             if (Globals.green == 1)
                 green = true;
 
+            // mana regeneration changes per digit increment
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds * MANA_RECHARGE;
             if (timer >= 1 && Mana < 100)
             {
@@ -230,7 +231,7 @@ namespace ArchanistTower.GameObjects
 
         private void CastSpell()
         {
-            if (red || green || blue)
+            if (red || green || blue) // allow spell casts only if there is at least one world color activated
             {
                 if (Globals.input.KeyJustPressed(SpellCast) ||
                     Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.RightTrigger))
@@ -248,6 +249,7 @@ namespace ArchanistTower.GameObjects
                         Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickDown))
                         Direction = FacingDirection.Down;
 
+                    // check which spell is selected, and cast that spell if there is enough mana or cheat mode is on
                     if (selectedSpell == SelectedSpell.fire && red && (Mana >= FIRE_SPELL_MANA || Globals.UNLIMITED_MANA))
                     {
                         GameWorld.Spells.Add(new FireSpell(Direction, new Vector2(SpriteAnimation.Position.X - SpriteAnimation.Bounds.Width/2 + 24, SpriteAnimation.Position.Y - SpriteAnimation.Bounds.Height/2 + 24)) { originatingType = GameObjects.Spell.OriginatingType.Player });
@@ -286,6 +288,7 @@ namespace ArchanistTower.GameObjects
             CastDown = cDown;
         }
 
+        // depending on the current selected control scheme, change the keys corresponding to the controls
         private void CheckControlScheme()
         {
             switch (currentControlScheme)

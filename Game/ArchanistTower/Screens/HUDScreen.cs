@@ -104,6 +104,7 @@ namespace ArchanistTower.Screens
             PlayerHealth = GameWorld.Player.Health;
             PlayerMana = GameWorld.Player.Mana;
 
+            // display the current selected spell as an animated sprite on the hud
             if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.fire && Globals.red == 1)
                 crystal.CurrentAnimationName = "Fire";
             else if (GameObjects.Player.selectedSpell == GameObjects.SelectedSpell.wind && Globals.green == 1)

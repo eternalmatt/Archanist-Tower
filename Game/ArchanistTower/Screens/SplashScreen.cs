@@ -43,7 +43,7 @@ namespace ArchanistTower.Screens
             float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (FadeValue < 255)
             {
-                FadeValue = FadeValue + (timeDelta * FadeSpeed);
+                FadeValue = FadeValue + (timeDelta * FadeSpeed); // calculates the alpha value (transparency) and set it as FadeValue
             }
             else
             {
@@ -65,7 +65,7 @@ namespace ArchanistTower.Screens
             Globals.spriteBatch.End();
         }
 
-        public Color FadeColor(Color baseColor, float FadeValue)
+        public Color FadeColor(Color baseColor, float FadeValue) // returns the current faded color based on the current faded value
         {
             Color tempColor;
             tempColor = new Color(baseColor.R, baseColor.G, baseColor.B, (byte)FadeValue);

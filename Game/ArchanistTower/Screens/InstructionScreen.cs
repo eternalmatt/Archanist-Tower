@@ -40,6 +40,7 @@ namespace ArchanistTower.Screens
 
         protected override void Update(GameTime gameTime)
         {
+            // allow the user to select different control scheme using left / right controls
             if (Globals.input.KeyJustPressed(Keys.Left) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadLeft))
@@ -54,6 +55,7 @@ namespace ArchanistTower.Screens
             if (Selection > 2)
                 Selection = 0;
 
+            // display different control scheme image based on selection
             switch (Selection)
             {
                 case 0:
