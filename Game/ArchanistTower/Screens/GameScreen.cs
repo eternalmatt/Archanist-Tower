@@ -43,8 +43,15 @@ namespace ArchanistTower.Screens
 
         protected override void Update(GameTime gameTime)
         {
-            if (Globals.input.KeyJustPressed(Keys.Escape) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
+#if WINDOWS
+            if (Globals.input.KeyJustPressed(Keys.Escape))
+            {
+                this.Disable(); // disable game screen when Esc is pressed
+                Globals.screenManager.AddScreen(new PauseScreen()); // then add a pause screen
+                MediaPlayer.Pause();
+            }
+#endif
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 this.Disable(); // disable game screen when Esc is pressed
                 Globals.screenManager.AddScreen(new PauseScreen()); // then add a pause screen

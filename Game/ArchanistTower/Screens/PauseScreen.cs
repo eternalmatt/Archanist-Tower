@@ -45,12 +45,46 @@ namespace ArchanistTower.Screens
 
         protected override void Update(GameTime gameTime)
         {
-            if (Globals.input.KeyJustPressed(Keys.Up) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickUp) ||
+#if WINDOWS
+            if (Globals.input.KeyJustPressed(Keys.Up))
+                Selection--;
+            if (Globals.input.KeyJustPressed(Keys.Down))
+                Selection++;
+
+            if (Selection < 0)
+                Selection = 2;
+            if (Selection > 2)
+                Selection = 0;
+
+            if (Globals.input.KeyJustPressed(Keys.Enter))
+            {
+                // activate or add corresponding screens based on selection
+                switch (Selection)
+                {
+                    case 0:
+                        this.Destroy();
+                        Globals.screenManager.FindScreen("GameScreen").Activate();
+                        Globals.screenManager.FindScreen("HUDScreen").Activate();
+                        MediaPlayer.Resume();
+                        break;
+                    case 1:
+                        Globals.screenManager.AddScreen(new SettingsScreen());
+                        this.Disable();
+                        break;
+                    case 2:
+                        this.Destroy();
+                        Globals.screenManager.FindScreen("GameScreen").Destroy();
+                        Globals.screenManager.FindScreen("HUDScreen").Destroy();
+                        Globals.screenManager.AddScreen(new MenuScreen());
+                        GameWorld.Player = null;
+                        break;
+                }
+            }
+#endif
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickUp) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadUp))
                 Selection--;
-            if (Globals.input.KeyJustPressed(Keys.Down) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickDown) ||
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickDown) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadDown))
                 Selection++;
 
@@ -59,8 +93,7 @@ namespace ArchanistTower.Screens
             if (Selection > 2)
                 Selection = 0;
 
-            if (Globals.input.KeyJustPressed(Keys.Enter) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 // activate or add corresponding screens based on selection

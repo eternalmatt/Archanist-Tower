@@ -174,31 +174,48 @@ namespace ArchanistTower.GameObjects
             }
 
             Vector2 movement = Vector2.Zero;
-
-            if (Globals.input.KeyPressed(MoveRight) ||
-                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadRight) ||
+#if WINDOWS
+            if (Globals.input.KeyPressed(MoveRight))
+            {
+                movement.X = 1;
+                Direction = FacingDirection.Right;
+            }
+            else if (Globals.input.KeyPressed(MoveLeft))
+            {
+                movement.X = -1;
+                Direction = FacingDirection.Left;
+            }
+            if (Globals.input.KeyPressed(MoveUp))
+            {
+                movement.Y = -1;
+                Direction = FacingDirection.Up;
+            }
+            else if (Globals.input.KeyPressed(MoveDown))
+            {
+                movement.Y = 1;
+                Direction = FacingDirection.Down;
+            }
+#endif
+            if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadRight) ||
                 Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickRight))
             {
                 movement.X = 1;
                 Direction = FacingDirection.Right;
             }
-            else if (Globals.input.KeyPressed(MoveLeft) ||
-                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadLeft) ||
-                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft))
+            else if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadLeft) ||
+                     Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft))
             {
                 movement.X = -1;
                 Direction = FacingDirection.Left;
             }
-            if (Globals.input.KeyPressed(MoveUp) ||
-                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadUp) ||
+            if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadUp) ||
                 Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickUp))
             {
                 movement.Y = -1;
                 Direction = FacingDirection.Up;
             }
-            else if (Globals.input.KeyPressed(MoveDown) ||
-                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadDown) ||
-                Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickDown))
+            else if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.DPadDown) ||
+                     Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftThumbstickDown))
             {
                 movement.Y = 1;
                 Direction = FacingDirection.Down;
@@ -215,38 +232,75 @@ namespace ArchanistTower.GameObjects
 
             SpriteAnimation.Position += SpriteAnimation.Speed * movement;
             LastMovement = SpriteAnimation.Speed * movement;
-
+#if WINDOWS
             if (Globals.input.KeyPressed(Keys.D1) || (Globals.red == 1 && Globals.blue == 0 && Globals.green == 0))
                 selectedSpell = SelectedSpell.fire;
             else if (Globals.input.KeyPressed(Keys.D2) || (Globals.red == 0 && Globals.blue == 0 && Globals.green == 1))
                 selectedSpell = SelectedSpell.wind;
+#endif
+            if(Globals.red == 1 && Globals.blue == 1)
+                if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.LeftShoulder) ||
+                    Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightShoulder))
+                {
+                    if (selectedSpell == SelectedSpell.fire)
+                        selectedSpell = SelectedSpell.wind;
+                    else
+                        selectedSpell = SelectedSpell.fire;
+                }
 
             CastSpell();
-
+/*
             if (Globals.input.KeyJustPressed(Keys.I))
                 Globals.I_AM_INVINCIBLE = !Globals.I_AM_INVINCIBLE;
             if (Globals.input.KeyJustPressed(Keys.U))
                 Globals.UNLIMITED_MANA = !Globals.UNLIMITED_MANA;
+*/ 
         }
 
         private void CastSpell()
         {
             if (red || green || blue) // allow spell casts only if there is at least one world color activated
             {
-                if (Globals.input.KeyJustPressed(SpellCast) ||
-                    Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.RightTrigger))
+#if WINDOWS
+                if (Globals.input.KeyJustPressed(SpellCast))
                 {
-                    if (Globals.input.KeyPressed(CastLeft) ||
-                        Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickLeft))
+                    if (Globals.input.KeyPressed(CastLeft))
                         Direction = FacingDirection.Left;
-                    else if (Globals.input.KeyPressed(CastRight) ||
-                        Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickRight))
+                    else if (Globals.input.KeyPressed(CastRight))
                         Direction = FacingDirection.Right;
-                    else if (Globals.input.KeyPressed(CastUp) ||
-                        Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickUp))
+                    else if (Globals.input.KeyPressed(CastUp))
                         Direction = FacingDirection.Up;
-                    else if (Globals.input.KeyPressed(CastDown) ||
-                        Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickDown))
+                    else if (Globals.input.KeyPressed(CastDown))
+                        Direction = FacingDirection.Down;
+                    // check which spell is selected, and cast that spell if there is enough mana or cheat mode is on
+                    if (selectedSpell == SelectedSpell.fire && red && (Mana >= FIRE_SPELL_MANA || Globals.UNLIMITED_MANA))
+                    {
+                        GameWorld.Spells.Add(new FireSpell(Direction, new Vector2(SpriteAnimation.Position.X - SpriteAnimation.Bounds.Width/2 + 24, SpriteAnimation.Position.Y - SpriteAnimation.Bounds.Height/2 + 24)) { originatingType = GameObjects.Spell.OriginatingType.Player });
+                        Mana -= FIRE_SPELL_MANA;
+                        Globals.fireFX.Play(Globals.FXVolume(), 0, 0);
+                    }
+                    else if (selectedSpell == SelectedSpell.wind && green && (Mana >= WIND_SPELL_MANA || Globals.UNLIMITED_MANA))
+                    {
+                        GameWorld.Spells.Add(new WindSpell(Direction, new Vector2(SpriteAnimation.Position.X - SpriteAnimation.Bounds.Width / 2 + 24, SpriteAnimation.Position.Y - SpriteAnimation.Bounds.Height / 2 + 24)) { originatingType = GameObjects.Spell.OriginatingType.Player });
+                        Mana -= WIND_SPELL_MANA;
+                    }
+                    else if (selectedSpell == SelectedSpell.water && blue)
+                    {
+                        // reserved for water spell
+                    }
+                    else
+                        Globals.lowManaFX.Play(Globals.FXVolume(), 0, 0); 
+                }
+#endif
+                if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.RightTrigger))
+                {
+                    if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickLeft))
+                        Direction = FacingDirection.Left;
+                    else if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickRight))
+                        Direction = FacingDirection.Right;
+                    else if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickUp))
+                        Direction = FacingDirection.Up;
+                    else if (Globals.input.ButtonPressed(PlayerIndex.One, Buttons.RightThumbstickDown))
                         Direction = FacingDirection.Down;
 
                     // check which spell is selected, and cast that spell if there is enough mana or cheat mode is on

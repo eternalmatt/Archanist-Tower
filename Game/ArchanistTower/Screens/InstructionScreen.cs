@@ -41,12 +41,16 @@ namespace ArchanistTower.Screens
         protected override void Update(GameTime gameTime)
         {
             // allow the user to select different control scheme using left / right controls
-            if (Globals.input.KeyJustPressed(Keys.Left) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft) ||
+#if WINDOWS
+            if (Globals.input.KeyJustPressed(Keys.Left))
+                Selection--;
+            if (Globals.input.KeyJustPressed(Keys.Right))
+                Selection++;
+#endif 
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadLeft))
                 Selection--;
-            if (Globals.input.KeyJustPressed(Keys.Right) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickRight) ||
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickRight) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadRight))
                 Selection++;
 
@@ -72,8 +76,14 @@ namespace ArchanistTower.Screens
                     break;
             }
 
-            if (Globals.input.KeyJustPressed(Keys.Enter) || Globals.input.KeyJustPressed(Keys.Escape) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
+#if WINDOWS
+            if (Globals.input.KeyJustPressed(Keys.Enter) || Globals.input.KeyJustPressed(Keys.Escape))
+            {
+                this.Destroy();
+                Globals.screenManager.FindScreen("SettingsScreen").Activate();
+            }
+#endif
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 this.Destroy();

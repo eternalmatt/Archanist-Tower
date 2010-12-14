@@ -77,9 +77,9 @@ namespace ArchanistTower
             //shader.DrawSetup();
             GraphicsDevice.Clear(Color.Black);
             Globals.screenManager.Draw(gameTime);
-            Globals.spriteBatch.Begin();
-            Globals.spriteBatch.DrawString(Font, FpsText, FPSPos, Color.White);
-            Globals.spriteBatch.End();
+           // Globals.spriteBatch.Begin();
+           // Globals.spriteBatch.DrawString(Font, FpsText, FPSPos, Color.White);
+           // Globals.spriteBatch.End();
         }
 
         public static void ExitGame()

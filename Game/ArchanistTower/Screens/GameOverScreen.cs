@@ -35,11 +35,21 @@ namespace ArchanistTower.Screens
 
         protected override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            if (Globals.input.KeyJustPressed(Keys.Enter) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
+#if WINDOWS
+            if (Globals.input.KeyJustPressed(Keys.Enter))
+            {
+                Globals.screenManager.AddScreen(new CreditsScreen()); // return to splash screen after game over
+                Globals.screenManager.FindScreen("GameScreen").Destroy(); // destroy any existing game screen
+                Globals.screenManager.FindScreen("HUDScreen").Destroy(); // and hud screen
+                GameWorld.Player = null; // remove the player to prepare for a new game
+                this.Destroy(); // destroy this game over screen
+            }
+#endif
+
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
-                Globals.screenManager.AddScreen(new SplashScreen()); // return to splash screen after game over
+                Globals.screenManager.AddScreen(new CreditsScreen()); // return to splash screen after game over
                 Globals.screenManager.FindScreen("GameScreen").Destroy(); // destroy any existing game screen
                 Globals.screenManager.FindScreen("HUDScreen").Destroy(); // and hud screen
                 GameWorld.Player = null; // remove the player to prepare for a new game

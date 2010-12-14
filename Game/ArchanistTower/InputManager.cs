@@ -69,7 +69,7 @@ namespace ArchanistTower
             mouse_move_x = 0f;
             mouse_move_y = 0f;
 
-#endif
+//#endif
 
             NewGamePadState = new GamePadState[4];
             OldGamePadState = new GamePadState[4];
@@ -97,6 +97,7 @@ namespace ArchanistTower
                 else
                     return KeyPressedState.Released;
             }
+#endif
         }
 
         public GamePadButtonState GetGamepadButtonState(PlayerIndex pi, Buttons input)
@@ -394,12 +395,13 @@ namespace ArchanistTower
 
         public void ClearStates()
         {
+#if WINDOWS
             OldKeyState = Keyboard.GetState();
             NewKeyState = Keyboard.GetState();
 
             NewMouseState = Mouse.GetState();
             OldMouseState = Mouse.GetState();
-
+#endif
             for (int i = 0; i < 4; i++)
             {
                 if (GamePad.GetState((PlayerIndex)i).IsConnected)

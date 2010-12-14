@@ -41,13 +41,10 @@ namespace ArchanistTower.Screens
 
         protected override void Update(GameTime gameTime)
         {
-            if (Globals.input.KeyJustPressed(Keys.Up) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickUp) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadUp))
+#if WINDOWS
+            if (Globals.input.KeyJustPressed(Keys.Up))
                 Selection--;
-            if (Globals.input.KeyJustPressed(Keys.Down) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickDown) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadDown))
+            if (Globals.input.KeyJustPressed(Keys.Down))
                 Selection++;
 
             if (Selection < 0)
@@ -55,8 +52,7 @@ namespace ArchanistTower.Screens
             if (Selection > 2)
                 Selection = 0;
 
-            if (Globals.input.KeyJustPressed(Keys.Enter) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
+            if (Globals.input.KeyJustPressed(Keys.Enter))
                 switch (Selection)
                 {
                     case 0:
@@ -65,8 +61,71 @@ namespace ArchanistTower.Screens
                         break;
                 }
 
-            if(Globals.input.KeyJustPressed(Keys.Left) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft) ||
+            if(Globals.input.KeyJustPressed(Keys.Left))
+                switch (Selection)
+                {
+                    case 1:
+                        Globals.fxVolume -= 10;
+                        break;
+                    case 2:
+                        Globals.bgVolume -= 10;
+                        break;
+                }
+
+            if (Globals.input.KeyJustPressed(Keys.Right))
+                switch (Selection)
+                {
+                    case 1:
+                        Globals.fxVolume += 10;
+                        break;
+                    case 2:
+                        Globals.bgVolume += 10;
+                        break;
+                }
+
+            if (Globals.fxVolume < 0)
+                Globals.fxVolume = 0;
+            if (Globals.fxVolume > 100)
+                Globals.fxVolume = 100;
+            if (Globals.bgVolume < 0)
+                Globals.bgVolume = 0;
+            if (Globals.bgVolume > 100)
+                Globals.bgVolume = 100;
+
+            bgString = "Background Music  < " + Globals.bgVolume + " >";
+            fxString = "Effects Volume < " + Globals.fxVolume + " >";
+
+            if (Globals.input.KeyJustPressed(Keys.Escape))
+            {
+                this.Destroy();
+                if (Globals.screenManager.FindScreen("PauseScreen") != null)
+                    Globals.screenManager.FindScreen("PauseScreen").Activate();
+                else
+                    Globals.screenManager.FindScreen("MenuScreen").Activate();
+            }
+#endif
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickUp) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadUp))
+                Selection--;
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickDown) ||
+                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadDown))
+                Selection++;
+
+            if (Selection < 0)
+                Selection = 2;
+            if (Selection > 2)
+                Selection = 0;
+
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A))
+                switch (Selection)
+                {
+                    case 0:
+                        this.Disable();
+                        Globals.screenManager.AddScreen(new InstructionScreen());
+                        break;
+                }
+
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickLeft) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadLeft))
                 switch (Selection)
                 {
@@ -78,8 +137,7 @@ namespace ArchanistTower.Screens
                         break;
                 }
 
-            if (Globals.input.KeyJustPressed(Keys.Right) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickRight) ||
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.LeftThumbstickRight) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.DPadRight))
                 switch (Selection)
                 {
@@ -103,8 +161,7 @@ namespace ArchanistTower.Screens
             bgString = "Background Music  < " + Globals.bgVolume + " >";
             fxString = "Effects Volume < " + Globals.fxVolume + " >";
 
-            if (Globals.input.KeyJustPressed(Keys.Escape) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Back) ||
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Back) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.B))
             {
                 this.Destroy();
@@ -138,7 +195,7 @@ namespace ArchanistTower.Screens
                 Globals.spriteBatch.DrawString(font, bgString, new Vector2(300, 450), Color.Yellow);
             }
 
-            Globals.spriteBatch.DrawString(font, Globals.FXVolume().ToString(), new Vector2(200, 375), Color.Green);
+           // Globals.spriteBatch.DrawString(font, Globals.FXVolume().ToString(), new Vector2(200, 375), Color.Green);
             Globals.spriteBatch.End();
         }
     }

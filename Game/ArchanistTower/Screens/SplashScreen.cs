@@ -49,13 +49,21 @@ namespace ArchanistTower.Screens
             {
                 FadeValue = 255;
             }
-            if (Globals.input.KeyJustPressed(Keys.Enter) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
+#if WINDOWS
+            if (Globals.input.KeyJustPressed(Keys.Enter))
+            {
+                this.Destroy();
+                Globals.screenManager.AddScreen(new MenuScreen());
+            }
+#endif
+
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 this.Destroy();
                 Globals.screenManager.AddScreen(new MenuScreen());
             }
+
         }
 
         protected override void Draw()

@@ -51,8 +51,13 @@ namespace ArchanistTower.Screens
 
         protected override void Update(GameTime gameTime)
         {
-            if (Globals.input.KeyJustPressed(Keys.Enter) ||
-                Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
+#if WINDOWS
+            if (Globals.input.KeyJustPressed(Keys.Enter))
+            {
+                currentFrame++;
+            }
+#endif
+            if (Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.A) ||
                 Globals.input.ButtonJustPressed(PlayerIndex.One, Buttons.Start))
             {
                 currentFrame++;
