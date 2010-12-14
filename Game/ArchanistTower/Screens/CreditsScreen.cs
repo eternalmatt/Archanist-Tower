@@ -56,7 +56,7 @@ namespace ArchanistTower.Screens
             y -= 1;
             imageRectangle.Y = y;
 
-            if ((imageRectangle.Y) * -1 > (image.Height - Globals.ScreenHeight))
+            if ((imageRectangle.Y) * -1 > (image.Height - Globals.ScreenHeight/2))
             {
                 this.Destroy();
                 Globals.screenManager.AddScreen(new MenuScreen());
