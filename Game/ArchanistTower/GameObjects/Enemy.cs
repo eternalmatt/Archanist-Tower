@@ -10,6 +10,9 @@ using ArchanistTower.Screens;
 
 namespace ArchanistTower.GameObjects
 {
+    /// <summary>
+    /// Created by Matt Senn (and David who dropped the class)
+    /// </summary>
     public class Enemy : GameObject
     {
         private Vector2 spriteWanderDirection;

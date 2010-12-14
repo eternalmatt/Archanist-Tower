@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ArchanistTower.GameObjects
 {
+    /// <summary>
+    /// Created by Matt S.
+    /// </summary>
     class ElementalEnemy : Enemy
     {
         private float enemyChaseVelocity { get { return 0.57f; } }

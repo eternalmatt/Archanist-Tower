@@ -328,10 +328,11 @@ namespace ArchanistTower
 
         #region PerPixelCollision
         /// <summary>
-        /// Optimized PerPixelCollision
+        /// Optimized PerPixelCollision. Written by Matt Senn
         /// </summary>
         private static bool PerPixelCollision(AnimatedSprite A, AnimatedSprite B)
         {
+            //reference found at http://forums.create.msdn.com/forums/p/23774/138877.aspx
             int bottom = Math.Min(A.Bounds.Bottom, B.Bounds.Bottom);
             int right = Math.Min(A.Bounds.Right, B.Bounds.Right);
 

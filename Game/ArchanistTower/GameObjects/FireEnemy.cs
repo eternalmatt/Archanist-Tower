@@ -9,6 +9,9 @@ using System.Diagnostics;
 
 namespace ArchanistTower.GameObjects
 {
+    /// <summary>
+    /// Written by Matt Senn
+    /// </summary>
     class FireEnemy : ElementalEnemy
     {
 

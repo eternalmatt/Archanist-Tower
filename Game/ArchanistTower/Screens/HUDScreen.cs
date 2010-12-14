@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace ArchanistTower.Screens
 {
+    /// <summary>
+    /// This class created almost entirely by Matt S.
+    /// </summary>
     class HUDScreen : Screen
     {
         #region Properties

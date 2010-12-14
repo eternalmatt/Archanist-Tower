@@ -8,6 +8,9 @@ using System.Diagnostics;
 
 namespace ArchanistTower.GameObjects
 {
+    /// <summary>
+    /// Created by Matt S.  Some of the AI by Jerry
+    /// </summary>
     class FireBoss : Enemy
     {
         private const int enemyAttackRadius = 150;
